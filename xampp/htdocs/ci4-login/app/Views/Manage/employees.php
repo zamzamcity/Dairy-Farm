@@ -243,8 +243,8 @@
 
 <!-- Nav Item - Animals Collapse Menu -->
 <?php if (hasPermission('CanViewAnimals')): ?>
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnimals"
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnimals"
         aria-expanded="true" aria-controls="collapseAnimals">
         <i class="fas fa-fw fa-paw"></i>
         <span>Animals</span>
@@ -252,12 +252,68 @@
     <div id="collapseAnimals" class="collapse" aria-labelledby="headingAnimals" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Animal Management:</h6>
-            <a class="collapse-item active" href="<?= base_url('animals/animalsList') ?>">Manage Animals</a>
+            <a class="collapse-item" href="<?= base_url('animals/animalsList') ?>">Manage Animals</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other:</h6>
             <a class="collapse-item" href="<?= base_url('animals/reports') ?>">Reports</a>
         </div>
     </div>
+</li>
+<?php endif; ?>
+
+<!-- Nav Item - Pen/Semen/Technician Collapse Menu -->
+<?php if (hasPermission('CanViewPen')||hasPermission('CanViewSemen')||hasPermission('CanViewTechnician')): ?>
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePen"
+    aria-expanded="true" aria-controls="collapsePen">
+    <i class="fas fa-fw fa-warehouse"></i>
+    <span>Pen/Semen/Tech</span>
+</a>
+<div id="collapsePen" class="collapse" aria-labelledby="headingPen" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Management:</h6>
+        <?php if (hasPermission('CanViewPen')): ?>
+            <a class="collapse-item" href="<?= base_url('pen-semen-tech/pen') ?>">Pen</a>
+        <?php endif; ?>
+        <?php if (hasPermission('CanViewSemen')): ?>
+            <a class="collapse-item" href="<?= base_url('pen-semen-tech/semen') ?>">Semen</a>
+        <?php endif; ?>
+        <?php if (hasPermission('CanViewTechnician')): ?>
+            <a class="collapse-item" href="<?= base_url('pen-semen-tech/technician') ?>">Technician</a>
+        <?php endif; ?>
+    </div>
+</div>
+</li>
+<?php endif; ?>
+
+<!-- Nav Item - Schedule Events Collapse Menu -->
+<?php if (hasPermission('CanViewSchedule')||hasPermission('CanViewVaccinationSchedule')||hasPermission('CanViewDewormingSchedule')||hasPermission('CanViewCalvesSchedule')||hasPermission('CanViewAfterCalvingProtocols')): ?>
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvents"
+    aria-expanded="true" aria-controls="collapseEvents">
+    <i class="fas fa-fw fa-bell"></i>
+    <span>Schedule Events</span>
+</a>
+<div id="collapseEvents" class="collapse" aria-labelledby="headingEvents" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Schedule Management:</h6>
+        <?php if (hasPermission('CanViewSchedule')): ?>
+            <a class="collapse-item" href="<?= base_url('schedule-events/schedule') ?>">View All Schedules</a>
+        <?php endif; ?>
+        <?php if (hasPermission('CanViewVaccinationSchedule')): ?>
+            <a class="collapse-item" href="<?= base_url('schedule-events/vaccinationSchedule') ?>">Vaccination Schedule</a>
+        <?php endif; ?>
+        <?php if (hasPermission('CanViewDewormingSchedule')): ?>
+            <a class="collapse-item" href="<?= base_url('pen-semen-tech/technician') ?>">Deworming Schedule</a>
+        <?php endif; ?>
+        <?php if (hasPermission('CanViewCalvesSchedule')): ?>
+            <a class="collapse-item" href="<?= base_url('pen-semen-tech/technician') ?>">Calves Schedule</a>
+        <?php endif; ?>
+        <?php if (hasPermission('CanViewAfterCalvingProtocols')): ?>
+            <a class="collapse-item" href="<?= base_url('pen-semen-tech/technician') ?>">After Calving Protocols</a>
+        <?php endif; ?>
+    </div>
+</div>
 </li>
 <?php endif; ?>
 

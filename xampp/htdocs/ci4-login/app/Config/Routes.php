@@ -66,7 +66,10 @@ $routes->group('schedule-events', function ($routes) {
     $routes->post('schedule/edit/(:num)', 'ScheduleController::editSchedule/$1');
     $routes->post('schedule/delete/(:num)', 'ScheduleController::deleteSchedule/$1');
 
-
+    $routes->get('vaccinationSchedule', 'VaccinationScheduleController::vaccinationScheduleList');
+    $routes->post('vaccinationSchedule/add', 'VaccinationScheduleController::addVaccinationSchedule');
+    $routes->post('vaccinationSchedule/edit/(:num)', 'VaccinationScheduleController::editVaccinationSchedule/$1');
+    $routes->post('vaccinationSchedule/delete/(:num)', 'VaccinationScheduleController::deleteVaccinationSchedule/$1');
 });
 
 

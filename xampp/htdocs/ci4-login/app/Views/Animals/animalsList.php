@@ -395,7 +395,7 @@
             <a class="collapse-item" href="<?= base_url('schedule-events/schedule') ?>">View All Schedules</a>
         <?php endif; ?>
         <?php if (hasPermission('CanViewVaccinationSchedule')): ?>
-            <a class="collapse-item" href="<?= base_url('pen-semen-tech/semen') ?>">Vaccination Schedule</a>
+            <a class="collapse-item" href="<?= base_url('schedule-events/vaccinationSchedule') ?>">Vaccination Schedule</a>
         <?php endif; ?>
         <?php if (hasPermission('CanViewDewormingSchedule')): ?>
             <a class="collapse-item" href="<?= base_url('pen-semen-tech/technician') ?>">Deworming Schedule</a>
