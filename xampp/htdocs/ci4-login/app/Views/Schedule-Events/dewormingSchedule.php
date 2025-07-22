@@ -143,9 +143,9 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <!-- <div class="sidebar-heading">
-                Interface
-            </div> -->
+            <div class="sidebar-heading">
+                Admin Panel
+            </div>
 
             <!-- Nav Item - Manage Collapse Menu -->
             <?php if (hasPermission('CanViewManage')): ?>
@@ -165,78 +165,6 @@
             </div>
         </li>
         <?php endif; ?>
-
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <?php if (hasPermission('CanViewUtilities')): ?>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-        data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="<?= base_url('utilities/colors') ?>">Colors</a>
-            <a class="collapse-item" href="<?= base_url('utilities/borders') ?>">Borders</a>
-            <a class="collapse-item" href="<?= base_url('utilities/animations') ?>">Animations</a>
-            <a class="collapse-item" href="<?= base_url('utilities/others') ?>">Other</a>
-        </div>
-    </div>
-</li>
-<?php endif; ?>
-
-<!-- Divider -->
-<hr class="sidebar-divider">
-
-<!-- Heading -->
-<div class="sidebar-heading">
-    Addons
-</div>
-
-<!-- Nav Item - Pages Collapse Menu -->
-<?php if (hasPermission('CanViewPages')): ?>
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-    aria-expanded="true" aria-controls="collapsePages">
-    <i class="fas fa-fw fa-folder"></i>
-    <span>Pages</span>
-</a>
-<div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Login Screens:</h6>
-        <a class="collapse-item" href="<?= base_url('pages/login') ?>">Login</a>
-        <a class="collapse-item" href="<?= base_url('pages/register') ?>">Register</a>
-        <a class="collapse-item" href="<?= base_url('pages/forgot-password') ?>">Forgot Password</a>
-        <div class="collapse-divider"></div>
-        <h6 class="collapse-header">Other Pages:</h6>
-        <a class="collapse-item" href="<?= base_url('pages/404') ?>">404 Page</a>
-        <a class="collapse-item" href="<?= base_url('pages/blank') ?>">Blank Page</a>
-    </div>
-</div>
-</li>
-<?php endif; ?>
-
-<!-- Charts Tab -->
-<?php if (hasPermission('CanViewCharts')): ?>
-<li class="nav-item">
-    <a class="nav-link" href="<?= base_url('login/charts') ?>">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Charts</span>
-    </a>
-</li>
-<?php endif; ?>
-
-<!-- Tables Tab -->
-<?php if (hasPermission('CanViewTable')): ?>
-<li class="nav-item">
-    <a class="nav-link" href="<?= base_url('login/tables') ?>">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Tables</span>
-    </a>
-</li>
-<?php endif; ?>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
@@ -258,9 +186,6 @@
     <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Animal Management:</h6>
         <a class="collapse-item" href="<?= base_url('animals/animalsList') ?>">Manage Animals</a>
-        <div class="collapse-divider"></div>
-        <h6 class="collapse-header">Other:</h6>
-        <a class="collapse-item" href="<?= base_url('animals/reports') ?>">Reports</a>
     </div>
 </div>
 </li>
@@ -311,16 +236,45 @@
         <?php if (hasPermission('CanViewDewormingSchedule')): ?>
         <a class="collapse-item active" href="<?= base_url('schedule-events/dewormingSchedule') ?>">Deworming Schedule</a>
         <?php endif; ?>
-        <?php if (hasPermission('CanViewCalvesSchedule')): ?>
-        <a class="collapse-item" href="<?= base_url('pen-semen-tech/technician') ?>">Calves Schedule</a>
-        <?php endif; ?>
-        <?php if (hasPermission('CanViewAfterCalvingProtocols')): ?>
-        <a class="collapse-item" href="<?= base_url('pen-semen-tech/technician') ?>">After Calving Protocols</a>
-        <?php endif; ?>
     </div>
 </div>
 </li>
 <?php endif; ?>
+
+<?php if (hasPermission('CanViewAnimalMilking')||(hasPermission('CanViewDailyMilking'))): ?>
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+<!-- Heading -->
+<div class="sidebar-heading">
+    Milking & Production Management
+</div>
+<?php endif; ?>
+
+<!-- Nav Item - Animal Milking Collapse Menu -->
+<?php if (hasPermission('CanViewAnimalMilking')): ?>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnimalMilking"
+        aria-expanded="true" aria-controls="collapseAnimalMilking">
+        <i class="fas fa-fw fa-glass-whiskey"></i>
+        <span>Animal Milking</span>
+    </a>
+    <div id="collapseAnimalMilking" class="collapse" aria-labelledby="headingAnimalMilking" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Animal Milk Management:</h6>
+            <a class="collapse-item" href="<?= base_url('animal-milking/animalMilk') ?>">Manage Animal Milk</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
+
+<!-- Nav Item - Daily Milking -->
+<?php if (hasPermission('CanViewDailyMilking')): ?>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('dailyMilk') ?>">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Daily Milking</span></a>
+        </li>
+    <?php endif; ?>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">

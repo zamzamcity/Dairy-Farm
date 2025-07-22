@@ -77,21 +77,16 @@ $routes->group('schedule-events', function ($routes) {
     $routes->post('dewormingSchedule/delete/(:num)', 'DewormingScheduleController::deleteDewormingSchedule/$1');
 });
 
+// Animal Milk
+$routes->group('animal-milking', function ($routes) {
+    $routes->get('animalMilk', 'AnimalMilkController::animalMilkList');
+    $routes->post('animalMilk/add', 'AnimalMilkController::addAnimalMilk');
+    $routes->post('animalMilk/edit/(:num)', 'AnimalMilkController::editAnimalMilk/$1');
+    $routes->post('animalMilk/delete/(:num)', 'AnimalMilkController::deleteAnimalMilk/$1');
+});
 
-// Utilities
-$routes->get('utilities/colors', 'Pages::colors');
-$routes->get('utilities/borders', 'Pages::borders');
-$routes->get('utilities/animations', 'Pages::animations');
-$routes->get('utilities/others', 'Pages::others');
-
-// Pages
-$routes->get('pages/login', 'Pages::login');
-$routes->get('pages/register', 'Pages::register');
-$routes->post('login/store', 'Login::store');
-$routes->get('pages/forgot-password', 'Pages::forgotPassword');
-$routes->get('pages/404', 'Pages::errorPage');
-$routes->get('pages/blank', 'Pages::blank');
-
-
-$routes->get('login/charts', 'Login::charts');
-$routes->get('login/tables', 'Login::tables');
+// Daily Milking
+    $routes->get('dailyMilk', 'DailyMilkingController::dailyMilkingList');
+    $routes->post('dailyMilk/add', 'DailyMilkingController::addDailyMilking');
+    $routes->post('dailyMilk/edit/(:num)', 'DailyMilkingController::editDailyMilking/$1');
+    $routes->post('dailyMilk/delete/(:num)', 'DailyMilkingController::deleteDailyMilking/$1');

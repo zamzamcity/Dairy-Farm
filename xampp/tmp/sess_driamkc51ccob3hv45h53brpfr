@@ -1,9 +1,34 @@
- PMA_token |s:32:"43366c7e455c3c754961645a58473f41"; HMAC_secret |s:16:"&9`1j9DARG32@Dwy";browser_access_time|a:5:{s:7:"default";i:1753089848;s:36:"4aed6e48-1290-9bf9-add3-5fac2ed0cb8d";i:1753078207;s:36:"3ffc2e1b-18a7-1946-0559-3ade0ceab22e";i:1753079973;s:36:"be0eac90-7305-26b1-4391-1c414edfabd6";i:1753088877;s:36:"45ae31c9-c62d-0ceb-05a1-a4b9b5cba1ea";i:1753091212;}relation|a:1:{i:1;a:41:{s:7:"version";s:5:"5.2.1";s:4:"user";s:4:"root";s:2:"db";s:10:"phpmyadmin";s:8:"bookmark";s:13:"pma__bookmark";s:15:"central_columns";s:20:"pma__central_columns";s:11:"column_info";s:16:"pma__column_info";s:17:"designer_settings";s:22:"pma__designer_settings";s:16:"export_templates";s:21:"pma__export_templates";s:8:"favorite";s:13:"pma__favorite";s:7:"history";s:12:"pma__history";s:16:"navigationhiding";s:21:"pma__navigationhiding";s:9:"pdf_pages";s:14:"pma__pdf_pages";s:6:"recent";s:11:"pma__recent";s:8:"relation";s:13:"pma__relation";s:13:"savedsearches";s:18:"pma__savedsearches";s:12:"table_coords";s:17:"pma__table_coords";s:10:"table_info";s:15:"pma__table_info";s:13:"table_uiprefs";s:18:"pma__table_uiprefs";s:8:"tracking";s:13:"pma__tracking";s:10:"userconfig";s:15:"pma__userconfig";s:10:"usergroups";s:15:"pma__usergroups";s:5:"users";s:10:"pma__users";s:12:"bookmarkwork";b:1;s:8:"mimework";b:1;s:18:"centralcolumnswork";b:1;s:8:"commwork";b:1;s:9:"menuswork";b:1;s:20:"designersettingswork";b:1;s:11:"displaywork";b:1;s:19:"exporttemplateswork";b:1;s:12:"favoritework";b:1;s:7:"navwork";b:1;s:7:"pdfwork";b:1;s:10:"recentwork";b:1;s:7:"relwork";b:1;s:17:"savedsearcheswork";b:1;s:11:"historywork";b:1;s:12:"trackingwork";b:1;s:11:"uiprefswork";b:1;s:14:"userconfigwork";b:1;s:8:"allworks";b:1;}}tmpval|a:14:{s:14:"favoriteTables";a:1:{i:1;a:0:{}}s:12:"recentTables";a:1:{i:1;a:10:{i:0;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:19:"deworming_schedules";}i:1;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:21:"vaccination_schedules";}i:2;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:12:"vaccinations";}i:3;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:6:"events";}i:4;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:9:"schedules";}i:5;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:7:"animals";}i:6;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:11:"technicians";}i:7;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:4:"pens";}i:8;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:5:"semen";}i:9;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:9:"companies";}}}s:13:"table_uiprefs";a:1:{i:1;a:1:{s:8:"usama_db";a:5:{s:9:"schedules";a:0:{}s:6:"events";a:0:{}s:12:"vaccinations";a:0:{}s:21:"vaccination_schedules";a:0:{}s:19:"deworming_schedules";a:0:{}}}}s:5:"query";a:10:{s:32:"ec055e0616fff1492fc30e5ae3bdfebc";a:8:{s:3:"sql";s:37:"SELECT * FROM `vaccination_schedules`";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"3cb4247d2f1e5912d36f634d65961e29";a:8:{s:3:"sql";s:224:"CREATE TABLE deworming (
+ PMA_token |s:32:"43366c7e455c3c754961645a58473f41"; HMAC_secret |s:16:"&9`1j9DARG32@Dwy";browser_access_time|a:10:{s:7:"default";i:1753180241;s:36:"4aed6e48-1290-9bf9-add3-5fac2ed0cb8d";i:1753078207;s:36:"3ffc2e1b-18a7-1946-0559-3ade0ceab22e";i:1753079973;s:36:"be0eac90-7305-26b1-4391-1c414edfabd6";i:1753088877;s:36:"45ae31c9-c62d-0ceb-05a1-a4b9b5cba1ea";i:1753103699;s:36:"a6db966c-d960-02a3-5aa2-c99e963542f1";i:1753167380;s:36:"87debc8a-8a27-843e-2d26-833776f3d382";i:1753172071;s:36:"da58aed5-1fe6-2199-6e9a-a4770b43217d";i:1753175962;s:36:"154f3f31-eb2a-7565-c956-8311d3d08523";i:1753179108;s:36:"4bd94eee-a38e-0526-a5bb-33b920f6d8e4";i:1753183882;}relation|a:1:{i:1;a:41:{s:7:"version";s:5:"5.2.1";s:4:"user";s:4:"root";s:2:"db";s:10:"phpmyadmin";s:8:"bookmark";s:13:"pma__bookmark";s:15:"central_columns";s:20:"pma__central_columns";s:11:"column_info";s:16:"pma__column_info";s:17:"designer_settings";s:22:"pma__designer_settings";s:16:"export_templates";s:21:"pma__export_templates";s:8:"favorite";s:13:"pma__favorite";s:7:"history";s:12:"pma__history";s:16:"navigationhiding";s:21:"pma__navigationhiding";s:9:"pdf_pages";s:14:"pma__pdf_pages";s:6:"recent";s:11:"pma__recent";s:8:"relation";s:13:"pma__relation";s:13:"savedsearches";s:18:"pma__savedsearches";s:12:"table_coords";s:17:"pma__table_coords";s:10:"table_info";s:15:"pma__table_info";s:13:"table_uiprefs";s:18:"pma__table_uiprefs";s:8:"tracking";s:13:"pma__tracking";s:10:"userconfig";s:15:"pma__userconfig";s:10:"usergroups";s:15:"pma__usergroups";s:5:"users";s:10:"pma__users";s:12:"bookmarkwork";b:1;s:8:"mimework";b:1;s:18:"centralcolumnswork";b:1;s:8:"commwork";b:1;s:9:"menuswork";b:1;s:20:"designersettingswork";b:1;s:11:"displaywork";b:1;s:19:"exporttemplateswork";b:1;s:12:"favoritework";b:1;s:7:"navwork";b:1;s:7:"pdfwork";b:1;s:10:"recentwork";b:1;s:7:"relwork";b:1;s:17:"savedsearcheswork";b:1;s:11:"historywork";b:1;s:12:"trackingwork";b:1;s:11:"uiprefswork";b:1;s:14:"userconfigwork";b:1;s:8:"allworks";b:1;}}tmpval|a:16:{s:14:"favoriteTables";a:1:{i:1;a:0:{}}s:12:"recentTables";a:1:{i:1;a:10:{i:0;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"daily_milking";}i:1;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:11:"animal_milk";}i:2;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:7:"animals";}i:3;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:19:"deworming_schedules";}i:4;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:21:"vaccination_schedules";}i:5;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:12:"vaccinations";}i:6;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:6:"events";}i:7;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:9:"schedules";}i:8;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:11:"technicians";}i:9;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:4:"pens";}}}s:13:"table_uiprefs";a:1:{i:1;a:1:{s:8:"usama_db";a:8:{s:9:"schedules";a:0:{}s:6:"events";a:0:{}s:12:"vaccinations";a:0:{}s:21:"vaccination_schedules";a:0:{}s:19:"deworming_schedules";a:0:{}s:7:"animals";a:0:{}s:11:"animal_milk";a:1:{s:10:"sorted_col";s:29:"`animal_milk`.`animal_id` ASC";}s:13:"daily_milking";a:0:{}}}}s:5:"query";a:10:{s:32:"9037a913a7da941721d5a08a673c6ff2";a:8:{s:3:"sql";s:302:"INSERT INTO animal_milk (date, animal_id, first_calving_date, last_calving_date, milk_1, milk_2, milk_3)
+VALUES 
+('2025-07-15', 3, '2024-02-01', '2025-01-10', 6.5, 5.8, 7.2),
+('2025-07-15', 5, '2023-12-12', '2024-11-25', 5.2, 4.9, 6.1),
+('2025-07-15', 7, '2024-03-18', '2025-02-20', 7.0, 6.7, 7.5);";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"83eed9f14ebf104b22682d1ed5f8be7f";a:8:{s:3:"sql";s:239:"INSERT INTO animal_milk (date, animal_id, first_calving_date, last_calving_date, milk_1, milk_2, milk_3)
+VALUES 
+('2025-07-15', 3, '2024-02-01', '2025-01-10', 6.5, 5.8, 7.2),
+('2025-07-15', 1, '2023-12-12', '2024-11-25', 5.2, 4.9, 6.1);";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"e12722e833edc2e352af5b25ad93aa3b";a:8:{s:3:"sql";s:170:"ALTER TABLE animal_milk 
+ADD COLUMN created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"c5485dd3cd798810e0ae244935fd7a37";a:8:{s:3:"sql";s:23:"SELECT * FROM `animals`";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"45f7cef636605020726935f01d564ee9";a:8:{s:3:"sql";s:27:"SELECT * FROM `animal_milk`";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"8bb60812f62ce32ac0ea962b2719f20c";a:8:{s:3:"sql";s:68:"SELECT * FROM `animal_milk`  
+ORDER BY `animal_milk`.`animal_id` ASC";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"25dea641ac1a826bc4023e7829ffd436";a:8:{s:3:"sql";s:53:"SELECT * FROM `animal_milk` ORDER BY `animal_id` ASC ";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"12ece1f4b6f97e2bd714851deb9795d7";a:8:{s:3:"sql";s:487:"CREATE TABLE daily_milking (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    milk_product ENUM('Milk') NOT NULL DEFAULT 'Milk',
+    milk_1 DECIMAL(6,2) DEFAULT 0.00,
+    milk_2 DECIMAL(6,2) DEFAULT 0.00,
+    milk_3 DECIMAL(6,2) DEFAULT 0.00,
+    total_milk DECIMAL(6,2) GENERATED ALWAYS AS (milk_1 + milk_2 + milk_3) STORED,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"aafdbee21d79aad962da3c89b562a1d6";a:8:{s:3:"sql";s:319:"INSERT INTO daily_milking (date, milk_product, milk_1, milk_2, milk_3, created_at, updated_at)
+VALUES 
+('2025-07-15', 'Milk', 4.5, 5.2, 4.8, NOW(), NOW()),
+('2025-07-15', 'Milk', 3.8, 4.1, 3.9, NOW(), NOW()),
+('2025-07-16', 'Milk', 5.0, 5.3, 5.1, NOW(), NOW()),
+('2025-07-17', 'Milk', 4.9, 5.0, 4.7, NOW(), NOW());";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"c2dcfc4f585d119baa388888bf9e475e";a:8:{s:3:"sql";s:29:"SELECT * FROM `daily_milking`";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}}s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;s:12:"display_blob";b:0;s:19:"hide_transformation";b:0;s:3:"pos";i:0;s:8:"max_rows";i:25;s:12:"repeat_cells";i:100;s:20:"possible_as_geometry";b:1;s:18:"table_limit_offset";i:0;s:21:"table_limit_offset_db";s:8:"usama_db";}two_factor_check|b:1;cache|a:2:{s:8:"server_1";a:4:{s:15:"userprefs_mtime";i:1753177266;s:14:"userprefs_type";s:2:"db";s:12:"config_mtime";i:1447170388;s:9:"userprefs";a:1:{s:7:"Console";a:1:{s:4:"Mode";s:8:"collapse";}}}s:13:"server_1_root";a:17:{s:17:"is_create_db_priv";b:1;s:14:"is_reload_priv";b:1;s:12:"db_to_create";s:0:"";s:30:"dbs_where_create_table_allowed";a:1:{i:0;s:1:"*";}s:11:"dbs_to_test";b:0;s:9:"proc_priv";b:1;s:10:"table_priv";b:1;s:8:"col_priv";b:1;s:7:"db_priv";b:1;s:19:"profiling_supported";b:1;s:17:"menu-levels-table";a:11:{s:6:"browse";s:6:"Browse";s:9:"structure";s:9:"Structure";s:3:"sql";s:3:"SQL";s:6:"search";s:6:"Search";s:6:"insert";s:6:"Insert";s:6:"export";s:6:"Export";s:6:"import";s:6:"Import";s:10:"privileges";s:10:"Privileges";s:9:"operation";s:10:"Operations";s:8:"tracking";s:8:"Tracking";s:8:"triggers";s:8:"Triggers";}s:11:"binary_logs";a:0:{}s:18:"menu-levels-server";a:13:{s:9:"databases";s:9:"Databases";s:3:"sql";s:3:"SQL";s:6:"status";s:6:"Status";s:6:"rights";s:5:"Users";s:6:"export";s:6:"Export";s:6:"import";s:6:"Import";s:8:"settings";s:8:"Settings";s:6:"binlog";s:10:"Binary log";s:11:"replication";s:11:"Replication";s:4:"vars";s:9:"Variables";s:7:"charset";s:8:"Charsets";s:7:"plugins";s:7:"Plugins";s:6:"engine";s:7:"Engines";}s:14:"menu-levels-db";a:14:{s:9:"structure";s:9:"Structure";s:3:"sql";s:3:"SQL";s:6:"search";s:6:"Search";s:5:"query";s:5:"Query";s:6:"export";s:6:"Export";s:6:"import";s:6:"Import";s:9:"operation";s:10:"Operations";s:10:"privileges";s:10:"Privileges";s:8:"routines";s:8:"Routines";s:6:"events";s:6:"Events";s:8:"triggers";s:8:"Triggers";s:8:"tracking";s:8:"Tracking";s:8:"designer";s:8:"Designer";s:15:"central_columns";s:15:"Central columns";}s:12:"is_superuser";b:1;s:14:"mysql_cur_user";s:14:"root@localhost";s:12:"is_grantuser";b:1;}}ConfigFile1|a:2:{s:7:"Console";a:1:{s:4:"Mode";s:8:"collapse";}s:7:"Servers";a:1:{i:1;a:2:{s:7:"only_db";s:0:"";s:7:"hide_db";s:0:"";}}}is_multi_query|b:0;sql_history|a:25:{i:0;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:21:"vaccination_schedules";s:8:"sqlquery";s:37:"SELECT * FROM `vaccination_schedules`";}i:1;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:224:"CREATE TABLE deworming (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"1e1ac904221d4dd61e223d4eb282ab1e";a:8:{s:3:"sql";s:491:"CREATE TABLE deworming_schedules (
+);";}i:2;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:491:"CREATE TABLE deworming_schedules (
   id INT AUTO_INCREMENT PRIMARY KEY,
   month ENUM(
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -14,63 +39,40 @@
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (deworming_id) REFERENCES deworming(id) ON DELETE CASCADE
-);";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"08f83202e5ee85cd61993f0ca21b8f17";a:8:{s:3:"sql";s:106:"INSERT INTO deworming (name) VALUES
+);";}i:3;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:106:"INSERT INTO deworming (name) VALUES
 ('Albendazole'),
 ('Fenbendazole'),
 ('Ivermectin'),
-('Levamisole');";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"362b67ae4392cb0f414fd6726326f0f6";a:8:{s:3:"sql";s:111:"-- Example 1
-INSERT INTO deworming_schedules (month, date, deworming_id)
-VALUES ('January', '2025-01-15', 1);";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"99533990f3465ce6b81c253146071cfd";a:8:{s:3:"sql";s:127:"-- Albendazole
-
--- Example 2
-INSERT INTO deworming_schedules (month, date, deworming_id)
-VALUES ('March', '2025-03-20', 2);";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"cc2f62aa8b335fee5da30b3e8ae7e650";a:8:{s:3:"sql";s:127:"-- Fenbendazole
-
--- Example 3
-INSERT INTO deworming_schedules (month, date, deworming_id)
-VALUES ('June', '2025-06-10', 3);";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"2b342c2dd961f8e0bb02bf86ebd115be";a:8:{s:3:"sql";s:130:"-- Ivermectin
-
--- Example 4
-INSERT INTO deworming_schedules (month, date, deworming_id)
-VALUES ('September', '2025-09-05', 4);";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"340f27e91bc65bfb6dba38a9c8e92239";a:8:{s:3:"sql";s:14:"-- Levamisole;";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"b6d533271e7a0c6da066d446e80f6da0";a:8:{s:3:"sql";s:35:"SELECT * FROM `deworming_schedules`";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}}s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;s:12:"display_blob";b:0;s:19:"hide_transformation";b:0;s:3:"pos";i:0;s:8:"max_rows";i:25;s:12:"repeat_cells";i:100;s:20:"possible_as_geometry";b:1;}two_factor_check|b:1;cache|a:2:{s:8:"server_1";a:4:{s:15:"userprefs_mtime";i:1753087511;s:14:"userprefs_type";s:2:"db";s:12:"config_mtime";i:1447170388;s:9:"userprefs";a:1:{s:7:"Console";a:1:{s:4:"Mode";s:8:"collapse";}}}s:13:"server_1_root";a:17:{s:17:"is_create_db_priv";b:1;s:14:"is_reload_priv";b:1;s:12:"db_to_create";s:0:"";s:30:"dbs_where_create_table_allowed";a:1:{i:0;s:1:"*";}s:11:"dbs_to_test";b:0;s:9:"proc_priv";b:1;s:10:"table_priv";b:1;s:8:"col_priv";b:1;s:7:"db_priv";b:1;s:19:"profiling_supported";b:1;s:17:"menu-levels-table";a:11:{s:6:"browse";s:6:"Browse";s:9:"structure";s:9:"Structure";s:3:"sql";s:3:"SQL";s:6:"search";s:6:"Search";s:6:"insert";s:6:"Insert";s:6:"export";s:6:"Export";s:6:"import";s:6:"Import";s:10:"privileges";s:10:"Privileges";s:9:"operation";s:10:"Operations";s:8:"tracking";s:8:"Tracking";s:8:"triggers";s:8:"Triggers";}s:11:"binary_logs";a:0:{}s:18:"menu-levels-server";a:13:{s:9:"databases";s:9:"Databases";s:3:"sql";s:3:"SQL";s:6:"status";s:6:"Status";s:6:"rights";s:5:"Users";s:6:"export";s:6:"Export";s:6:"import";s:6:"Import";s:8:"settings";s:8:"Settings";s:6:"binlog";s:10:"Binary log";s:11:"replication";s:11:"Replication";s:4:"vars";s:9:"Variables";s:7:"charset";s:8:"Charsets";s:7:"plugins";s:7:"Plugins";s:6:"engine";s:7:"Engines";}s:14:"menu-levels-db";a:14:{s:9:"structure";s:9:"Structure";s:3:"sql";s:3:"SQL";s:6:"search";s:6:"Search";s:5:"query";s:5:"Query";s:6:"export";s:6:"Export";s:6:"import";s:6:"Import";s:9:"operation";s:10:"Operations";s:10:"privileges";s:10:"Privileges";s:8:"routines";s:8:"Routines";s:6:"events";s:6:"Events";s:8:"triggers";s:8:"Triggers";s:8:"tracking";s:8:"Tracking";s:8:"designer";s:8:"Designer";s:15:"central_columns";s:15:"Central columns";}s:12:"is_superuser";b:1;s:14:"mysql_cur_user";s:14:"root@localhost";s:12:"is_grantuser";b:1;}}ConfigFile1|a:2:{s:7:"Console";a:1:{s:4:"Mode";s:8:"collapse";}s:7:"Servers";a:1:{i:1;a:2:{s:7:"only_db";s:0:"";s:7:"hide_db";s:0:"";}}}is_multi_query|b:0;sql_history|a:17:{i:0;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:9:"schedules";s:8:"sqlquery";s:25:"SELECT * FROM `schedules`";}i:1;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:6:"events";s:8:"sqlquery";s:22:"SELECT * FROM `events`";}i:2;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:6:"events";s:8:"sqlquery";s:22:"SELECT * FROM `events`";}i:3;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:235:"CREATE TABLE vaccinations (
+('Levamisole');";}i:4;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:14:"-- Levamisole;";}i:5;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:19:"deworming_schedules";s:8:"sqlquery";s:35:"SELECT * FROM `deworming_schedules`";}i:6;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:19:"deworming_schedules";s:8:"sqlquery";s:35:"SELECT * FROM `deworming_schedules`";}i:7;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:7:"animals";s:8:"sqlquery";s:23:"SELECT * FROM `animals`";}i:8;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:479:"CREATE TABLE animal_milk (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);";}i:4;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:100:"INSERT INTO vaccinations (name) VALUES 
-('FMD Vaccine'),
-('HS Vaccine'),
-('Brucellosis Vaccine');";}i:5;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:12:"vaccinations";s:8:"sqlquery";s:28:"SELECT * FROM `vaccinations`";}i:6;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:420:"CREATE TABLE vaccination_schedules (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    month VARCHAR(20) NOT NULL, -- e.g. January, February, etc.
     date DATE NOT NULL,
-    vaccination_id INT NOT NULL,
-    comments TEXT,
+    animal_id INT NOT NULL, -- Stores the actual animals.id
+    first_calving_date DATE,
+    last_calving_date DATE,
+    milk_1 DECIMAL(5,2),
+    milk_2 DECIMAL(5,2),
+    milk_3 DECIMAL(5,2),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
-    FOREIGN KEY (vaccination_id) REFERENCES vaccinations(id)
-);";}i:7;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:233:"INSERT INTO vaccination_schedules (month, date, vaccination_id, comments) VALUES
-('January', '2025-01-15', 1, 'Booster dose required'),
-('March', '2025-03-10', 2, 'First round for calves'),
-('May', '2025-05-22', 3, 'Annual dose');";}i:8;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:21:"vaccination_schedules";s:8:"sqlquery";s:37:"SELECT * FROM `vaccination_schedules`";}i:9;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:21:"vaccination_schedules";s:8:"sqlquery";s:37:"SELECT * FROM `vaccination_schedules`";}i:10;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:21:"vaccination_schedules";s:8:"sqlquery";s:37:"SELECT * FROM `vaccination_schedules`";}i:11;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:21:"vaccination_schedules";s:8:"sqlquery";s:37:"SELECT * FROM `vaccination_schedules`";}i:12;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:224:"CREATE TABLE deworming (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);";}i:13;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:491:"CREATE TABLE deworming_schedules (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  month ENUM(
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ) NOT NULL,
-  date DATE NOT NULL,
-  deworming_id INT NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  FOREIGN KEY (deworming_id) REFERENCES deworming(id) ON DELETE CASCADE
-);";}i:14;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:106:"INSERT INTO deworming (name) VALUES
-('Albendazole'),
-('Fenbendazole'),
-('Ivermectin'),
-('Levamisole');";}i:15;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:14:"-- Levamisole;";}i:16;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:19:"deworming_schedules";s:8:"sqlquery";s:35:"SELECT * FROM `deworming_schedules`";}}debug|a:0:{}Import_message|a:2:{s:7:"message";N;s:11:"go_back_url";s:47:"index.php?route=/database/structure&db=usama_db";}errors|a:0:{}
+    FOREIGN KEY (animal_id) REFERENCES animals(id)
+);";}i:9;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:11:"animal_milk";s:8:"sqlquery";s:27:"SELECT * FROM `animal_milk`";}i:10;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:7:"animals";s:8:"sqlquery";s:23:"SELECT * FROM `animals`";}i:11;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:7:"animals";s:8:"sqlquery";s:23:"SELECT * FROM `animals`";}i:12;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:11:"animal_milk";s:8:"sqlquery";s:239:"INSERT INTO animal_milk (date, animal_id, first_calving_date, last_calving_date, milk_1, milk_2, milk_3)
+VALUES 
+('2025-07-15', 3, '2024-02-01', '2025-01-10', 6.5, 5.8, 7.2),
+('2025-07-15', 1, '2023-12-12', '2024-11-25', 5.2, 4.9, 6.1);";}i:13;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:11:"animal_milk";s:8:"sqlquery";s:27:"SELECT * FROM `animal_milk`";}i:14;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:11:"animal_milk";s:8:"sqlquery";s:27:"SELECT * FROM `animal_milk`";}i:15;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:11:"animal_milk";s:8:"sqlquery";s:27:"SELECT * FROM `animal_milk`";}i:16;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:7:"animals";s:8:"sqlquery";s:23:"SELECT * FROM `animals`";}i:17;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:11:"animal_milk";s:8:"sqlquery";s:27:"SELECT * FROM `animal_milk`";}i:18;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:11:"animal_milk";s:8:"sqlquery";s:68:"SELECT * FROM `animal_milk`  
+ORDER BY `animal_milk`.`animal_id` ASC";}i:19;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:11:"animal_milk";s:8:"sqlquery";s:27:"SELECT * FROM `animal_milk`";}i:20;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:11:"animal_milk";s:8:"sqlquery";s:27:"SELECT * FROM `animal_milk`";}i:21;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:487:"CREATE TABLE daily_milking (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    milk_product ENUM('Milk') NOT NULL DEFAULT 'Milk',
+    milk_1 DECIMAL(6,2) DEFAULT 0.00,
+    milk_2 DECIMAL(6,2) DEFAULT 0.00,
+    milk_3 DECIMAL(6,2) DEFAULT 0.00,
+    total_milk DECIMAL(6,2) GENERATED ALWAYS AS (milk_1 + milk_2 + milk_3) STORED,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);";}i:22;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"daily_milking";s:8:"sqlquery";s:29:"SELECT * FROM `daily_milking`";}i:23;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"daily_milking";s:8:"sqlquery";s:319:"INSERT INTO daily_milking (date, milk_product, milk_1, milk_2, milk_3, created_at, updated_at)
+VALUES 
+('2025-07-15', 'Milk', 4.5, 5.2, 4.8, NOW(), NOW()),
+('2025-07-15', 'Milk', 3.8, 4.1, 3.9, NOW(), NOW()),
+('2025-07-16', 'Milk', 5.0, 5.3, 5.1, NOW(), NOW()),
+('2025-07-17', 'Milk', 4.9, 5.0, 4.7, NOW(), NOW());";}i:24;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"daily_milking";s:8:"sqlquery";s:29:"SELECT * FROM `daily_milking`";}}debug|a:0:{}Import_message|a:2:{s:7:"message";N;s:11:"go_back_url";s:64:"index.php?route=/table/structure&db=usama_db&table=daily_milking";}flashMessages|a:0:{}errors|a:0:{}

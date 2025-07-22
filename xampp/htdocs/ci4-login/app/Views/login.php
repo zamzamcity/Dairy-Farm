@@ -67,10 +67,10 @@
 
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="#">Forgot Password?</a>
+                                    <a class="small" href="<?= base_url('pages/forgot-password') ?>">Forgot Password?</a>
                                 </div>
                                 <div class="text-center">
-                                    <a class="small" href="#">Create an Account!</a>
+                                    <a class="small" href="<?= base_url('pages/register') ?>">Create an Account!</a>
                                 </div>
 
                             </div>

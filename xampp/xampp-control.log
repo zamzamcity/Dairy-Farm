@@ -1,0 +1,44 @@
+10:47:07 AM  [main] 	Initializing Control Panel
+10:47:07 AM  [main] 	Windows Version:  Enterprise  64-bit
+10:47:07 AM  [main] 	XAMPP Version: 8.2.12
+10:47:07 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+10:47:07 AM  [main] 	You are not running with administrator rights! This will work for
+10:47:07 AM  [main] 	most application stuff but whenever you do something with services
+10:47:07 AM  [main] 	there will be a security dialogue or things will break! So think 
+10:47:07 AM  [main] 	about running this application with administrator rights!
+10:47:07 AM  [main] 	XAMPP Installation Directory: "c:\users\zamza\documents\github\dairy-farm\xampp\"
+10:47:07 AM  [main] 	Checking for prerequisites
+10:47:08 AM  [main] 	All prerequisites found
+10:47:08 AM  [main] 	Initializing Modules
+10:47:08 AM  [main] 	Starting Check-Timer
+10:47:08 AM  [main] 	Control Panel Ready
+10:47:11 AM  [Apache] 	Attempting to start Apache app...
+10:47:11 AM  [Apache] 	Status change detected: running
+10:47:14 AM  [mysql] 	Attempting to start MySQL app...
+10:47:14 AM  [mysql] 	Status change detected: running
+12:16:46 PM  [Apache] 	Attempting to stop Apache (PID: 6952)
+12:16:46 PM  [Apache] 	Attempting to stop Apache (PID: 7840)
+12:16:47 PM  [Apache] 	Status change detected: stopped
+12:16:48 PM  [mysql] 	Attempting to stop MySQL app...
+12:16:48 PM  [mysql] 	Status change detected: stopped
+12:22:27 PM  [Apache] 	Attempting to start Apache app...
+12:22:28 PM  [Apache] 	Status change detected: running
+12:22:29 PM  [mysql] 	Attempting to start MySQL app...
+12:22:29 PM  [mysql] 	Status change detected: running
+2:50:41 PM  [Apache] 	Attempting to stop Apache (PID: 10776)
+2:50:41 PM  [Apache] 	Attempting to stop Apache (PID: 12308)
+2:50:41 PM  [Apache] 	Status change detected: stopped
+2:50:42 PM  [mysql] 	Attempting to stop MySQL app...
+2:50:42 PM  [mysql] 	Status change detected: stopped
+2:52:03 PM  [Apache] 	Attempting to start Apache app...
+2:52:03 PM  [Apache] 	Status change detected: running
+2:52:03 PM  [mysql] 	Attempting to start MySQL app...
+2:52:04 PM  [mysql] 	Status change detected: running
+6:20:21 PM  [Apache] 	Attempting to stop Apache (PID: 9924)
+6:20:21 PM  [Apache] 	Attempting to stop Apache (PID: 5412)
+6:20:22 PM  [Apache] 	Status change detected: stopped
+6:20:22 PM  [mysql] 	Attempting to stop MySQL app...
+6:20:22 PM  [mysql] 	Status change detected: stopped
+6:20:40 PM  [main] 	Deinitializing Modules
+6:20:40 PM  [main] 	Deinitializing Control Panel
+
