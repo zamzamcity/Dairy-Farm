@@ -12,13 +12,19 @@ class AnimalMilkController extends BaseController
         $milkModel    = new AnimalMilkModel();
         $animalModel  = new AnimalModel();
 
-        $data['animal_milk'] = $milkModel
-            ->select('animal_milk.*, animals.tag_id')
-            ->join('animals', 'animals.id = animal_milk.animal_id')
-            ->orderBy('animal_milk.date', 'DESC')
-            ->findAll();
+        $fromDate = $this->request->getGet('from_date');
+        $toDate   = $this->request->getGet('to_date');
 
-        // Only female animals
+        $builder = $milkModel
+        ->select('animal_milk.*, animals.tag_id')
+        ->join('animals', 'animals.id = animal_milk.animal_id');
+
+        if ($fromDate && $toDate) {
+            $builder->where('animal_milk.date >=', $fromDate)
+            ->where('animal_milk.date <=', $toDate);
+        }
+
+        $data['animal_milk'] = $builder->orderBy('animal_milk.date', 'DESC')->findAll();
         $data['female_animals'] = $animalModel->where('sex', 'Female')->findAll();
 
         return view('animal-milking/animalMilk', $data);

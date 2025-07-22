@@ -278,11 +278,11 @@
 
 <!-- Nav Item - Daily Milking -->
 <?php if (hasPermission('CanViewDailyMilking')): ?>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('dailyMilk') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Daily Milking</span></a>
-        </li>
+<li class="nav-item">
+    <a class="nav-link" href="<?= base_url('dailyMilk') ?>">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Daily Milking</span></a>
+    </li>
     <?php endif; ?>
 
 <!-- Divider -->
@@ -512,7 +512,20 @@ aria-labelledby="userDropdown">
         <h1 class="h3 mb-0 text-gray-800">Animal Milk List</h1>
     </div>
 
-    <!-- Add Deworming Schedule Button -->
+    <form method="get" action="<?= base_url('animal-milking/animalMilk') ?>" class="form-inline mb-3">
+        <label class="mr-2 font-weight-bold">From:</label>
+        <input type="date" name="from_date" class="form-control mr-3"
+        value="<?= esc($_GET['from_date'] ?? '') ?>">
+
+        <label class="mr-2 font-weight-bold">To:</label>
+        <input type="date" name="to_date" class="form-control mr-3"
+        value="<?= esc($_GET['to_date'] ?? '') ?>">
+
+        <button type="submit" class="btn btn-sm btn-primary mr-2">Filter</button>
+        <a href="<?= base_url('animal-milking/animalMilk') ?>" class="btn btn-sm btn-secondary">Reset</a>
+    </form>
+
+    <!-- Add Animal Milk Button -->
     <?php if (hasPermission('CanAddAnimalMilk')): ?>
     <div class="mb-3 text-right">
         <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addAnimalMilkModal">+ Add Animal Milk</a>

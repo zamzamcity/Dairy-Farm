@@ -10,7 +10,22 @@ class DailyMilkingController extends BaseController
     {
         $model = new DailyMilkingModel();
 
-        $data['daily_milking'] = $model->orderBy('date', 'DESC')->findAll();
+        $start_date = $this->request->getGet('start_date');
+        $end_date   = $this->request->getGet('end_date');
+
+        $query = $model->orderBy('date', 'DESC');
+
+        if ($start_date && $end_date) {
+            $query->where('date >=', $start_date)->where('date <=', $end_date);
+        } elseif ($start_date) {
+            $query->where('date >=', $start_date);
+        } elseif ($end_date) {
+            $query->where('date <=', $end_date);
+        }
+
+        $data['daily_milking'] = $query->findAll();
+        $data['start_date'] = $start_date;
+        $data['end_date'] = $end_date;
 
         return view('dailyMilk', $data);
     }
