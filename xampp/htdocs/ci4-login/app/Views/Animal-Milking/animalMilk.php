@@ -291,29 +291,29 @@
 
     <!-- Nav Item - Milk Consumption Collapse Menu -->
     <?php if (hasPermission('CanViewMilkConsumption')): ?>
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMilkConsumption"
-            aria-expanded="true" aria-controls="collapseMilkConsumption">
-            <i class="fas fa-fw fa-filter"></i>
-            <span>Milk Consumption</span>
-        </a>
-        <div id="collapseMilkConsumption" class="collapse" aria-labelledby="headingMilkConsumption" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Milk Consumption:</h6>
-                <a class="collapse-item" href="<?= base_url('milk-consumption/milkConsumption') ?>">Milk Consumption</a>
-                <a class="collapse-item" href="<?= base_url('milk-consumption/farmHead') ?>">Farm Milk Head</a>
-            </div>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMilkConsumption"
+        aria-expanded="true" aria-controls="collapseMilkConsumption">
+        <i class="fas fa-fw fa-filter"></i>
+        <span>Milk Consumption</span>
+    </a>
+    <div id="collapseMilkConsumption" class="collapse" aria-labelledby="headingMilkConsumption" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Milk Consumption:</h6>
+            <a class="collapse-item" href="<?= base_url('milk-consumption/milkConsumption') ?>">Milk Consumption</a>
+            <a class="collapse-item" href="<?= base_url('milk-consumption/farmHead') ?>">Farm Milk Head</a>
         </div>
-    </li>
+    </div>
+</li>
 <?php endif; ?>
 
 <!-- Nav Item - Milk In/Out -->
 <?php if (hasPermission('CanViewMilkInOut')): ?>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('milkInOut') ?>">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Milk In/Out</span></a>
-        </li>
+<li class="nav-item">
+    <a class="nav-link" href="<?= base_url('milkInOut') ?>">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Milk In/Out</span></a>
+    </li>
     <?php endif; ?>
 
 <!-- Divider -->
@@ -544,17 +544,13 @@ aria-labelledby="userDropdown">
     </div>
 
     <form method="get" action="<?= base_url('animal-milking/animalMilk') ?>" class="form-inline mb-3">
-        <label class="mr-2 font-weight-bold">From:</label>
-        <input type="date" name="from_date" class="form-control mr-3"
-        value="<?= esc($_GET['from_date'] ?? '') ?>">
-
-        <label class="mr-2 font-weight-bold">To:</label>
-        <input type="date" name="to_date" class="form-control mr-3"
-        value="<?= esc($_GET['to_date'] ?? '') ?>">
+        <label class="mr-2 font-weight-bold">Date:</label>
+        <input type="date" name="date" class="form-control mr-3"
+        value="<?= esc($_GET['date'] ?? date('Y-m-d')) ?>">
 
         <button type="submit" class="btn btn-sm btn-primary mr-2">Filter</button>
-        <a href="<?= base_url('animal-milking/animalMilk') ?>" class="btn btn-sm btn-secondary">Reset</a>
     </form>
+
 
     <!-- Add Animal Milk Button -->
     <?php if (hasPermission('CanAddAnimalMilk')): ?>

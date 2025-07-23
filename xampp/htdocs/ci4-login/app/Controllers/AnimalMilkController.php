@@ -12,67 +12,66 @@ class AnimalMilkController extends BaseController
         $milkModel    = new AnimalMilkModel();
         $animalModel  = new AnimalModel();
 
-        $fromDate = $this->request->getGet('from_date');
-        $toDate   = $this->request->getGet('to_date');
+    $date = $this->request->getGet('date') ?? date('Y-m-d'); // default to today
 
-        $builder = $milkModel
-        ->select('animal_milk.*, animals.tag_id')
-        ->join('animals', 'animals.id = animal_milk.animal_id');
+    $builder = $milkModel
+    ->select('animal_milk.*, animals.tag_id')
+    ->join('animals', 'animals.id = animal_milk.animal_id');
 
-        if ($fromDate && $toDate) {
-            $builder->where('animal_milk.date >=', $fromDate)
-            ->where('animal_milk.date <=', $toDate);
-        }
-
-        $data['animal_milk'] = $builder->orderBy('animal_milk.date', 'DESC')->findAll();
-        $data['female_animals'] = $animalModel->where('sex', 'Female')->findAll();
-
-        return view('animal-milking/animalMilk', $data);
+    if ($date) {
+        $builder->where('animal_milk.date', $date);
     }
 
-    public function addAnimalMilk()
-    {
-        $milkModel = new AnimalMilkModel();
+    $data['animal_milk'] = $builder->orderBy('animal_milk.date', 'DESC')->findAll();
+    $data['female_animals'] = $animalModel->where('sex', 'Female')->findAll();
 
-        $data = [
-            'date'               => $this->request->getPost('date'),
-            'animal_id'          => $this->request->getPost('animal_id'),
-            'first_calving_date' => $this->request->getPost('first_calving_date'),
-            'last_calving_date'  => $this->request->getPost('last_calving_date'),
-            'milk_1'             => $this->request->getPost('milk_1'),
-            'milk_2'             => $this->request->getPost('milk_2'),
-            'milk_3'             => $this->request->getPost('milk_3'),
-        ];
+    return view('animal-milking/animalMilk', $data);
+}
 
-        $milkModel->insert($data);
 
-        return redirect()->to('/animal-milking/animalMilk')->with('success', 'Animal milk record added successfully.');
-    }
+public function addAnimalMilk()
+{
+    $milkModel = new AnimalMilkModel();
 
-    public function editAnimalMilk($id)
-    {
-        $milkModel = new AnimalMilkModel();
+    $data = [
+        'date'               => $this->request->getPost('date'),
+        'animal_id'          => $this->request->getPost('animal_id'),
+        'first_calving_date' => $this->request->getPost('first_calving_date'),
+        'last_calving_date'  => $this->request->getPost('last_calving_date'),
+        'milk_1'             => $this->request->getPost('milk_1'),
+        'milk_2'             => $this->request->getPost('milk_2'),
+        'milk_3'             => $this->request->getPost('milk_3'),
+    ];
 
-        $data = [
-            'date'               => $this->request->getPost('date'),
-            'animal_id'          => $this->request->getPost('animal_id'),
-            'first_calving_date' => $this->request->getPost('first_calving_date'),
-            'last_calving_date'  => $this->request->getPost('last_calving_date'),
-            'milk_1'             => $this->request->getPost('milk_1'),
-            'milk_2'             => $this->request->getPost('milk_2'),
-            'milk_3'             => $this->request->getPost('milk_3'),
-        ];
+    $milkModel->insert($data);
 
-        $milkModel->update($id, $data);
+    return redirect()->to('/animal-milking/animalMilk')->with('success', 'Animal milk record added successfully.');
+}
 
-        return redirect()->to('/animal-milking/animalMilk')->with('success', 'Animal milk record updated successfully.');
-    }
+public function editAnimalMilk($id)
+{
+    $milkModel = new AnimalMilkModel();
 
-    public function deleteAnimalMilk($id)
-    {
-        $milkModel = new AnimalMilkModel();
-        $milkModel->delete($id);
+    $data = [
+        'date'               => $this->request->getPost('date'),
+        'animal_id'          => $this->request->getPost('animal_id'),
+        'first_calving_date' => $this->request->getPost('first_calving_date'),
+        'last_calving_date'  => $this->request->getPost('last_calving_date'),
+        'milk_1'             => $this->request->getPost('milk_1'),
+        'milk_2'             => $this->request->getPost('milk_2'),
+        'milk_3'             => $this->request->getPost('milk_3'),
+    ];
 
-        return redirect()->to('/animal-milking/animalMilk')->with('success', 'Animal milk record deleted successfully.');
-    }
+    $milkModel->update($id, $data);
+
+    return redirect()->to('/animal-milking/animalMilk')->with('success', 'Animal milk record updated successfully.');
+}
+
+public function deleteAnimalMilk($id)
+{
+    $milkModel = new AnimalMilkModel();
+    $milkModel->delete($id);
+
+    return redirect()->to('/animal-milking/animalMilk')->with('success', 'Animal milk record deleted successfully.');
+}
 }
