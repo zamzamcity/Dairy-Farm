@@ -130,7 +130,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('login/home') ?>">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -148,6 +148,7 @@
                 </a>
             </li>
 
+            <?php if (hasPermission('CanViewManage')): ?>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -155,6 +156,7 @@
             <div class="sidebar-heading">
                 Admin Panel
             </div>
+            <?php endif; ?>
 
             <!-- Nav Item - Manage Collapse Menu -->
             <?php if (hasPermission('CanViewManage')): ?>
@@ -175,6 +177,7 @@
         </li>
         <?php endif; ?>
 
+        <?php if (hasPermission('CanViewAnimals')||hasPermission('CanViewPen')||hasPermission('CanViewSemen')||hasPermission('CanViewTechnician')||hasPermission('CanViewSchedule')||hasPermission('CanViewVaccinationSchedule')||hasPermission('CanViewDewormingSchedule')): ?>
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 
@@ -182,6 +185,7 @@
 <div class="sidebar-heading">
     Breeding & Health Management System
 </div>
+<?php endif; ?>
 
 <!-- Nav Item - Animals Collapse Menu -->
 <?php if (hasPermission('CanViewAnimals')): ?>
@@ -250,7 +254,7 @@
 </li>
 <?php endif; ?>
 
-<?php if (hasPermission('CanViewAnimalMilking')||(hasPermission('CanViewDailyMilking'))): ?>
+<?php if (hasPermission('CanViewAnimalMilking')||(hasPermission('CanViewDailyMilking'))||(hasPermission('CanViewMilkConsumption'))||(hasPermission('CanViewMilkInOut'))): ?>
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 <!-- Heading -->
@@ -283,6 +287,33 @@
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Daily Milking</span></a>
     </li>
+    <?php endif; ?>
+
+    <!-- Nav Item - Milk Consumption Collapse Menu -->
+    <?php if (hasPermission('CanViewMilkConsumption')): ?>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMilkConsumption"
+            aria-expanded="true" aria-controls="collapseMilkConsumption">
+            <i class="fas fa-fw fa-filter"></i>
+            <span>Milk Consumption</span>
+        </a>
+        <div id="collapseMilkConsumption" class="collapse" aria-labelledby="headingMilkConsumption" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Manage Milk Consumption:</h6>
+                <a class="collapse-item" href="<?= base_url('milk-consumption/milkConsumption') ?>">Milk Consumption</a>
+                <a class="collapse-item" href="<?= base_url('milk-consumption/farmHead') ?>">Farm Milk Head</a>
+            </div>
+        </div>
+    </li>
+<?php endif; ?>
+
+<!-- Nav Item - Milk In/Out -->
+<?php if (hasPermission('CanViewMilkInOut')): ?>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('milkInOut') ?>">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Milk In/Out</span></a>
+        </li>
     <?php endif; ?>
 
 <!-- Divider -->

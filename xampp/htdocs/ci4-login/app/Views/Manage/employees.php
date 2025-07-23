@@ -23,53 +23,53 @@
 </head>
 
 <?php foreach ($employees as $employee): ?>
-<div class="modal fade" id="editEmployeeModal<?= $employee['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="editEmployeeModalLabel<?= $employee['id'] ?>" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <form action="<?= base_url('manage/employees/edit/' . $employee['id']) ?>" method="post">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editEmployeeModalLabel<?= $employee['id'] ?>">Edit Employee</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+    <div class="modal fade" id="editEmployeeModal<?= $employee['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="editEmployeeModalLabel<?= $employee['id'] ?>" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <form action="<?= base_url('manage/employees/edit/' . $employee['id']) ?>" method="post">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editEmployeeModalLabel<?= $employee['id'] ?>">Edit Employee</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
 
-    <div class="modal-body">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="firstname<?= $employee['id'] ?>">First Name</label>
+            <input type="text" class="form-control" name="firstname" value="<?= esc($employee['firstname']) ?>" required>
+        </div>
+
+        <div class="form-group">
+            <label for="lastname<?= $employee['id'] ?>">Last Name</label>
+            <input type="text" class="form-control" name="lastname" value="<?= esc($employee['lastname']) ?>" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email<?= $employee['id'] ?>">Email</label>
+            <input type="email" class="form-control" name="email" value="<?= esc($employee['email']) ?>" required>
+        </div>
+
+        <div class="form-group">
+            <label for="role<?= $employee['id'] ?>">Role</label>
+            <select name="role" class="form-control" required>
+              <option value="user" <?= $employee['role'] === 'user' ? 'selected' : '' ?>>User</option>
+              <option value="admin" <?= $employee['role'] === 'admin' ? 'selected' : '' ?>>Admin</option>
+          </select>
+      </div>
+
+      <!-- ✅ New: Permission Group Dropdown -->
       <div class="form-group">
-        <label for="firstname<?= $employee['id'] ?>">First Name</label>
-        <input type="text" class="form-control" name="firstname" value="<?= esc($employee['firstname']) ?>" required>
-    </div>
-
-    <div class="form-group">
-        <label for="lastname<?= $employee['id'] ?>">Last Name</label>
-        <input type="text" class="form-control" name="lastname" value="<?= esc($employee['lastname']) ?>" required>
-    </div>
-
-    <div class="form-group">
-        <label for="email<?= $employee['id'] ?>">Email</label>
-        <input type="email" class="form-control" name="email" value="<?= esc($employee['email']) ?>" required>
-    </div>
-
-    <div class="form-group">
-        <label for="role<?= $employee['id'] ?>">Role</label>
-        <select name="role" class="form-control" required>
-          <option value="user" <?= $employee['role'] === 'user' ? 'selected' : '' ?>>User</option>
-          <option value="admin" <?= $employee['role'] === 'admin' ? 'selected' : '' ?>>Admin</option>
+        <label for="permission_group_id<?= $employee['id'] ?>">Permission Group</label>
+        <select name="permission_group_id" class="form-control" required>
+          <option value="">-- Select Group --</option>
+          <?php foreach ($permissionGroups as $group): ?>
+              <option value="<?= $group['id'] ?>" <?= $employee['permission_group_id'] == $group['id'] ? 'selected' : '' ?>>
+                  <?= esc($group['name']) ?>
+              </option>
+          <?php endforeach; ?>
       </select>
   </div>
-
-  <!-- ✅ New: Permission Group Dropdown -->
-  <div class="form-group">
-    <label for="permission_group_id<?= $employee['id'] ?>">Permission Group</label>
-    <select name="permission_group_id" class="form-control" required>
-      <option value="">-- Select Group --</option>
-      <?php foreach ($permissionGroups as $group): ?>
-      <option value="<?= $group['id'] ?>" <?= $employee['permission_group_id'] == $group['id'] ? 'selected' : '' ?>>
-          <?= esc($group['name']) ?>
-      </option>
-      <?php endforeach; ?>
-  </select>
-</div>
 
 </div>
 
@@ -85,23 +85,23 @@
 
 <!-- Delete Modal -->
 <?php foreach ($employees as $employee): ?>
-<div class="modal fade" id="deleteEmployeeModal<?= $employee['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="deleteEmployeeModalLabel<?= $employee['id'] ?>" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <form action="<?= base_url('manage/employees/delete/' . $employee['id']) ?>" method="post">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Confirm Delete</h5>
-          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+    <div class="modal fade" id="deleteEmployeeModal<?= $employee['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="deleteEmployeeModalLabel<?= $employee['id'] ?>" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <form action="<?= base_url('manage/employees/delete/' . $employee['id']) ?>" method="post">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Confirm Delete</h5>
+              <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+              Are you sure you want to delete <strong><?= esc($employee['firstname'] . ' ' . $employee['lastname']) ?></strong>?
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-danger">Yes, Delete</button>
+          </div>
       </div>
-      <div class="modal-body">
-          Are you sure you want to delete <strong><?= esc($employee['firstname'] . ' ' . $employee['lastname']) ?></strong>?
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-danger">Yes, Delete</button>
-      </div>
-  </div>
-</form>
+  </form>
 </div>
 </div>
 <?php endforeach; ?>
@@ -115,7 +115,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('login/home') ?>">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -133,33 +133,37 @@
                 </a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+            <?php if (hasPermission('CanViewManage')): ?>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Admin Panel
-            </div>
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Admin Panel
+                </div>
+            <?php endif; ?>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <?php if (hasPermission('CanViewManage')): ?>
-            <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-                aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Manage</span>
-            </a>
-            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Group:</h6>
-                <a class="collapse-item active" href="<?= base_url('manage/employees') ?>">Employees</a>
-                <a class="collapse-item" href="<?= base_url('manage/permissions') ?>">Permissions</a>
-                <a class="collapse-item" href="<?= base_url('manage/permission_groups') ?>">Permission Groups</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Manage</span>
+                </a>
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Manage Group:</h6>
+                    <a class="collapse-item active" href="<?= base_url('manage/employees') ?>">Employees</a>
+                    <a class="collapse-item" href="<?= base_url('manage/permissions') ?>">Permissions</a>
+                    <a class="collapse-item" href="<?= base_url('manage/permission_groups') ?>">Permission Groups</a>
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
     <?php endif; ?>
+
+    <?php if (hasPermission('CanViewAnimals')||hasPermission('CanViewPen')||hasPermission('CanViewSemen')||hasPermission('CanViewTechnician')||hasPermission('CanViewSchedule')||hasPermission('CanViewVaccinationSchedule')||hasPermission('CanViewDewormingSchedule')): ?>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
@@ -168,6 +172,7 @@
 <div class="sidebar-heading">
     Breeding & Health Management System
 </div>
+<?php endif; ?>
 
 <!-- Nav Item - Animals Collapse Menu -->
 <?php if (hasPermission('CanViewAnimals')): ?>
@@ -236,9 +241,9 @@
 </li>
 <?php endif; ?>
 
-<?php if (hasPermission('CanViewAnimalMilking')||(hasPermission('CanViewDailyMilking'))): ?>
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+<?php if (hasPermission('CanViewAnimalMilking')||(hasPermission('CanViewDailyMilking'))||(hasPermission('CanViewMilkConsumption'))||(hasPermission('CanViewMilkInOut'))): ?>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
 <!-- Heading -->
 <div class="sidebar-heading">
     Milking & Production Management
@@ -268,6 +273,33 @@
         <a class="nav-link" href="<?= base_url('dailyMilk') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Daily Milking</span></a>
+        </li>
+    <?php endif; ?>
+
+    <!-- Nav Item - Milk Consumption Collapse Menu -->
+    <?php if (hasPermission('CanViewMilkConsumption')): ?>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMilkConsumption"
+            aria-expanded="true" aria-controls="collapseMilkConsumption">
+            <i class="fas fa-fw fa-filter"></i>
+            <span>Milk Consumption</span>
+        </a>
+        <div id="collapseMilkConsumption" class="collapse" aria-labelledby="headingMilkConsumption" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Manage Milk Consumption:</h6>
+                <a class="collapse-item" href="<?= base_url('milk-consumption/milkConsumption') ?>">Milk Consumption</a>
+                <a class="collapse-item" href="<?= base_url('milk-consumption/farmHead') ?>">Farm Milk Head</a>
+            </div>
+        </div>
+    </li>
+<?php endif; ?>
+
+<!-- Nav Item - Milk In/Out -->
+<?php if (hasPermission('CanViewMilkInOut')): ?>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('milkInOut') ?>">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Milk In/Out</span></a>
         </li>
     <?php endif; ?>
 
@@ -459,31 +491,31 @@ aria-labelledby="messagesDropdown">
     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="mr-2 d-none d-lg-inline text-gray-600 small">
         <?= session()->get('firstname') && session()->get('lastname')
-            ? session()->get('firstname') . ' ' . session()->get('lastname')
-            : 'Guest' ?>
-        </span>
-        <img class="img-profile rounded-circle" src="<?= base_url('assets/sb-admin-2/img/undraw_profile.svg') ?>" alt="...">
-    </a>
-    <!-- Dropdown - User Information -->
-    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-    aria-labelledby="userDropdown">
-    <a class="dropdown-item" href="#">
-        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-        Profile
-    </a>
-    <a class="dropdown-item" href="#">
-        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-        Settings
-    </a>
-    <a class="dropdown-item" href="#">
-        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-        Activity Log
-    </a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-        Logout
-    </a>
+        ? session()->get('firstname') . ' ' . session()->get('lastname')
+        : 'Guest' ?>
+    </span>
+    <img class="img-profile rounded-circle" src="<?= base_url('assets/sb-admin-2/img/undraw_profile.svg') ?>" alt="...">
+</a>
+<!-- Dropdown - User Information -->
+<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+aria-labelledby="userDropdown">
+<a class="dropdown-item" href="#">
+    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+    Profile
+</a>
+<a class="dropdown-item" href="#">
+    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+    Settings
+</a>
+<a class="dropdown-item" href="#">
+    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+    Activity Log
+</a>
+<div class="dropdown-divider"></div>
+<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+    Logout
+</a>
 </div>
 </li>
 
@@ -510,22 +542,22 @@ aria-labelledby="messagesDropdown">
         <div class="card-body">
             <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-            <?php endif; ?>
+        <?php endif; ?>
 
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Created At</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($employees as $emp): ?>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($employees as $emp): ?>
                         <tr>
                             <td><?= $emp['id'] ?></td>
                             <td><?= esc($emp['firstname']) . ' ' . esc($emp['lastname']) ?></td>
@@ -537,16 +569,16 @@ aria-labelledby="messagesDropdown">
                                 <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteEmployeeModal<?= $emp['id'] ?>">Delete</a>
                             </td>
                         </tr>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
 
-                        <?php if (empty($employees)): ?>
+                    <?php if (empty($employees)): ?>
                         <tr><td colspan="6" class="text-center">No employees found.</td></tr>
-                        <?php endif ?>
-                    </tbody>
-                </table>
-            </div>
+                    <?php endif ?>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 
 </div>
 
@@ -596,7 +628,7 @@ aria-labelledby="messagesDropdown">
         <select name="permission_group_id" class="form-control" required>
           <option value="">Select Group</option>
           <?php foreach ($permissionGroups as $group): ?>
-          <option value="<?= $group['id'] ?>"><?= esc($group['name']) ?></option>
+              <option value="<?= $group['id'] ?>"><?= esc($group['name']) ?></option>
           <?php endforeach; ?>
       </select>
   </div>

@@ -87,24 +87,6 @@ class Login extends BaseController
         return view('dashboard');
     }
 
-    public function charts()
-    {
-        $session = session();
-        if (!$session->get('email')) {
-            return redirect()->to('/login');
-        }
-        return view('charts');
-    }
-
-    public function tables()
-    {
-        $session = session();
-        if (!$session->get('email')) {
-            return redirect()->to('/login');
-        }
-        return view('tables');
-    }
-
     public function logout()
     {
         session()->destroy();

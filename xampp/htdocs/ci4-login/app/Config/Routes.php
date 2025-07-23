@@ -86,7 +86,23 @@ $routes->group('animal-milking', function ($routes) {
 });
 
 // Daily Milking
-    $routes->get('dailyMilk', 'DailyMilkingController::dailyMilkingList');
-    $routes->post('dailyMilk/add', 'DailyMilkingController::addDailyMilking');
-    $routes->post('dailyMilk/edit/(:num)', 'DailyMilkingController::editDailyMilking/$1');
-    $routes->post('dailyMilk/delete/(:num)', 'DailyMilkingController::deleteDailyMilking/$1');
+$routes->get('dailyMilk', 'DailyMilkingController::dailyMilkingList');
+$routes->post('dailyMilk/add', 'DailyMilkingController::addDailyMilking');
+$routes->post('dailyMilk/edit/(:num)', 'DailyMilkingController::editDailyMilking/$1');
+$routes->post('dailyMilk/delete/(:num)', 'DailyMilkingController::deleteDailyMilking/$1');
+
+// Milk Consumption
+$routes->group('milk-consumption', function ($routes) {
+    $routes->get('milkConsumption', 'MilkConsumptionController::milkConsumptionList');
+    $routes->post('milkConsumption/add', 'MilkConsumptionController::addMilkConsumption');
+    $routes->post('milkConsumption/edit/(:num)', 'MilkConsumptionController::editMilkConsumption/$1');
+    $routes->post('milkConsumption/delete/(:num)', 'MilkConsumptionController::deleteMilkConsumption/$1');
+
+    $routes->get('farmHead', 'FarmHeadController::farmHeadList');
+    $routes->post('farmHead/add', 'FarmHeadController::addFarmHead');
+    $routes->post('farmHead/edit/(:num)', 'FarmHeadController::editFarmHead/$1');
+    $routes->post('farmHead/delete/(:num)', 'FarmHeadController::deleteFarmHead/$1');
+});
+
+// Milk In/Out
+$routes->get('milkInOut', 'MilkInOutController::milkInOutDetails');

@@ -32,54 +32,54 @@
         <div class="modal-header">
           <h5 class="modal-title" id="editScheduleModalLabel<?= $entry['id'] ?>">Edit Vaccination Schedule</h5>
           <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-        </div>
+      </div>
 
-        <div class="modal-body">
+      <div class="modal-body">
           <div class="form-group">
             <label for="month<?= $entry['id'] ?>">Month</label>
             <select name="month" class="form-control" required>
               <option value="">-- Select Month --</option>
               <?php
-              $months = [
-                'January', 'February', 'March', 'April', 'May', 'June',
-                'July', 'August', 'September', 'October', 'November', 'December'
-              ];
-              foreach ($months as $month): ?>
-                <option value="<?= $month ?>" <?= $month == $entry['month'] ? 'selected' : '' ?>><?= $month ?></option>
-              <?php endforeach; ?>
-            </select>
+                  $months = [
+                  'January', 'February', 'March', 'April', 'May', 'June',
+                  'July', 'August', 'September', 'October', 'November', 'December'
+                  ];
+                  foreach ($months as $month): ?>
+                  <option value="<?= $month ?>" <?= $month == $entry['month'] ? 'selected' : '' ?>><?= $month ?></option>
+                  <?php endforeach; ?>
+              </select>
           </div>
 
           <div class="form-group">
             <label for="date<?= $entry['id'] ?>">Date</label>
             <input type="date" class="form-control" name="date" value="<?= esc($entry['date']) ?>" required>
-          </div>
+        </div>
 
-          <div class="form-group">
+        <div class="form-group">
             <label for="vaccination_id<?= $entry['id'] ?>">Vaccination</label>
             <select name="vaccination_id" class="form-control" required>
               <option value="">-- Select Vaccination --</option>
               <?php foreach ($vaccinations as $vaccination): ?>
-                <option value="<?= $vaccination['id'] ?>" <?= $vaccination['id'] == $entry['vaccination_id'] ? 'selected' : '' ?>>
+              <option value="<?= $vaccination['id'] ?>" <?= $vaccination['id'] == $entry['vaccination_id'] ? 'selected' : '' ?>>
                   <?= esc($vaccination['name']) ?>
-                </option>
+              </option>
               <?php endforeach; ?>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="comments<?= $entry['id'] ?>">Comments</label>
-            <textarea name="comments" class="form-control" rows="3"><?= esc($entry['comments']) ?></textarea>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Update</button>
-        </div>
+          </select>
       </div>
-    </form>
-  </div>
+
+      <div class="form-group">
+        <label for="comments<?= $entry['id'] ?>">Comments</label>
+        <textarea name="comments" class="form-control" rows="3"><?= esc($entry['comments']) ?></textarea>
+    </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  <button type="submit" class="btn btn-primary">Update</button>
+</div>
+</div>
+</form>
+</div>
 </div>
 <?php endforeach; ?>
 
@@ -94,23 +94,23 @@
           <h5 class="modal-title" id="deleteScheduleModalLabel<?= $entry['id'] ?>">Delete Vaccination Schedule</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+        </button>
+    </div>
 
-        <div class="modal-body">
-          Are you sure you want to delete the vaccination schedule for
-          <strong>"<?= esc($entry['vaccination_name'] ?? 'Unknown Vaccination') ?>"</strong>
-          on <strong><?= esc($entry['date']) ?></strong>
-          (<?= esc($entry['month']) ?>)?
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-danger">Delete</button>
-        </div>
-      </div>
-    </form>
+    <div class="modal-body">
+      Are you sure you want to delete the vaccination schedule for
+      <strong>"<?= esc($entry['vaccination_name'] ?? 'Unknown Vaccination') ?>"</strong>
+      on <strong><?= esc($entry['date']) ?></strong>
+      (<?= esc($entry['month']) ?>)?
   </div>
+
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn btn-danger">Delete</button>
+  </div>
+</div>
+</form>
+</div>
 </div>
 <?php endforeach; ?>
 
@@ -125,7 +125,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('login/home') ?>">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -143,6 +143,7 @@
                 </a>
             </li>
 
+            <?php if (hasPermission('CanViewManage')): ?>
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -150,6 +151,7 @@
             <div class="sidebar-heading">
                 Admin Panel
             </div>
+            <?php endif; ?>
 
             <!-- Nav Item - Manage Collapse Menu -->
             <?php if (hasPermission('CanViewManage')): ?>
@@ -170,6 +172,7 @@
         </li>
         <?php endif; ?>
 
+        <?php if (hasPermission('CanViewAnimals')||hasPermission('CanViewPen')||hasPermission('CanViewSemen')||hasPermission('CanViewTechnician')||hasPermission('CanViewSchedule')||hasPermission('CanViewVaccinationSchedule')||hasPermission('CanViewDewormingSchedule')): ?>
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 
@@ -177,6 +180,7 @@
 <div class="sidebar-heading">
     Breeding & Health Management System
 </div>
+<?php endif; ?>
 
 <!-- Nav Item - Animals Collapse Menu -->
 <?php if (hasPermission('CanViewAnimals')): ?>
@@ -245,9 +249,9 @@
 </li>
 <?php endif; ?>
 
-<?php if (hasPermission('CanViewAnimalMilking')||(hasPermission('CanViewDailyMilking'))): ?>
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+<?php if (hasPermission('CanViewAnimalMilking')||(hasPermission('CanViewDailyMilking'))||(hasPermission('CanViewMilkConsumption'))||(hasPermission('CanViewMilkInOut'))): ?>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
 <!-- Heading -->
 <div class="sidebar-heading">
     Milking & Production Management
@@ -256,27 +260,54 @@
 
 <!-- Nav Item - Animal Milking Collapse Menu -->
 <?php if (hasPermission('CanViewAnimalMilking')): ?>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnimalMilking"
-        aria-expanded="true" aria-controls="collapseAnimalMilking">
-        <i class="fas fa-fw fa-glass-whiskey"></i>
-        <span>Animal Milking</span>
-    </a>
-    <div id="collapseAnimalMilking" class="collapse" aria-labelledby="headingAnimalMilking" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Animal Milk Management:</h6>
-            <a class="collapse-item" href="<?= base_url('animal-milking/animalMilk') ?>">Manage Animal Milk</a>
-        </div>
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnimalMilking"
+    aria-expanded="true" aria-controls="collapseAnimalMilking">
+    <i class="fas fa-fw fa-glass-whiskey"></i>
+    <span>Animal Milking</span>
+</a>
+<div id="collapseAnimalMilking" class="collapse" aria-labelledby="headingAnimalMilking" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Animal Milk Management:</h6>
+        <a class="collapse-item" href="<?= base_url('animal-milking/animalMilk') ?>">Manage Animal Milk</a>
     </div>
+</div>
 </li>
 <?php endif; ?>
 
 <!-- Nav Item - Daily Milking -->
 <?php if (hasPermission('CanViewDailyMilking')): ?>
+<li class="nav-item">
+    <a class="nav-link" href="<?= base_url('dailyMilk') ?>">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Daily Milking</span></a>
+    </li>
+    <?php endif; ?>
+
+    <!-- Nav Item - Milk Consumption Collapse Menu -->
+    <?php if (hasPermission('CanViewMilkConsumption')): ?>
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('dailyMilk') ?>">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Daily Milking</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMilkConsumption"
+        aria-expanded="true" aria-controls="collapseMilkConsumption">
+        <i class="fas fa-fw fa-filter"></i>
+        <span>Milk Consumption</span>
+    </a>
+    <div id="collapseMilkConsumption" class="collapse" aria-labelledby="headingMilkConsumption" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Milk Consumption:</h6>
+            <a class="collapse-item" href="<?= base_url('milk-consumption/milkConsumption') ?>">Milk Consumption</a>
+            <a class="collapse-item" href="<?= base_url('milk-consumption/farmHead') ?>">Farm Milk Head</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
+
+<!-- Nav Item - Milk In/Out -->
+<?php if (hasPermission('CanViewMilkInOut')): ?>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('milkInOut') ?>">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Milk In/Out</span></a>
         </li>
     <?php endif; ?>
 

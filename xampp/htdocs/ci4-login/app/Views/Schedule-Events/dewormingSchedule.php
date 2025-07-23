@@ -32,9 +32,9 @@
         <div class="modal-header">
           <h5 class="modal-title" id="editDewormingModalLabel<?= $entry['id'] ?>">Edit Deworming Schedule</h5>
           <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-        </div>
+      </div>
 
-        <div class="modal-body">
+      <div class="modal-body">
           <div class="form-group">
             <label for="month<?= $entry['id'] ?>">Month</label>
             <select name="month" class="form-control" required>
@@ -43,39 +43,39 @@
               $months = [
                 'January', 'February', 'March', 'April', 'May', 'June',
                 'July', 'August', 'September', 'October', 'November', 'December'
-              ];
-              foreach ($months as $month): ?>
+            ];
+            foreach ($months as $month): ?>
                 <option value="<?= $month ?>" <?= $month == $entry['month'] ? 'selected' : '' ?>><?= $month ?></option>
-              <?php endforeach; ?>
-            </select>
-          </div>
+            <?php endforeach; ?>
+        </select>
+    </div>
 
-          <div class="form-group">
-            <label for="date<?= $entry['id'] ?>">Date</label>
-            <input type="date" class="form-control" name="date" value="<?= esc($entry['date']) ?>" required>
-          </div>
+    <div class="form-group">
+        <label for="date<?= $entry['id'] ?>">Date</label>
+        <input type="date" class="form-control" name="date" value="<?= esc($entry['date']) ?>" required>
+    </div>
 
-          <div class="form-group">
-            <label for="deworming_id<?= $entry['id'] ?>">Deworming</label>
-            <select name="deworming_id" class="form-control" required>
-              <option value="">-- Select Deworming --</option>
-              <?php foreach ($dewormings as $deworming): ?>
-                <option value="<?= $deworming['id'] ?>" <?= $deworming['id'] == $entry['deworming_id'] ? 'selected' : '' ?>>
-                  <?= esc($deworming['name']) ?>
-                </option>
-              <?php endforeach; ?>
-            </select>
-          </div>
+    <div class="form-group">
+        <label for="deworming_id<?= $entry['id'] ?>">Deworming</label>
+        <select name="deworming_id" class="form-control" required>
+          <option value="">-- Select Deworming --</option>
+          <?php foreach ($dewormings as $deworming): ?>
+            <option value="<?= $deworming['id'] ?>" <?= $deworming['id'] == $entry['deworming_id'] ? 'selected' : '' ?>>
+              <?= esc($deworming['name']) ?>
+          </option>
+      <?php endforeach; ?>
+  </select>
+</div>
 
-        </div>
+</div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Update</button>
-        </div>
-      </div>
-    </form>
-  </div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  <button type="submit" class="btn btn-primary">Update</button>
+</div>
+</div>
+</form>
+</div>
 </div>
 <?php endforeach; ?>
 
@@ -90,23 +90,23 @@
           <h5 class="modal-title" id="deleteDewormingModalLabel<?= $entry['id'] ?>">Delete Deworming Schedule</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+        </button>
+    </div>
 
-        <div class="modal-body">
-          Are you sure you want to delete the deworming schedule for
-          <strong>"<?= esc($entry['deworming_name'] ?? 'Unknown Deworming') ?>"</strong>
-          on <strong><?= esc($entry['date']) ?></strong>
-          (<?= esc($entry['month']) ?>)?
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-danger">Delete</button>
-        </div>
-      </div>
-    </form>
+    <div class="modal-body">
+      Are you sure you want to delete the deworming schedule for
+      <strong>"<?= esc($entry['deworming_name'] ?? 'Unknown Deworming') ?>"</strong>
+      on <strong><?= esc($entry['date']) ?></strong>
+      (<?= esc($entry['month']) ?>)?
   </div>
+
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn btn-danger">Delete</button>
+  </div>
+</div>
+</form>
+</div>
 </div>
 <?php endforeach; ?>
 
@@ -121,7 +121,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('login/home') ?>">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -139,33 +139,36 @@
                 </a>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+            <?php if (hasPermission('CanViewManage')): ?>
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Admin Panel
-            </div>
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Admin Panel
+                </div>
+            <?php endif; ?>
 
             <!-- Nav Item - Manage Collapse Menu -->
             <?php if (hasPermission('CanViewManage')): ?>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Manage</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Manage Group:</h6>
-                    <a class="collapse-item" href="<?= base_url('manage/employees') ?>">Employees</a>
-                    <a class="collapse-item" href="<?= base_url('manage/permissions') ?>">Permissions</a>
-                    <a class="collapse-item" href="<?= base_url('manage/permission_groups') ?>">Permission Groups</a>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Manage</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Manage Group:</h6>
+                        <a class="collapse-item" href="<?= base_url('manage/employees') ?>">Employees</a>
+                        <a class="collapse-item" href="<?= base_url('manage/permissions') ?>">Permissions</a>
+                        <a class="collapse-item" href="<?= base_url('manage/permission_groups') ?>">Permission Groups</a>
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
         <?php endif; ?>
 
+        <?php if (hasPermission('CanViewAnimals')||hasPermission('CanViewPen')||hasPermission('CanViewSemen')||hasPermission('CanViewTechnician')||hasPermission('CanViewSchedule')||hasPermission('CanViewVaccinationSchedule')||hasPermission('CanViewDewormingSchedule')): ?>
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 
@@ -173,21 +176,22 @@
 <div class="sidebar-heading">
     Breeding & Health Management System
 </div>
+<?php endif; ?>
 
 <!-- Nav Item - Animals Collapse Menu -->
 <?php if (hasPermission('CanViewAnimals')): ?>
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnimals"
-    aria-expanded="true" aria-controls="collapseAnimals">
-    <i class="fas fa-fw fa-paw"></i>
-    <span>Animals</span>
-</a>
-<div id="collapseAnimals" class="collapse" aria-labelledby="headingAnimals" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Animal Management:</h6>
-        <a class="collapse-item" href="<?= base_url('animals/animalsList') ?>">Manage Animals</a>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnimals"
+        aria-expanded="true" aria-controls="collapseAnimals">
+        <i class="fas fa-fw fa-paw"></i>
+        <span>Animals</span>
+    </a>
+    <div id="collapseAnimals" class="collapse" aria-labelledby="headingAnimals" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Animal Management:</h6>
+            <a class="collapse-item" href="<?= base_url('animals/animalsList') ?>">Manage Animals</a>
+        </div>
     </div>
-</div>
 </li>
 <?php endif; ?>
 
@@ -203,13 +207,13 @@
     <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Management:</h6>
         <?php if (hasPermission('CanViewPen')): ?>
-        <a class="collapse-item" href="<?= base_url('pen-semen-tech/pen') ?>">Pen</a>
+            <a class="collapse-item" href="<?= base_url('pen-semen-tech/pen') ?>">Pen</a>
         <?php endif; ?>
         <?php if (hasPermission('CanViewSemen')): ?>
-        <a class="collapse-item" href="<?= base_url('pen-semen-tech/semen') ?>">Semen</a>
+            <a class="collapse-item" href="<?= base_url('pen-semen-tech/semen') ?>">Semen</a>
         <?php endif; ?>
         <?php if (hasPermission('CanViewTechnician')): ?>
-        <a class="collapse-item" href="<?= base_url('pen-semen-tech/technician') ?>">Technician</a>
+            <a class="collapse-item" href="<?= base_url('pen-semen-tech/technician') ?>">Technician</a>
         <?php endif; ?>
     </div>
 </div>
@@ -228,22 +232,22 @@
     <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Schedule Management:</h6>
         <?php if (hasPermission('CanViewSchedule')): ?>
-        <a class="collapse-item" href="<?= base_url('schedule-events/schedule') ?>">View All Schedules</a>
+            <a class="collapse-item" href="<?= base_url('schedule-events/schedule') ?>">View All Schedules</a>
         <?php endif; ?>
         <?php if (hasPermission('CanViewVaccinationSchedule')): ?>
-        <a class="collapse-item" href="<?= base_url('schedule-events/vaccinationSchedule') ?>">Vaccination Schedule</a>
+            <a class="collapse-item" href="<?= base_url('schedule-events/vaccinationSchedule') ?>">Vaccination Schedule</a>
         <?php endif; ?>
         <?php if (hasPermission('CanViewDewormingSchedule')): ?>
-        <a class="collapse-item active" href="<?= base_url('schedule-events/dewormingSchedule') ?>">Deworming Schedule</a>
+            <a class="collapse-item active" href="<?= base_url('schedule-events/dewormingSchedule') ?>">Deworming Schedule</a>
         <?php endif; ?>
     </div>
 </div>
 </li>
 <?php endif; ?>
 
-<?php if (hasPermission('CanViewAnimalMilking')||(hasPermission('CanViewDailyMilking'))): ?>
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+<?php if (hasPermission('CanViewAnimalMilking')||(hasPermission('CanViewDailyMilking'))||(hasPermission('CanViewMilkConsumption'))||(hasPermission('CanViewMilkInOut'))): ?>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
 <!-- Heading -->
 <div class="sidebar-heading">
     Milking & Production Management
@@ -273,6 +277,33 @@
         <a class="nav-link" href="<?= base_url('dailyMilk') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Daily Milking</span></a>
+        </li>
+    <?php endif; ?>
+
+    <!-- Nav Item - Milk Consumption Collapse Menu -->
+    <?php if (hasPermission('CanViewMilkConsumption')): ?>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMilkConsumption"
+            aria-expanded="true" aria-controls="collapseMilkConsumption">
+            <i class="fas fa-fw fa-filter"></i>
+            <span>Milk Consumption</span>
+        </a>
+        <div id="collapseMilkConsumption" class="collapse" aria-labelledby="headingMilkConsumption" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Manage Milk Consumption:</h6>
+                <a class="collapse-item" href="<?= base_url('milk-consumption/milkConsumption') ?>">Milk Consumption</a>
+                <a class="collapse-item" href="<?= base_url('milk-consumption/farmHead') ?>">Farm Milk Head</a>
+            </div>
+        </div>
+    </li>
+<?php endif; ?>
+
+<!-- Nav Item - Milk In/Out -->
+<?php if (hasPermission('CanViewMilkInOut')): ?>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('milkInOut') ?>">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Milk In/Out</span></a>
         </li>
     <?php endif; ?>
 
@@ -464,11 +495,11 @@ aria-labelledby="messagesDropdown">
     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="mr-2 d-none d-lg-inline text-gray-600 small">
         <?= session()->get('firstname') && session()->get('lastname')
-            ? session()->get('firstname') . ' ' . session()->get('lastname')
-            : 'Guest' ?>
-        </span>
-        <img class="img-profile rounded-circle" src="<?= base_url('assets/sb-admin-2/img/undraw_profile.svg') ?>" alt="...">
-    </a>
+        ? session()->get('firstname') . ' ' . session()->get('lastname')
+        : 'Guest' ?>
+    </span>
+    <img class="img-profile rounded-circle" src="<?= base_url('assets/sb-admin-2/img/undraw_profile.svg') ?>" alt="...">
+</a>
 <!-- Dropdown - User Information -->
 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 aria-labelledby="userDropdown">
@@ -505,9 +536,9 @@ aria-labelledby="userDropdown">
 
     <!-- Add Deworming Schedule Button -->
     <?php if (hasPermission('CanAddDewormingSchedule')): ?>
-    <div class="mb-3 text-right">
-        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addDewormingModal">+ Add Deworming Schedule</a>
-    </div>
+        <div class="mb-3 text-right">
+            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addDewormingModal">+ Add Deworming Schedule</a>
+        </div>
     <?php endif; ?>
 
     <!-- Deworming Schedule Table -->
@@ -515,49 +546,49 @@ aria-labelledby="userDropdown">
         <div class="card-body">
             <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-            <?php endif; ?>
+        <?php endif; ?>
 
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Month</th>
-                            <th>Date</th>
-                            <th>Deworming</th>
-                            <?php if (hasPermission('CanUpdateDewormingSchedule') || hasPermission('CanDeleteDewormingSchedule')): ?>
-                            <th>Actions</th>
-                            <?php endif; ?>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($deworming_schedules as $schedule): ?>
-                        <tr>
-                            <td><?= esc($schedule['id']) ?></td>
-                            <td><?= esc($schedule['month']) ?></td>
-                            <td><?= esc($schedule['date']) ?></td>
-                            <td><?= esc($schedule['deworming_name']) ?></td>
-                            <?php if (hasPermission('CanUpdateDewormingSchedule') || hasPermission('CanDeleteDewormingSchedule')): ?>
-                            <td>
-                                <?php if (hasPermission('CanUpdateDewormingSchedule')): ?>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Month</th>
+                        <th>Date</th>
+                        <th>Deworming</th>
+                        <?php if (hasPermission('CanUpdateDewormingSchedule') || hasPermission('CanDeleteDewormingSchedule')): ?>
+                        <th>Actions</th>
+                    <?php endif; ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($deworming_schedules as $schedule): ?>
+                    <tr>
+                        <td><?= esc($schedule['id']) ?></td>
+                        <td><?= esc($schedule['month']) ?></td>
+                        <td><?= esc($schedule['date']) ?></td>
+                        <td><?= esc($schedule['deworming_name']) ?></td>
+                        <?php if (hasPermission('CanUpdateDewormingSchedule') || hasPermission('CanDeleteDewormingSchedule')): ?>
+                        <td>
+                            <?php if (hasPermission('CanUpdateDewormingSchedule')): ?>
                                 <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editDewormingModal<?= $schedule['id'] ?>">Edit</a>
-                                <?php endif; ?>
-                                <?php if (hasPermission('CanDeleteDewormingSchedule')): ?>
-                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDewormingModal<?= $schedule['id'] ?>">Delete</a>
-                                <?php endif; ?>
-                            </td>
                             <?php endif; ?>
-                        </tr>
-                        <?php endforeach; ?>
+                            <?php if (hasPermission('CanDeleteDewormingSchedule')): ?>
+                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDewormingModal<?= $schedule['id'] ?>">Delete</a>
+                            <?php endif; ?>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
 
-                        <?php if (empty($deworming_schedules)): ?>
-                        <tr><td colspan="6" class="text-center">No deworming schedule records found.</td></tr>
-                        <?php endif ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+            <?php if (empty($deworming_schedules)): ?>
+                <tr><td colspan="6" class="text-center">No deworming schedule records found.</td></tr>
+            <?php endif ?>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
 
 </div>
 
@@ -569,48 +600,48 @@ aria-labelledby="userDropdown">
         <div class="modal-header">
           <h5 class="modal-title" id="addDewormingModalLabel">Add Deworming Schedule</h5>
           <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-        </div>
+      </div>
 
-        <div class="modal-body">
+      <div class="modal-body">
           <div class="form-group">
             <label for="month">Month</label>
             <select name="month" id="month" class="form-control" required>
               <option value="">-- Select Month --</option>
               <?php
-                $months = [
+              $months = [
                   'January', 'February', 'March', 'April', 'May', 'June',
                   'July', 'August', 'September', 'October', 'November', 'December'
-                ];
-                foreach ($months as $month): ?>
+              ];
+              foreach ($months as $month): ?>
                 <option value="<?= $month ?>"><?= $month ?></option>
-              <?php endforeach; ?>
-            </select>
-          </div>
+            <?php endforeach; ?>
+        </select>
+    </div>
 
-          <div class="form-group">
-            <label for="date">Date</label>
-            <input type="date" class="form-control" name="date" id="date" required>
-          </div>
+    <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" class="form-control" name="date" id="date" required>
+    </div>
 
-          <div class="form-group">
-            <label for="deworming_id">Deworming</label>
-            <select name="deworming_id" id="deworming_id" class="form-control" required>
-              <option value="">-- Select Deworming --</option>
-              <?php foreach ($dewormings as $deworming): ?>
+    <div class="form-group">
+        <label for="deworming_id">Deworming</label>
+        <select name="deworming_id" id="deworming_id" class="form-control" required>
+          <option value="">-- Select Deworming --</option>
+          <?php foreach ($dewormings as $deworming): ?>
               <option value="<?= $deworming['id'] ?>"><?= esc($deworming['name']) ?></option>
-              <?php endforeach; ?>
-            </select>
-          </div>
-
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Add</button>
-        </div>
-      </div>
-    </form>
+          <?php endforeach; ?>
+      </select>
   </div>
+
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  <button type="submit" class="btn btn-primary">Add</button>
+</div>
+</div>
+</form>
+</div>
 </div>
 
 
