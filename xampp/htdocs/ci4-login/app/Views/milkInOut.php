@@ -218,6 +218,32 @@
     </li>
     <?php endif; ?>
 
+    <?php if (hasPermission('CanViewStockList')): ?>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+<!-- Heading -->
+<div class="sidebar-heading">
+    Stock Management
+</div>
+<?php endif; ?>
+
+<!-- Nav Item - Stock Collapse Menu -->
+<?php if (hasPermission('CanViewStockList')): ?>
+<li class="nav-item">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseStock"
+    aria-expanded="true" aria-controls="collapseStock">
+    <i class="fas fa-fw fa-list"></i>
+    <span>Stock</span>
+</a>
+<div id="collapseStock" class="collapse" aria-labelledby="headingStock" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Stock Management:</h6>
+        <a class="collapse-item" href="<?= base_url('stock/stockList') ?>">View Stock List</a>
+    </div>
+</div>
+</li>
+<?php endif; ?>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 

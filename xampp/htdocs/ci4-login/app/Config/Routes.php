@@ -106,3 +106,13 @@ $routes->group('milk-consumption', function ($routes) {
 
 // Milk In/Out
 $routes->get('milkInOut', 'MilkInOutController::milkInOutDetails');
+
+$routes->group('stock', function ($routes) {
+    $routes->get('stockList', 'StockRegistrationController::stockList');
+    $routes->post('stockList/add', 'StockRegistrationController::addStock');
+    $routes->post('stockList/edit/(:num)', 'StockRegistrationController::editStock/$1');
+    $routes->post('stockList/delete/(:num)', 'StockRegistrationController::deleteStock/$1');
+    $routes->post('stockList/add-head', 'StockRegistrationController::addHead');
+    $routes->post('stockList/add-unit', 'StockRegistrationController::addUnit');
+    
+});

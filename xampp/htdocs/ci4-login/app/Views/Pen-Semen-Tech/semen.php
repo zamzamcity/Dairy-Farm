@@ -31,49 +31,49 @@
         <div class="modal-header">
           <h5 class="modal-title" id="editSemenModalLabel<?= $entry['id'] ?>">Edit Semen</h5>
           <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-        </div>
+      </div>
 
-        <div class="modal-body">
+      <div class="modal-body">
           <div class="form-group">
             <label for="sireName<?= $entry['id'] ?>">Sire Name</label>
             <input type="text" class="form-control" name="sire_name" value="<?= esc($entry['sire_name']) ?>" required>
-          </div>
+        </div>
 
-          <div class="form-group">
+        <div class="form-group">
             <label for="rate<?= $entry['id'] ?>">Rate per Semen</label>
             <input type="number" step="0.01" class="form-control" name="rate_per_semen" value="<?= esc($entry['rate_per_semen']) ?>" required>
-          </div>
+        </div>
 
-          <div class="form-group">
+        <div class="form-group">
             <label for="company<?= $entry['id'] ?>">Company</label>
             <select name="company_id" class="form-control" required>
               <option value="">-- Select Company --</option>
               <?php foreach ($companies as $company): ?>
                 <option value="<?= $company['id'] ?>" <?= $entry['company_id'] == $company['id'] ? 'selected' : '' ?>>
                   <?= esc($company['name']) ?>
-                </option>
-              <?php endforeach; ?>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Type</label><br>
-            <label class="mr-3">
-              <input type="radio" name="type" value="Conventional" <?= $entry['type'] == 'Conventional' ? 'checked' : '' ?>> Conventional
-            </label>
-            <label>
-              <input type="radio" name="type" value="Sexed" <?= $entry['type'] == 'Sexed' ? 'checked' : '' ?>> Sexed
-            </label>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Update</button>
-        </div>
-      </div>
-    </form>
+              </option>
+          <?php endforeach; ?>
+      </select>
   </div>
+
+  <div class="form-group">
+    <label>Type</label><br>
+    <label class="mr-3">
+      <input type="radio" name="type" value="Conventional" <?= $entry['type'] == 'Conventional' ? 'checked' : '' ?>> Conventional
+  </label>
+  <label>
+      <input type="radio" name="type" value="Sexed" <?= $entry['type'] == 'Sexed' ? 'checked' : '' ?>> Sexed
+  </label>
+</div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  <button type="submit" class="btn btn-primary">Update</button>
+</div>
+</div>
+</form>
+</div>
 </div>
 <?php endforeach; ?>
 
@@ -88,20 +88,20 @@
           <h5 class="modal-title" id="deleteSemenModalLabel<?= $entry['id'] ?>">Delete Semen</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+        </button>
+    </div>
 
-        <div class="modal-body">
-          Are you sure you want to delete the semen record for <strong>"<?= esc($entry['sire_name']) ?>"</strong>?
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-danger">Delete</button>
-        </div>
-      </div>
-    </form>
+    <div class="modal-body">
+      Are you sure you want to delete the semen record for <strong>"<?= esc($entry['sire_name']) ?>"</strong>?
   </div>
+
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn btn-danger">Delete</button>
+  </div>
+</div>
+</form>
+</div>
 </div>
 <?php endforeach; ?>
 
@@ -135,35 +135,35 @@
             </li>
 
             <?php if (hasPermission('CanViewManage')): ?>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Admin Panel
-            </div>
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Admin Panel
+                </div>
             <?php endif; ?>
 
             <!-- Nav Item - Manage Collapse Menu -->
             <?php if (hasPermission('CanViewManage')): ?>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Manage</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Manage Group:</h6>
-                    <a class="collapse-item" href="<?= base_url('manage/employees') ?>">Employees</a>
-                    <a class="collapse-item" href="<?= base_url('manage/permissions') ?>">Permissions</a>
-                    <a class="collapse-item" href="<?= base_url('manage/permission_groups') ?>">Permission Groups</a>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Manage</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Manage Group:</h6>
+                        <a class="collapse-item" href="<?= base_url('manage/employees') ?>">Employees</a>
+                        <a class="collapse-item" href="<?= base_url('manage/permissions') ?>">Permissions</a>
+                        <a class="collapse-item" href="<?= base_url('manage/permission_groups') ?>">Permission Groups</a>
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
         <?php endif; ?>
 
-<?php if (hasPermission('CanViewAnimals')||hasPermission('CanViewPen')||hasPermission('CanViewSemen')||hasPermission('CanViewTechnician')||hasPermission('CanViewSchedule')||hasPermission('CanViewVaccinationSchedule')||hasPermission('CanViewDewormingSchedule')): ?>
+        <?php if (hasPermission('CanViewAnimals')||hasPermission('CanViewPen')||hasPermission('CanViewSemen')||hasPermission('CanViewTechnician')||hasPermission('CanViewSchedule')||hasPermission('CanViewVaccinationSchedule')||hasPermission('CanViewDewormingSchedule')): ?>
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 
@@ -175,18 +175,18 @@
 
 <!-- Nav Item - Animals Collapse Menu -->
 <?php if (hasPermission('CanViewAnimals')): ?>
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnimals"
-    aria-expanded="true" aria-controls="collapseAnimals">
-    <i class="fas fa-fw fa-paw"></i>
-    <span>Animals</span>
-</a>
-<div id="collapseAnimals" class="collapse" aria-labelledby="headingAnimals" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Animal Management:</h6>
-        <a class="collapse-item" href="<?= base_url('animals/animalsList') ?>">Manage Animals</a>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnimals"
+        aria-expanded="true" aria-controls="collapseAnimals">
+        <i class="fas fa-fw fa-paw"></i>
+        <span>Animals</span>
+    </a>
+    <div id="collapseAnimals" class="collapse" aria-labelledby="headingAnimals" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Animal Management:</h6>
+            <a class="collapse-item" href="<?= base_url('animals/animalsList') ?>">Manage Animals</a>
+        </div>
     </div>
-</div>
 </li>
 <?php endif; ?>
 
@@ -202,13 +202,13 @@
     <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Management:</h6>
         <?php if (hasPermission('CanViewPen')): ?>
-        <a class="collapse-item" href="<?= base_url('pen-semen-tech/pen') ?>">Pen</a>
+            <a class="collapse-item" href="<?= base_url('pen-semen-tech/pen') ?>">Pen</a>
         <?php endif; ?>
         <?php if (hasPermission('CanViewSemen')): ?>
-        <a class="collapse-item active" href="<?= base_url('pen-semen-tech/semen') ?>">Semen</a>
+            <a class="collapse-item active" href="<?= base_url('pen-semen-tech/semen') ?>">Semen</a>
         <?php endif; ?>
         <?php if (hasPermission('CanViewTechnician')): ?>
-        <a class="collapse-item" href="<?= base_url('pen-semen-tech/technician') ?>">Technician</a>
+            <a class="collapse-item" href="<?= base_url('pen-semen-tech/technician') ?>">Technician</a>
         <?php endif; ?>
     </div>
 </div>
@@ -241,8 +241,8 @@
 <?php endif; ?>
 
 <?php if (hasPermission('CanViewAnimalMilking')||(hasPermission('CanViewDailyMilking'))||(hasPermission('CanViewMilkConsumption'))||(hasPermission('CanViewMilkInOut'))): ?>
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
 <!-- Heading -->
 <div class="sidebar-heading">
     Milking & Production Management
@@ -301,6 +301,32 @@
             <span>Milk In/Out</span></a>
         </li>
     <?php endif; ?>
+
+    <?php if (hasPermission('CanViewStockList')): ?>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+<!-- Heading -->
+<div class="sidebar-heading">
+    Stock Management
+</div>
+<?php endif; ?>
+
+<!-- Nav Item - Stock Collapse Menu -->
+<?php if (hasPermission('CanViewStockList')): ?>
+    <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseStock"
+        aria-expanded="true" aria-controls="collapseStock">
+        <i class="fas fa-fw fa-list"></i>
+        <span>Stock</span>
+    </a>
+    <div id="collapseStock" class="collapse" aria-labelledby="headingStock" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Stock Management:</h6>
+            <a class="collapse-item" href="<?= base_url('stock/stockList') ?>">View Stock List</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
@@ -490,11 +516,11 @@ aria-labelledby="messagesDropdown">
     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span class="mr-2 d-none d-lg-inline text-gray-600 small">
         <?= session()->get('firstname') && session()->get('lastname')
-            ? session()->get('firstname') . ' ' . session()->get('lastname')
-            : 'Guest' ?>
-        </span>
-        <img class="img-profile rounded-circle" src="<?= base_url('assets/sb-admin-2/img/undraw_profile.svg') ?>" alt="...">
-    </a>
+        ? session()->get('firstname') . ' ' . session()->get('lastname')
+        : 'Guest' ?>
+    </span>
+    <img class="img-profile rounded-circle" src="<?= base_url('assets/sb-admin-2/img/undraw_profile.svg') ?>" alt="...">
+</a>
 <!-- Dropdown - User Information -->
 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 aria-labelledby="userDropdown">
@@ -531,9 +557,9 @@ aria-labelledby="userDropdown">
 
     <!-- Add Pen Button -->
     <?php if (hasPermission('CanAddSemen')): ?>
-    <div class="mb-3 text-right">
-        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addSemenModal">+ Add Semen</a>
-    </div>
+        <div class="mb-3 text-right">
+            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addSemenModal">+ Add Semen</a>
+        </div>
     <?php endif; ?>
 
     <!-- Semen Table -->
@@ -541,51 +567,51 @@ aria-labelledby="userDropdown">
         <div class="card-body">
             <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-            <?php endif; ?>
+        <?php endif; ?>
 
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Company</th>
-                            <th>Type</th>
-                            <th>Rate per Semen</th>
-                            <?php if (hasPermission('CanUpdateSemen') || hasPermission('CanDeleteSemen')): ?>
-                            <th>Actions</th>
-                            <?php endif; ?>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($semen as $semen): ?>
-                        <tr>
-                            <td><?= esc($semen['id']) ?></td>
-                            <td><?= esc($semen['sire_name']) ?></td>
-                            <td><?= esc($semen['company_name']) ?></td>
-                            <td><?= esc($semen['type']) ?></td>
-                            <td><?= number_format($semen['rate_per_semen'], 2) ?></td>
-                            <?php if (hasPermission('CanUpdateSemen') || hasPermission('CanDeleteSemen')): ?>
-                            <td>
-                                <?php if (hasPermission('CanUpdateSemen')): ?>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Type</th>
+                        <th>Rate per Semen</th>
+                        <?php if (hasPermission('CanUpdateSemen') || hasPermission('CanDeleteSemen')): ?>
+                        <th>Actions</th>
+                    <?php endif; ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($semen as $semen): ?>
+                    <tr>
+                        <td><?= esc($semen['id']) ?></td>
+                        <td><?= esc($semen['sire_name']) ?></td>
+                        <td><?= esc($semen['company_name']) ?></td>
+                        <td><?= esc($semen['type']) ?></td>
+                        <td><?= number_format($semen['rate_per_semen'], 2) ?></td>
+                        <?php if (hasPermission('CanUpdateSemen') || hasPermission('CanDeleteSemen')): ?>
+                        <td>
+                            <?php if (hasPermission('CanUpdateSemen')): ?>
                                 <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editSemenModal<?= $semen['id'] ?>">Edit</a>
-                                <?php endif; ?>
-                                <?php if (hasPermission('CanDeleteSemen')): ?>
-                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteSemenModal<?= $semen['id'] ?>">Delete</a>
-                                <?php endif; ?>
-                            </td>
                             <?php endif; ?>
-                        </tr>
-                        <?php endforeach; ?>
+                            <?php if (hasPermission('CanDeleteSemen')): ?>
+                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteSemenModal<?= $semen['id'] ?>">Delete</a>
+                            <?php endif; ?>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
 
-                        <?php if (empty($semen)): ?>
-                        <tr><td colspan="6" class="text-center">No semen records found.</td></tr>
-                        <?php endif ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+            <?php if (empty($semen)): ?>
+                <tr><td colspan="6" class="text-center">No semen records found.</td></tr>
+            <?php endif ?>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
 </div>
 
 <!-- Add Semen Modal -->
@@ -596,47 +622,47 @@ aria-labelledby="userDropdown">
         <div class="modal-header">
           <h5 class="modal-title" id="addSemenModalLabel">Add Semen</h5>
           <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-        </div>
+      </div>
 
-        <div class="modal-body">
+      <div class="modal-body">
           <div class="form-group">
             <label for="sireName">Sire Name</label>
             <input type="text" class="form-control" name="sire_name" id="sireName" required>
-          </div>
+        </div>
 
-          <div class="form-group">
+        <div class="form-group">
             <label for="ratePerSemen">Rate per Semen</label>
             <input type="number" step="0.01" class="form-control" name="rate_per_semen" id="ratePerSemen" required>
-          </div>
+        </div>
 
-          <div class="form-group">
+        <div class="form-group">
             <label for="companyId">Company</label>
             <select name="company_id" id="companyId" class="form-control" required>
               <option value="">-- Select Company --</option>
               <?php foreach ($companies as $company): ?>
                 <option value="<?= $company['id'] ?>"><?= esc($company['name']) ?></option>
-              <?php endforeach; ?>
-            </select>
-          </div>
+            <?php endforeach; ?>
+        </select>
+    </div>
 
-          <div class="form-group">
-            <label>Type</label><br>
-            <label class="mr-3">
-              <input type="radio" name="type" value="Conventional" required> Conventional
-            </label>
-            <label>
-              <input type="radio" name="type" value="Sexed" required> Sexed
-            </label>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Add</button>
-        </div>
-      </div>
-    </form>
+    <div class="form-group">
+        <label>Type</label><br>
+        <label class="mr-3">
+          <input type="radio" name="type" value="Conventional" required> Conventional
+      </label>
+      <label>
+          <input type="radio" name="type" value="Sexed" required> Sexed
+      </label>
   </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  <button type="submit" class="btn btn-primary">Add</button>
+</div>
+</div>
+</form>
+</div>
 </div>
 
 

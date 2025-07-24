@@ -87,10 +87,10 @@
                 </div>
 
                 <div class="modal-body">
-                 Are you sure you want to delete <strong><?= esc($record['head_name']) ?></strong>?
-             </div>
+                   Are you sure you want to delete <strong><?= esc($record['head_name']) ?></strong>?
+               </div>
 
-             <div class="modal-footer">
+               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-danger">Yes, Delete</button>
             </div>
@@ -289,12 +289,38 @@
 
 <!-- Nav Item - Milk In/Out -->
 <?php if (hasPermission('CanViewMilkInOut')): ?>
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('milkInOut') ?>">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Milk In/Out</span></a>
-        </li>
+<li class="nav-item">
+    <a class="nav-link" href="<?= base_url('milkInOut') ?>">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Milk In/Out</span></a>
+    </li>
     <?php endif; ?>
+
+    <?php if (hasPermission('CanViewStockList')): ?>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+<!-- Heading -->
+<div class="sidebar-heading">
+    Stock Management
+</div>
+<?php endif; ?>
+
+<!-- Nav Item - Stock Collapse Menu -->
+<?php if (hasPermission('CanViewStockList')): ?>
+<li class="nav-item">
+    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseStock"
+    aria-expanded="true" aria-controls="collapseStock">
+    <i class="fas fa-fw fa-list"></i>
+    <span>Stock</span>
+</a>
+<div id="collapseStock" class="collapse" aria-labelledby="headingStock" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Stock Management:</h6>
+        <a class="collapse-item" href="<?= base_url('stock/stockList') ?>">View Stock List</a>
+    </div>
+</div>
+</li>
+<?php endif; ?>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
