@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Schedule_List UI Page">
+    <meta name="description" content="Stock_List UI Page">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Schedule_List</title>
+    <title>SB Admin 2 - Stock_List</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
@@ -379,6 +379,40 @@
     <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Stock Management:</h6>
         <a class="collapse-item active" href="<?= base_url('stock/stockList') ?>">View Stock List</a>
+    </div>
+</div>
+</li>
+<?php endif; ?>
+
+<!-- Nav Item - Feeding Consumption Collapse Menu -->
+<?php if (hasPermission('CanViewFeedingConsumption')): ?>
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFeedingConsumption"
+    aria-expanded="true" aria-controls="collapseFeedingConsumption">
+    <i class="fas fa-fw fa-utensils"></i>
+    <span>Feeding Consumption</span>
+</a>
+<div id="collapseFeedingConsumption" class="collapse" aria-labelledby="headingFeedingConsumption" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Manage Feed Consumption:</h6>
+        <a class="collapse-item" href="<?= base_url('feeding-consumption/feedingConsumption') ?>">Feeding Consumption</a>
+    </div>
+</div>
+</li>
+<?php endif; ?>
+
+<!-- Nav Item - Medicine Consumption Collapse Menu -->
+<?php if (hasPermission('CanViewMedicineConsumption')): ?>
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicineConsumption"
+    aria-expanded="true" aria-controls="collapseMedicineConsumption">
+    <i class="fas fa-fw fa-first-aid"></i>
+    <span>Medicine Consumption</span>
+</a>
+<div id="collapseMedicineConsumption" class="collapse" aria-labelledby="headingMedicineConsumption" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Manage Medicine Consump:</h6>
+        <a class="collapse-item" href="<?= base_url('medicine-consumption/medicineConsumption') ?>">Medicine Consumption</a>
     </div>
 </div>
 </li>

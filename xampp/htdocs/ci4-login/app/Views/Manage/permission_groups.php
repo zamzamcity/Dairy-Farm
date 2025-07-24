@@ -315,6 +315,40 @@
 </li>
 <?php endif; ?>
 
+<!-- Nav Item - Feeding Consumption Collapse Menu -->
+<?php if (hasPermission('CanViewFeedingConsumption')): ?>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFeedingConsumption"
+        aria-expanded="true" aria-controls="collapseFeedingConsumption">
+        <i class="fas fa-fw fa-utensils"></i>
+        <span>Feeding Consumption</span>
+    </a>
+    <div id="collapseFeedingConsumption" class="collapse" aria-labelledby="headingFeedingConsumption" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Feed Consumption:</h6>
+            <a class="collapse-item" href="<?= base_url('feeding-consumption/feedingConsumption') ?>">Feeding Consumption</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
+
+<!-- Nav Item - Medicine Consumption Collapse Menu -->
+<?php if (hasPermission('CanViewMedicineConsumption')): ?>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicineConsumption"
+        aria-expanded="true" aria-controls="collapseMedicineConsumption">
+        <i class="fas fa-fw fa-first-aid"></i>
+        <span>Medicine Consumption</span>
+    </a>
+    <div id="collapseMedicineConsumption" class="collapse" aria-labelledby="headingMedicineConsumption" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Medicine Consump:</h6>
+            <a class="collapse-item" href="<?= base_url('medicine-consumption/medicineConsumption') ?>">Medicine Consumption</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 

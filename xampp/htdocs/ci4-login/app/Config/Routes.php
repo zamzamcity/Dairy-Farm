@@ -114,5 +114,18 @@ $routes->group('stock', function ($routes) {
     $routes->post('stockList/delete/(:num)', 'StockRegistrationController::deleteStock/$1');
     $routes->post('stockList/add-head', 'StockRegistrationController::addHead');
     $routes->post('stockList/add-unit', 'StockRegistrationController::addUnit');
-    
+});
+
+$routes->group('feeding-consumption', function ($routes) {
+    $routes->get('feedingConsumption', 'FeedingConsumptionController::feedingConsumptionList');
+    $routes->post('feedingConsumption/add', 'FeedingConsumptionController::addFeedingConsumption');
+    $routes->post('feedingConsumption/edit/(:num)', 'FeedingConsumptionController::editFeedingConsumption/$1');
+    $routes->post('feedingConsumption/delete/(:num)', 'FeedingConsumptionController::deleteFeedingConsumption/$1');
+});
+
+$routes->group('medicine-consumption', function ($routes) {
+    $routes->get('medicineConsumption', 'MedicineConsumptionController::medicineConsumptionList');
+    $routes->post('medicineConsumption/add', 'MedicineConsumptionController::addMedicineConsumption');
+    $routes->post('medicineConsumption/edit/(:num)', 'MedicineConsumptionController::editMedicineConsumption/$1');
+    $routes->post('medicineConsumption/delete/(:num)', 'MedicineConsumptionController::deleteMedicineConsumption/$1');
 });
