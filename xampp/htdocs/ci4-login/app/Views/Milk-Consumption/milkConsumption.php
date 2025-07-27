@@ -365,6 +365,31 @@
         </li>
     <?php endif; ?>
 
+    <?php if (hasPermission('CanViewChartOfAccounts')): ?>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+<!-- Heading -->
+<div class="sidebar-heading">
+    Account
+</div>
+<?php endif; ?>
+<!-- Nav Item - Chart of Accounts Collapse Menu -->
+<?php if (hasPermission('CanViewChartOfAccounts')): ?>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseChartOfAccounts"
+        aria-expanded="true" aria-controls="collapseChartOfAccounts">
+        <i class="fas fa-fw fa-file-alt"></i>
+        <span>Chart of Accounts</span>
+    </a>
+    <div id="collapseChartOfAccounts" class="collapse" aria-labelledby="headingChartOfAccounts" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Accounts:</h6>
+            <a class="collapse-item" href="<?= base_url('chart-of-accounts/accountHeads') ?>">Account Heads</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 

@@ -144,3 +144,33 @@ $routes->group('chart-of-accounts', function ($routes) {
     $routes->post('accountHeads/edit/(:num)', 'AccountHeadsController::editAccountHeads/$1');
     $routes->post('accountHeads/delete/(:num)', 'AccountHeadsController::deleteAccountHeads/$1');
 });
+
+
+// Chart of Accounts
+$routes->group('chart-of-accounts', function ($routes) {
+    $routes->get('accountHeads', 'AccountHeadsController::accountHeadsList');
+    $routes->post('accountHeads/add', 'AccountHeadsController::addAccountHeads');
+    $routes->post('accountHeads/edit/(:num)', 'AccountHeadsController::editAccountHeads/$1');
+    $routes->post('accountHeads/delete/(:num)', 'AccountHeadsController::deleteAccountHeads/$1');
+});
+
+// Vouchers
+$routes->group('vouchers', function ($routes) {
+    // Payment Voucher
+    $routes->get('paymentVoucher', 'PaymentVoucherController::paymentVoucher');
+    $routes->post('paymentVoucher/add', 'PaymentVoucherController::addPaymentVoucher');
+    $routes->post('paymentVoucher/edit/(:num)', 'PaymentVoucherController::editPaymentVoucher/$1');
+    $routes->post('paymentVoucher/delete/(:num)', 'PaymentVoucherController::deletePaymentVoucher/$1');
+
+    // Receipt Voucher
+    $routes->get('receiptVoucher', 'ReceiptVoucherController::receiptVoucher');
+    $routes->post('receiptVoucher/add', 'ReceiptVoucherController::addReceiptVoucher');
+    $routes->post('receiptVoucher/edit/(:num)', 'ReceiptVoucherController::editReceiptVoucher/$1');
+    $routes->post('receiptVoucher/delete/(:num)', 'ReceiptVoucherController::deleteReceiptVoucher/$1');
+
+    // Journal Voucher
+    $routes->get('journalVoucher', 'JournalVoucherController::journalVoucher');
+    $routes->post('journalVoucher/add', 'JournalVoucherController::addJournalVoucher');
+    $routes->post('journalVoucher/edit/(:num)', 'JournalVoucherController::editJournalVoucher/$1');
+    $routes->post('journalVoucher/delete/(:num)', 'JournalVoucherController::deleteJournalVoucher/$1');
+});
