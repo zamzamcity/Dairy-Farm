@@ -133,6 +133,14 @@ $routes->group('medicine-consumption', function ($routes) {
     $routes->post('medicineConsumption/delete/(:num)', 'MedicineConsumptionController::deleteMedicineConsumption/$1');
 });
 
-// Stock Ledger
+//Stock Ledger
 $routes->get('stockLedger', 'StockLedgerController::stockLedger');
 $routes->get('stock/exportStockLedger', 'StockLedgerController::exportStockLedger');
+
+//Chart of Accounts
+$routes->group('chart-of-accounts', function ($routes) {
+    $routes->get('accountHeads', 'AccountHeadsController::accountHeadsList');
+    $routes->post('accountHeads/add', 'AccountHeadsController::addAccountHeads');
+    $routes->post('accountHeads/edit/(:num)', 'AccountHeadsController::editAccountHeads/$1');
+    $routes->post('accountHeads/delete/(:num)', 'AccountHeadsController::deleteAccountHeads/$1');
+});

@@ -217,7 +217,7 @@
         </li>
     <?php endif; ?>
 
-<?php if (hasPermission('CanViewStockList')): ?>
+    <?php if (hasPermission('CanViewStockList')): ?>
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 <!-- Heading -->
@@ -245,35 +245,35 @@
 
 <!-- Nav Item - Feeding Consumption Collapse Menu -->
 <?php if (hasPermission('CanViewFeedingConsumption')): ?>
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFeedingConsumption"
-    aria-expanded="true" aria-controls="collapseFeedingConsumption">
-    <i class="fas fa-fw fa-utensils"></i>
-    <span>Feeding Consumption</span>
-</a>
-<div id="collapseFeedingConsumption" class="collapse" aria-labelledby="headingFeedingConsumption" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Manage Feed Consumption:</h6>
-        <a class="collapse-item" href="<?= base_url('feeding-consumption/feedingConsumption') ?>">Feeding Consumption</a>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFeedingConsumption"
+        aria-expanded="true" aria-controls="collapseFeedingConsumption">
+        <i class="fas fa-fw fa-utensils"></i>
+        <span>Feeding Consumption</span>
+    </a>
+    <div id="collapseFeedingConsumption" class="collapse" aria-labelledby="headingFeedingConsumption" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Feed Consumption:</h6>
+            <a class="collapse-item" href="<?= base_url('feeding-consumption/feedingConsumption') ?>">Feeding Consumption</a>
+        </div>
     </div>
-</div>
 </li>
 <?php endif; ?>
 
 <!-- Nav Item - Medicine Consumption Collapse Menu -->
 <?php if (hasPermission('CanViewMedicineConsumption')): ?>
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicineConsumption"
-    aria-expanded="true" aria-controls="collapseMedicineConsumption">
-    <i class="fas fa-fw fa-first-aid"></i>
-    <span>Medicine Consumption</span>
-</a>
-<div id="collapseMedicineConsumption" class="collapse" aria-labelledby="headingMedicineConsumption" data-parent="#accordionSidebar">
-    <div class="bg-white py-2 collapse-inner rounded">
-        <h6 class="collapse-header">Manage Medicine Consump:</h6>
-        <a class="collapse-item" href="<?= base_url('medicine-consumption/medicineConsumption') ?>">Medicine Consumption</a>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicineConsumption"
+        aria-expanded="true" aria-controls="collapseMedicineConsumption">
+        <i class="fas fa-fw fa-first-aid"></i>
+        <span>Medicine Consumption</span>
+    </a>
+    <div id="collapseMedicineConsumption" class="collapse" aria-labelledby="headingMedicineConsumption" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Medicine Consump:</h6>
+            <a class="collapse-item" href="<?= base_url('medicine-consumption/medicineConsumption') ?>">Medicine Consumption</a>
+        </div>
     </div>
-</div>
 </li>
 <?php endif; ?>
 
@@ -285,6 +285,31 @@
             <span>Stock Ledger</span></a>
         </li>
     <?php endif; ?>
+
+    <?php if (hasPermission('CanViewChartOfAccounts')): ?>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+<!-- Heading -->
+<div class="sidebar-heading">
+    Account
+</div>
+<?php endif; ?>
+<!-- Nav Item - Chart of Accounts Collapse Menu -->
+<?php if (hasPermission('CanViewChartOfAccounts')): ?>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseChartOfAccounts"
+        aria-expanded="true" aria-controls="collapseChartOfAccounts">
+        <i class="fas fa-fw fa-file-alt"></i>
+        <span>Chart of Accounts</span>
+    </a>
+    <div id="collapseChartOfAccounts" class="collapse" aria-labelledby="headingChartOfAccounts" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Accounts:</h6>
+            <a class="collapse-item" href="<?= base_url('chart-of-accounts/accountHeads') ?>">Account Heads</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">

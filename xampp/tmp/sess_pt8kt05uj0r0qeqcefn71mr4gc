@@ -1,4 +1,4 @@
- PMA_token |s:32:"7378766447446f6a435f6a25343f564e"; HMAC_secret |s:16:"q,'"@733hBYqcee!";browser_access_time|a:4:{s:7:"default";i:1753591303;s:36:"fe821dae-80b5-3822-a5b2-d1ab561959bb";i:1753527201;s:36:"7c9ab395-60c3-4e0e-3555-eed2c9957ad4";i:1753536309;s:36:"e8795301-f554-3466-194e-5c16794df09d";i:1753592617;}relation|a:1:{i:1;a:41:{s:7:"version";s:5:"5.2.1";s:4:"user";N;s:2:"db";N;s:8:"bookmark";N;s:15:"central_columns";N;s:11:"column_info";N;s:17:"designer_settings";N;s:16:"export_templates";N;s:8:"favorite";N;s:7:"history";N;s:16:"navigationhiding";N;s:9:"pdf_pages";N;s:6:"recent";N;s:8:"relation";N;s:13:"savedsearches";N;s:12:"table_coords";N;s:10:"table_info";N;s:13:"table_uiprefs";N;s:8:"tracking";N;s:10:"userconfig";N;s:10:"usergroups";N;s:5:"users";N;s:12:"bookmarkwork";b:0;s:8:"mimework";b:0;s:18:"centralcolumnswork";b:0;s:8:"commwork";b:0;s:9:"menuswork";b:0;s:20:"designersettingswork";b:0;s:11:"displaywork";b:0;s:19:"exporttemplateswork";b:0;s:12:"favoritework";b:0;s:7:"navwork";b:0;s:7:"pdfwork";b:0;s:10:"recentwork";b:0;s:7:"relwork";b:0;s:17:"savedsearcheswork";b:0;s:11:"historywork";b:0;s:12:"trackingwork";b:0;s:11:"uiprefswork";b:0;s:14:"userconfigwork";b:0;s:8:"allworks";b:0;}}userconfig|a:2:{s:2:"db";a:1:{s:12:"Console/Mode";s:8:"collapse";}s:2:"ts";i:1753591303;}two_factor_check|b:1;cache|a:2:{s:8:"server_1";a:4:{s:15:"userprefs_mtime";i:1753591303;s:14:"userprefs_type";s:7:"session";s:12:"config_mtime";i:1753518299;s:9:"userprefs";a:1:{s:7:"Console";a:1:{s:4:"Mode";s:8:"collapse";}}}s:13:"server_1_root";a:17:{s:17:"is_create_db_priv";b:1;s:14:"is_reload_priv";b:1;s:12:"db_to_create";s:0:"";s:30:"dbs_where_create_table_allowed";a:1:{i:0;s:1:"*";}s:11:"dbs_to_test";b:0;s:9:"proc_priv";b:1;s:10:"table_priv";b:1;s:8:"col_priv";b:1;s:7:"db_priv";b:1;s:14:"menu-levels-db";a:14:{s:9:"structure";s:9:"Structure";s:3:"sql";s:3:"SQL";s:6:"search";s:6:"Search";s:5:"query";s:5:"Query";s:6:"export";s:6:"Export";s:6:"import";s:6:"Import";s:9:"operation";s:10:"Operations";s:10:"privileges";s:10:"Privileges";s:8:"routines";s:8:"Routines";s:6:"events";s:6:"Events";s:8:"triggers";s:8:"Triggers";s:8:"tracking";s:8:"Tracking";s:8:"designer";s:8:"Designer";s:15:"central_columns";s:15:"Central columns";}s:11:"binary_logs";a:0:{}s:18:"menu-levels-server";a:13:{s:9:"databases";s:9:"Databases";s:3:"sql";s:3:"SQL";s:6:"status";s:6:"Status";s:6:"rights";s:5:"Users";s:6:"export";s:6:"Export";s:6:"import";s:6:"Import";s:8:"settings";s:8:"Settings";s:6:"binlog";s:10:"Binary log";s:11:"replication";s:11:"Replication";s:4:"vars";s:9:"Variables";s:7:"charset";s:8:"Charsets";s:7:"plugins";s:7:"Plugins";s:6:"engine";s:7:"Engines";}s:19:"profiling_supported";b:1;s:17:"menu-levels-table";a:11:{s:6:"browse";s:6:"Browse";s:9:"structure";s:9:"Structure";s:3:"sql";s:3:"SQL";s:6:"search";s:6:"Search";s:6:"insert";s:6:"Insert";s:6:"export";s:6:"Export";s:6:"import";s:6:"Import";s:10:"privileges";s:10:"Privileges";s:9:"operation";s:10:"Operations";s:8:"tracking";s:8:"Tracking";s:8:"triggers";s:8:"Triggers";}s:12:"is_superuser";b:0;s:14:"mysql_cur_user";s:14:"root@localhost";s:12:"is_grantuser";b:1;}}flashMessages|a:0:{}tmpval|a:16:{s:18:"table_limit_offset";i:0;s:21:"table_limit_offset_db";s:8:"usama_db";s:14:"favoriteTables";a:1:{i:1;a:0:{}}s:12:"recentTables";a:1:{i:1;a:1:{i:0;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:18:"stock_registration";}}}s:13:"table_uiprefs";a:1:{i:1;a:1:{s:8:"usama_db";a:1:{s:18:"stock_registration";a:0:{}}}}s:5:"query";a:2:{s:32:"62a0c55c4c49729585b3560171942953";a:8:{s:3:"sql";s:422:"CREATE OR REPLACE VIEW stock_ledger_view AS
+ PMA_token |s:32:"7378766447446f6a435f6a25343f564e"; HMAC_secret |s:16:"q,'"@733hBYqcee!";browser_access_time|a:5:{s:7:"default";i:1753613058;s:36:"fe821dae-80b5-3822-a5b2-d1ab561959bb";i:1753527201;s:36:"7c9ab395-60c3-4e0e-3555-eed2c9957ad4";i:1753536309;s:36:"e8795301-f554-3466-194e-5c16794df09d";i:1753592617;s:36:"ee7cd35a-7dbc-1693-dc7a-c5b4e878bc31";i:1753612071;}relation|a:1:{i:1;a:41:{s:7:"version";s:5:"5.2.1";s:4:"user";N;s:2:"db";N;s:8:"bookmark";N;s:15:"central_columns";N;s:11:"column_info";N;s:17:"designer_settings";N;s:16:"export_templates";N;s:8:"favorite";N;s:7:"history";N;s:16:"navigationhiding";N;s:9:"pdf_pages";N;s:6:"recent";N;s:8:"relation";N;s:13:"savedsearches";N;s:12:"table_coords";N;s:10:"table_info";N;s:13:"table_uiprefs";N;s:8:"tracking";N;s:10:"userconfig";N;s:10:"usergroups";N;s:5:"users";N;s:12:"bookmarkwork";b:0;s:8:"mimework";b:0;s:18:"centralcolumnswork";b:0;s:8:"commwork";b:0;s:9:"menuswork";b:0;s:20:"designersettingswork";b:0;s:11:"displaywork";b:0;s:19:"exporttemplateswork";b:0;s:12:"favoritework";b:0;s:7:"navwork";b:0;s:7:"pdfwork";b:0;s:10:"recentwork";b:0;s:7:"relwork";b:0;s:17:"savedsearcheswork";b:0;s:11:"historywork";b:0;s:12:"trackingwork";b:0;s:11:"uiprefswork";b:0;s:14:"userconfigwork";b:0;s:8:"allworks";b:0;}}userconfig|a:2:{s:2:"db";a:1:{s:12:"Console/Mode";s:8:"collapse";}s:2:"ts";i:1753613058;}two_factor_check|b:1;cache|a:2:{s:8:"server_1";a:3:{s:15:"userprefs_mtime";i:1753612990;s:14:"userprefs_type";s:7:"session";s:12:"config_mtime";i:1753607557;}s:13:"server_1_root";a:17:{s:17:"is_create_db_priv";b:1;s:14:"is_reload_priv";b:1;s:12:"db_to_create";s:0:"";s:30:"dbs_where_create_table_allowed";a:1:{i:0;s:1:"*";}s:11:"dbs_to_test";b:0;s:9:"proc_priv";b:1;s:10:"table_priv";b:1;s:8:"col_priv";b:1;s:7:"db_priv";b:1;s:14:"menu-levels-db";a:14:{s:9:"structure";s:9:"Structure";s:3:"sql";s:3:"SQL";s:6:"search";s:6:"Search";s:5:"query";s:5:"Query";s:6:"export";s:6:"Export";s:6:"import";s:6:"Import";s:9:"operation";s:10:"Operations";s:10:"privileges";s:10:"Privileges";s:8:"routines";s:8:"Routines";s:6:"events";s:6:"Events";s:8:"triggers";s:8:"Triggers";s:8:"tracking";s:8:"Tracking";s:8:"designer";s:8:"Designer";s:15:"central_columns";s:15:"Central columns";}s:11:"binary_logs";a:0:{}s:18:"menu-levels-server";a:13:{s:9:"databases";s:9:"Databases";s:3:"sql";s:3:"SQL";s:6:"status";s:6:"Status";s:6:"rights";s:5:"Users";s:6:"export";s:6:"Export";s:6:"import";s:6:"Import";s:8:"settings";s:8:"Settings";s:6:"binlog";s:10:"Binary log";s:11:"replication";s:11:"Replication";s:4:"vars";s:9:"Variables";s:7:"charset";s:8:"Charsets";s:7:"plugins";s:7:"Plugins";s:6:"engine";s:7:"Engines";}s:19:"profiling_supported";b:1;s:17:"menu-levels-table";a:11:{s:6:"browse";s:6:"Browse";s:9:"structure";s:9:"Structure";s:3:"sql";s:3:"SQL";s:6:"search";s:6:"Search";s:6:"insert";s:6:"Insert";s:6:"export";s:6:"Export";s:6:"import";s:6:"Import";s:10:"privileges";s:10:"Privileges";s:9:"operation";s:10:"Operations";s:8:"tracking";s:8:"Tracking";s:8:"triggers";s:8:"Triggers";}s:12:"is_superuser";b:0;s:14:"mysql_cur_user";s:14:"root@localhost";s:12:"is_grantuser";b:1;}}flashMessages|a:0:{}tmpval|a:16:{s:18:"table_limit_offset";i:0;s:21:"table_limit_offset_db";s:8:"usama_db";s:14:"favoriteTables";a:1:{i:1;a:0:{}}s:12:"recentTables";a:1:{i:1;a:2:{i:0;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"account_heads";}i:1;a:2:{s:2:"db";s:8:"usama_db";s:5:"table";s:18:"stock_registration";}}}s:13:"table_uiprefs";a:1:{i:1;a:1:{s:8:"usama_db";a:2:{s:18:"stock_registration";a:0:{}s:13:"account_heads";a:0:{}}}}s:5:"query";a:7:{s:32:"62a0c55c4c49729585b3560171942953";a:8:{s:3:"sql";s:422:"CREATE OR REPLACE VIEW stock_ledger_view AS
 SELECT 
     sr.id AS stock_id,
     sr.product_name,
@@ -15,7 +15,37 @@ JOIN
 JOIN 
     stock_units su ON sr.unit_id = su.id
 WHERE 
-    sr.is_stock_item = 1;";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"b43514a4a02d9cd71152a5082d2b2bc1";a:8:{s:3:"sql";s:34:"SELECT * FROM `stock_registration`";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}}s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;s:12:"display_blob";b:0;s:19:"hide_transformation";b:0;s:3:"pos";i:0;s:8:"max_rows";i:25;s:12:"repeat_cells";i:100;s:20:"possible_as_geometry";b:1;}ConfigFile1|a:2:{s:7:"Console";a:1:{s:4:"Mode";s:8:"collapse";}s:7:"Servers";a:1:{i:1;a:2:{s:7:"only_db";s:0:"";s:7:"hide_db";s:0:"";}}}debug|a:0:{}is_multi_query|b:0;sql_history|a:4:{i:0;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:18:"stock_registration";s:8:"sqlquery";s:34:"SELECT * FROM `stock_registration`";}i:1;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:422:"CREATE OR REPLACE VIEW stock_ledger_view AS
+    sr.is_stock_item = 1;";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"b43514a4a02d9cd71152a5082d2b2bc1";a:8:{s:3:"sql";s:34:"SELECT * FROM `stock_registration`";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"28912716423cf7e68cd19db0825a6cd1";a:8:{s:3:"sql";s:884:"CREATE TABLE `account_heads` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `account_code` VARCHAR(20) NOT NULL UNIQUE,  -- e.g., 1001, EXP-001
+    `name` VARCHAR(100) NOT NULL,                -- e.g., Cash, Salary
+    `type` ENUM(
+        'cash-in-hand',
+        'bank accounts',
+        'current liabilities/loans',
+        'capital account',
+        'cost of goods sales',
+        'expense',
+        'direct income',
+        'stock assets',
+        'fixed assets',
+        'current assets',
+        'creditors/vendors',
+        'customer',
+        'employee',
+        'milk incentive'
+    ) NOT NULL,
+    `opening_balance` DECIMAL(15,2) DEFAULT 0.00, -- Opening balance of the account
+    `description` TEXT DEFAULT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"c996bd1af7bad2073bb14d91a29e0ccc";a:8:{s:3:"sql";s:335:"INSERT INTO `account_heads` (`account_code`, `name`, `type`, `opening_balance`, `description`)
+VALUES
+('1001', 'Cash In Hand', 'cash-in-hand', 50000.00, 'Main cash account'),
+('2001', 'Meezan Bank Account', 'bank accounts', 120000.00, 'Company bank account'),
+('3001', 'Salary Expense', 'expense', 0.00, 'Monthly salary payments');";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"f6801fd71d589bfb088d15b7bc5f25f6";a:8:{s:3:"sql";s:29:"SELECT * FROM `account_heads`";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"7d37576a09d4de1979b7133b3eb6f57b";a:8:{s:3:"sql";s:68:"SELECT * FROM `account_heads`  
+ORDER BY `account_heads`.`type` DESC";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}s:32:"0684185ded2a3a339eebeb1a8b1a1b4b";a:8:{s:3:"sql";s:67:"SELECT * FROM `account_heads`  
+ORDER BY `account_heads`.`type` ASC";s:12:"repeat_cells";i:100;s:8:"max_rows";i:25;s:3:"pos";i:0;s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;}}s:6:"pftext";s:1:"P";s:18:"relational_display";s:1:"K";s:9:"geoOption";s:4:"GEOM";s:14:"display_binary";b:1;s:12:"display_blob";b:0;s:19:"hide_transformation";b:0;s:3:"pos";i:0;s:8:"max_rows";i:25;s:12:"repeat_cells";i:100;s:20:"possible_as_geometry";b:1;}ConfigFile1|a:2:{s:7:"Console";a:1:{s:4:"Mode";s:8:"collapse";}s:7:"Servers";a:1:{i:1;a:2:{s:7:"only_db";s:0:"";s:7:"hide_db";s:0:"";}}}debug|a:0:{}is_multi_query|b:0;sql_history|a:15:{i:0;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:18:"stock_registration";s:8:"sqlquery";s:34:"SELECT * FROM `stock_registration`";}i:1;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:422:"CREATE OR REPLACE VIEW stock_ledger_view AS
 SELECT 
     sr.id AS stock_id,
     sr.product_name,
@@ -32,4 +62,37 @@ JOIN
 JOIN 
     stock_units su ON sr.unit_id = su.id
 WHERE 
-    sr.is_stock_item = 1;";}i:2;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:18:"stock_registration";s:8:"sqlquery";s:34:"SELECT * FROM `stock_registration`";}i:3;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:18:"stock_registration";s:8:"sqlquery";s:34:"SELECT * FROM `stock_registration`";}}Import_message|a:2:{s:7:"message";N;s:11:"go_back_url";s:47:"index.php?route=/database/structure&db=usama_db";}errors|a:0:{}
+    sr.is_stock_item = 1;";}i:2;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:18:"stock_registration";s:8:"sqlquery";s:34:"SELECT * FROM `stock_registration`";}i:3;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:18:"stock_registration";s:8:"sqlquery";s:34:"SELECT * FROM `stock_registration`";}i:4;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:18:"stock_registration";s:8:"sqlquery";s:34:"SELECT * FROM `stock_registration`";}i:5;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:0:"";s:8:"sqlquery";s:884:"CREATE TABLE `account_heads` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `account_code` VARCHAR(20) NOT NULL UNIQUE,  -- e.g., 1001, EXP-001
+    `name` VARCHAR(100) NOT NULL,                -- e.g., Cash, Salary
+    `type` ENUM(
+        'cash-in-hand',
+        'bank accounts',
+        'current liabilities/loans',
+        'capital account',
+        'cost of goods sales',
+        'expense',
+        'direct income',
+        'stock assets',
+        'fixed assets',
+        'current assets',
+        'creditors/vendors',
+        'customer',
+        'employee',
+        'milk incentive'
+    ) NOT NULL,
+    `opening_balance` DECIMAL(15,2) DEFAULT 0.00, -- Opening balance of the account
+    `description` TEXT DEFAULT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+    `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);";}i:6;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"account_heads";s:8:"sqlquery";s:29:"SELECT * FROM `account_heads`";}i:7;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"account_heads";s:8:"sqlquery";s:335:"INSERT INTO `account_heads` (`account_code`, `name`, `type`, `opening_balance`, `description`)
+VALUES
+('1001', 'Cash In Hand', 'cash-in-hand', 50000.00, 'Main cash account'),
+('2001', 'Meezan Bank Account', 'bank accounts', 120000.00, 'Company bank account'),
+('3001', 'Salary Expense', 'expense', 0.00, 'Monthly salary payments');";}i:8;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"account_heads";s:8:"sqlquery";s:29:"SELECT * FROM `account_heads`";}i:9;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"account_heads";s:8:"sqlquery";s:29:"SELECT * FROM `account_heads`";}i:10;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"account_heads";s:8:"sqlquery";s:67:"SELECT * FROM `account_heads`  
+ORDER BY `account_heads`.`type` ASC";}i:11;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"account_heads";s:8:"sqlquery";s:68:"SELECT * FROM `account_heads`  
+ORDER BY `account_heads`.`type` DESC";}i:12;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"account_heads";s:8:"sqlquery";s:68:"SELECT * FROM `account_heads`  
+ORDER BY `account_heads`.`type` DESC";}i:13;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"account_heads";s:8:"sqlquery";s:67:"SELECT * FROM `account_heads`  
+ORDER BY `account_heads`.`type` ASC";}i:14;a:3:{s:2:"db";s:8:"usama_db";s:5:"table";s:13:"account_heads";s:8:"sqlquery";s:67:"SELECT * FROM `account_heads`  
+ORDER BY `account_heads`.`type` ASC";}}Import_message|a:2:{s:7:"message";N;s:11:"go_back_url";s:64:"index.php?route=/table/structure&db=usama_db&table=account_heads";}errors|a:0:{}
