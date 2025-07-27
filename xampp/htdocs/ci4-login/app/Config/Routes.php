@@ -107,6 +107,7 @@ $routes->group('milk-consumption', function ($routes) {
 // Milk In/Out
 $routes->get('milkInOut', 'MilkInOutController::milkInOutDetails');
 
+//Stock
 $routes->group('stock', function ($routes) {
     $routes->get('stockList', 'StockRegistrationController::stockList');
     $routes->post('stockList/add', 'StockRegistrationController::addStock');
@@ -116,6 +117,7 @@ $routes->group('stock', function ($routes) {
     $routes->post('stockList/add-unit', 'StockRegistrationController::addUnit');
 });
 
+//Feeding Consumption
 $routes->group('feeding-consumption', function ($routes) {
     $routes->get('feedingConsumption', 'FeedingConsumptionController::feedingConsumptionList');
     $routes->post('feedingConsumption/add', 'FeedingConsumptionController::addFeedingConsumption');
@@ -123,9 +125,14 @@ $routes->group('feeding-consumption', function ($routes) {
     $routes->post('feedingConsumption/delete/(:num)', 'FeedingConsumptionController::deleteFeedingConsumption/$1');
 });
 
+//Medicine Consumption
 $routes->group('medicine-consumption', function ($routes) {
     $routes->get('medicineConsumption', 'MedicineConsumptionController::medicineConsumptionList');
     $routes->post('medicineConsumption/add', 'MedicineConsumptionController::addMedicineConsumption');
     $routes->post('medicineConsumption/edit/(:num)', 'MedicineConsumptionController::editMedicineConsumption/$1');
     $routes->post('medicineConsumption/delete/(:num)', 'MedicineConsumptionController::deleteMedicineConsumption/$1');
 });
+
+// Stock Ledger
+$routes->get('stockLedger', 'StockLedgerController::stockLedger');
+$routes->get('stock/exportStockLedger', 'StockLedgerController::exportStockLedger');

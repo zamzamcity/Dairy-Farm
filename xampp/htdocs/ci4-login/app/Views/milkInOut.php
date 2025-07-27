@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Schedule_List UI Page">
+    <meta name="description" content="Milk_In/Out UI Page">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Schedule_List</title>
+    <title>SB Admin 2 - Milk_In/Out</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
@@ -278,6 +278,15 @@
 </li>
 <?php endif; ?>
 
+<!-- Nav Item - Stock Ledger -->
+<?php if (hasPermission('CanViewStockLedger')): ?>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('stockLedger') ?>">
+            <i class="fas fa-fw fa-clipboard-list"></i>
+            <span>Stock Ledger</span></a>
+        </li>
+    <?php endif; ?>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 
@@ -500,8 +509,6 @@ aria-labelledby="userDropdown">
 <!-- End of Topbar -->
 
 <!-- Begin Page Content -->
-
-
 <div class="container-fluid">
     <h1 class="h3 mb-4 text-gray-800">Milk In / Out</h1>
 

@@ -363,6 +363,15 @@
 </li>
 <?php endif; ?>
 
+<!-- Nav Item - Stock Ledger -->
+<?php if (hasPermission('CanViewStockLedger')): ?>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('stockLedger') ?>">
+            <i class="fas fa-fw fa-clipboard-list"></i>
+            <span>Stock Ledger</span></a>
+        </li>
+    <?php endif; ?>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 

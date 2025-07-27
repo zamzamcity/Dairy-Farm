@@ -23,10 +23,74 @@
 </head>
 
 
-<!-- Edit Stock Registration Modal -->
+<?php foreach ($feeding_consumptions as $feed): ?>
+<!-- Edit Feeding Consumption Modal -->
+<div class="modal fade" id="editFeedingConsumptionModal<?= $feed['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="editFeedingConsumptionModalLabel<?= $feed['id'] ?>" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form action="<?= base_url('feeding-consumption/feedingConsumption/edit/' . $feed['id']) ?>" method="post">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Feeding Consumption</h5>
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" name="date" class="form-control" required value="<?= esc($feed['date']) ?>">
+          </div>
+
+          <div class="form-group">
+            <label>Feeding Product</label>
+            <select name="product_id" class="form-control" required>
+              <option value="">Select Product</option>
+              <?php foreach ($feeding_products as $product): ?>
+                <option value="<?= $product['id'] ?>" <?= $product['id'] == $feed['product_id'] ? 'selected' : '' ?>>
+                  <?= esc($product['product_name']) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Quantity</label>
+            <input type="number" step="0.01" name="quantity" class="form-control" value="<?= esc($feed['quantity']) ?>" required>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<?php endforeach; ?>
 
 
-<!-- Delete Stock Registration Modal -->
+<?php foreach ($feeding_consumptions as $feed): ?>
+<!-- Delete Feeding Consumption Modal -->
+<div class="modal fade" id="deleteFeedingConsumptionModal<?= $feed['id'] ?>" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <form action="<?= base_url('feeding-consumption/feedingConsumption/delete/' . $feed['id']) ?>" method="post">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Delete</h5>
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete "<strong><?= esc($feed['product_name']) ?></strong>"?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<?php endforeach; ?>
 
 
 <body id="page-top">
@@ -283,6 +347,15 @@
 </div>
 </li>
 <?php endif; ?>
+
+<!-- Nav Item - Stock Ledger -->
+<?php if (hasPermission('CanViewStockLedger')): ?>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('stockLedger') ?>">
+            <i class="fas fa-fw fa-clipboard-list"></i>
+            <span>Stock Ledger</span></a>
+        </li>
+    <?php endif; ?>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
@@ -569,7 +642,7 @@ aria-labelledby="userDropdown">
                         <?php endif; ?>
                         <?php if (!empty($feeding_consumptions)): ?>
                         <tr>
-                            <td colspan="3"><strong>Total Quantity</strong></td>
+                            <td colspan="3" class="text-center"><strong>Total Quantity</strong></td>
                             <td><strong><?= esc($total_quantity) ?></strong></td>
                             <?php if (hasPermission('CanUpdateFeedingConsumption') || hasPermission('CanDeleteFeedingConsumption')): ?>
                             <td></td>
@@ -583,7 +656,48 @@ aria-labelledby="userDropdown">
     </div>
 </div>
 
-<!-- Add Stock Registration Modal -->
+<!-- Add Feeding Consumption Modal -->
+<div class="modal fade" id="addFeedingConsumptionModal" tabindex="-1" role="dialog" aria-labelledby="addFeedingConsumptionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form action="<?= base_url('feeding-consumption/feedingConsumption/add') ?>" method="post">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Feeding Consumption</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" name="date" class="form-control" required value="<?= date('Y-m-d') ?>">
+          </div>
+
+          <div class="form-group">
+            <label for="product_id">Feeding Product</label>
+            <select name="product_id" class="form-control" required>
+              <option value="">Select Product</option>
+              <?php foreach ($feeding_products as $product): ?>
+                <option value="<?= esc($product['id']) ?>"><?= esc($product['product_name']) ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" step="0.01" name="quantity" class="form-control" required>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Add</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 
 
 <!-- /.container-fluid -->
