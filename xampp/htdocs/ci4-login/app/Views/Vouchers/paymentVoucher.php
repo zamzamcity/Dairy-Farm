@@ -23,10 +23,105 @@
 </head>
 
 
-<!-- Edit Account Head Modal -->
+<!-- Edit Payment Voucher Modal -->
+<?php foreach ($vouchers as $voucher): ?>
+<div class="modal fade" id="editPaymentVoucherModal<?= $voucher['id'] ?>" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <form action="<?= base_url('vouchers/paymentVoucher/edit/' . $voucher['id']) ?>" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Payment Voucher</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row mb-3">
+                        <div class="col-md-3">
+                            <label>Voucher Number</label>
+                            <input type="text" class="form-control" value="<?= esc($voucher['voucher_number']) ?>" readonly>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Date</label>
+                            <input type="date" name="date" class="form-control" value="<?= esc($voucher['date']) ?>" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Reference No</label>
+                            <input type="text" name="reference_no" class="form-control" value="<?= esc($voucher['reference_no']) ?>">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Description</label>
+                            <input type="text" name="description" class="form-control" value="<?= esc($voucher['description']) ?>">
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered entry-table">
+                        <thead>
+                            <tr>
+                                <th>Account Head</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Narration</th>
+                                <th><button type="button" class="btn btn-sm btn-success add-row">+</button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($voucher['entries'] as $i => $entry): ?>
+                            <tr>
+                                <td>
+                                    <select name="entries[<?= $i ?>][account_head_id]" class="form-control" required>
+                                        <option value="">Select Account</option>
+                                        <?php foreach ($account_heads as $head): ?>
+                                        <option value="<?= $head['id'] ?>" <?= $head['id'] == $entry['account_head_id'] ? 'selected' : '' ?>>
+                                            <?= esc($head['name']) ?>
+                                        </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="entries[<?= $i ?>][type]" class="form-control" required>
+                                        <option value="debit" <?= $entry['type'] == 'debit' ? 'selected' : '' ?>>Debit</option>
+                                        <option value="credit" <?= $entry['type'] == 'credit' ? 'selected' : '' ?>>Credit</option>
+                                    </select>
+                                </td>
+                                <td><input type="number" name="entries[<?= $i ?>][amount]" class="form-control" value="<?= esc($entry['amount']) ?>" step="0.01" required></td>
+                                <td><input type="text" name="entries[<?= $i ?>][narration]" class="form-control" value="<?= esc($entry['narration']) ?>"></td>
+                                <td><button type="button" class="btn btn-sm btn-danger remove-row">×</button></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Update Voucher</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 
-<!-- Delete Account Head Modal -->
+<!-- Delete Payment Voucher Modal -->
+<div class="modal fade" id="deletePaymentVoucherModal<?= $voucher['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="deletePaymentVoucherModalLabel<?= $voucher['id'] ?>" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form action="<?= base_url('vouchers/paymentVoucher/delete/' . $voucher['id']) ?>" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Voucher</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this voucher?
+                    <br><strong>Voucher #:</strong> <?= esc($voucher['voucher_number']) ?>
+                    <br><strong>Date:</strong> <?= esc($voucher['date']) ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<?php endforeach; ?>
 
 
 <body id="page-top">
@@ -337,6 +432,23 @@
 </li>
 <?php endif; ?>
 
+<!-- Nav Item - Ledger Collapse Menu -->
+<?php if (hasPermission('CanViewLedger')): ?>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLedger"
+        aria-expanded="true" aria-controls="collapseLedger">
+        <i class="fas fa-fw fa-clipboard-list"></i>
+        <span>Ledger</span>
+    </a>
+    <div id="collapseLedger" class="collapse" aria-labelledby="headingLedger" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Ledger:</h6>
+            <a class="collapse-item" href="<?= base_url('ledger/accountLedger') ?>">Account Ledger</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 
@@ -626,7 +738,74 @@ aria-labelledby="userDropdown">
     </div>
 </div>
 
-<!-- Add Account Head Modal -->
+<!-- Add Payment Voucher Modal -->
+<div class="modal fade" id="addPaymentVoucherModal" tabindex="-1" role="dialog" aria-labelledby="addPaymentVoucherModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <form action="<?= base_url('vouchers/paymentVoucher/add') ?>" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Payment Voucher</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-row mb-3">
+                        <div class="col-md-3">
+                            <label>Date</label>
+                            <input type="date" name="date" class="form-control" value="<?= date('Y-m-d') ?>" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Reference No</label>
+                            <input type="text" name="reference_no" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Description</label>
+                            <input type="text" name="description" class="form-control">
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered entry-table">
+                        <thead>
+                            <tr>
+                                <th>Account Head</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Narration</th>
+                                <th><button type="button" class="btn btn-sm btn-success add-row">+</button></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <select name="entries[0][account_head_id]" class="form-control" required>
+                                        <option value="">Select Account</option>
+                                        <?php foreach ($account_heads as $head): ?>
+                                        <option value="<?= $head['id'] ?>"><?= esc($head['name']) ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="entries[0][type]" class="form-control" required>
+                                        <option value="debit">Debit</option>
+                                        <option value="credit">Credit</option>
+                                    </select>
+                                </td>
+                                <td><input type="number" name="entries[0][amount]" class="form-control" step="0.01" required></td>
+                                <td><input type="text" name="entries[0][narration]" class="form-control"></td>
+                                <td><button type="button" class="btn btn-sm btn-danger remove-row">×</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save Voucher</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 
 <!-- /.container-fluid -->
@@ -684,6 +863,29 @@ aria-hidden="true">
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/sb-admin-2/js/sb-admin-2.min.js') ?>"></script>
+
+<script>
+    $(document).on('click', '.add-row', function () {
+        var $table = $(this).closest('table');
+        var index = $table.find('tbody tr').length;
+        var $clone = $table.find('tbody tr:first').clone();
+
+        $clone.find('input, select').each(function () {
+            var name = $(this).attr('name');
+            var newName = name.replace(/\[\d+\]/, '[' + index + ']');
+            $(this).attr('name', newName).val('');
+        });
+
+        $table.find('tbody').append($clone);
+    });
+
+    $(document).on('click', '.remove-row', function () {
+        var $rows = $(this).closest('table').find('tbody tr');
+        if ($rows.length > 1) {
+            $(this).closest('tr').remove();
+        }
+    });
+</script>
 
 </body>
 

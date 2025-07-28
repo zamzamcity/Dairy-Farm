@@ -22,17 +22,18 @@ class PaymentVoucherController extends BaseController
     public function paymentVoucher()
     {
         $vouchers = $this->voucherModel
-            ->where('voucher_type', 'payment')
-            ->orderBy('date', 'DESC')
-            ->findAll();
+        ->where('voucher_type', 'payment')
+        ->orderBy('date', 'DESC')
+        ->findAll();
 
         foreach ($vouchers as &$voucher) {
             $voucher['entries'] = $this->voucherEntryModel
-                ->where('voucher_id', $voucher['id'])
-                ->findAll();
+            ->where('voucher_id', $voucher['id'])
+            ->findAll();
         }
 
         $account_heads = $this->accountHeadModel->orderBy('name')->findAll();
+
 
         return view('vouchers/paymentVoucher', [
             'vouchers' => $vouchers,
@@ -44,7 +45,16 @@ class PaymentVoucherController extends BaseController
     {
         $data = $this->request->getPost();
         
+        $lastVoucher = $this->voucherModel
+        ->where('voucher_type', 'payment')
+        ->orderBy('id', 'DESC')
+        ->first();
+
+        $lastId = $lastVoucher ? $lastVoucher['id'] + 1 : 1;
+        $voucher_number = 'PV-' . str_pad($lastId, 4, '0', STR_PAD_LEFT);
+
         $voucherData = [
+            'voucher_number' => $voucher_number,
             'voucher_type' => 'payment',
             'date'         => $data['date'],
             'reference_no' => $data['reference_no'],
@@ -74,6 +84,7 @@ class PaymentVoucherController extends BaseController
         $data = $this->request->getPost();
 
         $voucherData = [
+            'voucher_type'   => 'payment', 
             'date'         => $data['date'],
             'reference_no' => $data['reference_no'],
             'description'  => $data['description']
@@ -81,7 +92,6 @@ class PaymentVoucherController extends BaseController
 
         $this->voucherModel->update($id, $voucherData);
 
-        // Delete old entries and insert new ones
         $this->voucherEntryModel->where('voucher_id', $id)->delete();
 
         foreach ($data['entries'] as $entry) {

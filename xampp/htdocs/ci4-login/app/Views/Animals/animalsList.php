@@ -491,6 +491,42 @@
 </li>
 <?php endif; ?>
 
+<!-- Nav Item - Vouchers Collapse Menu -->
+<?php if (hasPermission('CanViewVouchers')): ?>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVouchers"
+        aria-expanded="true" aria-controls="collapseVouchers">
+        <i class="fas fa-fw fa-credit-card"></i>
+        <span>Vouchers</span>
+    </a>
+    <div id="collapseVouchers" class="collapse" aria-labelledby="headingVouchers" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Vouchers:</h6>
+            <a class="collapse-item" href="<?= base_url('vouchers/paymentVoucher') ?>">Payment Voucher</a>
+            <a class="collapse-item" href="<?= base_url('vouchers/receiptVoucher') ?>">Receipt Voucher</a>
+            <a class="collapse-item" href="<?= base_url('vouchers/journalVoucher') ?>">Journal Voucher</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
+
+<!-- Nav Item - Ledger Collapse Menu -->
+<?php if (hasPermission('CanViewLedger')): ?>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLedger"
+        aria-expanded="true" aria-controls="collapseLedger">
+        <i class="fas fa-fw fa-clipboard-list"></i>
+        <span>Ledger</span>
+    </a>
+    <div id="collapseLedger" class="collapse" aria-labelledby="headingLedger" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Ledger:</h6>
+            <a class="collapse-item" href="<?= base_url('ledger/accountLedger') ?>">Account Ledger</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 

@@ -12,7 +12,7 @@ class VoucherModel extends Model
         'voucher_number',
         'voucher_type',
         'date',
-        'reference',
+        'reference_no',
         'description',
         'created_at',
         'updated_at'

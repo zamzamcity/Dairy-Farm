@@ -330,6 +330,23 @@
 </li>
 <?php endif; ?>
 
+<!-- Nav Item - Ledger Collapse Menu -->
+<?php if (hasPermission('CanViewLedger')): ?>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLedger"
+        aria-expanded="true" aria-controls="collapseLedger">
+        <i class="fas fa-fw fa-clipboard-list"></i>
+        <span>Ledger</span>
+    </a>
+    <div id="collapseLedger" class="collapse" aria-labelledby="headingLedger" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Ledger:</h6>
+            <a class="collapse-item" href="<?= base_url('ledger/accountLedger') ?>">Account Ledger</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 

@@ -174,3 +174,6 @@ $routes->group('vouchers', function ($routes) {
     $routes->post('journalVoucher/edit/(:num)', 'JournalVoucherController::editJournalVoucher/$1');
     $routes->post('journalVoucher/delete/(:num)', 'JournalVoucherController::deleteJournalVoucher/$1');
 });
+
+$routes->get('ledger/accountLedger', 'LedgerController::accountLedger');
+$routes->get('ledger/accountLedgerExport', 'LedgerController::accountLedgerExport');

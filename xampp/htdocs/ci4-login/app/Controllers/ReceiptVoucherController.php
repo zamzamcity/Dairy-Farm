@@ -22,17 +22,18 @@ class ReceiptVoucherController extends BaseController
     public function receiptVoucher()
     {
         $vouchers = $this->voucherModel
-            ->where('voucher_type', 'receipt')
-            ->orderBy('date', 'DESC')
-            ->findAll();
+        ->where('voucher_type', 'receipt')
+        ->orderBy('date', 'DESC')
+        ->findAll();
 
         foreach ($vouchers as &$voucher) {
             $voucher['entries'] = $this->voucherEntryModel
-                ->where('voucher_id', $voucher['id'])
-                ->findAll();
+            ->where('voucher_id', $voucher['id'])
+            ->findAll();
         }
 
         $account_heads = $this->accountHeadModel->orderBy('name')->findAll();
+
 
         return view('vouchers/receiptVoucher', [
             'vouchers' => $vouchers,
@@ -44,7 +45,16 @@ class ReceiptVoucherController extends BaseController
     {
         $data = $this->request->getPost();
 
+        $lastVoucher = $this->voucherModel
+        ->where('voucher_type', 'receipt')
+        ->orderBy('id', 'DESC')
+        ->first();
+
+        $lastId = $lastVoucher ? $lastVoucher['id'] + 1 : 1;
+        $voucher_number = 'RV-' . str_pad($lastId, 4, '0', STR_PAD_LEFT);
+
         $voucherData = [
+            'voucher_number' => $voucher_number,
             'voucher_type' => 'receipt',
             'date'         => $data['date'],
             'reference_no' => $data['reference_no'],
@@ -74,6 +84,7 @@ class ReceiptVoucherController extends BaseController
         $data = $this->request->getPost();
 
         $voucherData = [
+            'voucher_type'   => 'receipt', 
             'date'         => $data['date'],
             'reference_no' => $data['reference_no'],
             'description'  => $data['description']
