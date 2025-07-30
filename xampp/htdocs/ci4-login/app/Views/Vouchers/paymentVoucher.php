@@ -696,6 +696,7 @@ aria-labelledby="userDropdown">
                     <thead>
                         <tr>
                             <th>Date</th>
+                            <th>Voucher No</th>
                             <th>Reference No</th>
                             <th>Description</th>
                             <th>Total Amount</th>
@@ -708,6 +709,7 @@ aria-labelledby="userDropdown">
                         <?php foreach ($vouchers as $voucher): ?>
                         <tr>
                             <td><?= esc($voucher['date']) ?></td>
+                            <td><?= esc($voucher['voucher_number']) ?></td>
                             <td><?= esc($voucher['reference_no']) ?></td>
                             <td><?= esc($voucher['description']) ?></td>
                             <td>

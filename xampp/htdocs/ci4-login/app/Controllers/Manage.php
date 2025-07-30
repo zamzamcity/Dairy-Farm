@@ -6,6 +6,7 @@ use App\Models\PermissionModel;
 use App\Models\PermissionGroupModel;
 use App\Models\PermissionGroupPermissionModel;
 use App\Models\UserModel;
+use \App\Models\AccountHeadModel;
 
 class Manage extends BaseController
 {
@@ -20,181 +21,218 @@ class Manage extends BaseController
         return view('manage/employees', $data);
     }
     public function addEmployee()
-    {
-        $model = new UserModel();
+{
+    $userModel = new UserModel();
+    $accountHeadModel = new AccountHeadModel();
 
-        $data = [
-            'firstname' => $this->request->getPost('firstname'),
-            'lastname' => $this->request->getPost('lastname'),
-            'email' => $this->request->getPost('email'),
-            'password' => $this->request->getPost('password'),
-            'role' => $this->request->getPost('role'),
-            'permission_group_id' => $this->request->getPost('permission_group_id'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ];
+    $data = [
+        'firstname'            => $this->request->getPost('firstname'),
+        'lastname'             => $this->request->getPost('lastname'),
+        'email'                => $this->request->getPost('email'),
+        'password'             => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+        'role'                 => $this->request->getPost('role'),
+        'designation'          => $this->request->getPost('designation'),
+        'salary_type'          => $this->request->getPost('salary_type'),
+        'salary_amount'        => $this->request->getPost('salary_amount'),
+        'joining_date'         => $this->request->getPost('joining_date'),
+        'is_active'            => $this->request->getPost('is_active') ?? 1,
+        'permission_group_id'  => $this->request->getPost('permission_group_id'),
+    ];
 
-        $model->insert($data);
-        return redirect()->to('/manage/employees')->with('success', 'Employee added successfully.');
-    }
-    public function editEmployee($id)
-    {
-        $model = new UserModel();
+    $userModel->insert($data);
+    $employeeId = $userModel->getInsertID();
 
-        $data = [
-            'firstname' => $this->request->getPost('firstname'),
-            'lastname' => $this->request->getPost('lastname'),
-            'email' => $this->request->getPost('email'),
-            'role' => $this->request->getPost('role'),
-            'permission_group_id' => $this->request->getPost('permission_group_id'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ];
+    $lastAccount = $accountHeadModel
+        ->where('account_code LIKE', 'EMP-%')
+        ->orderBy('id', 'DESC')
+        ->first();
 
-        $model->update($id, $data);
-
-        return redirect()->to('/manage/employees')->with('success', 'Employee updated successfully.');
+    if ($lastAccount && preg_match('/EMP-(\d+)/', $lastAccount['account_code'], $matches)) {
+        $lastNumber = (int)$matches[1];
+        $newNumber = $lastNumber + 1;
+    } else {
+        $newNumber = 1;
     }
 
+    $accountCode = 'EMP-' . str_pad($newNumber, 3, '0', STR_PAD_LEFT);
 
-    public function deleteEmployee($id)
-    {
-        $model = new UserModel();
-        $model->delete($id);
-        return redirect()->to('/manage/employees')->with('success', 'Employee deleted successfully.');
+    $accountHeadModel->insert([
+        'account_code'     => $accountCode,
+        'name'             => 'Employee - ' . $data['firstname'] . ' ' . $data['lastname'],
+        'type'             => 'Employee',
+        'opening_balance'  => 0,
+        'description'      => 'Auto created on employee creation',
+        'linked_user_id'   => $employeeId,
+        'created_at'       => date('Y-m-d H:i:s'),
+        'updated_at'       => date('Y-m-d H:i:s'),
+    ]);
+
+    return redirect()->back()->with('success', 'Employee and Account created successfully.');
+}
+
+
+public function editEmployee($id)
+{
+    $model = new UserModel();
+
+    $data = [
+        'firstname' => $this->request->getPost('firstname'),
+        'lastname' => $this->request->getPost('lastname'),
+        'email' => $this->request->getPost('email'),
+        'role' => $this->request->getPost('role'),
+        'designation' => $this->request->getPost('designation'),
+        'salary_type' => $this->request->getPost('salary_type'),
+        'salary_amount' => $this->request->getPost('salary_amount'),
+        'joining_date' => $this->request->getPost('joining_date'),
+        'is_active' => $this->request->getPost('is_active') ?? 1,
+        'permission_group_id' => $this->request->getPost('permission_group_id'),
+        'updated_at' => date('Y-m-d H:i:s'),
+    ];
+
+    $model->update($id, $data);
+
+    return redirect()->to('/manage/employees')->with('success', 'Employee updated successfully.');
+}
+
+public function deleteEmployee($id)
+{
+    $model = new UserModel();
+    $model->delete($id);
+    return redirect()->to('/manage/employees')->with('success', 'Employee deleted successfully.');
+}
+
+
+public function permissions()
+{
+    $model = new PermissionModel();
+    $data['permissions'] = $model->findAll();
+
+    return view('manage/permissions', $data);
+}
+
+public function addPermission()
+{
+    $model = new PermissionModel();
+
+    $data = [
+        'name' => $this->request->getPost('name'),
+        'slug' => $this->request->getPost('slug'),
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s'),
+    ];
+
+    if ($model->insert($data)) {
+        return redirect()->to('/manage/permissions')->with('success', 'Permission added successfully.');
+    } else {
+        return redirect()->back()->with('error', 'Failed to add permission. Slug might already exist.');
+    }
+}
+public function updatePermission($id)
+{
+    $model = new PermissionModel();
+
+    $data = [
+        'name' => $this->request->getPost('name'),
+        'slug' => $this->request->getPost('slug'),
+        'updated_at' => date('Y-m-d H:i:s'),
+    ];
+
+    $model->update($id, $data);
+
+    return redirect()->to('/manage/permissions')->with('success', 'Permission updated successfully.');
+}
+public function deletePermission($id)
+{
+    $model = new PermissionModel();
+    if ($model->delete($id)) {
+        return redirect()->to('/manage/permissions')->with('success', 'Permission deleted successfully.');
+    } else {
+        return redirect()->to('/manage/permissions')->with('error', 'Failed to delete permission.');
+    }
+}
+
+public function permissionGroups()
+{
+    $groupModel = new PermissionGroupModel();
+    $permModel = new PermissionModel();
+    $linkModel = new PermissionGroupPermissionModel();
+
+    $groups = $groupModel->findAll();
+
+    foreach ($groups as &$group) {
+        $assigned = $linkModel->where('permission_group_id', $group['id'])->findAll();
+        $group['assigned_permissions'] = array_column($assigned, 'permission_id');
     }
 
+    $data['groups'] = $groups;
+    $data['permissions'] = $permModel->findAll();
 
-    public function permissions()
-    {
-        $model = new PermissionModel();
-        $data['permissions'] = $model->findAll();
+    return view('manage/permission_groups', $data);
+}
+public function addPermissionGroup()
+{
+    $groupModel = new PermissionGroupModel();
+    $groupPermModel = new PermissionGroupPermissionModel();
 
-        return view('manage/permissions', $data);
-    }
+    $groupData = [
+        'name' => $this->request->getPost('name'),
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s'),
+    ];
 
-    public function addPermission()
-    {
-        $model = new PermissionModel();
+    if ($groupModel->insert($groupData)) {
+        $groupId = $groupModel->getInsertID();
+        $selectedPermissions = $this->request->getPost('permissions') ?? [];
 
-        $data = [
-            'name' => $this->request->getPost('name'),
-            'slug' => $this->request->getPost('slug'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ];
-
-        if ($model->insert($data)) {
-            return redirect()->to('/manage/permissions')->with('success', 'Permission added successfully.');
-        } else {
-            return redirect()->back()->with('error', 'Failed to add permission. Slug might already exist.');
-        }
-    }
-    public function updatePermission($id)
-    {
-        $model = new PermissionModel();
-
-        $data = [
-            'name' => $this->request->getPost('name'),
-            'slug' => $this->request->getPost('slug'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ];
-
-        $model->update($id, $data);
-
-        return redirect()->to('/manage/permissions')->with('success', 'Permission updated successfully.');
-    }
-    public function deletePermission($id)
-    {
-        $model = new PermissionModel();
-        if ($model->delete($id)) {
-            return redirect()->to('/manage/permissions')->with('success', 'Permission deleted successfully.');
-        } else {
-            return redirect()->to('/manage/permissions')->with('error', 'Failed to delete permission.');
-        }
-    }
-
-    public function permissionGroups()
-    {
-        $groupModel = new PermissionGroupModel();
-        $permModel = new PermissionModel();
-        $linkModel = new PermissionGroupPermissionModel();
-
-        $groups = $groupModel->findAll();
-
-        foreach ($groups as &$group) {
-            $assigned = $linkModel->where('permission_group_id', $group['id'])->findAll();
-            $group['assigned_permissions'] = array_column($assigned, 'permission_id');
-        }
-
-        $data['groups'] = $groups;
-        $data['permissions'] = $permModel->findAll();
-
-        return view('manage/permission_groups', $data);
-    }
-    public function addPermissionGroup()
-    {
-        $groupModel = new PermissionGroupModel();
-        $groupPermModel = new PermissionGroupPermissionModel();
-
-        $groupData = [
-            'name' => $this->request->getPost('name'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ];
-
-        if ($groupModel->insert($groupData)) {
-            $groupId = $groupModel->getInsertID();
-            $selectedPermissions = $this->request->getPost('permissions') ?? [];
-
-            foreach ($selectedPermissions as $permId) {
-                $groupPermModel->insert([
-                    'permission_group_id' => $groupId,
-                    'permission_id' => $permId
-                ]);
-            }
-
-            return redirect()->to('/manage/permission_groups')->with('success', 'Permission group added successfully.');
-        }
-
-        return redirect()->back()->with('error', 'Failed to add group.');
-    }
-    public function editPermissionGroup($id)
-    {
-        $groupModel = new PermissionGroupModel();
-        $linkModel = new PermissionGroupPermissionModel();
-
-        // Update name
-        $groupModel->update($id, [
-            'name' => $this->request->getPost('name'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        // Update assigned permissions
-        $linkModel->where('permission_group_id', $id)->delete();
-
-        $permissions = $this->request->getPost('permissions') ?? [];
-
-        foreach ($permissions as $permId) {
-            $linkModel->insert([
-                'permission_group_id' => $id,
-                'permission_id' => $permId,
+        foreach ($selectedPermissions as $permId) {
+            $groupPermModel->insert([
+                'permission_group_id' => $groupId,
+                'permission_id' => $permId
             ]);
         }
 
-        return redirect()->to('/manage/permission_groups')->with('success', 'Permission group updated.');
+        return redirect()->to('/manage/permission_groups')->with('success', 'Permission group added successfully.');
     }
-    public function deletePermissionGroup($id)
-    {
-        $groupModel = new \App\Models\PermissionGroupModel();
-        $pivotModel = new \App\Models\PermissionGroupPermissionModel();
+
+    return redirect()->back()->with('error', 'Failed to add group.');
+}
+public function editPermissionGroup($id)
+{
+    $groupModel = new PermissionGroupModel();
+    $linkModel = new PermissionGroupPermissionModel();
+
+        // Update name
+    $groupModel->update($id, [
+        'name' => $this->request->getPost('name'),
+        'updated_at' => date('Y-m-d H:i:s'),
+    ]);
+
+        // Update assigned permissions
+    $linkModel->where('permission_group_id', $id)->delete();
+
+    $permissions = $this->request->getPost('permissions') ?? [];
+
+    foreach ($permissions as $permId) {
+        $linkModel->insert([
+            'permission_group_id' => $id,
+            'permission_id' => $permId,
+        ]);
+    }
+
+    return redirect()->to('/manage/permission_groups')->with('success', 'Permission group updated.');
+}
+public function deletePermissionGroup($id)
+{
+    $groupModel = new \App\Models\PermissionGroupModel();
+    $pivotModel = new \App\Models\PermissionGroupPermissionModel();
 
         // First delete from pivot table
-        $pivotModel->where('permission_group_id', $id)->delete();
+    $pivotModel->where('permission_group_id', $id)->delete();
 
         // Then delete the permission group itself
-        $groupModel->delete($id);
+    $groupModel->delete($id);
 
-        return redirect()->to('/manage/permission_groups')->with('success', 'Permission group deleted successfully.');
-    }
+    return redirect()->to('/manage/permission_groups')->with('success', 'Permission group deleted successfully.');
+}
 
 }

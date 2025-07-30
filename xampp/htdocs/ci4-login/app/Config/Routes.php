@@ -175,5 +175,10 @@ $routes->group('vouchers', function ($routes) {
     $routes->post('journalVoucher/delete/(:num)', 'JournalVoucherController::deleteJournalVoucher/$1');
 });
 
+//Account Ledger
 $routes->get('ledger/accountLedger', 'LedgerController::accountLedger');
 $routes->get('ledger/accountLedgerExport', 'LedgerController::accountLedgerExport');
+
+//Payroll
+$routes->get('payroll/salaryPayments', 'PayrollController::salaryPayments');
+$routes->post('payroll/addSalaryPayment', 'PayrollController::addSalaryPayment');

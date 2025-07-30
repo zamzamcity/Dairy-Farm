@@ -45,7 +45,7 @@ class Filters extends BaseFilters
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
-            'permissionfilter' => ['except' => ['login*', '/', 'manage/*', 'animals/*', 'pen-semen-tech/*', 'schedule-events/*', 'animal-milking/*', 'dailyMilk*', 'milk-consumption/*', 'milkInOut*', 'stock/*', 'medicine-consumption/*', 'feeding-consumption/*', 'stockLedger*', 'chart-of-accounts/*', 'vouchers/*', 'ledger/*']],
+            'permissionfilter' => ['except' => ['login*', '/', 'manage/*', 'animals/*', 'pen-semen-tech/*', 'schedule-events/*', 'animal-milking/*', 'dailyMilk*', 'milk-consumption/*', 'milkInOut*', 'stock/*', 'medicine-consumption/*', 'feeding-consumption/*', 'stockLedger*', 'chart-of-accounts/*', 'vouchers/*', 'ledger/*', 'payroll/*']],
         ],
         'after' => [
             // 'honeypot',

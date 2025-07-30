@@ -14,7 +14,8 @@ class AccountHeadModel extends Model
         'opening_balance',
         'description',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'linked_user_id'
     ];
     protected $useTimestamps = true;
 }

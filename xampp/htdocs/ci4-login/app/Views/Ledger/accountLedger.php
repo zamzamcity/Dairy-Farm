@@ -657,8 +657,8 @@ aria-labelledby="userDropdown">
                             <?php endif; ?>
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <th colspan="5" class="text-right">Closing Balance:</th>
+                            <tr style="background-color: #f1f1f1;">
+                                <th colspan="5" class="text-center">Closing Balance:</th>
                                 <th colspan="2"><?= number_format($balance, 2) ?></th>
                             </tr>
                         </tfoot>

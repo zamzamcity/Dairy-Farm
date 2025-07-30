@@ -15,6 +15,11 @@ class UserModel extends Model
         'email',
         'password',
         'role',
+        'designation',
+        'salary_type',
+        'salary_amount',
+        'joining_date',
+        'is_active',
         'permission_group_id',
     ];
 
