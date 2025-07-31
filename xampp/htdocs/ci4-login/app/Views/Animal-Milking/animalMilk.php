@@ -446,6 +446,32 @@
 </li>
 <?php endif; ?>
 
+<?php if (hasPermission('CanViewPayroll')): ?>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+<!-- Heading -->
+<div class="sidebar-heading">
+    Employee Payroll System
+</div>
+<?php endif; ?>
+
+<!-- Nav Item - Payroll Collapse Menu -->
+<?php if (hasPermission('CanViewPayroll')): ?>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayroll"
+        aria-expanded="true" aria-controls="collapsePayroll">
+        <i class="fas fa-fw fa-money-check-alt"></i>
+        <span>Payroll</span>
+    </a>
+    <div id="collapsePayroll" class="collapse" aria-labelledby="headingPayroll" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Payroll:</h6>
+            <a class="collapse-item" href="<?= base_url('payroll/salaryPayments') ?>">Salary Payments</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 

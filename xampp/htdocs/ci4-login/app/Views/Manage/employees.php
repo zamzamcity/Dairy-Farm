@@ -466,6 +466,32 @@
 </li>
 <?php endif; ?>
 
+<?php if (hasPermission('CanViewPayroll')): ?>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+<!-- Heading -->
+<div class="sidebar-heading">
+    Employee Payroll System
+</div>
+<?php endif; ?>
+
+<!-- Nav Item - Payroll Collapse Menu -->
+<?php if (hasPermission('CanViewPayroll')): ?>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayroll"
+        aria-expanded="true" aria-controls="collapsePayroll">
+        <i class="fas fa-fw fa-money-check-alt"></i>
+        <span>Payroll</span>
+    </a>
+    <div id="collapsePayroll" class="collapse" aria-labelledby="headingPayroll" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Payroll:</h6>
+            <a class="collapse-item" href="<?= base_url('payroll/salaryPayments') ?>">Salary Payments</a>
+        </div>
+    </div>
+</li>
+<?php endif; ?>
+
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
 
@@ -708,7 +734,7 @@ aria-labelledby="userDropdown">
         <?php endif; ?>
 
         <div class="table-responsive">
-            <table class="table table-bordered table-sm">
+            <table class="table table-bordered table-sm" id="employeeTable">
                 <thead class="thead-light">
                     <tr>
                         <th>ID</th>
@@ -720,7 +746,6 @@ aria-labelledby="userDropdown">
                         <th>Joining Date</th>
                         <th>Status</th>
                         <th>Role</th>
-                        <th>Created At</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -742,7 +767,6 @@ aria-labelledby="userDropdown">
                                 <?php endif; ?>
                             </td>
                             <td><?= esc(ucfirst($emp['role'])) ?></td>
-                            <td><?= $emp['created_at'] ?></td>
                             <td>
                                 <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editEmployeeModal<?= $emp['id'] ?>">Edit</a>
                                 <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteEmployeeModal<?= $emp['id'] ?>">Delete</a>
@@ -911,6 +935,13 @@ aria-hidden="true">
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/sb-admin-2/js/sb-admin-2.min.js') ?>"></script>
 
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#employeeTable').DataTable();
+    });
+</script>
 
 </body>
 
