@@ -509,6 +509,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Manage Payroll:</h6>
             <a class="collapse-item" href="<?= base_url('payroll/salaryPayments') ?>">Salary Payments</a>
+            <a class="collapse-item" href="<?= base_url('payroll/salaryLedger') ?>">Salary Ledger</a>
         </div>
     </div>
 </li>
@@ -757,7 +758,7 @@ aria-labelledby="userDropdown">
 
             <div class="table-responsive">
                 <table class="table table-bordered" id="stockListTable">
-                    <thead>
+                    <thead class="thead-dark">
                         <tr>
                             <th>ID</th>
                             <th>Product Name</th>

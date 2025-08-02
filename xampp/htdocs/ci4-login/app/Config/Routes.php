@@ -182,3 +182,5 @@ $routes->get('ledger/accountLedgerExport', 'LedgerController::accountLedgerExpor
 //Payroll
 $routes->get('payroll/salaryPayments', 'PayrollController::salaryPayments');
 $routes->post('payroll/addSalaryPayment', 'PayrollController::addSalaryPayment');
+$routes->get('payroll/salaryLedger', 'PayrollController::salaryLedger');
+$routes->get('payroll/salaryLedger/export', 'PayrollController::exportSalaryLedger');

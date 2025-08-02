@@ -369,6 +369,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Manage Payroll:</h6>
             <a class="collapse-item" href="<?= base_url('payroll/salaryPayments') ?>">Salary Payments</a>
+            <a class="collapse-item" href="<?= base_url('payroll/salaryLedger') ?>">Salary Ledger</a>
         </div>
     </div>
 </li>
@@ -609,7 +610,7 @@ aria-labelledby="userDropdown">
         <div class="col-md-6">
             <h5>Daily Milking</h5>
             <table class="table table-bordered">
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th>Product</th>
                         <th>Milk 1 (L)</th>
@@ -639,7 +640,7 @@ aria-labelledby="userDropdown">
         <div class="col-md-6">
             <h5>Milk Consumption</h5>
             <table class="table table-bordered">
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th>Head</th>
                         <th>Milk (L)</th>
