@@ -621,8 +621,8 @@ aria-labelledby="userDropdown">
             value="<?= esc($filter_salary_month ?? '') ?>">
         </div>
 
-        <div class="form-group">
-            <label>Status</label>
+        <div class="form-group mr-2">
+            <label>Status:&nbsp;</label>
             <select name="status" class="form-control">
                 <option value="">All</option>
                 <option value="paid" <?= ($filter_status == 'paid') ? 'selected' : '' ?>>Paid</option>
@@ -632,13 +632,12 @@ aria-labelledby="userDropdown">
 
         <button type="submit" class="btn btn-primary">Filter</button>
     </form>
-    
+
     <div class="mb-3 text-right">
         <a href="<?= site_url('payroll/salaryLedger/export?employee_id=' . esc($filter_employee_id) . '&salary_month=' . esc($filter_salary_month) . '&status=' . esc($filter_status)) ?>" class="btn btn-success mb-3">
             <i class="fas fa-file-excel"></i> Download Excel
         </a>
     </div>
-
 
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -679,10 +678,9 @@ aria-labelledby="userDropdown">
                         </tr>
                         <?php endforeach; ?>
                         <?php else: ?>
-                        <tr><td colspan="8" class="text-center">No salary history found.</td></tr>
+                        <tr><td colspan="9" class="text-center text-muted">No salary history found.</td></tr>
                         <?php endif; ?>
                     </tbody>
-
                 </table>
             </div>
         </div>
@@ -748,6 +746,7 @@ aria-hidden="true">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script>
+    $.fn.dataTable.ext.errMode = 'none';
     $(document).ready(function () {
         $('#salaryLedgerTable').DataTable();
     });
