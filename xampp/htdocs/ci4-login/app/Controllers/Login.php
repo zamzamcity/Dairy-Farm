@@ -22,16 +22,17 @@ class Login extends BaseController
         $model = new \App\Models\UserModel();
         $db = \Config\Database::connect();
 
-        // Get POST data
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
-        // Find user by email
         $user = $model->where('email', $email)->first();
 
         if ($user) {
+            if ($user['is_active'] != 1) {
+                return redirect()->back()->with('error', 'Your account is inactive. Please contact administrator.');
+            }
+
             if ($user['password'] === $password) {
-                // Fetch permission names for the user's group
                 $permissions = $db->table('permission_group_permissions')
                 ->select('permissions.name')
                 ->join('permissions', 'permissions.id = permission_group_permissions.permission_id')
@@ -41,7 +42,6 @@ class Login extends BaseController
 
                 $permissionNames = array_column($permissions, 'name');
 
-                // Set all required session data
                 $session->set([
                     'user_id' => $user['id'],
                     'permission_group_id' => $user['permission_group_id'],
@@ -54,12 +54,13 @@ class Login extends BaseController
 
                 return redirect()->to('/login/home');
             } else {
-                return redirect()->back()->with('error', 'Incorrect password');
+                return redirect()->back()->with('error', 'Incorrect password.');
             }
         } else {
-            return redirect()->back()->with('error', 'User not found');
+            return redirect()->back()->with('error', 'User not found.');
         }
     }
+
     public function store()
     {
         helper(['form']);
