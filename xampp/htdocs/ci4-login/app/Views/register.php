@@ -54,13 +54,12 @@
                                         <input type="password" class="form-control form-control-user" placeholder="Repeat Password" required>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <select name="role" class="form-control" required>
                                         <option value="user">User</option>
                                         <option value="admin">Admin</option>
-                                        <!-- Add more roles if needed -->
                                     </select>
-                                </div>
+                                </div> -->
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Register Account
                                 </button>
@@ -77,7 +76,7 @@
                                 <a class="small" href="<?= base_url('pages/forgot-password') ?>">Forgot Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="<?= base_url('pages/login') ?>">Already have an account? Login!</a>
+                                <a class="small" href="<?= base_url('login') ?>">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>

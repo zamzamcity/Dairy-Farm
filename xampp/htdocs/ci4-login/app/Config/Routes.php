@@ -12,6 +12,12 @@ $routes->post('login/auth', 'Login::auth');
 $routes->get('login/home', 'Login::home');
 $routes->get('login/logout', 'Login::logout');
 
+$routes->get('pages/forgot-password', 'Login::forgotPassword');
+$routes->get('pages/register', 'Login::register');
+
+$routes->post('auth/send-reset-link', 'Auth::sendResetLink');
+$routes->get('auth/reset-password/(:any)', 'Auth::resetPassword/$1');
+
 // Manage
 $routes->group('manage', function ($routes) {
     $routes->get('employees', 'Manage::employees');

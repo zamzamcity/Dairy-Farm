@@ -93,4 +93,15 @@ class Login extends BaseController
         session()->destroy();
         return redirect()->to('/login');
     }
+
+    public function forgotPassword()
+    {
+        return view('forgot-password');
+    }
+
+    public function register()
+    {
+        return view('register'); 
+    }
+
 }

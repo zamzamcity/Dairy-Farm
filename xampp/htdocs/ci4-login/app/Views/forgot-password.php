@@ -41,39 +41,44 @@
                                         <p class="mb-4">We get it, stuff happens. Just enter your email address below
                                         and we'll send you a link to reset your password!</p>
                                     </div>
-                                    <form class="user">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                            id="exampleInputEmail" aria-describedby="emailHelp"
-                                            placeholder="Enter Email Address...">
-                                        </div>
-                                        <a href="<?= base_url('pages/login') ?>" class="btn btn-primary btn-user btn-block">
-                                            Reset Password
-                                        </a>
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="<?= base_url('pages/register') ?>">Create an Account!</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="<?= base_url('pages/login') ?>">Already have an account? Login!</a>
-                                    </div>
+                                    <?php if (session()->getFlashdata('message')): ?>
+                                    <div class="alert alert-success"><?= session()->getFlashdata('message') ?></div>
+                                <?php endif; ?>
+                                <?php if (session()->getFlashdata('error')): ?>
+                                <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+                            <?php endif; ?>
+                            <form class="user" method="post" action="<?= base_url('auth/send-reset-link') ?>">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control form-control-user"
+                                    placeholder="Enter Email Address..." required>
                                 </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    Reset Password
+                                </button>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="<?= base_url('pages/register') ?>">Create an Account!</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="<?= base_url('login') ?>">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
 
     </div>
 
-    <script src="<?= base_url('assets/sb-admin-2/vendor/jquery/jquery.min.js') ?>"></script>
-    <script src="<?= base_url('assets/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?= base_url('assets/sb-admin-2/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
-    <script src="<?= base_url('assets/sb-admin-2/js/sb-admin-2.min.js') ?>"></script>
+</div>
+
+</div>
+
+<script src="<?= base_url('assets/sb-admin-2/vendor/jquery/jquery.min.js') ?>"></script>
+<script src="<?= base_url('assets/sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+<script src="<?= base_url('assets/sb-admin-2/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
+<script src="<?= base_url('assets/sb-admin-2/js/sb-admin-2.min.js') ?>"></script>
 
 </body>
 
