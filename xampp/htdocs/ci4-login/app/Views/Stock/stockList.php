@@ -173,10 +173,10 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('login/home') ?>">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon">
+                    <img class="rounded-circle width="32" height="32" " src="<?= base_url('assets/sb-admin-2/img/cow.png') ?>" alt="...">
                 </div>
-                <div class="sidebar-brand-text mx-3">Zam Zam Developers</div>
+                <div class="sidebar-brand-text mx-3">DairyCare<sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -969,7 +969,7 @@ aria-labelledby="userDropdown">
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>&copy; 2025 Zam Zam Developers | All rights reserved.</span>
         </div>
     </div>
 </footer>

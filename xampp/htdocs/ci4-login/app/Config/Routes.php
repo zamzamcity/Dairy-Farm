@@ -17,6 +17,7 @@ $routes->get('pages/register', 'Login::register');
 
 $routes->post('auth/send-reset-link', 'Auth::sendResetLink');
 $routes->get('auth/reset-password/(:any)', 'Auth::resetPassword/$1');
+$routes->post('auth/update-password', 'Auth::updatePassword');
 
 // Manage
 $routes->group('manage', function ($routes) {

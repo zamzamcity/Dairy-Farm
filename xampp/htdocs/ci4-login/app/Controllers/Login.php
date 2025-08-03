@@ -31,7 +31,7 @@ class Login extends BaseController
             if ($user['is_active'] != 1) {
                 return redirect()->back()->with('error', 'Your account is inactive. Please contact administrator.');
             }
-
+            // if ($user && password_verify($inputPassword, $user->password))
             if ($user['password'] === $password) {
                 $permissions = $db->table('permission_group_permissions')
                 ->select('permissions.name')
