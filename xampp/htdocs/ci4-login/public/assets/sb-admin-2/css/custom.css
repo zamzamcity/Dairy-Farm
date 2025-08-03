@@ -1,0 +1,21 @@
+/* Dark Theme Overrides */
+.dark-theme {
+  background-color: #1a1a2e !important;
+  color: #e0e0e0 !important;
+}
+
+.dark-theme .bg-white {
+  background-color: #2a2a3b !important;
+}
+
+.dark-theme .card,
+.dark-theme .modal-content,
+.dark-theme .navbar,
+.dark-theme .sidebar {
+  background-color: #16213e !important;
+  color: #e0e0e0 !important;
+}
+
+.dark-theme .text-gray-800 {
+  color: #f1f1f1 !important;
+}

@@ -20,6 +20,10 @@
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
 
+    <link href="<?= base_url('assets/sb-admin-2/css/custom.css') ?>" rel="stylesheet">
+    <!-- Bootstrap 5 (for modal and toggle) -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
 </head>
 
 <body id="page-top">
@@ -575,9 +579,9 @@ aria-labelledby="userDropdown">
     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
     Profile
 </a>
-<a class="dropdown-item" href="#">
-    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-    Settings
+<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">
+  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+  Settings
 </a>
 <a class="dropdown-item" href="#">
     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -917,6 +921,53 @@ aria-labelledby="userDropdown">
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/sb-admin-2/js/demo/chart-area-demo.js') ?>"></script>
 <script src="<?= base_url('assets/sb-admin-2/js/demo/chart-pie-demo.js') ?>"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function toggleDarkTheme() {
+    const body = document.body;
+    const checkbox = document.getElementById('darkThemeToggle');
+
+    if (checkbox.checked) {
+      body.classList.add('dark-theme');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      body.classList.remove('dark-theme');
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const savedTheme = localStorage.getItem('theme');
+    const checkbox = document.getElementById('darkThemeToggle');
+
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark-theme');
+      if (checkbox) checkbox.checked = true;
+    }
+  });
+</script>
+
+<!-- Settings Modal (Bootstrap 4) -->
+<div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="settingsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="darkThemeToggle" onchange="toggleDarkTheme()" />
+          <label class="custom-control-label" for="darkThemeToggle">Enable Dark Theme</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 
