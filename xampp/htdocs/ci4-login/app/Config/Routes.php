@@ -19,6 +19,8 @@ $routes->post('auth/send-reset-link', 'Auth::sendResetLink');
 $routes->get('auth/reset-password/(:any)', 'Auth::resetPassword/$1');
 $routes->post('auth/update-password', 'Auth::updatePassword');
 
+$routes->get('profile', 'ProfileController::index');
+
 // Manage
 $routes->group('manage', function ($routes) {
     $routes->get('employees', 'Manage::employees');
