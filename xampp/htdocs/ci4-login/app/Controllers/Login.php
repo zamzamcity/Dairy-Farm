@@ -85,7 +85,29 @@ class Login extends BaseController
             return redirect()->to('/login');
         }
 
-        return view('dashboard');
+        $userModel = new \App\Models\UserModel();
+        $totalEmployees = $userModel->where('is_active', 1)->countAllResults();
+
+        $animalModel = new \App\Models\AnimalModel();
+        $totalAnimals = $animalModel->countAllResults();
+
+        $db = \Config\Database::connect();
+
+        $milkResult = $db->table('daily_milking')
+        ->selectSum('total_milk')
+        ->get()
+        ->getRow();
+
+        $totalMilk = $milkResult->total_milk ?? 0;
+
+        $totalProducts = $db->table('stock_registration')->countAll();
+
+        return view('dashboard', [
+            'totalEmployees' => $totalEmployees,
+            'totalAnimals' => $totalAnimals,
+            'totalMilk' => $totalMilk,
+            'totalProducts' => $totalProducts,
+        ]);
     }
 
     public function logout()
