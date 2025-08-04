@@ -1,21 +1,98 @@
-/* Dark Theme Overrides */
+/* General Body */
 .dark-theme {
-  background-color: #1a1a2e !important;
+  background-color: #121212 !important;
   color: #e0e0e0 !important;
 }
 
-.dark-theme .bg-white {
-  background-color: #2a2a3b !important;
-}
-
-.dark-theme .card,
-.dark-theme .modal-content,
+/* Navbar and Sidebar */
 .dark-theme .navbar,
-.dark-theme .sidebar {
-  background-color: #16213e !important;
-  color: #e0e0e0 !important;
+.dark-theme .topbar,
+.dark-theme .sidebar,
+.dark-theme .sidebar-dark,
+.dark-theme .accordion,
+.dark-theme .card,
+.dark-theme .modal-content {
+  background-color: #1f1f1f !important;
+  color: #ffffff !important;
 }
 
-.dark-theme .text-gray-800 {
-  color: #f1f1f1 !important;
+/* Text Colors */
+.dark-theme .text-gray-800,
+.dark-theme .text-gray-600,
+.dark-theme .text-dark,
+.dark-theme .text-secondary {
+  color: #dddddd !important;
+}
+
+/* Background Utilities */
+.dark-theme .bg-white,
+.dark-theme .bg-light,
+.dark-theme .bg-gray-100,
+.dark-theme .bg-gray-200 {
+  background-color: #2b2b2b !important;
+  color: #ffffff !important;
+}
+
+/* Inputs and Forms */
+.dark-theme input,
+.dark-theme select,
+.dark-theme textarea,
+.dark-theme .form-control {
+  background-color: #2e2e2e !important;
+  color: #ffffff !important;
+  border: 1px solid #444 !important;
+}
+
+.dark-theme input::placeholder,
+.dark-theme textarea::placeholder {
+  color: #bbb !important;
+}
+
+/* Buttons */
+.dark-theme .btn-primary {
+  background-color: #b71c1c !important;
+  border-color: #b71c1c !important;
+}
+
+.dark-theme .btn-primary:hover {
+  background-color: #d32f2f !important;
+  border-color: #d32f2f !important;
+}
+
+/* Table */
+.dark-theme .table,
+.dark-theme .table-bordered,
+.dark-theme .table-striped {
+  background-color: #1c1c1c !important;
+  color: #fff !important;
+}
+
+.dark-theme .table thead {
+  background-color: #2a2a2a !important;
+}
+
+/* Dropdown */
+.dark-theme .dropdown-menu {
+  background-color: #2e2e2e !important;
+  color: #fff !important;
+}
+
+.dark-theme .dropdown-item {
+  color: #fff !important;
+}
+
+.dark-theme .dropdown-item:hover {
+  background-color: #444 !important;
+}
+
+/* Cards */
+.dark-theme .card-header {
+  background-color: #2a2a2a !important;
+  color: #fff !important;
+}
+
+/* Borders */
+.dark-theme .border-left-primary,
+.dark-theme .border-bottom-primary {
+  border-color: #b71c1c !important;
 }
