@@ -113,3 +113,7 @@
 .dark-theme .border-bottom-primary {
   border-color: #b71c1c !important;
 }
+
+.dark-theme .btn-link {
+  color: #b71c1c;
+}
