@@ -3,6 +3,7 @@
 
 <!-- Topbar -->
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
     <!-- Sidebar Toggle (Topbar) -->
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
@@ -22,11 +23,6 @@
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
-        <!-- Alerts -->
-        <!-- (Alerts code here) -->
-        
-        <!-- Messages -->
-        <!-- (Messages code here) -->
 
         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -48,7 +44,7 @@
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>
-                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#settingsModal">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Settings
                 </a>
@@ -69,7 +65,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="settingsModalLabel">Settings</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <!-- Bootstrap 4 syntax -->
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -82,28 +78,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  function toggleDarkTheme() {
-    const body = document.body;
-    const checkbox = document.getElementById('darkThemeToggle');
-
-    if (checkbox.checked) {
-      body.classList.add('dark-theme');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      body.classList.remove('dark-theme');
-      localStorage.setItem('theme', 'light');
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const savedTheme = localStorage.getItem('theme');
-    const checkbox = document.getElementById('darkThemeToggle');
-
-    if (savedTheme === 'dark') {
-      document.body.classList.add('dark-theme');
-      if (checkbox) checkbox.checked = true;
-    }
-  });
-</script>
