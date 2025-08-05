@@ -117,3 +117,8 @@
 .dark-theme .btn-link {
   color: #b71c1c;
 }
+
+.dark-theme #sidebarToggleTop:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(183, 28, 28, 0.2);
+  }
