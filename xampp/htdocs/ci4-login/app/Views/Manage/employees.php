@@ -11,9 +11,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="editEmployeeModalLabel<?= $employee['id'] ?>">Edit Employee</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                     </div>
 
                     <div class="modal-body">
@@ -34,11 +32,29 @@
 
                         <div class="form-group">
                             <label for="role<?= $employee['id'] ?>">Role *</label>
-                            <select name="role" id="role<?= $employee['id'] ?>" class="form-control" required>
+                            <select name="role" id="role<?= $employee['id'] ?>" class="form-control roleSelect" required>
                                 <option value="user" <?= $employee['role'] === 'user' ? 'selected' : '' ?>>User</option>
                                 <option value="admin" <?= $employee['role'] === 'admin' ? 'selected' : '' ?>>Admin</option>
+                                <?php if (hasPermission('CanViewTenants')): ?>
+                                    <option value="superadmin" <?= $employee['role'] === 'superadmin' ? 'selected' : '' ?>>Super Admin</option>
+                                <?php endif; ?>
                             </select>
                         </div>
+
+                        <!-- ✅ Tenant Dropdown (Super Admin Only) -->
+                        <?php if (isSuperAdmin()): ?>
+                        <div class="form-group tenantSelectWrapper" id="tenantSelectWrapper<?= $employee['id'] ?>">
+                            <label for="tenant_id<?= $employee['id'] ?>">Tenant *</label>
+                            <select name="tenant_id" id="tenant_id<?= $employee['id'] ?>" class="form-control">
+                                <option value="">Select Tenant</option>
+                                <?php foreach ($tenants as $tenant): ?>
+                                    <option value="<?= $tenant['id'] ?>" <?= $employee['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                                        <?= esc($tenant['name']) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <?php endif; ?>
 
                         <div class="form-group">
                             <label for="designation<?= $employee['id'] ?>">Designation *</label>
@@ -49,8 +65,8 @@
                             <label for="salary_type<?= $employee['id'] ?>">Salary Type *</label>
                             <select name="salary_type" id="salary_type<?= $employee['id'] ?>" class="form-control">
                                 <option value="">-- Select Type --</option>
-                                <option value="Monthly" <?= $employee['salary_type'] === 'monthly' ? 'selected' : '' ?>>Monthly</option>
-                                <option value="Daily" <?= $employee['salary_type'] === 'daily' ? 'selected' : '' ?>>Daily</option>
+                                <option value="monthly" <?= $employee['salary_type'] === 'monthly' ? 'selected' : '' ?>>Monthly</option>
+                                <option value="daily" <?= $employee['salary_type'] === 'daily' ? 'selected' : '' ?>>Daily</option>
                             </select>
                         </div>
 
@@ -65,8 +81,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="permission_group_id<?= $employee['id'] ?>">Permission Group *</label>
-                            <select name="permission_group_id" id="permission_group_id<?= $employee['id'] ?>" class="form-control" required>
+                            <label for="permission_group_id<?= $employee['id'] ?>">Permission Group</label>
+                            <select name="permission_group_id" id="permission_group_id<?= $employee['id'] ?>" class="form-control">
                                 <option value="">-- Select Group --</option>
                                 <?php foreach ($permissionGroups as $group): ?>
                                     <option value="<?= $group['id'] ?>" <?= $employee['permission_group_id'] == $group['id'] ? 'selected' : '' ?>>
@@ -76,7 +92,6 @@
                             </select>
                         </div>
 
-                        <!-- ✅ Status Field -->
                         <div class="form-group">
                             <label for="status<?= $employee['id'] ?>">Status *</label>
                             <select name="is_active" id="status<?= $employee['id'] ?>" class="form-control" required>
@@ -96,6 +111,28 @@
         </div>
     </div>
 <?php endforeach; ?>
+
+<!-- ✅ JS for hiding tenant dropdown when role=superadmin -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".roleSelect").forEach(function(select) {
+        select.addEventListener("change", function() {
+            const employeeId = this.id.replace("role", "");
+            const tenantWrapper = document.getElementById("tenantSelectWrapper" + employeeId);
+            if (tenantWrapper) {
+                if (this.value === "superadmin") {
+                    tenantWrapper.style.display = "none";
+                } else {
+                    tenantWrapper.style.display = "block";
+                }
+            }
+        });
+
+        // Run on page load to set correct visibility
+        select.dispatchEvent(new Event("change"));
+    });
+});
+</script>
 
 <!-- Delete Modal -->
 <?php foreach ($employees as $employee): ?>
@@ -146,6 +183,22 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Employees</h1>
     </div>
+
+    <?php if (isSuperAdmin()): ?>
+        <form method="get" class="form-inline mb-4">
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-2">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    <?php endif; ?>
 
     <div class="mb-3 text-right">
         <a href="<?= base_url('manage/employees/export') ?>" class="btn btn-success mb-3">
@@ -227,89 +280,123 @@
         <div class="modal-header">
           <h5 class="modal-title">Add Employee</h5>
           <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-      </div>
+        </div>
 
-      <div class="modal-body">
+        <div class="modal-body">
           <div class="form-group">
             <label>First Name *</label>
             <input type="text" name="firstname" class="form-control" required>
-        </div>
+          </div>
 
-        <div class="form-group">
+          <div class="form-group">
             <label>Last Name</label>
             <input type="text" name="lastname" class="form-control">
-        </div>
+          </div>
 
-        <div class="form-group">
+          <div class="form-group">
             <label>Email *</label>
             <input type="email" name="email" class="form-control" required>
-        </div>
+          </div>
 
-        <div class="form-group">
+          <div class="form-group">
             <label>Password *</label>
             <input type="password" name="password" class="form-control" required>
-        </div>
+          </div>
 
-        <div class="form-group">
+          <div class="form-group">
             <label>Role *</label>
-            <select name="role" class="form-control" required>
+            <select name="role" id="roleSelect" class="form-control" required>
               <option value="user">User</option>
               <option value="admin">Admin</option>
-          </select>
+              <?php if (hasPermission('CanViewTenants')): ?>
+                <option value="superadmin">Super Admin</option>
+              <?php endif; ?>
+            </select>
+          </div>
+
+          <!-- Tenant Dropdown: only visible for super admins -->
+          <?php if (isSuperAdmin()): ?>
+          <div class="form-group" id="tenantSelectWrapper">
+            <label>Tenant *</label>
+            <select name="tenant_id" class="form-control">
+              <option value="">Select Tenant</option>
+              <?php foreach ($tenants as $tenant): ?>
+                <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+          <?php endif; ?>
+
+          <div class="form-group">
+            <label>Designation *</label>
+            <input type="text" name="designation" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Salary Type *</label>
+            <select name="salary_type" class="form-control" required>
+              <option value="monthly">Monthly</option>
+              <option value="daily">Daily</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Salary Amount *</label>
+            <input type="number" name="salary_amount" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Joining Date *</label>
+            <input type="date" name="joining_date" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label>Permission Group</label>
+            <select name="permission_group_id" class="form-control">
+              <option value="">Select Group</option>
+              <?php foreach ($permissionGroups as $group): ?>
+                <option value="<?= $group['id'] ?>"><?= esc($group['name']) ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Status *</label>
+            <select name="is_active" class="form-control" required>
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
       </div>
-
-      <div class="form-group">
-        <label>Designation *</label>
-        <input type="text" name="designation" class="form-control" required>
-    </div>
-
-    <div class="form-group">
-        <label>Salary Type *</label>
-        <select name="salary_type" class="form-control" required>
-          <option value="monthly">Monthly</option>
-          <option value="daily">Daily</option>
-      </select>
+    </form>
   </div>
-
-  <div class="form-group">
-    <label>Salary Amount *</label>
-    <input type="number" name="salary_amount" class="form-control" required>
 </div>
 
-<div class="form-group">
-    <label>Joining Date *</label>
-    <input type="date" name="joining_date" class="form-control" required>
-</div>
+<!-- JS: Hide Tenant Dropdown if role = Super Admin -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const roleSelect = document.getElementById("roleSelect");
+    const tenantWrapper = document.getElementById("tenantSelectWrapper");
 
-<div class="form-group">
-    <label>Permission Group *</label>
-    <select name="permission_group_id" class="form-control" required>
-      <option value="">Select Group</option>
-      <?php foreach ($permissionGroups as $group): ?>
-        <option value="<?= $group['id'] ?>"><?= esc($group['name']) ?></option>
-    <?php endforeach; ?>
-</select>
-</div>
-
-<div class="form-group">
-    <label>Status *</label>
-    <select name="is_active" class="form-control" required>
-      <option value="1">Active</option>
-      <option value="0">Inactive</option>
-  </select>
-</div>
-
-</div>
-
-<div class="modal-footer">
-  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-  <button type="submit" class="btn btn-primary">Add</button>
-</div>
-</div>
-</form>
-</div>
-</div>
-
+    if (roleSelect && tenantWrapper) {
+      function toggleTenantDropdown() {
+        if (roleSelect.value === "superadmin") {
+          tenantWrapper.style.display = "none";
+        } else {
+          tenantWrapper.style.display = "block";
+        }
+      }
+      toggleTenantDropdown(); // run on load
+      roleSelect.addEventListener("change", toggleTenantDropdown);
+    }
+  });
+</script>
 
 <!-- /.container-fluid -->
 

@@ -69,8 +69,7 @@ class Auth extends Controller
 
         $userBuilder = $this->db->table('users');
         $userBuilder->where('email', $reset->email)->update([
-            // 'password' => password_hash($password, PASSWORD_DEFAULT)
-            'password' => $password
+            'password' => password_hash($password, PASSWORD_DEFAULT)
         ]);
 
         $builder->where('email', $reset->email)->delete();

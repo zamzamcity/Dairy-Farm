@@ -15,7 +15,10 @@ class AccountHeadModel extends Model
         'description',
         'created_at',
         'updated_at',
-        'linked_user_id'
+        'linked_user_id',
+        'tenant_id',
+        'created_by',
+        'updated_by',
     ];
     protected $useTimestamps = true;
 }

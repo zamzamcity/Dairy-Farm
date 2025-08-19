@@ -89,6 +89,6 @@ class Autoload extends AutoloadConfig
      * @var list<string>
      */
     // public $helpers = [];
-    public $helpers = ['permission'];
+    public $helpers = ['permission', 'saas'];
 
 }

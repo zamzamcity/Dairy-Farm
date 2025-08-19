@@ -21,6 +21,9 @@ class UserModel extends Model
         'joining_date',
         'is_active',
         'permission_group_id',
+        'tenant_id',
+        'created_by',
+        'updated_by',
     ];
 
     protected $useTimestamps = true;

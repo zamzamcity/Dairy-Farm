@@ -21,6 +21,14 @@ $routes->post('auth/update-password', 'Auth::updatePassword');
 
 $routes->get('profile', 'ProfileController::index');
 
+// Tenants
+$routes->get('tenants', 'TenantsController::tenants');
+$routes->post('tenants/add', 'TenantsController::addTenant');
+$routes->post('tenants/edit/(:num)', 'TenantsController::editTenant/$1');
+$routes->post('tenants/delete/(:num)', 'TenantsController::deleteTenant/$1');
+// Tenants Excel Export
+$routes->get('tenants/export', 'TenantsController::downloadTenants');
+
 // Manage
 $routes->group('manage', function ($routes) {
     $routes->get('employees', 'Manage::employees');

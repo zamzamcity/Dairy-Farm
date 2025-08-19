@@ -25,6 +25,19 @@ $segment2 = $uri[1] ?? '';
         </a>
     </li>
 
+    <?php if (hasPermission('CanViewTenants')): ?>
+        <hr class="sidebar-divider">
+        <div class="sidebar-heading">Super Admin</div>
+
+        <?php $tenantsActive = ($segment1 == 'tenants'); ?>
+        <li class="nav-item <?= $tenantsActive ? 'active' : '' ?>">
+            <a class="nav-link" href="<?= base_url('tenants') ?>">
+                <i class="fas fa-fw fa-building"></i>
+                <span>Tenants</span>
+            </a>
+        </li>
+    <?php endif; ?>
+
     <?php if (hasPermission('CanViewManage')): ?>
         <hr class="sidebar-divider">
         <div class="sidebar-heading">Admin Panel</div>
@@ -184,51 +197,51 @@ $segment2 = $uri[1] ?? '';
     <?php $stockActive = ($segment1 == 'stock'); ?>
     <li class="nav-item <?= $stockActive ? 'active' : '' ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStock"
-           aria-expanded="<?= $stockActive ? 'true' : 'false' ?>" aria-controls="collapseStock">
-            <i class="fas fa-fw fa-list"></i>
-            <span>Stock</span>
-        </a>
-        <div id="collapseStock" class="collapse <?= $stockActive ? 'show' : '' ?>" aria-labelledby="headingStock" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Stock Management:</h6>
-                <a class="collapse-item <?= $segment2 == 'stockList' ? 'active' : '' ?>" href="<?= base_url('stock/stockList') ?>">View Stock List</a>
-            </div>
+        aria-expanded="<?= $stockActive ? 'true' : 'false' ?>" aria-controls="collapseStock">
+        <i class="fas fa-fw fa-list"></i>
+        <span>Stock</span>
+    </a>
+    <div id="collapseStock" class="collapse <?= $stockActive ? 'show' : '' ?>" aria-labelledby="headingStock" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Stock Management:</h6>
+            <a class="collapse-item <?= $segment2 == 'stockList' ? 'active' : '' ?>" href="<?= base_url('stock/stockList') ?>">View Stock List</a>
         </div>
-    </li>
+    </div>
+</li>
 <?php endif; ?>
 
 <?php if (hasPermission('CanViewFeedingConsumption')): ?>
     <?php $feedingActive = ($segment1 == 'feeding-consumption'); ?>
     <li class="nav-item <?= $feedingActive ? 'active' : '' ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFeedingConsumption"
-           aria-expanded="<?= $feedingActive ? 'true' : 'false' ?>" aria-controls="collapseFeedingConsumption">
-            <i class="fas fa-fw fa-utensils"></i>
-            <span>Feeding Consumption</span>
-        </a>
-        <div id="collapseFeedingConsumption" class="collapse <?= $feedingActive ? 'show' : '' ?>" aria-labelledby="headingFeedingConsumption" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Feed Consumption:</h6>
-                <a class="collapse-item <?= $segment2 == 'feedingConsumption' ? 'active' : '' ?>" href="<?= base_url('feeding-consumption/feedingConsumption') ?>">Feeding Consumption</a>
-            </div>
+        aria-expanded="<?= $feedingActive ? 'true' : 'false' ?>" aria-controls="collapseFeedingConsumption">
+        <i class="fas fa-fw fa-utensils"></i>
+        <span>Feeding Consumption</span>
+    </a>
+    <div id="collapseFeedingConsumption" class="collapse <?= $feedingActive ? 'show' : '' ?>" aria-labelledby="headingFeedingConsumption" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Feed Consumption:</h6>
+            <a class="collapse-item <?= $segment2 == 'feedingConsumption' ? 'active' : '' ?>" href="<?= base_url('feeding-consumption/feedingConsumption') ?>">Feeding Consumption</a>
         </div>
-    </li>
+    </div>
+</li>
 <?php endif; ?>
 
 <?php if (hasPermission('CanViewMedicineConsumption')): ?>
     <?php $medActive = ($segment1 == 'medicine-consumption'); ?>
     <li class="nav-item <?= $medActive ? 'active' : '' ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedicineConsumption"
-           aria-expanded="<?= $medActive ? 'true' : 'false' ?>" aria-controls="collapseMedicineConsumption">
-            <i class="fas fa-fw fa-first-aid"></i>
-            <span>Medicine Consumption</span>
-        </a>
-        <div id="collapseMedicineConsumption" class="collapse <?= $medActive ? 'show' : '' ?>" aria-labelledby="headingMedicineConsumption" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Medicine Consump:</h6>
-                <a class="collapse-item <?= $segment2 == 'medicineConsumption' ? 'active' : '' ?>" href="<?= base_url('medicine-consumption/medicineConsumption') ?>">Medicine Consumption</a>
-            </div>
+        aria-expanded="<?= $medActive ? 'true' : 'false' ?>" aria-controls="collapseMedicineConsumption">
+        <i class="fas fa-fw fa-first-aid"></i>
+        <span>Medicine Consumption</span>
+    </a>
+    <div id="collapseMedicineConsumption" class="collapse <?= $medActive ? 'show' : '' ?>" aria-labelledby="headingMedicineConsumption" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Medicine Consump:</h6>
+            <a class="collapse-item <?= $segment2 == 'medicineConsumption' ? 'active' : '' ?>" href="<?= base_url('medicine-consumption/medicineConsumption') ?>">Medicine Consumption</a>
         </div>
-    </li>
+    </div>
+</li>
 <?php endif; ?>
 
 <?php if (hasPermission('CanViewStockLedger')): ?>
@@ -247,53 +260,53 @@ $segment2 = $uri[1] ?? '';
     <?php $coaActive = ($segment1 == 'chart-of-accounts'); ?>
     <li class="nav-item <?= $coaActive ? 'active' : '' ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseChartOfAccounts"
-           aria-expanded="<?= $coaActive ? 'true' : 'false' ?>" aria-controls="collapseChartOfAccounts">
-            <i class="fas fa-fw fa-file-alt"></i>
-            <span>Chart of Accounts</span>
-        </a>
-        <div id="collapseChartOfAccounts" class="collapse <?= $coaActive ? 'show' : '' ?>" aria-labelledby="headingChartOfAccounts" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Accounts:</h6>
-                <a class="collapse-item <?= $segment2 == 'accountHeads' ? 'active' : '' ?>" href="<?= base_url('chart-of-accounts/accountHeads') ?>">Account Heads</a>
-            </div>
+        aria-expanded="<?= $coaActive ? 'true' : 'false' ?>" aria-controls="collapseChartOfAccounts">
+        <i class="fas fa-fw fa-file-alt"></i>
+        <span>Chart of Accounts</span>
+    </a>
+    <div id="collapseChartOfAccounts" class="collapse <?= $coaActive ? 'show' : '' ?>" aria-labelledby="headingChartOfAccounts" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Accounts:</h6>
+            <a class="collapse-item <?= $segment2 == 'accountHeads' ? 'active' : '' ?>" href="<?= base_url('chart-of-accounts/accountHeads') ?>">Account Heads</a>
         </div>
-    </li>
+    </div>
+</li>
 <?php endif; ?>
 
 <?php if (hasPermission('CanViewVouchers')): ?>
     <?php $voucherActive = ($segment1 == 'vouchers'); ?>
     <li class="nav-item <?= $voucherActive ? 'active' : '' ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVouchers"
-           aria-expanded="<?= $voucherActive ? 'true' : 'false' ?>" aria-controls="collapseVouchers">
-            <i class="fas fa-fw fa-credit-card"></i>
-            <span>Vouchers</span>
-        </a>
-        <div id="collapseVouchers" class="collapse <?= $voucherActive ? 'show' : '' ?>" aria-labelledby="headingVouchers" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Vouchers:</h6>
-                <a class="collapse-item <?= $segment2 == 'paymentVoucher' ? 'active' : '' ?>" href="<?= base_url('vouchers/paymentVoucher') ?>">Payment Voucher</a>
-                <a class="collapse-item <?= $segment2 == 'receiptVoucher' ? 'active' : '' ?>" href="<?= base_url('vouchers/receiptVoucher') ?>">Receipt Voucher</a>
-                <a class="collapse-item <?= $segment2 == 'journalVoucher' ? 'active' : '' ?>" href="<?= base_url('vouchers/journalVoucher') ?>">Journal Voucher</a>
-            </div>
+        aria-expanded="<?= $voucherActive ? 'true' : 'false' ?>" aria-controls="collapseVouchers">
+        <i class="fas fa-fw fa-credit-card"></i>
+        <span>Vouchers</span>
+    </a>
+    <div id="collapseVouchers" class="collapse <?= $voucherActive ? 'show' : '' ?>" aria-labelledby="headingVouchers" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Vouchers:</h6>
+            <a class="collapse-item <?= $segment2 == 'paymentVoucher' ? 'active' : '' ?>" href="<?= base_url('vouchers/paymentVoucher') ?>">Payment Voucher</a>
+            <a class="collapse-item <?= $segment2 == 'receiptVoucher' ? 'active' : '' ?>" href="<?= base_url('vouchers/receiptVoucher') ?>">Receipt Voucher</a>
+            <a class="collapse-item <?= $segment2 == 'journalVoucher' ? 'active' : '' ?>" href="<?= base_url('vouchers/journalVoucher') ?>">Journal Voucher</a>
         </div>
-    </li>
+    </div>
+</li>
 <?php endif; ?>
 
 <?php if (hasPermission('CanViewLedger')): ?>
     <?php $ledgerActive = ($segment1 == 'ledger'); ?>
     <li class="nav-item <?= $ledgerActive ? 'active' : '' ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLedger"
-           aria-expanded="<?= $ledgerActive ? 'true' : 'false' ?>" aria-controls="collapseLedger">
-            <i class="fas fa-fw fa-clipboard-list"></i>
-            <span>Ledger</span>
-        </a>
-        <div id="collapseLedger" class="collapse <?= $ledgerActive ? 'show' : '' ?>" aria-labelledby="headingLedger" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Ledger:</h6>
-                <a class="collapse-item <?= $segment2 == 'accountLedger' ? 'active' : '' ?>" href="<?= base_url('ledger/accountLedger') ?>">Account Ledger</a>
-            </div>
+        aria-expanded="<?= $ledgerActive ? 'true' : 'false' ?>" aria-controls="collapseLedger">
+        <i class="fas fa-fw fa-clipboard-list"></i>
+        <span>Ledger</span>
+    </a>
+    <div id="collapseLedger" class="collapse <?= $ledgerActive ? 'show' : '' ?>" aria-labelledby="headingLedger" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Ledger:</h6>
+            <a class="collapse-item <?= $segment2 == 'accountLedger' ? 'active' : '' ?>" href="<?= base_url('ledger/accountLedger') ?>">Account Ledger</a>
         </div>
-    </li>
+    </div>
+</li>
 <?php endif; ?>
 
 <?php if (hasPermission('CanViewPayroll')): ?>
@@ -303,18 +316,18 @@ $segment2 = $uri[1] ?? '';
     <?php $payrollActive = ($segment1 == 'payroll'); ?>
     <li class="nav-item <?= $payrollActive ? 'active' : '' ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayroll"
-           aria-expanded="<?= $payrollActive ? 'true' : 'false' ?>" aria-controls="collapsePayroll">
-            <i class="fas fa-fw fa-money-check-alt"></i>
-            <span>Payroll</span>
-        </a>
-        <div id="collapsePayroll" class="collapse <?= $payrollActive ? 'show' : '' ?>" aria-labelledby="headingPayroll" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Payroll:</h6>
-                <a class="collapse-item <?= $segment2 == 'salaryPayments' ? 'active' : '' ?>" href="<?= base_url('payroll/salaryPayments') ?>">Salary Payments</a>
-                <a class="collapse-item <?= $segment2 == 'salaryLedger' ? 'active' : '' ?>" href="<?= base_url('payroll/salaryLedger') ?>">Salary Ledger</a>
-            </div>
+        aria-expanded="<?= $payrollActive ? 'true' : 'false' ?>" aria-controls="collapsePayroll">
+        <i class="fas fa-fw fa-money-check-alt"></i>
+        <span>Payroll</span>
+    </a>
+    <div id="collapsePayroll" class="collapse <?= $payrollActive ? 'show' : '' ?>" aria-labelledby="headingPayroll" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Manage Payroll:</h6>
+            <a class="collapse-item <?= $segment2 == 'salaryPayments' ? 'active' : '' ?>" href="<?= base_url('payroll/salaryPayments') ?>">Salary Payments</a>
+            <a class="collapse-item <?= $segment2 == 'salaryLedger' ? 'active' : '' ?>" href="<?= base_url('payroll/salaryLedger') ?>">Salary Ledger</a>
         </div>
-    </li>
+    </div>
+</li>
 <?php endif; ?>
 
 <hr class="sidebar-divider d-none d-md-block">

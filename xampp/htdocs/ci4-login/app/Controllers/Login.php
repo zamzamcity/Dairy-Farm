@@ -8,7 +8,6 @@ class Login extends BaseController
 {
     public function index()
     {
-        // Redirect to dashboard if already logged in
         if (session()->get('username')) {
             return redirect()->to('/login/home');
         }
@@ -31,8 +30,8 @@ class Login extends BaseController
             if ($user['is_active'] != 1) {
                 return redirect()->back()->with('error', 'Your account is inactive. Please contact administrator.');
             }
-            // if ($user && password_verify($inputPassword, $user->password))
-            if ($user['password'] === $password) {
+            
+            if (password_verify($password, $user['password'])) {
                 $permissions = $db->table('permission_group_permissions')
                 ->select('permissions.name')
                 ->join('permissions', 'permissions.id = permission_group_permissions.permission_id')
@@ -44,6 +43,8 @@ class Login extends BaseController
 
                 $session->set([
                     'user_id' => $user['id'],
+                    'tenant_id' => $user['tenant_id'],
+                    'created_by' => $user['created_by'],
                     'permission_group_id' => $user['permission_group_id'],
                     'email' => $user['email'],
                     'firstname' => $user['firstname'],
@@ -51,7 +52,17 @@ class Login extends BaseController
                     'role' => $user['role'],
                     'user_permissions' => $permissionNames,
                 ]);
+                if (! isSuperAdmin()) {
+                    $tenant = $db->table('tenants')->where('id', $user['tenant_id'])->get()->getRow();
 
+                    if (!$tenant) {
+                        return redirect()->back()->with('error', 'Your tenant account does not exist.');
+                    }
+
+                    if ($tenant->status != 'active') {
+                        return redirect()->back()->with('error', 'Your tenant account is inactive. Please contact administrator.');
+                    }
+                }
                 return redirect()->to('/login/home');
             } else {
                 return redirect()->back()->with('error', 'Incorrect password.');
@@ -70,9 +81,16 @@ class Login extends BaseController
             'firstname' => $this->request->getPost('firstname'),
             'lastname' => $this->request->getPost('lastname'),
             'email' => $this->request->getPost('email'),
-            'password' => $this->request->getPost('password'),
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             'role' => $this->request->getPost('role') ?? 'user',
+            'created_by' => session()->get('user_id') ?? null,
         ];
+
+        if (isSuperAdmin()) {
+            $data['tenant_id'] = null;
+        } else {
+            $data['tenant_id'] = $this->request->getPost('tenant_id');
+        }
 
         $model->save($data);
 
