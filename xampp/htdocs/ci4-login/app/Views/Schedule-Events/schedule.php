@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Schedule_List UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Schedule_List</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
-
+<?= $this->include('components/head') ?>
 
 <?php foreach ($schedules as $entry): ?>
 <!-- Edit Schedule Modal -->
@@ -36,7 +16,7 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <label for="tag_id<?= $entry['id'] ?>">Animal Tag</label>
+            <label for="tag_id<?= $entry['id'] ?>">Animal Tag *</label>
             <select name="tag_id" class="form-control" required>
               <option value="">-- Select Tag --</option>
               <?php foreach ($animals as $animal): ?>
@@ -48,17 +28,17 @@
   </div>
 
   <div class="form-group">
-    <label for="date<?= $entry['id'] ?>">Date</label>
+    <label for="date<?= $entry['id'] ?>">Date *</label>
     <input type="date" class="form-control" name="date" value="<?= esc($entry['date']) ?>" required>
 </div>
 
 <div class="form-group">
-    <label for="time<?= $entry['id'] ?>">Time</label>
+    <label for="time<?= $entry['id'] ?>">Time *</label>
     <input type="time" class="form-control" name="time" value="<?= esc($entry['time']) ?>" required>
 </div>
 
 <div class="form-group">
-    <label for="event_id<?= $entry['id'] ?>">Event</label>
+    <label for="event_id<?= $entry['id'] ?>">Event *</label>
     <select name="event_id" class="form-control" required>
       <option value="">-- Select Event --</option>
       <?php foreach ($events as $event): ?>
@@ -142,6 +122,12 @@
         <h1 class="h3 mb-0 text-gray-800">Schedule List</h1>
     </div>
 
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('schedule-events/schedule/export') ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
+    </div>
+
     <!-- Add New Schedule Button -->
     <?php if (hasPermission('CanAddSchedule')): ?>
         <div class="mb-3 text-right">
@@ -215,7 +201,7 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <label for="tag_id">Animal Tag</label>
+            <label for="tag_id">Animal Tag *</label>
             <select name="tag_id" id="tag_id" class="form-control" required>
               <option value="">-- Select Tag --</option>
               <?php foreach ($animals as $animal): ?>
@@ -225,17 +211,17 @@
     </div>
 
     <div class="form-group">
-        <label for="date">Date</label>
+        <label for="date">Date *</label>
         <input type="date" class="form-control" name="date" id="date" required>
     </div>
 
     <div class="form-group">
-        <label for="time">Time</label>
+        <label for="time">Time *</label>
         <input type="time" class="form-control" name="time" id="time" required>
     </div>
 
     <div class="form-group">
-        <label for="event_id">Event</label>
+        <label for="event_id">Event *</label>
         <select name="event_id" id="event_id" class="form-control" required>
           <option value="">-- Select Event --</option>
           <?php foreach ($events as $event): ?>

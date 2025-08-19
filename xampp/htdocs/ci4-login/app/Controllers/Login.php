@@ -107,6 +107,7 @@ class Login extends BaseController
             'totalAnimals' => $totalAnimals,
             'totalMilk' => $totalMilk,
             'totalProducts' => $totalProducts,
+            'title' => 'Zam Zam DairyCare - Dashboard'
         ]);
     }
 

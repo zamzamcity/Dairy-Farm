@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\MilkConsumptionModel;
 use App\Models\FarmHeadModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class MilkConsumptionController extends BaseController
 {
@@ -72,5 +74,61 @@ class MilkConsumptionController extends BaseController
         $model->delete($id);
 
         return redirect()->to('/milk-consumption/milkConsumption')->with('success', 'Milk consumption deleted successfully.');
+    }
+
+    public function exportMilkConsumption()
+    {
+        $model = new MilkConsumptionModel();
+
+        $selectedDate = $this->request->getGet('date') ?? date('Y-m-d');
+
+        $records = $model
+        ->select('milk_consumption.*, farm_head.head_name')
+        ->join('farm_head', 'farm_head.id = milk_consumption.farm_head_id')
+        ->where('milk_consumption.date', $selectedDate)
+        ->orderBy('milk_consumption.date', 'DESC')
+        ->findAll();
+
+    // create spreadsheet
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+    // header row
+        $sheet->setCellValue('A1', 'ID');
+        $sheet->setCellValue('B1', 'Date');
+        $sheet->setCellValue('C1', 'Head Name');
+        $sheet->setCellValue('D1', 'Milk (Litres)');
+
+    // fill rows
+        $row = 2;
+        $totalMilk = 0;
+
+        foreach ($records as $rec) {
+            $sheet->setCellValue('A' . $row, $rec['id']);
+            $sheet->setCellValue('B' . $row, $rec['date']);
+            $sheet->setCellValue('C' . $row, $rec['head_name']);
+            $sheet->setCellValue('D' . $row, $rec['milk_litres']);
+
+            $totalMilk += floatval($rec['milk_litres']);
+            $row++;
+        }
+
+    // add Grand Total row if data exists
+        if (!empty($records)) {
+            $sheet->setCellValue('C' . $row, 'Grand Total');
+            $sheet->setCellValue('D' . $row, $totalMilk);
+            $sheet->getStyle("C{$row}:D{$row}")->getFont()->setBold(true);
+        }
+
+    // output as excel
+        $filename = 'Milk_Consumption_' . $selectedDate . '.xlsx';
+        $writer = new Xlsx($spreadsheet);
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+        exit;
     }
 }

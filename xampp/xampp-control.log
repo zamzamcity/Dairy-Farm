@@ -554,3 +554,159 @@
 6:27:21 PM  [main] 	Deinitializing Modules
 6:27:21 PM  [main] 	Deinitializing Control Panel
 
+9:22:50 AM  [main] 	Initializing Control Panel
+9:22:50 AM  [main] 	Windows Version:  Enterprise  64-bit
+9:22:50 AM  [main] 	XAMPP Version: 8.2.12
+9:22:50 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+9:22:50 AM  [main] 	You are not running with administrator rights! This will work for
+9:22:50 AM  [main] 	most application stuff but whenever you do something with services
+9:22:50 AM  [main] 	there will be a security dialogue or things will break! So think 
+9:22:50 AM  [main] 	about running this application with administrator rights!
+9:22:50 AM  [main] 	XAMPP Installation Directory: "c:\users\zamza\documents\github\dairy-farm\xampp\"
+9:22:50 AM  [main] 	Checking for prerequisites
+9:22:51 AM  [main] 	All prerequisites found
+9:22:51 AM  [main] 	Initializing Modules
+9:22:51 AM  [main] 	Starting Check-Timer
+9:22:51 AM  [main] 	Control Panel Ready
+9:22:53 AM  [Apache] 	Attempting to start Apache app...
+9:22:53 AM  [Apache] 	Status change detected: running
+9:22:54 AM  [mysql] 	Attempting to start MySQL app...
+9:22:55 AM  [mysql] 	Status change detected: running
+11:24:18 AM  [Apache] 	Attempting to stop Apache (PID: 13592)
+11:24:18 AM  [Apache] 	Attempting to stop Apache (PID: 13576)
+11:24:18 AM  [Apache] 	Status change detected: stopped
+11:24:18 AM  [mysql] 	Attempting to stop MySQL app...
+11:24:19 AM  [mysql] 	Status change detected: stopped
+11:38:56 AM  [Apache] 	Attempting to start Apache app...
+11:38:56 AM  [Apache] 	Status change detected: running
+11:38:56 AM  [mysql] 	Attempting to start MySQL app...
+11:38:57 AM  [mysql] 	Status change detected: running
+6:42:20 PM  [Apache] 	Attempting to stop Apache (PID: 9248)
+6:42:20 PM  [Apache] 	Attempting to stop Apache (PID: 13932)
+6:42:20 PM  [Apache] 	Status change detected: stopped
+6:42:21 PM  [mysql] 	Attempting to stop MySQL app...
+6:42:21 PM  [mysql] 	Status change detected: stopped
+6:42:39 PM  [main] 	Deinitializing Modules
+6:42:39 PM  [main] 	Deinitializing Control Panel
+
+3:43:40 PM  [main] 	Initializing Control Panel
+3:43:40 PM  [main] 	Windows Version:  Enterprise  64-bit
+3:43:40 PM  [main] 	XAMPP Version: 8.2.12
+3:43:40 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+3:43:40 PM  [main] 	You are not running with administrator rights! This will work for
+3:43:40 PM  [main] 	most application stuff but whenever you do something with services
+3:43:40 PM  [main] 	there will be a security dialogue or things will break! So think 
+3:43:40 PM  [main] 	about running this application with administrator rights!
+3:43:40 PM  [main] 	XAMPP Installation Directory: "c:\users\zamza\documents\github\dairy-farm\xampp\"
+3:43:40 PM  [main] 	Checking for prerequisites
+3:43:41 PM  [main] 	All prerequisites found
+3:43:41 PM  [main] 	Initializing Modules
+3:43:41 PM  [main] 	Starting Check-Timer
+3:43:41 PM  [main] 	Control Panel Ready
+5:54:45 PM  [main] 	Deinitializing Modules
+5:54:45 PM  [main] 	Deinitializing Control Panel
+
+3:20:44 PM  [main] 	Initializing Control Panel
+3:20:44 PM  [main] 	Windows Version:  Enterprise  64-bit
+3:20:44 PM  [main] 	XAMPP Version: 8.2.12
+3:20:44 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+3:20:44 PM  [main] 	You are not running with administrator rights! This will work for
+3:20:44 PM  [main] 	most application stuff but whenever you do something with services
+3:20:44 PM  [main] 	there will be a security dialogue or things will break! So think 
+3:20:44 PM  [main] 	about running this application with administrator rights!
+3:20:44 PM  [main] 	XAMPP Installation Directory: "c:\users\zamza\documents\github\dairy-farm\xampp\"
+3:20:44 PM  [main] 	Checking for prerequisites
+3:20:46 PM  [main] 	All prerequisites found
+3:20:46 PM  [main] 	Initializing Modules
+3:20:46 PM  [main] 	Starting Check-Timer
+3:20:46 PM  [main] 	Control Panel Ready
+3:20:48 PM  [Apache] 	Attempting to start Apache app...
+3:20:49 PM  [Apache] 	Status change detected: running
+3:20:49 PM  [mysql] 	Attempting to start MySQL app...
+3:20:50 PM  [mysql] 	Status change detected: running
+6:31:56 PM  [Apache] 	Attempting to stop Apache (PID: 8372)
+6:31:56 PM  [Apache] 	Attempting to stop Apache (PID: 4804)
+6:31:56 PM  [Apache] 	Status change detected: stopped
+6:31:57 PM  [mysql] 	Attempting to stop MySQL app...
+6:31:57 PM  [mysql] 	Status change detected: stopped
+6:34:06 PM  [main] 	Deinitializing Modules
+6:34:06 PM  [main] 	Deinitializing Control Panel
+
+11:14:11 AM  [main] 	Initializing Control Panel
+11:14:11 AM  [main] 	Windows Version:  Enterprise  64-bit
+11:14:11 AM  [main] 	XAMPP Version: 8.2.12
+11:14:11 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+11:14:11 AM  [main] 	You are not running with administrator rights! This will work for
+11:14:11 AM  [main] 	most application stuff but whenever you do something with services
+11:14:11 AM  [main] 	there will be a security dialogue or things will break! So think 
+11:14:11 AM  [main] 	about running this application with administrator rights!
+11:14:11 AM  [main] 	XAMPP Installation Directory: "c:\users\zamza\documents\github\dairy-farm\xampp\"
+11:14:11 AM  [main] 	Checking for prerequisites
+11:14:13 AM  [main] 	All prerequisites found
+11:14:13 AM  [main] 	Initializing Modules
+11:14:13 AM  [main] 	Starting Check-Timer
+11:14:13 AM  [main] 	Control Panel Ready
+11:14:15 AM  [Apache] 	Attempting to start Apache app...
+11:14:15 AM  [Apache] 	Status change detected: running
+11:14:15 AM  [mysql] 	Attempting to start MySQL app...
+11:14:16 AM  [mysql] 	Status change detected: running
+6:09:17 PM  [Apache] 	Attempting to stop Apache (PID: 4884)
+6:09:17 PM  [Apache] 	Attempting to stop Apache (PID: 1940)
+6:09:17 PM  [Apache] 	Status change detected: stopped
+6:09:17 PM  [mysql] 	Attempting to stop MySQL app...
+6:09:18 PM  [mysql] 	Status change detected: stopped
+6:18:50 PM  [main] 	Deinitializing Modules
+6:18:50 PM  [main] 	Deinitializing Control Panel
+
+11:22:12 AM  [main] 	Initializing Control Panel
+11:22:12 AM  [main] 	Windows Version:  Enterprise  64-bit
+11:22:12 AM  [main] 	XAMPP Version: 8.2.12
+11:22:12 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+11:22:12 AM  [main] 	You are not running with administrator rights! This will work for
+11:22:12 AM  [main] 	most application stuff but whenever you do something with services
+11:22:12 AM  [main] 	there will be a security dialogue or things will break! So think 
+11:22:12 AM  [main] 	about running this application with administrator rights!
+11:22:12 AM  [main] 	XAMPP Installation Directory: "c:\users\zamza\documents\github\dairy-farm\xampp\"
+11:22:12 AM  [main] 	Checking for prerequisites
+11:22:12 AM  [main] 	All prerequisites found
+11:22:12 AM  [main] 	Initializing Modules
+11:22:12 AM  [main] 	Starting Check-Timer
+11:22:12 AM  [main] 	Control Panel Ready
+11:22:14 AM  [Apache] 	Attempting to start Apache app...
+11:22:14 AM  [Apache] 	Status change detected: running
+11:22:14 AM  [mysql] 	Attempting to start MySQL app...
+11:22:15 AM  [mysql] 	Status change detected: running
+3:29:46 PM  [Apache] 	Attempting to stop Apache (PID: 12756)
+3:29:46 PM  [Apache] 	Attempting to stop Apache (PID: 1500)
+3:29:46 PM  [Apache] 	Status change detected: stopped
+3:29:46 PM  [mysql] 	Attempting to stop MySQL app...
+3:29:47 PM  [mysql] 	Status change detected: stopped
+3:30:09 PM  [main] 	Deinitializing Modules
+3:30:09 PM  [main] 	Deinitializing Control Panel
+
+6:23:43 PM  [main] 	Initializing Control Panel
+6:23:43 PM  [main] 	Windows Version:  Enterprise  64-bit
+6:23:43 PM  [main] 	XAMPP Version: 8.2.12
+6:23:43 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+6:23:43 PM  [main] 	You are not running with administrator rights! This will work for
+6:23:43 PM  [main] 	most application stuff but whenever you do something with services
+6:23:43 PM  [main] 	there will be a security dialogue or things will break! So think 
+6:23:43 PM  [main] 	about running this application with administrator rights!
+6:23:43 PM  [main] 	XAMPP Installation Directory: "c:\users\zamza\documents\github\dairy-farm\xampp\"
+6:23:43 PM  [main] 	Checking for prerequisites
+6:23:44 PM  [main] 	All prerequisites found
+6:23:44 PM  [main] 	Initializing Modules
+6:23:44 PM  [main] 	Starting Check-Timer
+6:23:44 PM  [main] 	Control Panel Ready
+6:23:45 PM  [Apache] 	Attempting to start Apache app...
+6:23:45 PM  [Apache] 	Status change detected: running
+6:23:46 PM  [mysql] 	Attempting to start MySQL app...
+6:23:46 PM  [mysql] 	Status change detected: running
+7:22:13 PM  [Apache] 	Attempting to stop Apache (PID: 12544)
+7:22:13 PM  [Apache] 	Attempting to stop Apache (PID: 12936)
+7:22:13 PM  [Apache] 	Status change detected: stopped
+7:22:14 PM  [mysql] 	Attempting to stop MySQL app...
+7:22:14 PM  [mysql] 	Status change detected: stopped
+7:23:01 PM  [main] 	Deinitializing Modules
+7:23:01 PM  [main] 	Deinitializing Control Panel
+

@@ -440,3 +440,74 @@
 [Tue Aug 05 09:16:59.157474 2025] [ssl:warn] [pid 16472:tid 476] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
 [Tue Aug 05 09:16:59.201503 2025] [ssl:warn] [pid 16472:tid 476] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
 [Tue Aug 05 09:16:59.243929 2025] [mpm_winnt:notice] [pid 16472:tid 476] AH00354: Child: Starting 150 worker threads.
+[Mon Aug 11 14:08:49.409724 2025] [ssl:warn] [pid 12548:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 11 14:08:49.451700 2025] [core:warn] [pid 12548:tid 424] AH00098: pid file C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Aug 11 14:08:49.454698 2025] [ssl:warn] [pid 12548:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 11 14:08:50.277753 2025] [mpm_winnt:notice] [pid 12548:tid 424] AH00455: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 configured -- resuming normal operations
+[Mon Aug 11 14:08:50.277753 2025] [mpm_winnt:notice] [pid 12548:tid 424] AH00456: Apache Lounge VS17 Server built: Oct 18 2023 13:03:18
+[Mon Aug 11 14:08:50.277753 2025] [core:notice] [pid 12548:tid 424] AH00094: Command line: 'c:\\users\\zamza\\documents\\github\\dairy-farm\\xampp\\apache\\bin\\httpd.exe -d C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache'
+[Mon Aug 11 14:08:50.280763 2025] [mpm_winnt:notice] [pid 12548:tid 424] AH00418: Parent: Created child process 14256
+[Mon Aug 11 14:08:50.649538 2025] [ssl:warn] [pid 14256:tid 432] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 11 14:08:50.691085 2025] [ssl:warn] [pid 14256:tid 432] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 11 14:08:50.736059 2025] [mpm_winnt:notice] [pid 14256:tid 432] AH00354: Child: Starting 150 worker threads.
+[Mon Aug 11 15:20:51.136134 2025] [ssl:warn] [pid 8372:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 11 15:20:51.183005 2025] [core:warn] [pid 8372:tid 424] AH00098: pid file C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Aug 11 15:20:51.183005 2025] [ssl:warn] [pid 8372:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 11 15:20:52.037892 2025] [mpm_winnt:notice] [pid 8372:tid 424] AH00455: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 configured -- resuming normal operations
+[Mon Aug 11 15:20:52.037892 2025] [mpm_winnt:notice] [pid 8372:tid 424] AH00456: Apache Lounge VS17 Server built: Oct 18 2023 13:03:18
+[Mon Aug 11 15:20:52.037892 2025] [core:notice] [pid 8372:tid 424] AH00094: Command line: 'c:\\users\\zamza\\documents\\github\\dairy-farm\\xampp\\apache\\bin\\httpd.exe -d C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache'
+[Mon Aug 11 15:20:52.037892 2025] [mpm_winnt:notice] [pid 8372:tid 424] AH00418: Parent: Created child process 4804
+[Mon Aug 11 15:20:52.560513 2025] [ssl:warn] [pid 4804:tid 428] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 11 15:20:52.591721 2025] [ssl:warn] [pid 4804:tid 428] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 11 15:20:52.638592 2025] [mpm_winnt:notice] [pid 4804:tid 428] AH00354: Child: Starting 150 worker threads.
+[Tue Aug 12 11:14:16.981811 2025] [ssl:warn] [pid 4884:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Aug 12 11:14:17.029783 2025] [core:warn] [pid 4884:tid 424] AH00098: pid file C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Aug 12 11:14:17.031783 2025] [ssl:warn] [pid 4884:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Aug 12 11:14:17.780916 2025] [mpm_winnt:notice] [pid 4884:tid 424] AH00455: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 configured -- resuming normal operations
+[Tue Aug 12 11:14:17.780916 2025] [mpm_winnt:notice] [pid 4884:tid 424] AH00456: Apache Lounge VS17 Server built: Oct 18 2023 13:03:18
+[Tue Aug 12 11:14:17.780916 2025] [core:notice] [pid 4884:tid 424] AH00094: Command line: 'c:\\users\\zamza\\documents\\github\\dairy-farm\\xampp\\apache\\bin\\httpd.exe -d C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache'
+[Tue Aug 12 11:14:17.783913 2025] [mpm_winnt:notice] [pid 4884:tid 424] AH00418: Parent: Created child process 1940
+[Tue Aug 12 11:14:18.139490 2025] [ssl:warn] [pid 1940:tid 464] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Aug 12 11:14:18.180448 2025] [ssl:warn] [pid 1940:tid 464] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Aug 12 11:14:18.224423 2025] [mpm_winnt:notice] [pid 1940:tid 464] AH00354: Child: Starting 150 worker threads.
+[Wed Aug 13 11:22:16.665579 2025] [ssl:warn] [pid 12756:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Aug 13 11:22:16.712552 2025] [core:warn] [pid 12756:tid 424] AH00098: pid file C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Wed Aug 13 11:22:16.715550 2025] [ssl:warn] [pid 12756:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Aug 13 11:22:17.719246 2025] [mpm_winnt:notice] [pid 12756:tid 424] AH00455: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 configured -- resuming normal operations
+[Wed Aug 13 11:22:17.719246 2025] [mpm_winnt:notice] [pid 12756:tid 424] AH00456: Apache Lounge VS17 Server built: Oct 18 2023 13:03:18
+[Wed Aug 13 11:22:17.719246 2025] [core:notice] [pid 12756:tid 424] AH00094: Command line: 'c:\\users\\zamza\\documents\\github\\dairy-farm\\xampp\\apache\\bin\\httpd.exe -d C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache'
+[Wed Aug 13 11:22:17.722422 2025] [mpm_winnt:notice] [pid 12756:tid 424] AH00418: Parent: Created child process 1500
+[Wed Aug 13 11:22:18.172835 2025] [ssl:warn] [pid 1500:tid 464] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Aug 13 11:22:18.212659 2025] [ssl:warn] [pid 1500:tid 464] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Wed Aug 13 11:22:18.256496 2025] [mpm_winnt:notice] [pid 1500:tid 464] AH00354: Child: Starting 150 worker threads.
+[Mon Aug 18 14:53:01.396831 2025] [ssl:warn] [pid 9556:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 18 14:53:01.444216 2025] [core:warn] [pid 9556:tid 424] AH00098: pid file C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Aug 18 14:53:01.447215 2025] [ssl:warn] [pid 9556:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 18 14:53:02.350196 2025] [mpm_winnt:notice] [pid 9556:tid 424] AH00455: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 configured -- resuming normal operations
+[Mon Aug 18 14:53:02.350196 2025] [mpm_winnt:notice] [pid 9556:tid 424] AH00456: Apache Lounge VS17 Server built: Oct 18 2023 13:03:18
+[Mon Aug 18 14:53:02.350196 2025] [core:notice] [pid 9556:tid 424] AH00094: Command line: 'c:\\users\\zamza\\documents\\github\\dairy-farm\\xampp\\apache\\bin\\httpd.exe -d C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache'
+[Mon Aug 18 14:53:02.353193 2025] [mpm_winnt:notice] [pid 9556:tid 424] AH00418: Parent: Created child process 13628
+[Mon Aug 18 14:53:02.713110 2025] [ssl:warn] [pid 13628:tid 428] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 18 14:53:02.759618 2025] [ssl:warn] [pid 13628:tid 428] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 18 14:53:02.807583 2025] [mpm_winnt:notice] [pid 13628:tid 428] AH00354: Child: Starting 150 worker threads.
+[Mon Aug 18 18:23:47.538441 2025] [ssl:warn] [pid 12544:tid 456] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 18 18:23:47.582416 2025] [core:warn] [pid 12544:tid 456] AH00098: pid file C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Mon Aug 18 18:23:47.585414 2025] [ssl:warn] [pid 12544:tid 456] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 18 18:23:48.495297 2025] [mpm_winnt:notice] [pid 12544:tid 456] AH00455: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 configured -- resuming normal operations
+[Mon Aug 18 18:23:48.495297 2025] [mpm_winnt:notice] [pid 12544:tid 456] AH00456: Apache Lounge VS17 Server built: Oct 18 2023 13:03:18
+[Mon Aug 18 18:23:48.495297 2025] [core:notice] [pid 12544:tid 456] AH00094: Command line: 'c:\\users\\zamza\\documents\\github\\dairy-farm\\xampp\\apache\\bin\\httpd.exe -d C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache'
+[Mon Aug 18 18:23:48.498295 2025] [mpm_winnt:notice] [pid 12544:tid 456] AH00418: Parent: Created child process 12936
+[Mon Aug 18 18:23:49.128931 2025] [ssl:warn] [pid 12936:tid 428] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 18 18:23:49.170565 2025] [ssl:warn] [pid 12936:tid 428] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Mon Aug 18 18:23:49.216537 2025] [mpm_winnt:notice] [pid 12936:tid 428] AH00354: Child: Starting 150 worker threads.
+[Mon Aug 18 19:22:13.763788 2025] [mpm_winnt:crit] [pid 12936:tid 428] AH02538: Child: Parent process exited abruptly. Child process is ending
+[Tue Aug 19 09:17:37.708738 2025] [ssl:warn] [pid 1376:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Aug 19 09:17:37.753471 2025] [core:warn] [pid 1376:tid 424] AH00098: pid file C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Aug 19 09:17:37.756470 2025] [ssl:warn] [pid 1376:tid 424] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Aug 19 09:17:37.806442 2025] [mpm_winnt:notice] [pid 1376:tid 424] AH00455: Apache/2.4.58 (Win64) OpenSSL/3.1.3 PHP/8.2.12 configured -- resuming normal operations
+[Tue Aug 19 09:17:37.806442 2025] [mpm_winnt:notice] [pid 1376:tid 424] AH00456: Apache Lounge VS17 Server built: Oct 18 2023 13:03:18
+[Tue Aug 19 09:17:37.806442 2025] [core:notice] [pid 1376:tid 424] AH00094: Command line: 'c:\\users\\zamza\\documents\\github\\dairy-farm\\xampp\\apache\\bin\\httpd.exe -d C:/Users/zamza/Documents/GitHub/Dairy-Farm/xampp/apache'
+[Tue Aug 19 09:17:37.810438 2025] [mpm_winnt:notice] [pid 1376:tid 424] AH00418: Parent: Created child process 4572
+[Tue Aug 19 09:17:38.206005 2025] [ssl:warn] [pid 4572:tid 448] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Aug 19 09:17:38.249980 2025] [ssl:warn] [pid 4572:tid 448] AH01909: www.example.com:443:0 server certificate does NOT include an ID which matches the server name
+[Tue Aug 19 09:17:38.295921 2025] [mpm_winnt:notice] [pid 4572:tid 448] AH00354: Child: Starting 150 worker threads.

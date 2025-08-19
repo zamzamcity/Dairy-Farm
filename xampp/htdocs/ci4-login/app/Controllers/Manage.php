@@ -7,6 +7,8 @@ use App\Models\PermissionGroupModel;
 use App\Models\PermissionGroupPermissionModel;
 use App\Models\UserModel;
 use \App\Models\AccountHeadModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Manage extends BaseController
 {
@@ -29,7 +31,7 @@ class Manage extends BaseController
         'firstname'            => $this->request->getPost('firstname'),
         'lastname'             => $this->request->getPost('lastname'),
         'email'                => $this->request->getPost('email'),
-        'password'             => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+        'password'             => $this->request->getPost('password'),
         'role'                 => $this->request->getPost('role'),
         'designation'          => $this->request->getPost('designation'),
         'salary_type'          => $this->request->getPost('salary_type'),
@@ -101,6 +103,51 @@ public function deleteEmployee($id)
     return redirect()->to('/manage/employees')->with('success', 'Employee deleted successfully.');
 }
 
+public function downloadEmployees()
+    {
+        $model = new UserModel();
+        $employees = $model->findAll();
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Header
+        $sheet->setCellValue('A1', 'ID')
+              ->setCellValue('B1', 'First Name')
+              ->setCellValue('C1', 'Last Name')
+              ->setCellValue('D1', 'Email')
+              ->setCellValue('E1', 'Role')
+              ->setCellValue('F1', 'Designation')
+              ->setCellValue('G1', 'Salary Type')
+              ->setCellValue('H1', 'Salary Amount')
+              ->setCellValue('I1', 'Joining Date')
+              ->setCellValue('J1', 'Active');
+
+        // Data
+        $row = 2;
+        foreach ($employees as $emp) {
+            $sheet->setCellValue('A'.$row, $emp['id'])
+                  ->setCellValue('B'.$row, $emp['firstname'])
+                  ->setCellValue('C'.$row, $emp['lastname'])
+                  ->setCellValue('D'.$row, $emp['email'])
+                  ->setCellValue('E'.$row, $emp['role'])
+                  ->setCellValue('F'.$row, $emp['designation'])
+                  ->setCellValue('G'.$row, $emp['salary_type'])
+                  ->setCellValue('H'.$row, $emp['salary_amount'])
+                  ->setCellValue('I'.$row, $emp['joining_date'])
+                  ->setCellValue('J'.$row, $emp['is_active'] ? 'Yes' : 'No');
+            $row++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'employees.xlsx';
+
+        // Force download
+        header('Content-Type: application/vnd.ms-excel');
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+        $writer->save('php://output');
+        exit;
+    }
 
 public function permissions()
 {
@@ -150,6 +197,37 @@ public function deletePermission($id)
         return redirect()->to('/manage/permissions')->with('error', 'Failed to delete permission.');
     }
 }
+
+public function downloadPermissions()
+    {
+        $model = new PermissionModel();
+        $permissions = $model->findAll();
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Header
+        $sheet->setCellValue('A1', 'ID')
+              ->setCellValue('B1', 'Name')
+              ->setCellValue('C1', 'Slug');
+
+        // Data
+        $row = 2;
+        foreach ($permissions as $perm) {
+            $sheet->setCellValue('A'.$row, $perm['id'])
+                  ->setCellValue('B'.$row, $perm['name'])
+                  ->setCellValue('C'.$row, $perm['slug']);
+            $row++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'permissions.xlsx';
+
+        header('Content-Type: application/vnd.ms-excel');
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+        $writer->save('php://output');
+        exit;
+    }
 
 public function permissionGroups()
 {
@@ -234,5 +312,48 @@ public function deletePermissionGroup($id)
 
     return redirect()->to('/manage/permission_groups')->with('success', 'Permission group deleted successfully.');
 }
+
+public function downloadPermissionGroups()
+    {
+        $groupModel = new PermissionGroupModel();
+        $permModel = new PermissionModel();
+        $linkModel = new PermissionGroupPermissionModel();
+
+        $groups = $groupModel->findAll();
+        foreach ($groups as &$group) {
+            $assigned = $linkModel->where('permission_group_id', $group['id'])->findAll();
+            $permNames = [];
+            foreach ($assigned as $a) {
+                $perm = $permModel->find($a['permission_id']);
+                if ($perm) $permNames[] = $perm['name'];
+            }
+            $group['permissions'] = implode(", ", $permNames);
+        }
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Header
+        $sheet->setCellValue('A1', 'ID')
+              ->setCellValue('B1', 'Group Name')
+              ->setCellValue('C1', 'Permissions');
+
+        // Data
+        $row = 2;
+        foreach ($groups as $grp) {
+            $sheet->setCellValue('A'.$row, $grp['id'])
+                  ->setCellValue('B'.$row, $grp['name'])
+                  ->setCellValue('C'.$row, $grp['permissions']);
+            $row++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'permission_groups.xlsx';
+
+        header('Content-Type: application/vnd.ms-excel');
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+        $writer->save('php://output');
+        exit;
+    }
 
 }

@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Medicine_Consumption UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Medicine_Consumption</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
-
+<?= $this->include('components/head') ?>
 
 <body id="page-top">
 
@@ -49,34 +29,40 @@
     </div>
 
     <div class="mb-3 text-right">
+        <a href="<?= base_url('payroll/salaryPayments/export') ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
+    </div>
+
+    <div class="mb-3 text-right">
         <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addSalaryPaymentModal">+ Pay Salary</a>
     </div>
 
     <?php if (session()->getFlashdata('success')): ?>
-        <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-    <?php endif; ?>
-    <?php if (session()->getFlashdata('error')): ?>
-        <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-    <?php endif; ?>
+    <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+<?php endif; ?>
+<?php if (session()->getFlashdata('error')): ?>
+<div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+<?php endif; ?>
 
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="salaryTable">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Employee</th>
-                            <th>Month</th>
-                            <th>Working Days</th>
-                            <th>Salary Type</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                            <th>Voucher No</th>
-                            <th>Paid On</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($salaryPayments as $row): ?>
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="salaryTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Employee</th>
+                        <th>Month</th>
+                        <th>Working Days</th>
+                        <th>Salary Type</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Voucher No</th>
+                        <th>Paid On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($salaryPayments as $row): ?>
                         <tr>
                             <td><?= esc($row['firstname'] . ' ' . $row['lastname']) ?></td>
                             <td><?= esc($row['salary_month']) ?></td>
@@ -86,30 +72,30 @@
                             <td><span class="badge badge-success"><?= esc($row['status']) ?></span></td>
                             <td>
                                 <?php if ($row['voucher_id']): ?>
-                                <?php
+                                    <?php
                                     $voucher = db_connect()
                                     ->table('vouchers')
                                     ->select('voucher_number')
                                     ->where('id', $row['voucher_id'])
                                     ->get()
                                     ->getRow();
-                                ?>
-                                <?= $voucher ? esc($voucher->voucher_number) : 'N/A' ?>
+                                    ?>
+                                    <?= $voucher ? esc($voucher->voucher_number) : 'N/A' ?>
                                 <?php else: ?>
-                                N/A
+                                    N/A
                                 <?php endif; ?>
                             </td>
                             <td><?= date('d M Y', strtotime($row['created_at'])) ?></td>
                         </tr>
-                        <?php endforeach; ?>
-                        <?php if (empty($salaryPayments)): ?>
+                    <?php endforeach; ?>
+                    <?php if (empty($salaryPayments)): ?>
                         <tr><td colspan="5" class="text-center">No salary payments found.</td></tr>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
-            </div>
+                    <?php endif; ?>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 </div>
 
 <div class="modal fade" id="addSalaryPaymentModal" tabindex="-1" role="dialog" aria-labelledby="addSalaryPaymentLabel" aria-hidden="true">
@@ -119,45 +105,45 @@
         <div class="modal-header">
           <h5 class="modal-title">Pay Salary</h5>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body">
-            <div class="form-group">
-                <label>Employee</label>
-                <select name="user_id" class="form-control" required>
-                    <option value="">-- Select --</option>
-                    <?php foreach ($employees as $e): ?>
-                        <option value="<?= $e['id'] ?>"><?= esc($e['firstname'] . ' ' . $e['lastname']) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Salary Month</label>
-                <input type="month" name="salary_month" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label>Salary Type</label>
-                <select name="salary_type" class="form-control" required>
-                    <option value="monthly">Monthly</option>
-                    <option value="daily">Daily</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Working Days (optional)</label>
-                <input type="number" name="working_days" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Salary Amount</label>
-                <input type="number" name="salary_amount" class="form-control" required>
-            </div>
-            
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Pay</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        </div>
       </div>
-    </form>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Employee *</label>
+            <select name="user_id" class="form-control" required>
+                <option value="">-- Select --</option>
+                <?php foreach ($employees as $e): ?>
+                    <option value="<?= $e['id'] ?>"><?= esc($e['firstname'] . ' ' . $e['lastname']) ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Salary Month *</label>
+            <input type="month" name="salary_month" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Salary Type *</label>
+            <select name="salary_type" class="form-control" required>
+                <option value="monthly">Monthly</option>
+                <option value="daily">Daily</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Working Days</label>
+            <input type="number" name="working_days" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Salary Amount *</label>
+            <input type="number" name="salary_amount" class="form-control" required>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      <button type="submit" class="btn btn-primary">Pay</button>
   </div>
+</div>
+</form>
+</div>
 </div>
 
 

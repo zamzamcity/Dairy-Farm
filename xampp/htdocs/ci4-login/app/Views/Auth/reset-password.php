@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Reset Password</title>
     <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
+    <link rel="icon" type="image/png" href="<?= base_url('assets/sb-admin-2/img/cow.png') ?>">
 </head>
 <body class="bg-gradient-primary">
 

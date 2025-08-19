@@ -5,6 +5,8 @@ use App\Controllers\BaseController;
 use App\Models\VoucherModel;
 use App\Models\VoucherEntryModel;
 use App\Models\AccountHeadModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ReceiptVoucherController extends BaseController
 {
@@ -112,5 +114,52 @@ class ReceiptVoucherController extends BaseController
         $this->voucherModel->delete($id);
         $this->voucherEntryModel->where('voucher_id', $id)->delete();
         return redirect()->back()->with('success', 'Receipt voucher deleted successfully.');
+    }
+
+    public function exportReceiptVoucher()
+    {
+        $vouchers = $this->voucherModel
+        ->where('voucher_type', 'receipt')
+        ->orderBy('date', 'DESC')
+        ->findAll();
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+    // Headers
+        $sheet->setCellValue('A1', 'Voucher No');
+        $sheet->setCellValue('B1', 'Date');
+        $sheet->setCellValue('C1', 'Reference No');
+        $sheet->setCellValue('D1', 'Description');
+        $sheet->setCellValue('E1', 'Entries (Account Head - Type - Amount - Narration)');
+
+        $row = 2;
+        foreach ($vouchers as $voucher) {
+            $entries = $this->voucherEntryModel
+            ->where('voucher_id', $voucher['id'])
+            ->findAll();
+
+            $entryText = "";
+            foreach ($entries as $entry) {
+                $accountHead = $this->accountHeadModel->find($entry['account_head_id']);
+                $entryText .= $accountHead['name'] . " - " . ucfirst($entry['type']) . " - " . $entry['amount'] . " (" . $entry['narration'] . "); ";
+            }
+
+            $sheet->setCellValue('A' . $row, $voucher['voucher_number']);
+            $sheet->setCellValue('B' . $row, $voucher['date']);
+            $sheet->setCellValue('C' . $row, $voucher['reference_no']);
+            $sheet->setCellValue('D' . $row, $voucher['description']);
+            $sheet->setCellValue('E' . $row, $entryText);
+            $row++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'Receipt_Vouchers_' . date('Y-m-d') . '.xlsx';
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+        header('Cache-Control: max-age=0');
+        $writer->save('php://output');
+        exit();
     }
 }

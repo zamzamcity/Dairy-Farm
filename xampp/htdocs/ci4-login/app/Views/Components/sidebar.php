@@ -10,9 +10,9 @@ $segment2 = $uri[1] ?? '';
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('login/home') ?>">
         <div class="sidebar-brand-icon">
-            <img class="rounded-circle" width="32" height="32" src="<?= base_url('assets/sb-admin-2/img/cow.png') ?>" alt="...">
+            <img class="rounded-circle" width="40" height="40" src="<?= base_url('assets/sb-admin-2/img/cow.png') ?>" alt="...">
         </div>
-        <div class="sidebar-brand-text mx-3">DairyCare</div>
+        <div class="sidebar-brand-text">Zam Zam DairyCare</div>
     </a>
 
     <hr class="sidebar-divider my-0">
@@ -35,8 +35,8 @@ $segment2 = $uri[1] ?? '';
         <li class="nav-item <?= $manageActive ? 'active' : '' ?>">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseManage"
             aria-expanded="<?= $manageActive ? 'true' : 'false' ?>" aria-controls="collapseManage">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Manage</span>
+            <i class="fas fa-fw fa-user"></i>
+            <span>Manage Users</span>
         </a>
         <div id="collapseManage" class="collapse <?= $manageActive ? 'show' : '' ?>" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">

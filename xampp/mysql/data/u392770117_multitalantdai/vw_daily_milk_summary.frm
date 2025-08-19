@@ -1,0 +1,16 @@
+TYPE=VIEW
+query=select coalesce(`dm`.`tenant_id`,1) AS `tenant_id`,`dm`.`date` AS `milking_date`,sum(`dm`.`total_milk`) AS `total_litres` from `u392770117_multitalantdai`.`daily_milking` `dm` group by coalesce(`dm`.`tenant_id`,1),`dm`.`date`
+md5=dc9b802a6945d905cdd6b8d69bf4fb62
+updatable=0
+algorithm=0
+definer_user=u392770117_multitalantdai
+definer_host=127.0.0.1
+suid=1
+with_check_option=0
+timestamp=0001755513879177642
+create-version=2
+source=SELECT coalesce(`dm`.`tenant_id`,1) AS `tenant_id`, `dm`.`date` AS `milking_date`, sum(`dm`.`total_milk`) AS `total_litres` FROM `daily_milking` AS `dm` GROUP BY coalesce(`dm`.`tenant_id`,1), `dm`.`date`
+client_cs_name=utf8mb4
+connection_cl_name=utf8mb4_general_ci
+view_body_utf8=select coalesce(`dm`.`tenant_id`,1) AS `tenant_id`,`dm`.`date` AS `milking_date`,sum(`dm`.`total_milk`) AS `total_litres` from `u392770117_multitalantdai`.`daily_milking` `dm` group by coalesce(`dm`.`tenant_id`,1),`dm`.`date`
+mariadb-version=100432

@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Permission_Groups UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Permission_Groups</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
+<?= $this->include('components/head') ?>
 
 <!-- Edit Modal -->
 <?php foreach ($groups as $group): ?>
@@ -34,15 +15,14 @@
           </div>
           <div class="modal-body">
               <div class="form-group">
-                <label>Group Name</label>
+                <label>Group Name *</label>
                 <input type="text" name="name" class="form-control" value="<?= $group['name'] ?>" required>
             </div>
 
             <div class="form-group">
-              <label>Permissions</label>
-              <div class="row">
+              <label for="permissions">Select Permissions *</label>
+              <div class="border rounded p-2" style="max-height: 200px; overflow-y: auto;">
                 <?php foreach ($permissions as $perm): ?>
-                  <div class="col-6">
                     <div class="form-check">
                       <input class="form-check-input"
                       type="checkbox"
@@ -54,10 +34,10 @@
                         <?= esc($perm['name']) ?>
                     </label>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
-</div>
+
 </div>
 
 <div class="modal-footer">
@@ -120,6 +100,12 @@
         <h1 class="h3 mb-0 text-gray-800">Permission Groups</h1>
     </div>
 
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('manage/permission_groups/export') ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
+    </div>
+
     <!-- Add Group Button -->
     <div class="mb-3 text-right">
         <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addGroupModal">+ Add Permission Group</a>
@@ -179,13 +165,13 @@
 
         <!-- Group Name -->
         <div class="form-group">
-            <label for="group_name">Group Name</label>
+            <label for="group_name">Group Name *</label>
             <input type="text" name="name" class="form-control" required>
         </div>
 
         <!-- Permissions -->
         <div class="form-group">
-            <label for="permissions">Select Permissions</label>
+            <label for="permissions">Select Permissions *</label>
             <div class="border rounded p-2" style="max-height: 200px; overflow-y: auto;">
                 <?php foreach ($permissions as $permission): ?>
                     <div class="form-check">
@@ -215,9 +201,9 @@
 </div>
 <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <?= $this->include('components/footer') ?>
-            <!-- End of Footer -->
+<!-- Footer -->
+<?= $this->include('components/footer') ?>
+<!-- End of Footer -->
 
 </div>
 <!-- End of Content Wrapper -->

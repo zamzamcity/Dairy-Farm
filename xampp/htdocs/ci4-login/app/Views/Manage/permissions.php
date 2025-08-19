@@ -1,24 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<?= $this->include('components/head') ?>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Permissions Example">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Permissions</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
 <!-- Add Permission Modal -->
 <div class="modal fade" id="addPermissionModal" tabindex="-1" role="dialog" aria-labelledby="addPermissionModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -33,11 +17,11 @@
     
     <div class="modal-body">
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">Name *</label>
         <input type="text" class="form-control" name="name" required>
     </div>
     <div class="form-group">
-        <label for="slug">Description</label>
+        <label for="slug">Description *</label>
         <input type="text" class="form-control" name="slug" required>
     </div>
 </div>
@@ -66,11 +50,11 @@
     
     <div class="modal-body">
       <div class="form-group">
-        <label for="name<?= $permission['id'] ?>">Name</label>
+        <label for="name<?= $permission['id'] ?>">Name *</label>
         <input type="text" class="form-control" name="name" value="<?= esc($permission['name']) ?>" required>
     </div>
     <div class="form-group">
-        <label for="slug<?= $permission['id'] ?>">Description</label>
+        <label for="slug<?= $permission['id'] ?>">Description *</label>
         <input type="text" class="form-control" name="slug" value="<?= esc($permission['slug']) ?>" required>
     </div>
 </div>
@@ -138,6 +122,13 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Permissions List</h1>
 </div>
+
+<div class="mb-3 text-right">
+    <a href="<?= base_url('manage/permissions/export') ?>" class="btn btn-success mb-3">
+        <i class="fas fa-file-excel"></i> Download Excel
+    </a>
+</div>
+
 <!-- Add Group Button -->
 <div class="mb-3 text-right">
     <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addPermissionModal">+ Add Permission</a>
@@ -147,6 +138,7 @@
         <?php if (session()->getFlashdata('success')): ?>
         <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
     <?php endif; ?>
+
     <div class="table-responsive">
         <table class="table table-bordered" width="100%" cellspacing="0" id="permissionTable">
             <thead  class="thead-dark">

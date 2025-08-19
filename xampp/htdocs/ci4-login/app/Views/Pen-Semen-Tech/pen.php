@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Pen_List UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Pen_List</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
+<?= $this->include('components/head') ?>
 
 <?php foreach ($pens as $pen): ?>
     <?php $animals = $penAnimals[$pen['id']] ?? []; ?>
@@ -76,7 +57,7 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <label for="name<?= $pen['id'] ?>">Pen Name</label>
+            <label for="name<?= $pen['id'] ?>">Pen Name *</label>
             <input type="text" class="form-control" name="name" value="<?= esc($pen['name']) ?>" required>
         </div>
     </div>
@@ -143,6 +124,12 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Pen List</h1>
+    </div>
+
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('pen-semen-tech/pen/export') ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
     </div>
 
     <!-- Add Pen Button -->
@@ -221,7 +208,7 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <label for="penName">Pen Name</label>
+            <label for="penName">Pen Name *</label>
             <input type="text" class="form-control" name="name" id="penName" required>
         </div>
     </div>
@@ -242,9 +229,9 @@
 </div>
 <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <?= $this->include('components/footer') ?>
-            <!-- End of Footer -->
+<!-- Footer -->
+<?= $this->include('components/footer') ?>
+<!-- End of Footer -->
 
 </div>
 <!-- End of Content Wrapper -->

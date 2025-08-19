@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Semen_List UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Semen_List</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
+<?= $this->include('components/head') ?>
 
 <?php foreach ($semen as $entry): ?>
 <!-- Edit Semen Modal -->
@@ -35,12 +16,12 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <label for="sireName<?= $entry['id'] ?>">Sire Name</label>
+            <label for="sireName<?= $entry['id'] ?>">Sire Name *</label>
             <input type="text" class="form-control" name="sire_name" value="<?= esc($entry['sire_name']) ?>" required>
         </div>
 
         <div class="form-group">
-            <label for="rate<?= $entry['id'] ?>">Rate per Semen</label>
+            <label for="rate<?= $entry['id'] ?>">Rate per Semen *</label>
             <input type="number" step="0.01" class="form-control" name="rate_per_semen" value="<?= esc($entry['rate_per_semen']) ?>" required>
         </div>
 
@@ -132,6 +113,12 @@
         <h1 class="h3 mb-0 text-gray-800">Semen List</h1>
     </div>
 
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('pen-semen-tech/semen/export') ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
+    </div>
+
     <!-- Add Pen Button -->
     <?php if (hasPermission('CanAddSemen')): ?>
         <div class="mb-3 text-right">
@@ -203,18 +190,18 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <label for="sireName">Sire Name</label>
+            <label for="sireName">Sire Name *</label>
             <input type="text" class="form-control" name="sire_name" id="sireName" required>
         </div>
 
         <div class="form-group">
-            <label for="ratePerSemen">Rate per Semen</label>
+            <label for="ratePerSemen">Rate per Semen *</label>
             <input type="number" step="0.01" class="form-control" name="rate_per_semen" id="ratePerSemen" required>
         </div>
 
         <div class="form-group">
             <label for="companyId">Company</label>
-            <select name="company_id" id="companyId" class="form-control" required>
+            <select name="company_id" id="companyId" class="form-control">
               <option value="">-- Select Company --</option>
               <?php foreach ($companies as $company): ?>
                 <option value="<?= $company['id'] ?>"><?= esc($company['name']) ?></option>
@@ -248,9 +235,9 @@
 </div>
 <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <?= $this->include('components/footer') ?>
-            <!-- End of Footer -->
+<!-- Footer -->
+<?= $this->include('components/footer') ?>
+<!-- End of Footer -->
 
 </div>
 <!-- End of Content Wrapper -->

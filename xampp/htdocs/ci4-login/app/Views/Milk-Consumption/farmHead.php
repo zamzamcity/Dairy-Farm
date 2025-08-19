@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Schedule_List UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Schedule_List</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
-
+<?= $this->include('components/head') ?>
 
 <?php foreach ($farm_head as $head): ?>
 <!-- Edit Farm Head Modal -->
@@ -37,7 +17,7 @@
     </div>
     <div class="modal-body">
       <div class="form-group">
-        <label>Head Name</label>
+        <label>Head Name *</label>
         <input type="text" name="head_name" class="form-control" value="<?= esc($head['head_name']) ?>" required>
     </div>
 </div>
@@ -100,11 +80,17 @@
         <h1 class="h3 mb-0 text-gray-800">Farm Milk Head List</h1>
     </div>
 
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('milk-consumption/farmHead/farmHeadExport') ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
+    </div>
+
     <!-- Add Farm Head Button -->
     <?php if (hasPermission('CanAddFarmHead')): ?>
-    <div class="mb-3 text-right">
-        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addFarmHeadModal">+ Add Head</a>
-    </div>
+        <div class="mb-3 text-right">
+            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addFarmHeadModal">+ Add Head</a>
+        </div>
     <?php endif; ?>
 
 <!-- Farm Head Table -->
@@ -112,46 +98,46 @@
     <div class="card-body">
         <?php if (session()->getFlashdata('success')): ?>
         <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-        <?php endif; ?>
+    <?php endif; ?>
 
-        <div class="table-responsive">
-            <table class="table table-bordered" id="farmHeadTable">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Head Name</th>
-                        <?php if (hasPermission('CanUpdateFarmHead') || hasPermission('CanDeleteFarmHead')): ?>
-                        <th>Actions</th>
-                        <?php endif; ?>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($farm_head as $head): ?>
-                    <tr>
-                        <td><?= esc($head['id']) ?></td>
-                        <td><?= esc($head['head_name']) ?></td>
-                        <?php if (hasPermission('CanUpdateFarmHead') || hasPermission('CanDeleteFarmHead')): ?>
-                        <td>
-                            <?php if (hasPermission('CanUpdateFarmHead')): ?>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="farmHeadTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Head Name</th>
+                    <?php if (hasPermission('CanUpdateFarmHead') || hasPermission('CanDeleteFarmHead')): ?>
+                    <th>Actions</th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($farm_head as $head): ?>
+                <tr>
+                    <td><?= esc($head['id']) ?></td>
+                    <td><?= esc($head['head_name']) ?></td>
+                    <?php if (hasPermission('CanUpdateFarmHead') || hasPermission('CanDeleteFarmHead')): ?>
+                    <td>
+                        <?php if (hasPermission('CanUpdateFarmHead')): ?>
                             <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editFarmHeadModal<?= $head['id'] ?>">Edit</a>
-                            <?php endif; ?>
-                            <?php if (hasPermission('CanDeleteFarmHead')): ?>
-                            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteFarmHeadModal<?= $head['id'] ?>">Delete</a>
-                            <?php endif; ?>
-                        </td>
                         <?php endif; ?>
-                    </tr>
-                    <?php endforeach; ?>
+                        <?php if (hasPermission('CanDeleteFarmHead')): ?>
+                            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteFarmHeadModal<?= $head['id'] ?>">Delete</a>
+                        <?php endif; ?>
+                    </td>
+                <?php endif; ?>
+            </tr>
+        <?php endforeach; ?>
 
-                    <?php if (empty($farm_head)): ?>
-                    <tr>
-                        <td colspan="4" class="text-center">No farm head records found.</td>
-                    </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
+        <?php if (empty($farm_head)): ?>
+            <tr>
+                <td colspan="4" class="text-center">No farm head records found.</td>
+            </tr>
+        <?php endif; ?>
+    </tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 
@@ -168,7 +154,7 @@
     </div>
     <div class="modal-body">
       <div class="form-group">
-        <label>Head Name</label>
+        <label>Head Name *</label>
         <input type="text" name="head_name" class="form-control" required>
     </div>
 </div>

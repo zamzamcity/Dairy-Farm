@@ -27,17 +27,23 @@ $routes->group('manage', function ($routes) {
     $routes->post('employees/add', 'Manage::addEmployee');
     $routes->post('employees/edit/(:num)', 'Manage::editEmployee/$1');
     $routes->post('employees/delete/(:num)', 'Manage::deleteEmployee/$1');
+    // Employees Excel Export
+    $routes->get('employees/export', 'Manage::downloadEmployees');
 
 
     $routes->get('permissions', 'Manage::permissions');
     $routes->post('permissions/add', 'Manage::addPermission');
     $routes->post('permissions/update/(:num)', 'Manage::updatePermission/$1');
     $routes->post('permissions/delete/(:num)', 'Manage::deletePermission/$1');
+    // Permissions Excel Export
+    $routes->get('permissions/export', 'Manage::downloadPermissions');
 
     $routes->get('permission_groups', 'Manage::permissionGroups');
     $routes->post('permission_groups/add', 'Manage::addPermissionGroup');
     $routes->post('permission_groups/edit/(:num)', 'Manage::editPermissionGroup/$1');
     $routes->post('permission_groups/delete/(:num)', 'Manage::deletePermissionGroup/$1');
+    // Permission Groups Excel Export
+    $routes->get('permission_groups/export', 'Manage::downloadPermissionGroups');
 });
 
 // Animals
@@ -46,6 +52,7 @@ $routes->group('animals', function ($routes) {
     $routes->post('animalsList/add', 'AnimalsController::addAnimal');
     $routes->post('animalsList/edit/(:num)', 'AnimalsController::editAnimal/$1');
     $routes->post('animalsList/delete/(:num)', 'AnimalsController::deleteAnimal/$1');
+    $routes->get('animalsList/export', 'AnimalsController::exportAnimals');
 
     $routes->get('get-breeds/(:num)', 'AnimalsController::getBreeds/$1');
 });
@@ -56,16 +63,19 @@ $routes->group('pen-semen-tech', function ($routes) {
     $routes->post('pen/add', 'PenController::addPen');
     $routes->post('pen/edit/(:num)', 'PenController::editPen/$1');
     $routes->post('pen/delete/(:num)', 'PenController::deletePen/$1');
+    $routes->get('pen/export', 'PenController::exportPens');
 
     $routes->get('semen', 'SemenController::semenList');
     $routes->post('semen/add', 'SemenController::addSemen');
     $routes->post('semen/edit/(:num)', 'SemenController::editSemen/$1');
     $routes->post('semen/delete/(:num)', 'SemenController::deleteSemen/$1');
+    $routes->get('semen/export', 'SemenController::exportSemen');
 
     $routes->get('technician', 'TechnicianController::technicianList');
     $routes->post('technician/add', 'TechnicianController::addTechnician');
     $routes->post('technician/edit/(:num)', 'TechnicianController::editTechnician/$1');
     $routes->post('technician/delete/(:num)', 'TechnicianController::deleteTechnician/$1');
+    $routes->get('technician/export', 'TechnicianController::exportTechnicians');
 });
 
 // Schedule Events
@@ -74,16 +84,19 @@ $routes->group('schedule-events', function ($routes) {
     $routes->post('schedule/add', 'ScheduleController::addSchedule');
     $routes->post('schedule/edit/(:num)', 'ScheduleController::editSchedule/$1');
     $routes->post('schedule/delete/(:num)', 'ScheduleController::deleteSchedule/$1');
+    $routes->get('schedule/export', 'ScheduleController::exportSchedules');
 
     $routes->get('vaccinationSchedule', 'VaccinationScheduleController::vaccinationScheduleList');
     $routes->post('vaccinationSchedule/add', 'VaccinationScheduleController::addVaccinationSchedule');
     $routes->post('vaccinationSchedule/edit/(:num)', 'VaccinationScheduleController::editVaccinationSchedule/$1');
     $routes->post('vaccinationSchedule/delete/(:num)', 'VaccinationScheduleController::deleteVaccinationSchedule/$1');
+    $routes->get('vaccinationSchedule/export', 'VaccinationScheduleController::exportVaccinationSchedules');
 
     $routes->get('dewormingSchedule', 'DewormingScheduleController::DewormingScheduleList');
     $routes->post('dewormingSchedule/add', 'DewormingScheduleController::addDewormingSchedule');
     $routes->post('dewormingSchedule/edit/(:num)', 'DewormingScheduleController::editDewormingSchedule/$1');
     $routes->post('dewormingSchedule/delete/(:num)', 'DewormingScheduleController::deleteDewormingSchedule/$1');
+    $routes->get('dewormingSchedule/export', 'DewormingScheduleController::exportDewormingSchedules');
 });
 
 // Animal Milk
@@ -92,6 +105,8 @@ $routes->group('animal-milking', function ($routes) {
     $routes->post('animalMilk/add', 'AnimalMilkController::addAnimalMilk');
     $routes->post('animalMilk/edit/(:num)', 'AnimalMilkController::editAnimalMilk/$1');
     $routes->post('animalMilk/delete/(:num)', 'AnimalMilkController::deleteAnimalMilk/$1');
+    $routes->get('animalMilk/animalMilkExport', 'AnimalMilkController::exportAnimalMilk');
+
 });
 
 // Daily Milking
@@ -99,6 +114,7 @@ $routes->get('dailyMilk', 'DailyMilkingController::dailyMilkingList');
 $routes->post('dailyMilk/add', 'DailyMilkingController::addDailyMilking');
 $routes->post('dailyMilk/edit/(:num)', 'DailyMilkingController::editDailyMilking/$1');
 $routes->post('dailyMilk/delete/(:num)', 'DailyMilkingController::deleteDailyMilking/$1');
+$routes->get('dailyMilk/export', 'DailyMilkingController::exportDailyMilk');
 
 // Milk Consumption
 $routes->group('milk-consumption', function ($routes) {
@@ -106,15 +122,19 @@ $routes->group('milk-consumption', function ($routes) {
     $routes->post('milkConsumption/add', 'MilkConsumptionController::addMilkConsumption');
     $routes->post('milkConsumption/edit/(:num)', 'MilkConsumptionController::editMilkConsumption/$1');
     $routes->post('milkConsumption/delete/(:num)', 'MilkConsumptionController::deleteMilkConsumption/$1');
+    $routes->get('milkConsumption/export', 'MilkConsumptionController::exportMilkConsumption');
 
     $routes->get('farmHead', 'FarmHeadController::farmHeadList');
     $routes->post('farmHead/add', 'FarmHeadController::addFarmHead');
     $routes->post('farmHead/edit/(:num)', 'FarmHeadController::editFarmHead/$1');
     $routes->post('farmHead/delete/(:num)', 'FarmHeadController::deleteFarmHead/$1');
+    $routes->get('farmHead/farmHeadExport', 'FarmHeadController::exportFarmHead');
 });
 
 // Milk In/Out
 $routes->get('milkInOut', 'MilkInOutController::milkInOutDetails');
+$routes->get('milkInOut/export', 'MilkInOutController::exportMilkInOut');
+
 
 //Stock
 $routes->group('stock', function ($routes) {
@@ -124,6 +144,8 @@ $routes->group('stock', function ($routes) {
     $routes->post('stockList/delete/(:num)', 'StockRegistrationController::deleteStock/$1');
     $routes->post('stockList/add-head', 'StockRegistrationController::addHead');
     $routes->post('stockList/add-unit', 'StockRegistrationController::addUnit');
+    $routes->get('stockList/export', 'StockRegistrationController::downloadExcel');
+
 });
 
 //Feeding Consumption
@@ -132,6 +154,7 @@ $routes->group('feeding-consumption', function ($routes) {
     $routes->post('feedingConsumption/add', 'FeedingConsumptionController::addFeedingConsumption');
     $routes->post('feedingConsumption/edit/(:num)', 'FeedingConsumptionController::editFeedingConsumption/$1');
     $routes->post('feedingConsumption/delete/(:num)', 'FeedingConsumptionController::deleteFeedingConsumption/$1');
+    $routes->get('feedingConsumption/export', 'FeedingConsumptionController::downloadExcel');
 });
 
 //Medicine Consumption
@@ -140,6 +163,7 @@ $routes->group('medicine-consumption', function ($routes) {
     $routes->post('medicineConsumption/add', 'MedicineConsumptionController::addMedicineConsumption');
     $routes->post('medicineConsumption/edit/(:num)', 'MedicineConsumptionController::editMedicineConsumption/$1');
     $routes->post('medicineConsumption/delete/(:num)', 'MedicineConsumptionController::deleteMedicineConsumption/$1');
+    $routes->get('medicineConsumption/export', 'MedicineConsumptionController::downloadExcel');
 });
 
 //Stock Ledger
@@ -161,6 +185,7 @@ $routes->group('chart-of-accounts', function ($routes) {
     $routes->post('accountHeads/add', 'AccountHeadsController::addAccountHeads');
     $routes->post('accountHeads/edit/(:num)', 'AccountHeadsController::editAccountHeads/$1');
     $routes->post('accountHeads/delete/(:num)', 'AccountHeadsController::deleteAccountHeads/$1');
+    $routes->get('accountHeads/export', 'AccountHeadsController::exportAccountHeads');
 });
 
 // Vouchers
@@ -170,18 +195,21 @@ $routes->group('vouchers', function ($routes) {
     $routes->post('paymentVoucher/add', 'PaymentVoucherController::addPaymentVoucher');
     $routes->post('paymentVoucher/edit/(:num)', 'PaymentVoucherController::editPaymentVoucher/$1');
     $routes->post('paymentVoucher/delete/(:num)', 'PaymentVoucherController::deletePaymentVoucher/$1');
+    $routes->get('paymentVoucher/export', 'PaymentVoucherController::exportPaymentVoucher');
 
     // Receipt Voucher
     $routes->get('receiptVoucher', 'ReceiptVoucherController::receiptVoucher');
     $routes->post('receiptVoucher/add', 'ReceiptVoucherController::addReceiptVoucher');
     $routes->post('receiptVoucher/edit/(:num)', 'ReceiptVoucherController::editReceiptVoucher/$1');
     $routes->post('receiptVoucher/delete/(:num)', 'ReceiptVoucherController::deleteReceiptVoucher/$1');
+    $routes->get('receiptVoucher/export', 'ReceiptVoucherController::exportReceiptVoucher');
 
     // Journal Voucher
     $routes->get('journalVoucher', 'JournalVoucherController::journalVoucher');
     $routes->post('journalVoucher/add', 'JournalVoucherController::addJournalVoucher');
     $routes->post('journalVoucher/edit/(:num)', 'JournalVoucherController::editJournalVoucher/$1');
     $routes->post('journalVoucher/delete/(:num)', 'JournalVoucherController::deleteJournalVoucher/$1');
+    $routes->get('journalVoucher/export', 'JournalVoucherController::exportJournalVoucher');
 });
 
 //Account Ledger
@@ -191,5 +219,7 @@ $routes->get('ledger/accountLedgerExport', 'LedgerController::accountLedgerExpor
 //Payroll
 $routes->get('payroll/salaryPayments', 'PayrollController::salaryPayments');
 $routes->post('payroll/addSalaryPayment', 'PayrollController::addSalaryPayment');
+$routes->get('payroll/salaryPayments/export', 'PayrollController::exportSalaryPayments');
+
 $routes->get('payroll/salaryLedger', 'PayrollController::salaryLedger');
 $routes->get('payroll/salaryLedger/export', 'PayrollController::exportSalaryLedger');

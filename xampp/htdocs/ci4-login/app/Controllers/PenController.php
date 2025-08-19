@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\AnimalModel;
 use App\Models\PenModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class PenController extends BaseController
 {
@@ -58,6 +60,31 @@ public function deletePen($id)
     $penModel->delete($id);
 
     return redirect()->to('/pen-semen-tech/pen')->with('success', 'Pen deleted successfully.');
+}
+
+public function exportPens()
+{
+    $penModel = new PenModel();
+    $pens = $penModel->findAll();
+
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    $sheet->fromArray([['ID','Pen Name']], NULL, 'A1');
+
+    $row = 2;
+    foreach ($pens as $p) {
+        $sheet->fromArray([$p['id'], $p['name']], NULL, "A$row");
+        $row++;
+    }
+
+    $writer = new Xlsx($spreadsheet);
+    $filename = "pens.xlsx";
+
+    header('Content-Type: application/vnd.ms-excel');
+    header("Content-Disposition: attachment; filename=\"$filename\"");
+    $writer->save("php://output");
+    exit;
 }
 
 }

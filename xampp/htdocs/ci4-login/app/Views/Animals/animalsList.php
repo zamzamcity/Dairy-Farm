@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Animals_List UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Animals_List</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
+<?= $this->include('components/head') ?>
 
 <!-- Edit Animal Modal -->
 <?php foreach ($animals as $animal): ?>
@@ -35,7 +16,7 @@
           <div class="modal-body row">
 
               <div class="form-group col-md-6">
-                <label>Pen</label>
+                <label>Pen *</label>
                 <select name="pen_id" class="form-control" required>
                   <?php foreach ($pens as $pen): ?>
                     <option value="<?= $pen['id'] ?>" <?= $animal['pen_id'] == $pen['id'] ? 'selected' : '' ?>>
@@ -46,7 +27,7 @@
       </div>
 
       <div class="form-group col-md-6">
-        <label>Tag ID</label>
+        <label>Tag ID *</label>
         <input type="text" name="tag_id" class="form-control" value="<?= esc($animal['tag_id']) ?>" required>
     </div>
 
@@ -56,12 +37,12 @@
     </div>
 
     <div class="form-group col-md-6">
-        <label>Name</label>
-        <input type="text" name="name" class="form-control" value="<?= esc($animal['name']) ?>">
+        <label>Name *</label>
+        <input type="text" name="name" class="form-control" value="<?= esc($animal['name']) ?>" required>
     </div>
 
     <div class="form-group col-md-6">
-        <label>Animal Type</label>
+        <label>Animal Type *</label>
         <select name="animal_type_id" id="editAnimalType<?= $animal['id'] ?>" class="form-control animal-type-select" data-animal-id="<?= $animal['id'] ?>" required>
             <option value="">Select Type</option>
             <?php foreach ($animalTypes as $type): ?>
@@ -74,7 +55,7 @@
 
     <div class="form-group col-md-6">
         <label>Breed</label>
-        <select name="breed_id" id="editBreed<?= $animal['id'] ?>" class="form-control breed-select" required>
+        <select name="breed_id" id="editBreed<?= $animal['id'] ?>" class="form-control breed-select">
             <option value="">Select Breed</option>
             <?php foreach ($breeds as $breed): ?>
                 <?php if ($breed['animal_type_id'] == $animal['animal_type_id']): ?>
@@ -99,8 +80,8 @@
 </div>
 
 <div class="form-group col-md-6">
-    <label>Country</label>
-    <select name="country_id" class="form-control">
+    <label>Country *</label>
+    <select name="country_id" class="form-control" required>
       <?php foreach ($countries as $country): ?>
         <option value="<?= $country['id'] ?>" <?= $animal['country_id'] == $country['id'] ? 'selected' : '' ?>>
           <?= esc($country['name']) ?>
@@ -111,7 +92,7 @@
 
 <?php $sex = isset($animal['sex']) ? trim($animal['sex']) : ''; ?>
 <div class="form-group col-md-6">
-    <label>Sex</label><br>
+    <label>Sex *</label><br>
     <label class="mr-2">
         <input type="radio" name="sex" value="male" <?= $sex === 'male' ? 'checked' : '' ?>> Male
     </label>
@@ -121,8 +102,8 @@
 </div>
 
 <div class="form-group col-md-6">
-    <label>Status</label>
-    <select name="status" class="form-control">
+    <label>Status *</label>
+    <select name="status" class="form-control" required>
       <?php
       $statuses = ['Non-Pregnant Heifer', 'Pregnant Heifer', 'Cow', 'Pregnant Cow'];
       foreach ($statuses as $status):
@@ -143,8 +124,8 @@
 </div>
 
 <div class="form-group col-md-6">
-    <label>Price</label>
-    <input type="number" name="price" class="form-control" step="0.01" value="<?= esc($animal['price']) ?>">
+    <label>Price *</label>
+    <input type="number" name="price" class="form-control" step="0.01" value="<?= esc($animal['price']) ?>" required>
 </div>
 
 <div class="form-group col-md-6">
@@ -154,7 +135,7 @@
 </div>
 
 <div class="form-group col-md-12">
-    <label>Picture (optional)</label>
+    <label>Picture</label>
     <input type="file" name="picture" class="form-control-file">
     <?php if (!empty($animal['picture'])): ?>
       <div class="mt-2">
@@ -224,6 +205,12 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Animals List</h1>
+    </div>
+
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('animals/animalsList/export') ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
     </div>
 
     <!-- Add Animal Button -->
@@ -310,7 +297,7 @@
       <div class="modal-body row">
           <!-- Pen -->
           <div class="form-group col-md-6">
-            <label>Pen</label>
+            <label>Pen *</label>
             <select name="pen_id" class="form-control" required>
               <option value="">Select Pen</option>
               <?php foreach ($pens as $pen): ?>
@@ -321,7 +308,7 @@
 
     <!-- Tag ID -->
     <div class="form-group col-md-6">
-        <label>Tag ID</label>
+        <label>Tag ID *</label>
         <input type="text" name="tag_id" class="form-control" required>
     </div>
 
@@ -333,13 +320,13 @@
 
     <!-- Name -->
     <div class="form-group col-md-6">
-        <label>Name</label>
-        <input type="text" name="name" class="form-control">
+        <label>Name *</label>
+        <input type="text" name="name" class="form-control" required>
     </div>
 
 <!-- Animal Type -->
 <div class="form-group col-md-6">
-    <label>Animal Type</label>
+    <label>Animal Type *</label>
     <select name="animal_type_id" id="animalTypeSelect" class="form-control" required>
       <option value="">Select Type</option>
       <?php foreach ($animalTypes as $type): ?>
@@ -370,8 +357,8 @@
 
 <!-- Country -->
 <div class="form-group col-md-6">
-    <label>Country</label>
-    <select name="country_id" class="form-control">
+    <label>Country *</label>
+    <select name="country_id" class="form-control" required>
       <option value="">Select Country</option>
       <?php foreach ($countries as $country): ?>
         <option value="<?= $country['id'] ?>"><?= esc($country['name']) ?></option>
@@ -381,14 +368,14 @@
 
 <!-- Sex -->
 <div class="form-group col-md-6">
-    <label>Sex</label><br>
+    <label>Sex *</label><br>
     <label class="mr-2"><input type="radio" name="sex" value="Male" required> Male</label>
     <label><input type="radio" name="sex" value="Female" required> Female</label>
 </div>
 
 <!-- Status -->
 <div class="form-group col-md-6">
-    <label>Status</label>
+    <label>Status *</label>
     <select name="status" class="form-control" required>
       <option value="">Select Status</option>
       <option value="Non-Pregnant Heifer">Non-Pregnant Heifer</option>
@@ -412,8 +399,8 @@
 
 <!-- Price -->
 <div class="form-group col-md-6">
-    <label>Price</label>
-    <input type="number" name="price" class="form-control" step="0.01">
+    <label>Price *</label>
+    <input type="number" name="price" class="form-control" step="0.01" required>
 </div>
 
 <!-- Pedigree Info -->
@@ -445,9 +432,9 @@
 </div>
 <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <?= $this->include('components/footer') ?>
-            <!-- End of Footer -->
+<!-- Footer -->
+<?= $this->include('components/footer') ?>
+<!-- End of Footer -->
 
 </div>
 <!-- End of Content Wrapper -->

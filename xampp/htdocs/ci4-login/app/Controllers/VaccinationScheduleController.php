@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\VaccinationModel;
 use App\Models\VaccinationScheduleModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class VaccinationScheduleController extends BaseController
 {
@@ -13,10 +15,10 @@ class VaccinationScheduleController extends BaseController
         $vaccinationModel  = new VaccinationModel();
 
         $data['vaccination_schedules'] = $scheduleModel
-            ->select('vaccination_schedules.*, vaccinations.name AS vaccination_name')
-            ->join('vaccinations', 'vaccinations.id = vaccination_schedules.vaccination_id')
-            ->orderBy('vaccination_schedules.date', 'DESC')
-            ->findAll();
+        ->select('vaccination_schedules.*, vaccinations.name AS vaccination_name')
+        ->join('vaccinations', 'vaccinations.id = vaccination_schedules.vaccination_id')
+        ->orderBy('vaccination_schedules.date', 'DESC')
+        ->findAll();
 
         $data['vaccinations'] = $vaccinationModel->findAll();
         $data['months'] = [
@@ -65,5 +67,41 @@ class VaccinationScheduleController extends BaseController
         $scheduleModel->delete($id);
 
         return redirect()->to('/schedule-events/vaccinationSchedule')->with('success', 'Vaccination schedule deleted successfully.');
+    }
+
+    public function exportVaccinationSchedules()
+    {
+        $scheduleModel = new VaccinationScheduleModel();
+        $schedules = $scheduleModel
+        ->select('vaccination_schedules.month, vaccination_schedules.date, vaccinations.name as vaccination_name, vaccination_schedules.comments')
+        ->join('vaccinations', 'vaccinations.id = vaccination_schedules.vaccination_id')
+        ->orderBy('vaccination_schedules.date', 'DESC')
+        ->findAll();
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->setCellValue('A1', 'Month');
+        $sheet->setCellValue('B1', 'Date');
+        $sheet->setCellValue('C1', 'Vaccination');
+        $sheet->setCellValue('D1', 'Comments');
+
+        $row = 2;
+        foreach ($schedules as $s) {
+            $sheet->setCellValue("A{$row}", $s['month']);
+            $sheet->setCellValue("B{$row}", $s['date']);
+            $sheet->setCellValue("C{$row}", $s['vaccination_name']);
+            $sheet->setCellValue("D{$row}", $s['comments']);
+            $row++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'vaccination_schedules.xlsx';
+
+        header('Content-Type: application/vnd.ms-excel');
+        header("Content-Disposition: attachment;filename=\"{$filename}\"");
+        header('Cache-Control: max-age=0');
+        $writer->save('php://output');
+        exit;
     }
 }

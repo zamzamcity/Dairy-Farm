@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\AnimalMilkModel;
 use App\Models\AnimalModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class AnimalMilkController extends BaseController
 {
@@ -74,4 +76,62 @@ public function deleteAnimalMilk($id)
 
     return redirect()->to('/animal-milking/animalMilk')->with('success', 'Animal milk record deleted successfully.');
 }
+
+public function exportAnimalMilk()
+{
+    $milkModel    = new AnimalMilkModel();
+
+    $date = $this->request->getGet('date'); // from filter
+
+    $builder = $milkModel
+    ->select('animal_milk.*, animals.tag_id')
+    ->join('animals', 'animals.id = animal_milk.animal_id');
+
+    if (!empty($date)) {
+        $builder->where('animal_milk.date', $date);
+    }
+
+    $records = $builder->orderBy('animal_milk.date', 'DESC')->findAll();
+
+    // Create spreadsheet
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Headers
+    $sheet->setCellValue('A1', 'ID');
+    $sheet->setCellValue('B1', 'Date');
+    $sheet->setCellValue('C1', 'Tag ID');
+    $sheet->setCellValue('D1', 'First Calving Date');
+    $sheet->setCellValue('E1', 'Last Calving Date');
+    $sheet->setCellValue('F1', 'Milk 1 (L)');
+    $sheet->setCellValue('G1', 'Milk 2 (L)');
+    $sheet->setCellValue('H1', 'Milk 3 (L)');
+
+    // Fill data
+    $row = 2;
+    foreach ($records as $record) {
+        $sheet->setCellValue('A'.$row, $record['id']);
+        $sheet->setCellValue('B'.$row, $record['date']);
+        $sheet->setCellValue('C'.$row, $record['tag_id']);
+        $sheet->setCellValue('D'.$row, $record['first_calving_date']);
+        $sheet->setCellValue('E'.$row, $record['last_calving_date']);
+        $sheet->setCellValue('F'.$row, $record['milk_1']);
+        $sheet->setCellValue('G'.$row, $record['milk_2']);
+        $sheet->setCellValue('H'.$row, $record['milk_3']);
+        $row++;
+    }
+
+    // Export file
+    $writer = new Xlsx($spreadsheet);
+    $filename = 'animal_milk_export_'.date('YmdHis').'.xlsx';
+
+    // Set headers for download
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="'. $filename .'"'); 
+    header('Cache-Control: max-age=0');
+
+    $writer->save('php://output');
+    exit();
+}
+
 }

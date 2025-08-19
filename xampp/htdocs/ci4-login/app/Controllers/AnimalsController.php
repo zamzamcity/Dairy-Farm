@@ -12,6 +12,8 @@ use App\Models\AnimalTypeModel;
 use App\Models\BreedModel;
 use App\Models\CompanyModel;
 use App\Models\CountryModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class AnimalsController extends BaseController
 {
@@ -176,4 +178,47 @@ public function deleteAnimal($id)
 
     return redirect()->to('/animals/animalsList')->with('success', 'Animal deleted successfully.');
 }
+
+public function exportAnimals()
+{
+    $db = \Config\Database::connect();
+    $builder = $db->table('animals');
+    $builder->select('
+        animals.id, animals.name, animals.tag_id, animals.electronic_id,
+        pens.name AS pen, animal_types.name AS animal_type,
+        breeds.name AS breed, companies.name AS company, countries.name AS country,
+        animals.sex, animals.status, animals.insertion_date, animals.birth_date, animals.price
+    ');
+    $builder->join('pens', 'pens.id = animals.pen_id', 'left');
+    $builder->join('animal_types', 'animal_types.id = animals.animal_type_id', 'left');
+    $builder->join('breeds', 'breeds.id = animals.breed_id', 'left');
+    $builder->join('companies', 'companies.id = animals.company_id', 'left');
+    $builder->join('countries', 'countries.id = animals.country_id', 'left');
+
+    $animals = $builder->get()->getResultArray();
+
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Header
+    $sheet->fromArray([
+        ['ID','Name','Tag ID','Electronic ID','Pen','Animal Type','Breed','Company','Country','Sex','Status','Insertion Date','Birth Date','Price']
+    ], NULL, 'A1');
+
+    // Data
+    $row = 2;
+    foreach ($animals as $a) {
+        $sheet->fromArray([array_values($a)], NULL, "A$row");
+        $row++;
+    }
+
+    $writer = new Xlsx($spreadsheet);
+    $filename = "animals.xlsx";
+
+    header('Content-Type: application/vnd.ms-excel');
+    header("Content-Disposition: attachment; filename=\"$filename\"");
+    $writer->save("php://output");
+    exit;
+}
+
 }

@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Schedule_List UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Schedule_List</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
-
+<?= $this->include('components/head') ?>
 
 <?php foreach ($deworming_schedules as $entry): ?>
 <!-- Edit Deworming Schedule Modal -->
@@ -36,7 +16,7 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <label for="month<?= $entry['id'] ?>">Month</label>
+            <label for="month<?= $entry['id'] ?>">Month *</label>
             <select name="month" class="form-control" required>
               <option value="">-- Select Month --</option>
               <?php
@@ -51,12 +31,12 @@
     </div>
 
     <div class="form-group">
-        <label for="date<?= $entry['id'] ?>">Date</label>
+        <label for="date<?= $entry['id'] ?>">Date *</label>
         <input type="date" class="form-control" name="date" value="<?= esc($entry['date']) ?>" required>
     </div>
 
     <div class="form-group">
-        <label for="deworming_id<?= $entry['id'] ?>">Deworming</label>
+        <label for="deworming_id<?= $entry['id'] ?>">Deworming *</label>
         <select name="deworming_id" class="form-control" required>
           <option value="">-- Select Deworming --</option>
           <?php foreach ($dewormings as $deworming): ?>
@@ -137,58 +117,64 @@
         <h1 class="h3 mb-0 text-gray-800">Deworming Schedule List</h1>
     </div>
 
-    <!-- Add Deworming Schedule Button -->
-    <?php if (hasPermission('CanAddDewormingSchedule')): ?>
-        <div class="mb-3 text-right">
-            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addDewormingModal">+ Add Deworming Schedule</a>
-        </div>
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('schedule-events/dewormingSchedule/export') ?>" class="btn btn-success mb-3">
+          <i class="fas fa-file-excel"></i> Download Excel
+      </a>
+  </div>
+
+  <!-- Add Deworming Schedule Button -->
+  <?php if (hasPermission('CanAddDewormingSchedule')): ?>
+    <div class="mb-3 text-right">
+        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addDewormingModal">+ Add Deworming Schedule</a>
+    </div>
+<?php endif; ?>
+
+<!-- Deworming Schedule Table -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
     <?php endif; ?>
 
-    <!-- Deworming Schedule Table -->
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-        <?php endif; ?>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dewormingTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Month</th>
+                    <th>Date</th>
+                    <th>Deworming</th>
+                    <?php if (hasPermission('CanUpdateDewormingSchedule') || hasPermission('CanDeleteDewormingSchedule')): ?>
+                    <th>Actions</th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($deworming_schedules as $schedule): ?>
+                <tr>
+                    <td><?= esc($schedule['id']) ?></td>
+                    <td><?= esc($schedule['month']) ?></td>
+                    <td><?= esc($schedule['date']) ?></td>
+                    <td><?= esc($schedule['deworming_name']) ?></td>
+                    <?php if (hasPermission('CanUpdateDewormingSchedule') || hasPermission('CanDeleteDewormingSchedule')): ?>
+                    <td>
+                        <?php if (hasPermission('CanUpdateDewormingSchedule')): ?>
+                            <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editDewormingModal<?= $schedule['id'] ?>">Edit</a>
+                        <?php endif; ?>
+                        <?php if (hasPermission('CanDeleteDewormingSchedule')): ?>
+                            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDewormingModal<?= $schedule['id'] ?>">Delete</a>
+                        <?php endif; ?>
+                    </td>
+                <?php endif; ?>
+            </tr>
+        <?php endforeach; ?>
 
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dewormingTable">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Month</th>
-                        <th>Date</th>
-                        <th>Deworming</th>
-                        <?php if (hasPermission('CanUpdateDewormingSchedule') || hasPermission('CanDeleteDewormingSchedule')): ?>
-                        <th>Actions</th>
-                    <?php endif; ?>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($deworming_schedules as $schedule): ?>
-                    <tr>
-                        <td><?= esc($schedule['id']) ?></td>
-                        <td><?= esc($schedule['month']) ?></td>
-                        <td><?= esc($schedule['date']) ?></td>
-                        <td><?= esc($schedule['deworming_name']) ?></td>
-                        <?php if (hasPermission('CanUpdateDewormingSchedule') || hasPermission('CanDeleteDewormingSchedule')): ?>
-                        <td>
-                            <?php if (hasPermission('CanUpdateDewormingSchedule')): ?>
-                                <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editDewormingModal<?= $schedule['id'] ?>">Edit</a>
-                            <?php endif; ?>
-                            <?php if (hasPermission('CanDeleteDewormingSchedule')): ?>
-                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDewormingModal<?= $schedule['id'] ?>">Delete</a>
-                            <?php endif; ?>
-                        </td>
-                    <?php endif; ?>
-                </tr>
-            <?php endforeach; ?>
-
-            <?php if (empty($deworming_schedules)): ?>
-                <tr><td colspan="6" class="text-center">No deworming schedule records found.</td></tr>
-            <?php endif ?>
-        </tbody>
-    </table>
+        <?php if (empty($deworming_schedules)): ?>
+            <tr><td colspan="6" class="text-center">No deworming schedule records found.</td></tr>
+        <?php endif ?>
+    </tbody>
+</table>
 </div>
 </div>
 </div>
@@ -207,7 +193,7 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <label for="month">Month</label>
+            <label for="month">Month *</label>
             <select name="month" id="month" class="form-control" required>
               <option value="">-- Select Month --</option>
               <?php
@@ -222,12 +208,12 @@
     </div>
 
     <div class="form-group">
-        <label for="date">Date</label>
+        <label for="date">Date *</label>
         <input type="date" class="form-control" name="date" id="date" required>
     </div>
 
     <div class="form-group">
-        <label for="deworming_id">Deworming</label>
+        <label for="deworming_id">Deworming *</label>
         <select name="deworming_id" id="deworming_id" class="form-control" required>
           <option value="">-- Select Deworming --</option>
           <?php foreach ($dewormings as $deworming): ?>

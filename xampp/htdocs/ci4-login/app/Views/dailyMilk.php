@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Schedule_List UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Schedule_List</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
-
+<?= $this->include('components/head') ?>
 
 <?php foreach ($daily_milking as $entry): ?>
 <!-- Edit Daily Milking Modal -->
@@ -36,12 +16,12 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <label for="date<?= $entry['id'] ?>">Date</label>
+            <label for="date<?= $entry['id'] ?>">Date *</label>
             <input type="date" class="form-control" name="date" value="<?= esc($entry['date']) ?>" required>
         </div>
 
         <div class="form-group">
-            <label for="milk_product<?= $entry['id'] ?>">Milk Product</label>
+            <label for="milk_product<?= $entry['id'] ?>">Milk Product *</label>
             <select name="milk_product" class="form-control" required>
               <option value="">-- Select Milk Product --</option>
               <option value="Milk" <?= $entry['milk_product'] == 'Milk' ? 'selected' : '' ?>>Milk</option>
@@ -50,7 +30,7 @@
       </div>
 
       <div class="form-group">
-        <label for="milk_1<?= $entry['id'] ?>">Milk 1 (Litres)</label>
+        <label for="milk_1<?= $entry['id'] ?>">Milk 1 (Litres) *</label>
         <input type="number" step="0.01" class="form-control" name="milk_1" value="<?= esc($entry['milk_1']) ?>" required>
     </div>
 
@@ -130,10 +110,10 @@
     </div>
 
     <?php
-        $grandTotal = 0;
-        foreach ($daily_milking as $record) {
-            $grandTotal += floatval($record['total_milk']);
-        }
+    $grandTotal = 0;
+    foreach ($daily_milking as $record) {
+        $grandTotal += floatval($record['total_milk']);
+    }
     ?>
 
     <form method="get" action="<?= base_url('dailyMilk') ?>" class="form-inline mb-3">
@@ -147,11 +127,17 @@
         <a href="<?= base_url('dailyMilk') ?>" class="btn btn-secondary ml-2">Reset</a>
     </form>
 
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('dailyMilk/export') . '?' . $_SERVER['QUERY_STRING'] ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
+    </div>
+
     <!-- Add Daily Milking Button -->
     <?php if (hasPermission('CanAddDailyMilking')): ?>
-    <div class="mb-3 text-right">
-        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addDailyMilkingModal">+ Add Daily Milk</a>
-    </div>
+        <div class="mb-3 text-right">
+            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addDailyMilkingModal">+ Add Daily Milk</a>
+        </div>
     <?php endif; ?>
 
 <!-- Daily Milking Table -->
@@ -159,66 +145,66 @@
     <div class="card-body">
         <?php if (session()->getFlashdata('success')): ?>
         <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-        <?php endif; ?>
+    <?php endif; ?>
 
-        <div class="table-responsive">
+    <div class="table-responsive">
 
-            <table class="table table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Date</th>
-                        <th>Milk Product</th>
-                        <th>Milk 1 (L)</th>
-                        <th>Milk 2 (L)</th>
-                        <th>Milk 3 (L)</th>
-                        <th>Total Milk (L)</th>
-                        <?php if (hasPermission('CanUpdateDailyMilking') || hasPermission('CanDeleteDailyMilking')): ?>
-                        <th>Actions</th>
-                        <?php endif; ?>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($daily_milking as $record): ?>
-                    <tr>
-                        <td><?= esc($record['id']) ?></td>
-                        <td><?= esc($record['date']) ?></td>
-                        <td><?= esc($record['milk_product']) ?></td>
-                        <td><?= esc($record['milk_1']) ?></td>
-                        <td><?= esc($record['milk_2']) ?></td>
-                        <td><?= esc($record['milk_3']) ?></td>
-                        <td><?= esc($record['total_milk']) ?></td>
-                        <?php if (hasPermission('CanUpdateDailyMilking') || hasPermission('CanDeleteDailyMilking')): ?>
-                        <td>
-                            <?php if (hasPermission('CanUpdateDailyMilking')): ?>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Milk Product</th>
+                    <th>Milk 1 (L)</th>
+                    <th>Milk 2 (L)</th>
+                    <th>Milk 3 (L)</th>
+                    <th>Total Milk (L)</th>
+                    <?php if (hasPermission('CanUpdateDailyMilking') || hasPermission('CanDeleteDailyMilking')): ?>
+                    <th>Actions</th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($daily_milking as $record): ?>
+                <tr>
+                    <td><?= esc($record['id']) ?></td>
+                    <td><?= esc($record['date']) ?></td>
+                    <td><?= esc($record['milk_product']) ?></td>
+                    <td><?= esc($record['milk_1']) ?></td>
+                    <td><?= esc($record['milk_2']) ?></td>
+                    <td><?= esc($record['milk_3']) ?></td>
+                    <td><?= esc($record['total_milk']) ?></td>
+                    <?php if (hasPermission('CanUpdateDailyMilking') || hasPermission('CanDeleteDailyMilking')): ?>
+                    <td>
+                        <?php if (hasPermission('CanUpdateDailyMilking')): ?>
                             <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editDailyMilkingModal<?= $record['id'] ?>">Edit</a>
-                            <?php endif; ?>
-                            <?php if (hasPermission('CanDeleteDailyMilking')): ?>
+                        <?php endif; ?>
+                        <?php if (hasPermission('CanDeleteDailyMilking')): ?>
                             <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDailyMilkingModal<?= $record['id'] ?>">Delete</a>
-                            <?php endif; ?>
-                        </td>
                         <?php endif; ?>
-                    </tr>
-                    <?php endforeach; ?>
+                    </td>
+                <?php endif; ?>
+            </tr>
+        <?php endforeach; ?>
 
-                    <?php if (empty($daily_milking)): ?>
-                    <tr>
-                        <td colspan="8" class="text-center">No daily milking records found.</td>
-                    </tr>
-                    <?php else: ?>
-                    <!-- Total Row -->
-                    <tr style="font-weight: bold; background-color: #f1f1f1;">
-                        <td colspan="6" class="text-center">Grand Total (Litres):</td>
-                        <td><?= number_format($grandTotal, 2) ?></td>
-                        <?php if (hasPermission('CanUpdateDailyMilking') || hasPermission('CanDeleteDailyMilking')): ?>
-                        <td></td>
-                        <?php endif; ?>
-                    </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
+        <?php if (empty($daily_milking)): ?>
+            <tr>
+                <td colspan="8" class="text-center">No daily milking records found.</td>
+            </tr>
+        <?php else: ?>
+            <!-- Total Row -->
+            <tr style="font-weight: bold; background-color: #f1f1f1;">
+                <td colspan="6" class="text-center">Grand Total (Litres):</td>
+                <td><?= number_format($grandTotal, 2) ?></td>
+                <?php if (hasPermission('CanUpdateDailyMilking') || hasPermission('CanDeleteDailyMilking')): ?>
+                <td></td>
+            <?php endif; ?>
+        </tr>
+    <?php endif; ?>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
 </div>
@@ -237,12 +223,12 @@
 
     <div class="modal-body">
       <div class="form-group">
-        <label for="date">Date</label>
+        <label for="date">Date *</label>
         <input type="date" class="form-control" name="date" id="date" required>
     </div>
 
     <div class="form-group">
-        <label for="milk_product">Milk Product</label>
+        <label for="milk_product">Milk Product *</label>
         <select name="milk_product" id="milk_product" class="form-control" required>
           <option value="">-- Select Milk Product --</option>
           <option value="Milk">Milk</option>
@@ -251,7 +237,7 @@
   </div>
 
   <div class="form-group">
-    <label for="milk_1">Milk 1 (Litres)</label>
+    <label for="milk_1">Milk 1 (Litres) *</label>
     <input type="number" step="0.01" class="form-control" name="milk_1" id="milk_1" required>
 </div>
 

@@ -1,21 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login - Zam Zam City</title>
-
-    <!-- Custom fonts -->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900" rel="stylesheet">
-
-    <!-- Custom styles -->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
+<?= $this->include('components/head') ?>
 
 <body class="bg-gradient-primary">
 
@@ -30,7 +16,14 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6 d-none d-lg-flex flex-column align-items-center justify-content-center bg-white p-4">
+                                <img src="<?= base_url('assets/sb-admin-2/img/cow.png') ?>" 
+                                alt="Cow" 
+                                class="img-fluid mb-3" 
+                                style="max-height: 260px;">
+                                <h3 class="text-primary">Welcome to Zam Zam DairyCare</h3>
+                                <p class="text-muted text-center">Manage your dairy business efficiently.</p>
+                            </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -69,9 +62,9 @@
                                 <div class="text-center">
                                     <a class="small" href="<?= base_url('pages/forgot-password') ?>">Forgot Password?</a>
                                 </div>
-                                <div class="text-center">
+                                <!-- <div class="text-center">
                                     <a class="small" href="<?= base_url('pages/register') ?>">Create an Account!</a>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>

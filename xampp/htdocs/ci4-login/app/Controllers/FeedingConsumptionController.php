@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\FeedConsumptionModel;
 use App\Models\StockRegistrationModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class FeedingConsumptionController extends BaseController
 {
@@ -78,5 +80,47 @@ class FeedingConsumptionController extends BaseController
         $model->delete($id);
 
         return redirect()->to('/feeding-consumption/feedingConsumption')->with('success', 'Feeding consumption deleted.');
+    }
+
+    public function downloadExcel()
+    {
+        $model = new FeedConsumptionModel();
+
+        $selectedDate = $this->request->getGet('date') ?? date('Y-m-d');
+
+        $consumptions = $model
+        ->select('feed_consumption.*, stock_registration.product_name')
+        ->join('stock_registration', 'stock_registration.id = feed_consumption.product_id')
+        ->where('feed_consumption.date', $selectedDate)
+        ->findAll();
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+    // Headers
+        $sheet->setCellValue('A1', 'ID');
+        $sheet->setCellValue('B1', 'Date');
+        $sheet->setCellValue('C1', 'Product');
+        $sheet->setCellValue('D1', 'Quantity');
+
+    // Data
+        $row = 2;
+        foreach ($consumptions as $consumption) {
+            $sheet->setCellValue('A' . $row, $consumption['id']);
+            $sheet->setCellValue('B' . $row, $consumption['date']);
+            $sheet->setCellValue('C' . $row, $consumption['product_name']);
+            $sheet->setCellValue('D' . $row, $consumption['quantity']);
+            $row++;
+        }
+
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'Feeding_Consumption_' . $selectedDate . '.xlsx';
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+        exit();
     }
 }

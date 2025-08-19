@@ -1,102 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Medicine_Consumption UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Medicine_Consumption</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
-
+<?= $this->include('components/head') ?>
 
 <!-- Edit Payment Voucher Modal -->
 <?php foreach ($vouchers as $voucher): ?>
-<div class="modal fade" id="editPaymentVoucherModal<?= $voucher['id'] ?>" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-xl" role="document">
-        <form action="<?= base_url('vouchers/paymentVoucher/edit/' . $voucher['id']) ?>" method="post">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Edit Payment Voucher</h5>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-row mb-3">
-                        <div class="col-md-3">
-                            <label>Voucher Number</label>
-                            <input type="text" class="form-control" value="<?= esc($voucher['voucher_number']) ?>" readonly>
-                        </div>
-                        <div class="col-md-3">
-                            <label>Date</label>
-                            <input type="date" name="date" class="form-control" value="<?= esc($voucher['date']) ?>" required>
-                        </div>
-                        <div class="col-md-3">
-                            <label>Reference No</label>
-                            <input type="text" name="reference_no" class="form-control" value="<?= esc($voucher['reference_no']) ?>">
-                        </div>
-                        <div class="col-md-3">
-                            <label>Description</label>
-                            <input type="text" name="description" class="form-control" value="<?= esc($voucher['description']) ?>">
-                        </div>
+    <div class="modal fade" id="editPaymentVoucherModal<?= $voucher['id'] ?>" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-xl" role="document">
+            <form action="<?= base_url('vouchers/paymentVoucher/edit/' . $voucher['id']) ?>" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Payment Voucher</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
+                    <div class="modal-body">
+                        <div class="form-row mb-3">
+                            <div class="col-md-3">
+                                <label>Voucher Number</label>
+                                <input type="text" class="form-control" value="<?= esc($voucher['voucher_number']) ?>" readonly>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Date *</label>
+                                <input type="date" name="date" class="form-control" value="<?= esc($voucher['date']) ?>" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Reference No *</label>
+                                <input type="text" name="reference_no" class="form-control" value="<?= esc($voucher['reference_no']) ?>">
+                            </div>
+                            <div class="col-md-3">
+                                <label>Description</label>
+                                <input type="text" name="description" class="form-control" value="<?= esc($voucher['description']) ?>">
+                            </div>
+                        </div>
 
-                    <table class="table table-bordered entry-table">
-                        <thead>
-                            <tr>
-                                <th>Account Head</th>
-                                <th>Type</th>
-                                <th>Amount</th>
-                                <th>Narration</th>
-                                <th><button type="button" class="btn btn-sm btn-success add-row">+</button></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($voucher['entries'] as $i => $entry): ?>
-                            <tr>
-                                <td>
-                                    <select name="entries[<?= $i ?>][account_head_id]" class="form-control" required>
-                                        <option value="">Select Account</option>
-                                        <?php foreach ($account_heads as $head): ?>
-                                        <option value="<?= $head['id'] ?>" <?= $head['id'] == $entry['account_head_id'] ? 'selected' : '' ?>>
-                                            <?= esc($head['name']) ?>
-                                        </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select name="entries[<?= $i ?>][type]" class="form-control" required>
-                                        <option value="debit" <?= $entry['type'] == 'debit' ? 'selected' : '' ?>>Debit</option>
-                                        <option value="credit" <?= $entry['type'] == 'credit' ? 'selected' : '' ?>>Credit</option>
-                                    </select>
-                                </td>
-                                <td><input type="number" name="entries[<?= $i ?>][amount]" class="form-control" value="<?= esc($entry['amount']) ?>" step="0.01" required></td>
-                                <td><input type="text" name="entries[<?= $i ?>][narration]" class="form-control" value="<?= esc($entry['narration']) ?>"></td>
-                                <td><button type="button" class="btn btn-sm btn-danger remove-row">×</button></td>
-                            </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                        <table class="table table-bordered entry-table">
+                            <thead>
+                                <tr>
+                                    <th>Account Head *</th>
+                                    <th>Type *</th>
+                                    <th>Amount *</th>
+                                    <th>Narration *</th>
+                                    <th><button type="button" class="btn btn-sm btn-success add-row">+</button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($voucher['entries'] as $i => $entry): ?>
+                                    <tr>
+                                        <td>
+                                            <select name="entries[<?= $i ?>][account_head_id]" class="form-control" required>
+                                                <option value="">Select Account</option>
+                                                <?php foreach ($account_heads as $head): ?>
+                                                    <option value="<?= $head['id'] ?>" <?= $head['id'] == $entry['account_head_id'] ? 'selected' : '' ?>>
+                                                        <?= esc($head['name']) ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select name="entries[<?= $i ?>][type]" class="form-control" required>
+                                                <option value="debit" <?= $entry['type'] == 'debit' ? 'selected' : '' ?>>Debit</option>
+                                                <option value="credit" <?= $entry['type'] == 'credit' ? 'selected' : '' ?>>Credit</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="number" name="entries[<?= $i ?>][amount]" class="form-control" value="<?= esc($entry['amount']) ?>" step="0.01" required></td>
+                                        <td><input type="text" name="entries[<?= $i ?>][narration]" class="form-control" value="<?= esc($entry['narration']) ?>"></td>
+                                        <td><button type="button" class="btn btn-sm btn-danger remove-row">×</button></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Update Voucher</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Update Voucher</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 
 
 <!-- Delete Payment Voucher Modal -->
@@ -149,68 +129,74 @@
         <h1 class="h3 mb-0 text-gray-800">Payment Vouchers</h1>
     </div>
 
-    <?php if (hasPermission('CanAddPaymentVoucher')): ?>
     <div class="mb-3 text-right">
-        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addPaymentVoucherModal">+ Add Payment Voucher</a>
+        <a href="<?= base_url('vouchers/paymentVoucher/export') ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
     </div>
+
+    <?php if (hasPermission('CanAddPaymentVoucher')): ?>
+        <div class="mb-3 text-right">
+            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addPaymentVoucherModal">+ Add Payment Voucher</a>
+        </div>
     <?php endif; ?>
 
     <div class="card shadow mb-4">
         <div class="card-body">
             <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-            <?php endif; ?>
-            <?php if (session()->getFlashdata('error')): ?>
-            <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-            <?php endif; ?>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+    <?php endif; ?>
 
-            <div class="table-responsive">
-                <table class="table table-bordered" id="pVoucherTable">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Date</th>
-                            <th>Voucher No</th>
-                            <th>Reference No</th>
-                            <th>Description</th>
-                            <th>Total Amount</th>
-                            <?php if (hasPermission('CanUpdatePaymentVoucher') || hasPermission('CanDeletePaymentVoucher')): ?>
-                            <th>Actions</th>
-                            <?php endif; ?>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($vouchers as $voucher): ?>
-                        <tr>
-                            <td><?= esc($voucher['date']) ?></td>
-                            <td><?= esc($voucher['voucher_number']) ?></td>
-                            <td><?= esc($voucher['reference_no']) ?></td>
-                            <td><?= esc($voucher['description']) ?></td>
-                            <td>
-                                <?= number_format(array_sum(array_column($voucher['entries'], 'amount')), 2) ?>
-                            </td>
-                            <?php if (hasPermission('CanUpdatePaymentVoucher') || hasPermission('CanDeletePaymentVoucher')): ?>
-                            <td>
-                                <?php if (hasPermission('CanUpdatePaymentVoucher')): ?>
-                                <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editPaymentVoucherModal<?= $voucher['id'] ?>">Edit</a>
-                                <?php endif; ?>
-                                <?php if (hasPermission('CanDeletePaymentVoucher')): ?>
-                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePaymentVoucherModal<?= $voucher['id'] ?>">Delete</a>
-                                <?php endif; ?>
-                            </td>
-                            <?php endif; ?>
-                        </tr>
-                        <?php endforeach; ?>
-
-                        <?php if (empty($vouchers)): ?>
-                        <tr>
-                            <td colspan="5" class="text-center">No vouchers found.</td>
-                        </tr>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="pVoucherTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Date</th>
+                    <th>Voucher No</th>
+                    <th>Reference No</th>
+                    <th>Description</th>
+                    <th>Total Amount</th>
+                    <?php if (hasPermission('CanUpdatePaymentVoucher') || hasPermission('CanDeletePaymentVoucher')): ?>
+                    <th>Actions</th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($vouchers as $voucher): ?>
+                <tr>
+                    <td><?= esc($voucher['date']) ?></td>
+                    <td><?= esc($voucher['voucher_number']) ?></td>
+                    <td><?= esc($voucher['reference_no']) ?></td>
+                    <td><?= esc($voucher['description']) ?></td>
+                    <td>
+                        <?= number_format(array_sum(array_column($voucher['entries'], 'amount')), 2) ?>
+                    </td>
+                    <?php if (hasPermission('CanUpdatePaymentVoucher') || hasPermission('CanDeletePaymentVoucher')): ?>
+                    <td>
+                        <?php if (hasPermission('CanUpdatePaymentVoucher')): ?>
+                            <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editPaymentVoucherModal<?= $voucher['id'] ?>">Edit</a>
                         <?php endif; ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+                        <?php if (hasPermission('CanDeletePaymentVoucher')): ?>
+                            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePaymentVoucherModal<?= $voucher['id'] ?>">Delete</a>
+                        <?php endif; ?>
+                    </td>
+                <?php endif; ?>
+            </tr>
+        <?php endforeach; ?>
+
+        <?php if (empty($vouchers)): ?>
+            <tr>
+                <td colspan="5" class="text-center">No vouchers found.</td>
+            </tr>
+        <?php endif; ?>
+    </tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 
 <!-- Add Payment Voucher Modal -->
@@ -226,11 +212,11 @@
                 <div class="modal-body">
                     <div class="form-row mb-3">
                         <div class="col-md-3">
-                            <label>Date</label>
+                            <label>Date *</label>
                             <input type="date" name="date" class="form-control" value="<?= date('Y-m-d') ?>" required>
                         </div>
                         <div class="col-md-3">
-                            <label>Reference No</label>
+                            <label>Reference No *</label>
                             <input type="text" name="reference_no" class="form-control">
                         </div>
                         <div class="col-md-6">
@@ -242,10 +228,10 @@
                     <table class="table table-bordered entry-table">
                         <thead>
                             <tr>
-                                <th>Account Head</th>
-                                <th>Type</th>
-                                <th>Amount</th>
-                                <th>Narration</th>
+                                <th>Account Head *</th>
+                                <th>Type *</th>
+                                <th>Amount *</th>
+                                <th>Narration *</th>
                                 <th><button type="button" class="btn btn-sm btn-success add-row">+</button></th>
                             </tr>
                         </thead>
@@ -255,7 +241,7 @@
                                     <select name="entries[0][account_head_id]" class="form-control" required>
                                         <option value="">Select Account</option>
                                         <?php foreach ($account_heads as $head): ?>
-                                        <option value="<?= $head['id'] ?>"><?= esc($head['name']) ?></option>
+                                            <option value="<?= $head['id'] ?>"><?= esc($head['name']) ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </td>

@@ -120,6 +120,55 @@ class PayrollController extends BaseController
         return redirect()->back()->with('error', 'Failed to process salary payment.');
     }
 
+    public function exportSalaryPayments()
+    {
+        $payrollModel = new EmployeePayrollModel();
+        $salaryPayments = $payrollModel
+        ->select('employee_payrolls.*, users.firstname, users.lastname, vouchers.voucher_number')
+        ->join('users', 'users.id = employee_payrolls.user_id')
+        ->join('vouchers', 'vouchers.id = employee_payrolls.voucher_id', 'left')
+        ->orderBy('employee_payrolls.salary_month', 'DESC')
+        ->findAll();
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+    // Headers
+        $sheet->setCellValue('A1', 'Employee');
+        $sheet->setCellValue('B1', 'Month');
+        $sheet->setCellValue('C1', 'Working Days');
+        $sheet->setCellValue('D1', 'Salary Type');
+        $sheet->setCellValue('E1', 'Amount');
+        $sheet->setCellValue('F1', 'Status');
+        $sheet->setCellValue('G1', 'Voucher No');
+        $sheet->setCellValue('H1', 'Paid On');
+
+    // Fill Data
+        $row = 2;
+        foreach ($salaryPayments as $payment) {
+            $sheet->setCellValue('A' . $row, $payment['firstname'] . ' ' . $payment['lastname']);
+            $sheet->setCellValue('B' . $row, $payment['salary_month']);
+            $sheet->setCellValue('C' . $row, $payment['working_days']);
+            $sheet->setCellValue('D' . $row, ucfirst($payment['salary_type']));
+            $sheet->setCellValue('E' . $row, $payment['salary_amount']);
+            $sheet->setCellValue('F' . $row, $payment['status']);
+            $sheet->setCellValue('G' . $row, $payment['voucher_number'] ?? 'N/A');
+            $sheet->setCellValue('H' . $row, date('d M Y', strtotime($payment['created_at'])));
+            $row++;
+        }
+
+    // File Download
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'salary_payments_' . date('Ymd_His') . '.xlsx';
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+        exit;
+    }
+
     public function salaryLedger()
     {
         $payrollModel = new EmployeePayrollModel();

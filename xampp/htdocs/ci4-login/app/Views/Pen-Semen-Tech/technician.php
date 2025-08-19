@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Technician_List UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Technician_List</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
-
+<?= $this->include('components/head') ?>
 
 <?php foreach ($technicians as $entry): ?>
 <!-- Edit Technician Modal -->
@@ -36,12 +16,12 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <label for="technicianName<?= $entry['id'] ?>">Technician Name</label>
+            <label for="technicianName<?= $entry['id'] ?>">Technician Name *</label>
             <input type="text" class="form-control" name="name" value="<?= esc($entry['name']) ?>" required>
         </div>
 
         <div class="form-group">
-            <label for="status<?= $entry['id'] ?>">Status</label>
+            <label for="status<?= $entry['id'] ?>">Status *</label>
             <select name="status" class="form-control" required>
               <option value="">-- Select Status --</option>
               <option value="Active" <?= $entry['status'] == 'Active' ? 'selected' : '' ?>>Active</option>
@@ -114,6 +94,12 @@
         <h1 class="h3 mb-0 text-gray-800">Technician List</h1>
     </div>
 
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('pen-semen-tech/technician/export') ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
+    </div>
+
     <!-- Add Technician Button -->
     <?php if (hasPermission('CanAddTechnician')): ?>
         <div class="mb-3 text-right">
@@ -182,12 +168,12 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <label for="technicianName">Technician Name</label>
+            <label for="technicianName">Technician Name *</label>
             <input type="text" class="form-control" name="name" id="technicianName" required>
         </div>
 
         <div class="form-group">
-            <label for="status">Status</label>
+            <label for="status">Status *</label>
             <select name="status" id="status" class="form-control" required>
               <option value="">-- Select Status --</option>
               <option value="Active">Active</option>

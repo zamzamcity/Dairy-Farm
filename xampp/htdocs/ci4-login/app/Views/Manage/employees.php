@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Permission_Groups UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Permission_Groups</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
+<?= $this->include('components/head') ?>
 
 <!-- Edit Modal -->
 <?php foreach ($employees as $employee): ?>
@@ -37,22 +18,22 @@
 
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="firstname<?= $employee['id'] ?>">First Name</label>
+                            <label for="firstname<?= $employee['id'] ?>">First Name *</label>
                             <input type="text" class="form-control" id="firstname<?= $employee['id'] ?>" name="firstname" value="<?= esc($employee['firstname']) ?>" required>
                         </div>
 
                         <div class="form-group">
                             <label for="lastname<?= $employee['id'] ?>">Last Name</label>
-                            <input type="text" class="form-control" id="lastname<?= $employee['id'] ?>" name="lastname" value="<?= esc($employee['lastname']) ?>" required>
+                            <input type="text" class="form-control" id="lastname<?= $employee['id'] ?>" name="lastname" value="<?= esc($employee['lastname']) ?>">
                         </div>
 
                         <div class="form-group">
-                            <label for="email<?= $employee['id'] ?>">Email</label>
+                            <label for="email<?= $employee['id'] ?>">Email *</label>
                             <input type="email" class="form-control" id="email<?= $employee['id'] ?>" name="email" value="<?= esc($employee['email']) ?>" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="role<?= $employee['id'] ?>">Role</label>
+                            <label for="role<?= $employee['id'] ?>">Role *</label>
                             <select name="role" id="role<?= $employee['id'] ?>" class="form-control" required>
                                 <option value="user" <?= $employee['role'] === 'user' ? 'selected' : '' ?>>User</option>
                                 <option value="admin" <?= $employee['role'] === 'admin' ? 'selected' : '' ?>>Admin</option>
@@ -60,12 +41,12 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="designation<?= $employee['id'] ?>">Designation</label>
-                            <input type="text" class="form-control" id="designation<?= $employee['id'] ?>" name="designation" value="<?= esc($employee['designation']) ?>">
+                            <label for="designation<?= $employee['id'] ?>">Designation *</label>
+                            <input type="text" class="form-control" id="designation<?= $employee['id'] ?>" name="designation" value="<?= esc($employee['designation']) ?>" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="salary_type<?= $employee['id'] ?>">Salary Type</label>
+                            <label for="salary_type<?= $employee['id'] ?>">Salary Type *</label>
                             <select name="salary_type" id="salary_type<?= $employee['id'] ?>" class="form-control">
                                 <option value="">-- Select Type --</option>
                                 <option value="Monthly" <?= $employee['salary_type'] === 'monthly' ? 'selected' : '' ?>>Monthly</option>
@@ -74,17 +55,17 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="salary_amount<?= $employee['id'] ?>">Salary Amount</label>
+                            <label for="salary_amount<?= $employee['id'] ?>">Salary Amount *</label>
                             <input type="number" class="form-control" id="salary_amount<?= $employee['id'] ?>" name="salary_amount" value="<?= esc($employee['salary_amount']) ?>" step="0.01">
                         </div>
 
                         <div class="form-group">
-                            <label for="joining_date<?= $employee['id'] ?>">Joining Date</label>
+                            <label for="joining_date<?= $employee['id'] ?>">Joining Date *</label>
                             <input type="date" class="form-control" id="joining_date<?= $employee['id'] ?>" name="joining_date" value="<?= esc($employee['joining_date']) ?>">
                         </div>
 
                         <div class="form-group">
-                            <label for="permission_group_id<?= $employee['id'] ?>">Permission Group</label>
+                            <label for="permission_group_id<?= $employee['id'] ?>">Permission Group *</label>
                             <select name="permission_group_id" id="permission_group_id<?= $employee['id'] ?>" class="form-control" required>
                                 <option value="">-- Select Group --</option>
                                 <?php foreach ($permissionGroups as $group): ?>
@@ -97,7 +78,7 @@
 
                         <!-- ✅ Status Field -->
                         <div class="form-group">
-                            <label for="status<?= $employee['id'] ?>">Status</label>
+                            <label for="status<?= $employee['id'] ?>">Status *</label>
                             <select name="is_active" id="status<?= $employee['id'] ?>" class="form-control" required>
                                 <option value="1" <?= $employee['is_active'] == 1 ? 'selected' : '' ?>>Active</option>
                                 <option value="0" <?= $employee['is_active'] == 0 ? 'selected' : '' ?>>Inactive</option>
@@ -164,6 +145,12 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Employees</h1>
+    </div>
+
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('manage/employees/export') ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
     </div>
 
     <!-- Add Employee Button -->
@@ -244,27 +231,27 @@
 
       <div class="modal-body">
           <div class="form-group">
-            <label>First Name</label>
+            <label>First Name *</label>
             <input type="text" name="firstname" class="form-control" required>
         </div>
 
         <div class="form-group">
             <label>Last Name</label>
-            <input type="text" name="lastname" class="form-control" required>
+            <input type="text" name="lastname" class="form-control">
         </div>
 
         <div class="form-group">
-            <label>Email</label>
+            <label>Email *</label>
             <input type="email" name="email" class="form-control" required>
         </div>
 
         <div class="form-group">
-            <label>Password</label>
+            <label>Password *</label>
             <input type="password" name="password" class="form-control" required>
         </div>
 
         <div class="form-group">
-            <label>Role</label>
+            <label>Role *</label>
             <select name="role" class="form-control" required>
               <option value="user">User</option>
               <option value="admin">Admin</option>
@@ -272,12 +259,12 @@
       </div>
 
       <div class="form-group">
-        <label>Designation</label>
+        <label>Designation *</label>
         <input type="text" name="designation" class="form-control" required>
     </div>
 
     <div class="form-group">
-        <label>Salary Type</label>
+        <label>Salary Type *</label>
         <select name="salary_type" class="form-control" required>
           <option value="monthly">Monthly</option>
           <option value="daily">Daily</option>
@@ -285,17 +272,17 @@
   </div>
 
   <div class="form-group">
-    <label>Salary Amount</label>
+    <label>Salary Amount *</label>
     <input type="number" name="salary_amount" class="form-control" required>
 </div>
 
 <div class="form-group">
-    <label>Joining Date</label>
+    <label>Joining Date *</label>
     <input type="date" name="joining_date" class="form-control" required>
 </div>
 
 <div class="form-group">
-    <label>Permission Group</label>
+    <label>Permission Group *</label>
     <select name="permission_group_id" class="form-control" required>
       <option value="">Select Group</option>
       <?php foreach ($permissionGroups as $group): ?>
@@ -305,7 +292,7 @@
 </div>
 
 <div class="form-group">
-    <label>Status</label>
+    <label>Status *</label>
     <select name="is_active" class="form-control" required>
       <option value="1">Active</option>
       <option value="0">Inactive</option>

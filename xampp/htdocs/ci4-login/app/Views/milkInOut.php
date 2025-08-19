@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Milk_In/Out UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Milk_In/Out</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
-
+<?= $this->include('components/head') ?>
 
 <body id="page-top">
 
@@ -52,6 +32,12 @@
         <button type="submit" class="btn btn-primary btn-sm">Filter</button>
     </form>
 
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('milkInOut/export?date=' . $selected_date) ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
+    </div>
+
     <div class="row">
         <div class="col-md-6">
             <h5>Daily Milking</h5>
@@ -67,13 +53,13 @@
                 </thead>
                 <tbody>
                     <?php foreach ($daily_milking as $m): ?>
-                    <tr>
-                        <td><?= esc($m['milk_product']) ?></td>
-                        <td><?= esc($m['milk_1']) ?></td>
-                        <td><?= esc($m['milk_2']) ?></td>
-                        <td><?= esc($m['milk_3']) ?></td>
-                        <td><?= esc($m['total_milk']) ?></td>
-                    </tr>
+                        <tr>
+                            <td><?= esc($m['milk_product']) ?></td>
+                            <td><?= esc($m['milk_1']) ?></td>
+                            <td><?= esc($m['milk_2']) ?></td>
+                            <td><?= esc($m['milk_3']) ?></td>
+                            <td><?= esc($m['total_milk']) ?></td>
+                        </tr>
                     <?php endforeach; ?>
                     <tr style="font-weight: bold;  background-color: #f1f1f1;">
                         <td colspan="4" class="text-center">Total Milking</td>
@@ -94,10 +80,10 @@
                 </thead>
                 <tbody>
                     <?php foreach ($milk_consumption as $c): ?>
-                    <tr>
-                        <td><?= esc($c['head_name']) ?></td>
-                        <td><?= esc($c['milk_litres']) ?></td>
-                    </tr>
+                        <tr>
+                            <td><?= esc($c['head_name']) ?></td>
+                            <td><?= esc($c['milk_litres']) ?></td>
+                        </tr>
                     <?php endforeach; ?>
                     <tr style="font-weight: bold;  background-color: #f1f1f1;">
                         <td class="text-center">Total Consumption</td>

@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Stock_List UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Stock_List</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
-
+<?= $this->include('components/head') ?>
 
 <?php foreach ($stock_registration as $stock): ?>
 <!-- Edit Stock Registration Modal -->
@@ -38,20 +18,20 @@
                 <div class="modal-body">
                     <!-- Product Name -->
                     <div class="form-group">
-                        <label for="product_name">Product Name:</label>
+                        <label for="product_name">Product Name *</label>
                         <input type="text" name="product_name" class="form-control" value="<?= esc($stock['product_name']) ?>" required>
                     </div>
 
                     <!-- Head Dropdown with Add Button -->
                     <div class="form-group">
-                        <label for="head_id">Choose Head:</label>
+                        <label for="head_id">Choose Head *</label>
                         <div class="input-group">
                             <select name="head_id" class="form-control" required>
                                 <option value="">-- Select Head --</option>
                                 <?php foreach ($stock_heads as $head): ?>
-                                <option value="<?= $head['id'] ?>" <?= $head['id'] == $stock['head_id'] ? 'selected' : '' ?>>
-                                    <?= esc($head['name']) ?>
-                                </option>
+                                    <option value="<?= $head['id'] ?>" <?= $head['id'] == $stock['head_id'] ? 'selected' : '' ?>>
+                                        <?= esc($head['name']) ?>
+                                    </option>
                                 <?php endforeach; ?>
                             </select>
                             <div class="input-group-append">
@@ -62,14 +42,14 @@
 
                     <!-- Unit Dropdown with Add Button -->
                     <div class="form-group">
-                        <label for="unit_id">Choose Unit:</label>
+                        <label for="unit_id">Choose Unit *</label>
                         <div class="input-group">
                             <select name="unit_id" class="form-control" required>
                                 <option value="">-- Select Unit --</option>
                                 <?php foreach ($stock_units as $unit): ?>
-                                <option value="<?= $unit['id'] ?>" <?= $unit['id'] == $stock['unit_id'] ? 'selected' : '' ?>>
-                                    <?= esc($unit['name']) ?>
-                                </option>
+                                    <option value="<?= $unit['id'] ?>" <?= $unit['id'] == $stock['unit_id'] ? 'selected' : '' ?>>
+                                        <?= esc($unit['name']) ?>
+                                    </option>
                                 <?php endforeach; ?>
                             </select>
                             <div class="input-group-append">
@@ -98,19 +78,19 @@
                     <!-- Conditional Stock Fields -->
                     <div id="stockFields<?= $stock['id'] ?>" style="display: <?= $stock['is_stock_item'] ? 'block' : 'none' ?>;">
                         <div class="form-group">
-                            <label for="opening_stock_qty">Opening Stock Quantity:</label>
+                            <label for="opening_stock_qty">Opening Stock Quantity</label>
                             <input type="number" step="0.01" name="opening_stock_qty" class="form-control" value="<?= esc($stock['opening_stock_qty']) ?>">
                         </div>
 
                         <div class="form-group">
-                            <label for="opening_stock_rate_per_unit">Opening Stock Rate/Unit:</label>
+                            <label for="opening_stock_rate_per_unit">Opening Stock Rate/Unit</label>
                             <input type="number" step="0.01" name="opening_stock_rate_per_unit" class="form-control" value="<?= esc($stock['opening_stock_rate_per_unit']) ?>">
                         </div>
                     </div>
 
                     <!-- Rate Per Unit -->
                     <div class="form-group">
-                        <label for="rate_per_unit">Rate w.r.t 1 Unit:</label>
+                        <label for="rate_per_unit">Rate w.r.t 1 Unit *</label>
                         <input type="number" step="0.01" name="rate_per_unit" class="form-control" value="<?= esc($stock['rate_per_unit']) ?>" required>
                     </div>
                 </div>
@@ -188,11 +168,17 @@
         <h1 class="h3 mb-0 text-gray-800">Stock Registration</h1>
     </div>
 
+        <div class="mb-3 text-right">
+            <a href="<?= base_url('stock/stockList/export') ?>" class="btn btn-success mb-3">
+                <i class="fas fa-file-excel"></i> Download Excel
+            </a>
+        </div>
+
     <!-- Stock Registration Button -->
     <?php if (hasPermission('CanAddStockRegistration')): ?>
-    <div class="mb-3 text-right">
-        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addStockRegistrationModal">+ Stock Registration</a>
-    </div>
+        <div class="mb-3 text-right">
+            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addStockRegistrationModal">+ Stock Registration</a>
+        </div>
     <?php endif; ?>
 
     <!-- Stock Registration Table -->
@@ -200,59 +186,59 @@
         <div class="card-body">
             <?php if (session()->getFlashdata('success')): ?>
             <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-            <?php endif; ?>
+        <?php endif; ?>
 
-            <div class="table-responsive">
-                <table class="table table-bordered" id="stockListTable">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Product Name</th>
-                            <th>Head</th>
-                            <th>Unit</th>
-                            <th>Stock Item</th>
-                            <th>Opening Qty</th>
-                            <th>Opening Rate</th>
-                            <th>Rate/Unit</th>
-                            <?php if (hasPermission('CanUpdateStockRegistration') || hasPermission('CanDeleteStockRegistration')): ?>
-                            <th>Actions</th>
-                            <?php endif; ?>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($stock_registration as $stock): ?>
-                        <tr>
-                            <td><?= esc($stock['id']) ?></td>
-                            <td><?= esc($stock['product_name']) ?></td>
-                            <td><?= esc($stock['head_name']) ?></td>
-                            <td><?= esc($stock['unit_name']) ?></td>
-                            <td><?= esc($stock['is_stock_item'] ? 'Yes' : 'No') ?></td>
-                            <td><?= esc($stock['opening_stock_qty']) ?></td>
-                            <td><?= esc($stock['opening_stock_rate_per_unit']) ?></td>
-                            <td><?= esc($stock['rate_per_unit']) ?></td>
-                            <?php if (hasPermission('CanUpdateStockRegistration') || hasPermission('CanDeleteStockRegistration')): ?>
-                            <td>
-                                <?php if (hasPermission('CanUpdateStockRegistration')): ?>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="stockListTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Product Name</th>
+                        <th>Head</th>
+                        <th>Unit</th>
+                        <th>Stock Item</th>
+                        <th>Opening Qty</th>
+                        <th>Opening Rate</th>
+                        <th>Rate/Unit</th>
+                        <?php if (hasPermission('CanUpdateStockRegistration') || hasPermission('CanDeleteStockRegistration')): ?>
+                        <th>Actions</th>
+                    <?php endif; ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($stock_registration as $stock): ?>
+                    <tr>
+                        <td><?= esc($stock['id']) ?></td>
+                        <td><?= esc($stock['product_name']) ?></td>
+                        <td><?= esc($stock['head_name']) ?></td>
+                        <td><?= esc($stock['unit_name']) ?></td>
+                        <td><?= esc($stock['is_stock_item'] ? 'Yes' : 'No') ?></td>
+                        <td><?= esc($stock['opening_stock_qty']) ?></td>
+                        <td><?= esc($stock['opening_stock_rate_per_unit']) ?></td>
+                        <td><?= esc($stock['rate_per_unit']) ?></td>
+                        <?php if (hasPermission('CanUpdateStockRegistration') || hasPermission('CanDeleteStockRegistration')): ?>
+                        <td>
+                            <?php if (hasPermission('CanUpdateStockRegistration')): ?>
                                 <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editStockRegistrationModal<?= $stock['id'] ?>">Edit</a>
-                                <?php endif; ?>
-                                <?php if (hasPermission('CanDeleteStockRegistration')): ?>
-                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteStockRegistrationModal<?= $stock['id'] ?>">Delete</a>
-                                <?php endif; ?>
-                            </td>
                             <?php endif; ?>
-                        </tr>
-                        <?php endforeach; ?>
+                            <?php if (hasPermission('CanDeleteStockRegistration')): ?>
+                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteStockRegistrationModal<?= $stock['id'] ?>">Delete</a>
+                            <?php endif; ?>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
 
-                        <?php if (empty($stock_registration)): ?>
-                        <tr>
-                            <td colspan="9" class="text-center">No stock records found.</td>
-                        </tr>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+            <?php if (empty($stock_registration)): ?>
+                <tr>
+                    <td colspan="9" class="text-center">No stock records found.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
 </div>
 
 <!-- Add Stock Registration Modal -->
@@ -269,18 +255,18 @@
                 <div class="modal-body">
                     <!-- Product Name -->
                     <div class="form-group">
-                        <label for="product_name">Product Name:</label>
+                        <label for="product_name">Product Name *</label>
                         <input type="text" name="product_name" id="product_name" class="form-control" placeholder="Enter product name" required>
                     </div>
 
                     <!-- Head Dropdown with Add Button -->
                     <div class="form-group">
-                        <label for="head_id">Choose Head:</label>
+                        <label for="head_id">Choose Head *</label>
                         <div class="input-group">
                             <select name="head_id" id="head_id" class="form-control" required>
                                 <option value="">-- Select Head --</option>
                                 <?php foreach ($stock_heads as $head): ?>
-                                <option value="<?= esc($head['id']) ?>"><?= esc($head['name']) ?></option>
+                                    <option value="<?= esc($head['id']) ?>"><?= esc($head['name']) ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <div class="input-group-append">
@@ -291,12 +277,12 @@
 
                     <!-- Unit Dropdown with Add Button -->
                     <div class="form-group">
-                        <label for="unit_id">Choose Unit:</label>
+                        <label for="unit_id">Choose Unit *</label>
                         <div class="input-group">
                             <select name="unit_id" id="unit_id" class="form-control" required>
                                 <option value="">-- Select Unit --</option>
                                 <?php foreach ($stock_units as $unit): ?>
-                                <option value="<?= esc($unit['id']) ?>"><?= esc($unit['name']) ?></option>
+                                    <option value="<?= esc($unit['id']) ?>"><?= esc($unit['name']) ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <div class="input-group-append">
@@ -321,19 +307,19 @@
                     <!-- Conditional Stock Fields -->
                     <div id="stockFields">
                         <div class="form-group">
-                            <label for="opening_stock_qty">Opening Stock Quantity:</label>
+                            <label for="opening_stock_qty">Opening Stock Quantity</label>
                             <input type="number" step="0.01" name="opening_stock_qty" id="opening_stock_qty" class="form-control">
                         </div>
 
                         <div class="form-group">
-                            <label for="opening_stock_rate_per_unit">Opening Stock Rate/Unit:</label>
+                            <label for="opening_stock_rate_per_unit">Opening Stock Rate/Unit</label>
                             <input type="number" step="0.01" name="opening_stock_rate_per_unit" id="opening_stock_rate_per_unit" class="form-control">
                         </div>
                     </div>
 
                     <!-- Rate Per Unit -->
                     <div class="form-group">
-                        <label for="rate_per_unit">Rate w.r.t 1 Unit:</label>
+                        <label for="rate_per_unit">Rate w.r.t 1 Unit *</label>
                         <input type="number" step="0.01" name="rate_per_unit" id="rate_per_unit" class="form-control" required>
                     </div>
                 </div>

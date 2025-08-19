@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Schedule_List UI Page">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Schedule_List</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
-    <link
-    href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900"
-    rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<?= base_url('assets/sb-admin-2/css/sb-admin-2.min.css') ?>" rel="stylesheet">
-
-</head>
-
+<?= $this->include('components/head') ?>
 
 <?php foreach ($milk_consumption as $record): ?>
 <!-- Edit Milk Consumption Modal -->
@@ -40,26 +20,26 @@
                 <div class="modal-body">
                     <!-- Date -->
                     <div class="form-group">
-                        <label for="date">Date:</label>
+                        <label for="date">Date *</label>
                         <input type="date" name="date" class="form-control" value="<?= esc($record['date']) ?>" required>
                     </div>
 
                     <!-- Head -->
                     <div class="form-group">
-                        <label for="farm_head_id">Head:</label>
+                        <label for="farm_head_id">Head *</label>
                         <select name="farm_head_id" class="form-control" required>
                             <option value="">-- Select Head --</option>
                             <?php foreach ($farm_heads as $head): ?>
-                            <option value="<?= esc($head['id']) ?>" <?= $head['id'] == $record['farm_head_id'] ? 'selected' : '' ?>>
-                                <?= esc($head['head_name']) ?>
-                            </option>
+                                <option value="<?= esc($head['id']) ?>" <?= $head['id'] == $record['farm_head_id'] ? 'selected' : '' ?>>
+                                    <?= esc($head['head_name']) ?>
+                                </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
 
                     <!-- Milk Litres -->
                     <div class="form-group">
-                        <label for="milk_litres">Milk (L):</label>
+                        <label for="milk_litres">Milk (L) *</label>
                         <input type="number" step="0.01" name="milk_litres" class="form-control" value="<?= esc($record['milk_litres']) ?>" required>
                     </div>
                 </div>
@@ -87,10 +67,10 @@
                 </div>
 
                 <div class="modal-body">
-                 Are you sure you want to delete <strong><?= esc($record['head_name']) ?></strong>?
-             </div>
+                   Are you sure you want to delete <strong><?= esc($record['head_name']) ?></strong>?
+               </div>
 
-             <div class="modal-footer">
+               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-danger">Yes, Delete</button>
             </div>
@@ -133,11 +113,17 @@
         <button type="submit" class="btn btn-primary btn-sm">Filter</button>
     </form>
 
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('milk-consumption/milkConsumption/export') . '?' . $_SERVER['QUERY_STRING'] ?>" class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
+    </div>
+
     <!-- Add Milk Consumption Button -->
     <?php if (hasPermission('CanAddMilkConsumption')): ?>
-    <div class="mb-3 text-right">
-        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addMilkConsumptionModal">+ Add Milk Consumption</a>
-    </div>
+        <div class="mb-3 text-right">
+            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addMilkConsumptionModal">+ Add Milk Consumption</a>
+        </div>
     <?php endif; ?>
 
 <!-- Milk Consumption Table -->
@@ -145,55 +131,55 @@
     <div class="card-body">
         <?php if (session()->getFlashdata('success')): ?>
         <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-        <?php endif; ?>
+    <?php endif; ?>
 
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Date</th>
-                        <th>Head Name</th>
-                        <th>Milk (L)</th>
-                        <?php if (hasPermission('CanUpdateMilkConsumption') || hasPermission('CanDeleteMilkConsumption')): ?>
-                        <th>Actions</th>
-                        <?php endif; ?>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($milk_consumption as $consumption): ?>
-                    <tr>
-                        <td><?= esc($consumption['id']) ?></td>
-                        <td><?= esc($consumption['date']) ?></td>
-                        <td><?= esc($consumption['head_name']) ?></td>
-                        <td><?= esc($consumption['milk_litres']) ?></td>
-                        <?php if (hasPermission('CanUpdateMilkConsumption') || hasPermission('CanDeleteMilkConsumption')): ?>
-                        <td>
-                            <?php if (hasPermission('CanUpdateMilkConsumption')): ?>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Head Name</th>
+                    <th>Milk (L)</th>
+                    <?php if (hasPermission('CanUpdateMilkConsumption') || hasPermission('CanDeleteMilkConsumption')): ?>
+                    <th>Actions</th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($milk_consumption as $consumption): ?>
+                <tr>
+                    <td><?= esc($consumption['id']) ?></td>
+                    <td><?= esc($consumption['date']) ?></td>
+                    <td><?= esc($consumption['head_name']) ?></td>
+                    <td><?= esc($consumption['milk_litres']) ?></td>
+                    <?php if (hasPermission('CanUpdateMilkConsumption') || hasPermission('CanDeleteMilkConsumption')): ?>
+                    <td>
+                        <?php if (hasPermission('CanUpdateMilkConsumption')): ?>
                             <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editMilkConsumptionModal<?= $consumption['id'] ?>">Edit</a>
-                            <?php endif; ?>
-                            <?php if (hasPermission('CanDeleteMilkConsumption')): ?>
+                        <?php endif; ?>
+                        <?php if (hasPermission('CanDeleteMilkConsumption')): ?>
                             <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMilkConsumptionModal<?= $consumption['id'] ?>">Delete</a>
-                            <?php endif; ?>
-                        </td>
                         <?php endif; ?>
-                    </tr>
-                    <?php endforeach; ?>
+                    </td>
+                <?php endif; ?>
+            </tr>
+        <?php endforeach; ?>
 
-                    <?php if (!empty($milk_consumption)): ?>
-                    <tr style="font-weight: bold; background-color: #f1f1f1;">
-                        <td colspan="3" class="text-center">Grand Total (Litres):</td>
-                        <td><?= number_format($total_milk, 2) ?></td>
-                        <?php if (hasPermission('CanUpdateMilkConsumption') || hasPermission('CanDeleteMilkConsumption')): ?>
-                        <td></td>
-                        <?php endif; ?>
-                    </tr>
-                    <?php endif; ?>
+        <?php if (!empty($milk_consumption)): ?>
+            <tr style="font-weight: bold; background-color: #f1f1f1;">
+                <td colspan="3" class="text-center">Grand Total (Litres):</td>
+                <td><?= number_format($total_milk, 2) ?></td>
+                <?php if (hasPermission('CanUpdateMilkConsumption') || hasPermission('CanDeleteMilkConsumption')): ?>
+                <td></td>
+            <?php endif; ?>
+        </tr>
+    <?php endif; ?>
 
-                </tbody>
-            </table>
-        </div>
-    </div>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 
@@ -213,24 +199,24 @@
                 <div class="modal-body">
                     <!-- Date -->
                     <div class="form-group">
-                        <label for="date">Date:</label>
+                        <label for="date">Date *</label>
                         <input type="date" name="date" id="date" class="form-control" required>
                     </div>
 
                     <!-- Head -->
                     <div class="form-group">
-                        <label for="farm_head_id">Head:</label>
+                        <label for="farm_head_id">Head *</label>
                         <select name="farm_head_id" id="farm_head_id" class="form-control" required>
                             <option value="">-- Select Head --</option>
                             <?php foreach ($farm_heads as $head): ?>
-                            <option value="<?= esc($head['id']) ?>"><?= esc($head['head_name']) ?></option>
+                                <option value="<?= esc($head['id']) ?>"><?= esc($head['head_name']) ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
 
                     <!-- Milk Litres -->
                     <div class="form-group">
-                        <label for="milk_litres">Milk (L):</label>
+                        <label for="milk_litres">Milk (L) *</label>
                         <input type="number" step="0.01" name="milk_litres" id="milk_litres" class="form-control" placeholder="Enter milk in litres" required>
                     </div>
                 </div>
