@@ -93,6 +93,20 @@
                         <label for="rate_per_unit">Rate w.r.t 1 Unit *</label>
                         <input type="number" step="0.01" name="rate_per_unit" class="form-control" value="<?= esc($stock['rate_per_unit']) ?>" required>
                     </div>
+
+                    <?php if (isSuperAdmin()): ?>
+                        <div class="form-group">
+                            <label for="tenant_id<?= $stock['id'] ?>">Tenant</label>
+                            <select name="tenant_id" id="tenant_id<?= $stock['id'] ?>" class="form-control">
+                                <option value="">Select Tenant</option>
+                                <?php foreach ($tenants as $tenant): ?>
+                                    <option value="<?= $tenant['id'] ?>" <?= $stock['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                                        <?= esc($tenant['name']) ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <div class="modal-footer">
@@ -168,44 +182,63 @@
         <h1 class="h3 mb-0 text-gray-800">Stock Registration</h1>
     </div>
 
-        <div class="mb-3 text-right">
-            <a href="<?= base_url('stock/stockList/export') ?>" class="btn btn-success mb-3">
-                <i class="fas fa-file-excel"></i> Download Excel
-            </a>
-        </div>
-
-    <!-- Stock Registration Button -->
-    <?php if (hasPermission('CanAddStockRegistration')): ?>
-        <div class="mb-3 text-right">
-            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addStockRegistrationModal">+ Stock Registration</a>
-        </div>
+    <?php if (isSuperAdmin()): ?>
+        <form method="get" class="form-inline mb-4">
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-2">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
     <?php endif; ?>
 
-    <!-- Stock Registration Table -->
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-        <?php endif; ?>
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('stock/stockList/export') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" 
+         class="btn btn-success mb-3">
+         <i class="fas fa-file-excel"></i> Download Excel
+     </a>
+ </div>
 
-        <div class="table-responsive">
-            <table class="table table-bordered" id="stockListTable">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Product Name</th>
-                        <th>Head</th>
-                        <th>Unit</th>
-                        <th>Stock Item</th>
-                        <th>Opening Qty</th>
-                        <th>Opening Rate</th>
-                        <th>Rate/Unit</th>
-                        <?php if (hasPermission('CanUpdateStockRegistration') || hasPermission('CanDeleteStockRegistration')): ?>
-                        <th>Actions</th>
-                    <?php endif; ?>
-                </tr>
-            </thead>
-            <tbody>
+ <!-- Stock Registration Button -->
+ <?php if (hasPermission('CanAddStockRegistration')): ?>
+    <div class="mb-3 text-right">
+        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addStockRegistrationModal">+ Stock Registration</a>
+    </div>
+<?php endif; ?>
+
+<!-- Stock Registration Table -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+    <?php endif; ?>
+
+    <div class="table-responsive">
+        <table class="table table-bordered" id="stockListTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Head</th>
+                    <th>Unit</th>
+                    <th>Stock Item</th>
+                    <th>Opening Qty</th>
+                    <th>Opening Rate</th>
+                    <th>Rate/Unit</th>
+                    <th>Tenant</th>
+                    <?php if (hasPermission('CanUpdateStockRegistration') || hasPermission('CanDeleteStockRegistration')): ?>
+                    <th>Actions</th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($stock_registration)): ?>
                 <?php foreach ($stock_registration as $stock): ?>
                     <tr>
                         <td><?= esc($stock['id']) ?></td>
@@ -216,6 +249,7 @@
                         <td><?= esc($stock['opening_stock_qty']) ?></td>
                         <td><?= esc($stock['opening_stock_rate_per_unit']) ?></td>
                         <td><?= esc($stock['rate_per_unit']) ?></td>
+                        <td><?= esc($stock['tenant_name'] ?? 'N/A') ?></td>
                         <?php if (hasPermission('CanUpdateStockRegistration') || hasPermission('CanDeleteStockRegistration')): ?>
                         <td>
                             <?php if (hasPermission('CanUpdateStockRegistration')): ?>
@@ -228,14 +262,9 @@
                     <?php endif; ?>
                 </tr>
             <?php endforeach; ?>
-
-            <?php if (empty($stock_registration)): ?>
-                <tr>
-                    <td colspan="9" class="text-center">No stock records found.</td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
+        <?php endif; ?>
+    </tbody>
+</table>
 </div>
 </div>
 </div>
@@ -243,142 +272,178 @@
 
 <!-- Add Stock Registration Modal -->
 <div class="modal fade" id="addStockRegistrationModal" tabindex="-1" role="dialog" aria-labelledby="addStockRegistrationModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <form action="<?= base_url('stock/stockList/add') ?>" method="post">
-            <?= csrf_field() ?>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Stock Registration</h5>
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                </div>
+  <div class="modal-dialog" role="document">
+    <form action="<?= base_url('stock/stockList/add') ?>" method="post">
+      <?= csrf_field() ?>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Stock Registration</h5>
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+      </div>
 
-                <div class="modal-body">
-                    <!-- Product Name -->
-                    <div class="form-group">
-                        <label for="product_name">Product Name *</label>
-                        <input type="text" name="product_name" id="product_name" class="form-control" placeholder="Enter product name" required>
-                    </div>
+      <div class="modal-body">
+          <!-- Product Name -->
+          <div class="form-group">
+            <label>Product Name *</label>
+            <input type="text" name="product_name" class="form-control" required>
+        </div>
 
-                    <!-- Head Dropdown with Add Button -->
-                    <div class="form-group">
-                        <label for="head_id">Choose Head *</label>
-                        <div class="input-group">
-                            <select name="head_id" id="head_id" class="form-control" required>
-                                <option value="">-- Select Head --</option>
-                                <?php foreach ($stock_heads as $head): ?>
-                                    <option value="<?= esc($head['id']) ?>"><?= esc($head['name']) ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <div class="input-group-append">
-                                <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#addHeadModal">+</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Unit Dropdown with Add Button -->
-                    <div class="form-group">
-                        <label for="unit_id">Choose Unit *</label>
-                        <div class="input-group">
-                            <select name="unit_id" id="unit_id" class="form-control" required>
-                                <option value="">-- Select Unit --</option>
-                                <?php foreach ($stock_units as $unit): ?>
-                                    <option value="<?= esc($unit['id']) ?>"><?= esc($unit['name']) ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <div class="input-group-append">
-                                <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#addUnitModal">+</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Stock Item: Yes/No -->
-                    <div class="form-group">
-                        <label>Is Stock Item?</label><br>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="is_stock_item" id="stockYes" value="1" checked onclick="toggleStockFields(true)">
-                            <label class="form-check-label" for="stockYes">Yes</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="is_stock_item" id="stockNo" value="0" onclick="toggleStockFields(false)">
-                            <label class="form-check-label" for="stockNo">No</label>
-                        </div>
-                    </div>
-
-                    <!-- Conditional Stock Fields -->
-                    <div id="stockFields">
-                        <div class="form-group">
-                            <label for="opening_stock_qty">Opening Stock Quantity</label>
-                            <input type="number" step="0.01" name="opening_stock_qty" id="opening_stock_qty" class="form-control">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="opening_stock_rate_per_unit">Opening Stock Rate/Unit</label>
-                            <input type="number" step="0.01" name="opening_stock_rate_per_unit" id="opening_stock_rate_per_unit" class="form-control">
-                        </div>
-                    </div>
-
-                    <!-- Rate Per Unit -->
-                    <div class="form-group">
-                        <label for="rate_per_unit">Rate w.r.t 1 Unit *</label>
-                        <input type="number" step="0.01" name="rate_per_unit" id="rate_per_unit" class="form-control" required>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Add</button>
-                </div>
-            </div>
-        </form>
+        <!-- Head Dropdown -->
+        <div class="form-group">
+            <label>Choose Head *</label>
+            <div class="input-group">
+              <select name="head_id" class="form-control" required>
+                <option value="">-- Select Head --</option>
+                <?php foreach ($stock_heads as $head): ?>
+                  <option value="<?= esc($head['id']) ?>"><?= esc($head['name']) ?></option>
+              <?php endforeach; ?>
+          </select>
+          <div class="input-group-append">
+            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#addHeadModal">+</button>
+        </div>
     </div>
+</div>
+
+<!-- Unit Dropdown -->
+<div class="form-group">
+    <label>Choose Unit *</label>
+    <div class="input-group">
+      <select name="unit_id" class="form-control" required>
+        <option value="">-- Select Unit --</option>
+        <?php foreach ($stock_units as $unit): ?>
+          <option value="<?= esc($unit['id']) ?>"><?= esc($unit['name']) ?></option>
+      <?php endforeach; ?>
+  </select>
+  <div class="input-group-append">
+    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#addUnitModal">+</button>
+</div>
+</div>
+</div>
+
+<!-- Is Stock Item -->
+<div class="form-group">
+    <label>Is Stock Item?</label><br>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="is_stock_item" value="1" checked onclick="toggleStockFields(true)">
+      <label class="form-check-label">Yes</label>
+  </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="is_stock_item" value="0" onclick="toggleStockFields(false)">
+      <label class="form-check-label">No</label>
+  </div>
+</div>
+
+<!-- Conditional Stock Fields -->
+<div id="stockFields">
+    <div class="form-group">
+      <label>Opening Stock Quantity</label>
+      <input type="number" step="0.01" name="opening_stock_qty" class="form-control">
+  </div>
+  <div class="form-group">
+      <label>Opening Stock Rate/Unit</label>
+      <input type="number" step="0.01" name="opening_stock_rate_per_unit" class="form-control">
+  </div>
+</div>
+
+<!-- Rate Per Unit -->
+<div class="form-group">
+    <label>Rate w.r.t 1 Unit *</label>
+    <input type="number" step="0.01" name="rate_per_unit" class="form-control" required>
+</div>
+
+<!-- Tenant (Super Admin Only) -->
+<?php if (isSuperAdmin()): ?>
+    <div class="form-group">
+      <label>Tenant</label>
+      <select name="tenant_id" class="form-control">
+        <option value="">Select Tenant</option>
+        <?php foreach ($tenants as $tenant): ?>
+          <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+      <?php endforeach; ?>
+  </select>
+</div>
+<?php endif; ?>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  <button type="submit" class="btn btn-primary">Add</button>
+</div>
+</div>
+</form>
+</div>
 </div>
 
 <!-- Add Head Modal -->
 <div class="modal fade" id="addHeadModal" tabindex="-1" role="dialog" aria-labelledby="addHeadModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <form action="<?= base_url('stock/stockList/add-head') ?>" method="post">
-            <?= csrf_field() ?>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add New Head</h5>
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="head_name">Head Name:</label>
-                        <input type="text" name="head_name" id="head_name" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Add</button>
-                </div>
-            </div>
-        </form>
-    </div>
+  <div class="modal-dialog" role="document">
+    <form action="<?= base_url('stock/stockList/add-head') ?>" method="post">
+      <?= csrf_field() ?>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add New Stock Head</h5>
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label>Head Name *</label>
+            <input type="text" name="head_name" class="form-control" required>
+        </div>
+        <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+              <label>Tenant</label>
+              <select name="tenant_id" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                  <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+              <?php endforeach; ?>
+          </select>
+      </div>
+  <?php endif; ?>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  <button type="submit" class="btn btn-primary">Add</button>
+</div>
+</div>
+</form>
+</div>
 </div>
 
 <!-- Add Unit Modal -->
 <div class="modal fade" id="addUnitModal" tabindex="-1" role="dialog" aria-labelledby="addUnitModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <form action="<?= base_url('stock/stockList/add-unit') ?>" method="post">
-            <?= csrf_field() ?>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add New Unit</h5>
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="unit_name">Unit Name:</label>
-                        <input type="text" name="unit_name" id="unit_name" class="form-control" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Add</button>
-                </div>
-            </div>
-        </form>
-    </div>
+  <div class="modal-dialog" role="document">
+    <form action="<?= base_url('stock/stockList/add-unit') ?>" method="post">
+      <?= csrf_field() ?>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add New Stock Unit</h5>
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <label>Unit Name *</label>
+            <input type="text" name="unit_name" class="form-control" required>
+        </div>
+        <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+              <label>Tenant</label>
+              <select name="tenant_id" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                  <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+              <?php endforeach; ?>
+          </select>
+      </div>
+  <?php endif; ?>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  <button type="submit" class="btn btn-primary">Add</button>
+</div>
+</div>
+</form>
+</div>
 </div>
 
 <!-- JavaScript to toggle stock fields -->

@@ -28,56 +28,75 @@
 
     <!-- Filters -->
     <form method="get" class="form-inline mb-4">
-        <label for="from_date" class="mr-2">From:</label>
-        <input type="date" name="from_date" class="form-control mr-2" value="<?= $fromDate ?>">
-        <label for="to_date" class="mr-2">To:</label>
-        <input type="date" name="to_date" class="form-control mr-2" value="<?= $toDate ?>">
-
-        <label for="head_id" class="mr-2">Head:</label>
-        <select name="head_id" class="form-control mr-2">
-            <?php foreach ($heads as $head): ?>
-            <option value="<?= $head['id'] ?>" <?= $selectedHead == $head['id'] ? 'selected' : '' ?>>
-                <?= esc($head['name']) ?>
+        <?php if (isSuperAdmin()): ?>
+          <label class="mr-2">Tenant:</label>
+          <select name="tenant_id" class="form-control mr-3">
+            <option value="">-- All Tenants --</option>
+            <?php foreach ($tenants as $tenant): ?>
+              <option value="<?= esc($tenant['id']) ?>" 
+                <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                <?= esc($tenant['name']) ?>
             </option>
-            <?php endforeach; ?>
-        </select>
+        <?php endforeach; ?>
+    </select>
+<?php endif; ?>
 
-        <button type="submit" class="btn btn-primary">Filter</button>
-    </form>
-    <div class="mb-3 text-right">
-        <a href="<?= site_url('stock/exportStockLedger?from_date=' . $fromDate . '&to_date=' . $toDate . '&head_id=' . $selectedHead) ?>" class="btn btn-success mb-3">
-            <i class="fas fa-file-excel"></i> Download Excel
-        </a>
-    </div>
+<label for="from_date" class="mr-2">From:</label>
+<input type="date" name="from_date" class="form-control mr-2" value="<?= $fromDate ?>">
+<label for="to_date" class="mr-2">To:</label>
+<input type="date" name="to_date" class="form-control mr-2" value="<?= $toDate ?>">
 
-    <!-- Ledger Table -->
-    <div class="card shadow">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="stockLedgerTable">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Product</th>
-                            <th>Head</th>
-                            <th>Unit</th>
-                            <th>Opening Qty</th>
-                            <th>Rate/Unit</th>
-                            <th>Date</th>
-                            <th>Consumed Qty</th>
-                            <th>Remaining Qty</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                            $totalOpening = 0;
-                            $totalConsumed = 0;
-                            $totalRemaining = 0;
-                        ?>
-                        <?php foreach ($ledgerData as $row): 
-                            $totalOpening += $row['opening_qty'];
-                            $totalConsumed += $row['consumed_qty'];
-                            $totalRemaining += $row['remaining_qty'];
+<label for="head_id" class="mr-2">Head:</label>
+<select name="head_id" class="form-control mr-2">
+    <?php foreach ($heads as $head): ?>
+        <option value="<?= $head['id'] ?>" <?= $selectedHead == $head['id'] ? 'selected' : '' ?>>
+            <?= esc($head['name']) ?>
+        </option>
+    <?php endforeach; ?>
+</select>
+
+<button type="submit" class="btn btn-primary">Filter</button>
+</form>
+<div class="mb-3 text-right">
+    <a href="<?= base_url('stock/exportStockLedger') 
+    . (!empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '') 
+    . (!empty($selectedTenantId) 
+        ? (empty($_SERVER['QUERY_STRING']) ? '?' : '&') . 'tenant_id=' . $selectedTenantId 
+        : '') ?>" 
+        class="btn btn-success mb-3">
+        <i class="fas fa-file-excel"></i> Download Excel
+    </a>
+</div>
+
+<!-- Ledger Table -->
+<div class="card shadow">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="stockLedgerTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Product</th>
+                        <th>Head</th>
+                        <th>Unit</th>
+                        <th>Opening Qty</th>
+                        <th>Rate/Unit</th>
+                        <th>Date</th>
+                        <th>Consumed Qty</th>
+                        <th>Remaining Qty</th>
+                        <th>Tenant</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    $totalOpening = 0;
+                    $totalConsumed = 0;
+                    $totalRemaining = 0;
+                    ?>
+                    <?php foreach ($ledgerData as $row): 
+                        $totalOpening += $row['opening_qty'];
+                        $totalConsumed += $row['consumed_qty'];
+                        $totalRemaining += $row['remaining_qty'];
                         ?>
                         <tr>
                             <td><?= esc($row['id']) ?></td>
@@ -88,21 +107,22 @@
                             <td><?= esc($row['rate_per_unit']) ?></td>
                             <td>
                                 <?php if (!empty($row['consumed_records'])): ?>
-                                
+
                                     <?php foreach ($row['consumed_records'] as $rec): ?>
-                                    <?= esc($rec['date']) ?>
+                                        <?= esc($rec['date']) ?>
                                     <?php endforeach; ?>
-                                
+
                                 <?php else: ?>
-                                —
+                                    —
                                 <?php endif; ?>
                             </td>
                             <td><?= esc($row['consumed_qty']) ?></td>
                             <td><?= esc($row['remaining_qty']) ?></td>
+                            <td><?= esc($row['tenant_name'] ?? 'N/A') ?></td>
                         </tr>
-                        <?php endforeach; ?>
+                    <?php endforeach; ?>
 
-                        <!-- Totals Row -->
+                    <!-- Totals Row -->
                         <!-- <tr class="font-weight-bold text-primary">
                             <td colspan="4" class="text-right">Total</td>
                             <td><?= $totalOpening ?></td>
@@ -113,7 +133,7 @@
                         </tr> -->
 
                         <?php if (empty($ledgerData)): ?>
-                        <tr><td colspan="9" class="text-center">No data found.</td></tr>
+                            <tr><td colspan="9" class="text-center">No data found.</td></tr>
                         <?php endif; ?>
                     </tbody>
                 </table>

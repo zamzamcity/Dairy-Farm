@@ -29,89 +29,106 @@
     </div>
 
     <form method="get" class="form-inline mb-3">
-        <div class="form-group mr-2">
-            <label for="employee_id">Employee:&nbsp;</label>
-            <select name="employee_id" id="employee_id" class="form-control">
-                <option value="">All</option>
-                <?php foreach ($employees as $emp): ?>
-                <option value="<?= esc($emp['id']) ?>"
-                    <?= (isset($filter_employee_id) && $filter_employee_id == $emp['id']) ? 'selected' : '' ?>>
-                    <?= esc(($emp['firstname'] ?? '') . ' ' . ($emp['lastname'] ?? '')) ?>
-                </option>
-                <?php endforeach; ?>
-            </select>
-        </div>
+        <?php if (isSuperAdmin()): ?>
+          <label class="mr-2">Tenant:</label>
+          <select name="tenant_id" class="form-control mr-3">
+            <option value="">-- All Tenants --</option>
+            <?php foreach ($tenants as $tenant): ?>
+              <option value="<?= esc($tenant['id']) ?>" 
+                <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                <?= esc($tenant['name']) ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+<?php endif; ?>
+<div class="form-group mr-2">
+    <label for="employee_id">Employee:&nbsp;</label>
+    <select name="employee_id" id="employee_id" class="form-control">
+        <option value="">All</option>
+        <?php foreach ($employees as $emp): ?>
+            <option value="<?= esc($emp['id']) ?>"
+                <?= (isset($filter_employee_id) && $filter_employee_id == $emp['id']) ? 'selected' : '' ?>>
+                <?= esc(($emp['firstname'] ?? '') . ' ' . ($emp['lastname'] ?? '')) ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
 
-        <div class="form-group mr-2">
-            <label for="salary_month">Month:&nbsp;</label>
-            <input type="month" name="salary_month" id="salary_month" class="form-control"
-            value="<?= esc($filter_salary_month ?? '') ?>">
-        </div>
+<div class="form-group mr-2">
+    <label for="salary_month">Month:&nbsp;</label>
+    <input type="month" name="salary_month" id="salary_month" class="form-control"
+    value="<?= esc($filter_salary_month ?? '') ?>">
+</div>
 
-        <div class="form-group mr-2">
-            <label>Status:&nbsp;</label>
-            <select name="status" class="form-control">
-                <option value="">All</option>
-                <option value="paid" <?= ($filter_status == 'paid') ? 'selected' : '' ?>>Paid</option>
-                <option value="unpaid" <?= ($filter_status == 'unpaid') ? 'selected' : '' ?>>Unpaid</option>
-            </select>
-        </div>
+<div class="form-group mr-2">
+    <label>Status:&nbsp;</label>
+    <select name="status" class="form-control">
+        <option value="">All</option>
+        <option value="paid" <?= ($filter_status == 'paid') ? 'selected' : '' ?>>Paid</option>
+        <option value="unpaid" <?= ($filter_status == 'unpaid') ? 'selected' : '' ?>>Unpaid</option>
+    </select>
+</div>
 
-        <button type="submit" class="btn btn-primary">Filter</button>
-    </form>
+<button type="submit" class="btn btn-primary">Filter</button>
+</form>
 
-    <div class="mb-3 text-right">
-        <a href="<?= site_url('payroll/salaryLedger/export?employee_id=' . esc($filter_employee_id) . '&salary_month=' . esc($filter_salary_month) . '&status=' . esc($filter_status)) ?>" class="btn btn-success mb-3">
-            <i class="fas fa-file-excel"></i> Download Excel
-        </a>
-    </div>
+<div class="mb-3 text-right">
+    <a href="<?= base_url('payroll/salaryLedger/export') 
+    . (!empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '') 
+    . (!empty($selectedTenantId) 
+        ? (empty($_SERVER['QUERY_STRING']) ? '?' : '&') . 'tenant_id=' . $selectedTenantId 
+        : '') ?>" 
+        class="btn btn-success mb-3">
+        <i class="fas fa-file-excel"></i> Download Excel
+    </a>
+</div>
 
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="salaryLedgerTable">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Employee</th>
-                            <th>Month</th>
-                            <th>Salary Type</th>
-                            <th>Working Days</th>
-                            <th>Total Salary</th>
-                            <th>Total Paid Amount</th>
-                            <th>Voucher No</th> 
-                            <th>Voucher Date</th>   
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (!empty($payrolls)): ?>
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="salaryLedgerTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Employee</th>
+                        <th>Month</th>
+                        <th>Salary Type</th>
+                        <th>Working Days</th>
+                        <th>Total Salary</th>
+                        <th>Total Paid Amount</th>
+                        <th>Voucher No</th> 
+                        <th>Voucher Date</th>
+                        <th>Tenant</th>   
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($payrolls)): ?>
                         <?php foreach ($payrolls as $pay): ?>
-                        <tr>
-                            <td><?= esc($pay['firstname'] . ' ' . $pay['lastname']) ?></td>
-                            <td><?= esc($pay['salary_month'] ?? '-') ?></td>
-                            <td><?= esc(ucfirst($pay['salary_type'] ?? '-')) ?></td>
-                            <td><?= esc($pay['working_days'] ?? '-') ?></td>
-                            <td><?= number_format($pay['base_salary']) ?></td>
-                            <td><?= number_format($pay['salary_amount']) ?></td>
-                            <td><?= $pay['voucher_number'] ?? '-' ?></td>
-                            <td><?= isset($pay['voucher_date']) ? date('Y-m-d', strtotime($pay['voucher_date'])) : '-' ?></td>
-                            <td>
-                                <?php if (!empty($pay['status'])): ?>
-                                <span class="badge badge-success"><?= esc($pay['status']) ?></span>
-                                <?php else: ?>
-                                <span class="badge badge-secondary">Unpaid</span>
-                                <?php endif; ?>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td><?= esc($pay['firstname'] . ' ' . $pay['lastname']) ?></td>
+                                <td><?= esc($pay['salary_month'] ?? '-') ?></td>
+                                <td><?= esc(ucfirst($pay['salary_type'] ?? '-')) ?></td>
+                                <td><?= esc($pay['working_days'] ?? '-') ?></td>
+                                <td><?= number_format($pay['base_salary']) ?></td>
+                                <td><?= number_format($pay['salary_amount']) ?></td>
+                                <td><?= $pay['voucher_number'] ?? '-' ?></td>
+                                <td><?= isset($pay['voucher_date']) ? date('Y-m-d', strtotime($pay['voucher_date'])) : '-' ?></td>
+                                <td><?= esc($pay['tenant_name'] ?? 'N/A') ?></td>
+                                <td>
+                                    <?php if (!empty($pay['status'])): ?>
+                                        <span class="badge badge-success"><?= esc($pay['status']) ?></span>
+                                    <?php else: ?>
+                                        <span class="badge badge-secondary">Unpaid</span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
-                        <?php else: ?>
-                        <tr><td colspan="9" class="text-center text-muted">No salary history found.</td></tr>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
-            </div>
+                    <?php endif; ?>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 </div>
 
 <!-- /.container-fluid -->

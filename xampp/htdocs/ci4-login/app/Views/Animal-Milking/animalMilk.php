@@ -140,9 +140,9 @@
         <h1 class="h3 mb-0 text-gray-800">Animal Milk List</h1>
     </div>
 
-    <?php if (isSuperAdmin()): ?>
-        <form method="get" class="form-inline mb-4">
-            <!-- Tenant Filter -->
+    <form method="get" class="form-inline mb-4">
+        <!-- Tenant Filter -->
+        <?php if (isSuperAdmin()): ?>
             <label class="mr-2">Tenant:</label>
             <select name="tenant_id" class="form-control mr-3">
                 <option value="">-- All Tenants --</option>
@@ -265,15 +265,15 @@
     ?>
 <?php endforeach; ?>
 <tfoot>
-<tr style="font-weight: bold; background-color: #f1f1f1;">
-    <td colspan="5" class="text-center">Total Milk:</td>
-    <td><?= number_format($totalMilk1, 2) ?> L</td>
-    <td><?= number_format($totalMilk2, 2) ?> L</td>
-    <td><?= number_format($totalMilk3, 2) ?> L</td>
-    <td></td>
-    <?php if (hasPermission('CanUpdateAnimalMilk') || hasPermission('CanDeleteAnimalMilk')): ?>
-    <td></td>
-<?php endif; ?>
+    <tr style="font-weight: bold; background-color: #f1f1f1;">
+        <td colspan="5" class="text-center">Total Milk:</td>
+        <td><?= number_format($totalMilk1, 2) ?> L</td>
+        <td><?= number_format($totalMilk2, 2) ?> L</td>
+        <td><?= number_format($totalMilk3, 2) ?> L</td>
+        <td></td>
+        <?php if (hasPermission('CanUpdateAnimalMilk') || hasPermission('CanDeleteAnimalMilk')): ?>
+        <td></td>
+    <?php endif; ?>
 </tr>
 </tfoot>
 <?php endif; ?>

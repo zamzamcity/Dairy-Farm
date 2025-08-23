@@ -1,0 +1,438 @@
+CRITICAL - 2025-08-23 10:00:18 --> ErrorException: Undefined variable $tenants
+[Method: GET, Route: payroll/salaryPayments]
+in APPPATH\Views\payroll\salaryPayments.php on line 143.
+ 1 APPPATH\Views\payroll\salaryPayments.php(143): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tenants', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryPayments.php', 143)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryPayments.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('payroll/salaryPayments', [], true)
+ 5 APPPATH\Controllers\PayrollController.php(46): view('payroll/salaryPayments', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PayrollController->salaryPayments()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PayrollController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 10:03:55 --> ErrorException: Undefined variable $tenants
+[Method: GET, Route: payroll/salaryPayments]
+in APPPATH\Views\payroll\salaryPayments.php on line 145.
+ 1 APPPATH\Views\payroll\salaryPayments.php(145): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tenants', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryPayments.php', 145)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryPayments.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('payroll/salaryPayments', [], true)
+ 5 APPPATH\Controllers\PayrollController.php(46): view('payroll/salaryPayments', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PayrollController->salaryPayments()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PayrollController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 10:37:52 --> ErrorException: Undefined variable $selected_head
+[Method: GET, Route: ledger/accountLedger]
+in APPPATH\Views\ledger\accountLedger.php on line 48.
+ 1 APPPATH\Views\ledger\accountLedger.php(48): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $selected_head', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\ledger\\accountLedger.php', 48)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\ledger\\accountLedger.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('ledger/accountLedger', [], true)
+ 5 APPPATH\Controllers\LedgerController.php(109): view('ledger/accountLedger', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedger()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 10:38:53 --> ErrorException: Undefined variable $selected_head
+[Method: GET, Route: ledger/accountLedger]
+in APPPATH\Views\ledger\accountLedger.php on line 48.
+ 1 APPPATH\Views\ledger\accountLedger.php(48): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $selected_head', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\ledger\\accountLedger.php', 48)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\ledger\\accountLedger.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('ledger/accountLedger', [], true)
+ 5 APPPATH\Controllers\LedgerController.php(108): view('ledger/accountLedger', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedger()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 10:39:15 --> ErrorException: Undefined variable $selected_head
+[Method: GET, Route: ledger/accountLedger]
+in APPPATH\Views\ledger\accountLedger.php on line 48.
+ 1 APPPATH\Views\ledger\accountLedger.php(48): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $selected_head', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\ledger\\accountLedger.php', 48)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\ledger\\accountLedger.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('ledger/accountLedger', [], true)
+ 5 APPPATH\Controllers\LedgerController.php(108): view('ledger/accountLedger', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedger()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 10:44:45 --> ErrorException: Undefined variable $selected_head
+[Method: GET, Route: ledger/accountLedger]
+in APPPATH\Views\ledger\accountLedger.php on line 60.
+ 1 APPPATH\Views\ledger\accountLedger.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $selected_head', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\ledger\\accountLedger.php', 60)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\ledger\\accountLedger.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('ledger/accountLedger', [], true)
+ 5 APPPATH\Controllers\LedgerController.php(108): view('ledger/accountLedger', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedger()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 10:44:54 --> ErrorException: Undefined variable $selected_head
+[Method: GET, Route: ledger/accountLedger]
+in APPPATH\Views\ledger\accountLedger.php on line 60.
+ 1 APPPATH\Views\ledger\accountLedger.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $selected_head', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\ledger\\accountLedger.php', 60)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\ledger\\accountLedger.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('ledger/accountLedger', [], true)
+ 5 APPPATH\Controllers\LedgerController.php(108): view('ledger/accountLedger', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedger()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 10:49:01 --> ErrorException: Undefined variable $tenants
+[Method: GET, Route: payroll/salaryLedger]
+in APPPATH\Views\payroll\salaryLedger.php on line 36.
+ 1 APPPATH\Views\payroll\salaryLedger.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tenants', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php', 36)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('payroll/salaryLedger', [], true)
+ 5 APPPATH\Controllers\PayrollController.php(321): view('payroll/salaryLedger', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PayrollController->salaryLedger()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PayrollController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 10:49:38 --> ErrorException: Undefined variable $tenants
+[Method: GET, Route: payroll/salaryLedger]
+in APPPATH\Views\payroll\salaryLedger.php on line 36.
+ 1 APPPATH\Views\payroll\salaryLedger.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tenants', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php', 36)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('payroll/salaryLedger', [], true)
+ 5 APPPATH\Controllers\PayrollController.php(321): view('payroll/salaryLedger', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PayrollController->salaryLedger()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PayrollController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 10:49:40 --> ErrorException: Undefined variable $tenants
+[Method: GET, Route: payroll/salaryLedger]
+in APPPATH\Views\payroll\salaryLedger.php on line 36.
+ 1 APPPATH\Views\payroll\salaryLedger.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tenants', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php', 36)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('payroll/salaryLedger', [], true)
+ 5 APPPATH\Controllers\PayrollController.php(321): view('payroll/salaryLedger', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PayrollController->salaryLedger()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PayrollController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 10:49:40 --> ErrorException: Undefined variable $tenants
+[Method: GET, Route: payroll/salaryLedger]
+in APPPATH\Views\payroll\salaryLedger.php on line 36.
+ 1 APPPATH\Views\payroll\salaryLedger.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tenants', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php', 36)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('payroll/salaryLedger', [], true)
+ 5 APPPATH\Controllers\PayrollController.php(321): view('payroll/salaryLedger', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PayrollController->salaryLedger()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PayrollController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 10:55:21 --> ErrorException: Undefined variable $tenants
+[Method: GET, Route: payroll/salaryLedger]
+in APPPATH\Views\payroll\salaryLedger.php on line 36.
+ 1 APPPATH\Views\payroll\salaryLedger.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tenants', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php', 36)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('payroll/salaryLedger', [], true)
+ 5 APPPATH\Controllers\PayrollController.php(344): view('payroll/salaryLedger', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PayrollController->salaryLedger()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PayrollController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 10:55:27 --> ErrorException: Undefined variable $tenants
+[Method: GET, Route: payroll/salaryLedger]
+in APPPATH\Views\payroll\salaryLedger.php on line 36.
+ 1 APPPATH\Views\payroll\salaryLedger.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tenants', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php', 36)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('payroll/salaryLedger', [], true)
+ 5 APPPATH\Controllers\PayrollController.php(321): view('payroll/salaryLedger', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PayrollController->salaryLedger()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PayrollController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 11:06:57 --> ErrorException: Undefined variable $tenants
+[Method: GET, Route: payroll/salaryLedger]
+in APPPATH\Views\payroll\salaryLedger.php on line 36.
+ 1 APPPATH\Views\payroll\salaryLedger.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tenants', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php', 36)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\payroll\\salaryLedger.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('payroll/salaryLedger', [], true)
+ 5 APPPATH\Controllers\PayrollController.php(329): view('payroll/salaryLedger', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PayrollController->salaryLedger()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PayrollController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 11:49:04 --> ParseError: syntax error, unexpected token "<", expecting "elseif" or "else" or "endif"
+[Method: GET, Route: ledger/accountLedger]
+in APPPATH\Views\ledger\accountLedger.php on line 120.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('ledger/accountLedger', [], true)
+ 3 APPPATH\Controllers\LedgerController.php(78): view('ledger/accountLedger', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedger()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 12:04:17 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 117.
+ 1 APPPATH\Controllers\LedgerController.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 117)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 12:33:37 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 117.
+ 1 APPPATH\Controllers\LedgerController.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 117)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 12:33:43 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 117.
+ 1 APPPATH\Controllers\LedgerController.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 117)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 12:37:18 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 117.
+ 1 APPPATH\Controllers\LedgerController.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 117)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 12:37:22 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 117.
+ 1 APPPATH\Controllers\LedgerController.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 117)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 12:39:47 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 117.
+ 1 APPPATH\Controllers\LedgerController.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 117)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 12:39:51 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 117.
+ 1 APPPATH\Controllers\LedgerController.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 117)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 12:42:39 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 119.
+ 1 APPPATH\Controllers\LedgerController.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 119)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 12:42:41 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 119.
+ 1 APPPATH\Controllers\LedgerController.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 119)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 12:44:06 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 106.
+ 1 APPPATH\Controllers\LedgerController.php(106): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 106)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 12:44:08 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 106.
+ 1 APPPATH\Controllers\LedgerController.php(106): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 106)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 12:44:15 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 106.
+ 1 APPPATH\Controllers\LedgerController.php(106): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 106)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 13:10:38 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 106.
+ 1 APPPATH\Controllers\LedgerController.php(106): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 106)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 13:12:03 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 106.
+ 1 APPPATH\Controllers\LedgerController.php(106): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 106)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 13:13:25 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 122.
+ 1 APPPATH\Controllers\LedgerController.php(122): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 122)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 13:13:27 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 122.
+ 1 APPPATH\Controllers\LedgerController.php(122): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 122)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 13:17:06 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 127.
+ 1 APPPATH\Controllers\LedgerController.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 127)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 13:17:08 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 127.
+ 1 APPPATH\Controllers\LedgerController.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 127)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 13:17:15 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 127.
+ 1 APPPATH\Controllers\LedgerController.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 127)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 13:20:03 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 127.
+ 1 APPPATH\Controllers\LedgerController.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 127)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 13:27:57 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 127.
+ 1 APPPATH\Controllers\LedgerController.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 127)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 13:28:58 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 128.
+ 1 APPPATH\Controllers\LedgerController.php(128): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 128)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-23 13:30:26 --> ErrorException: Undefined array key "name"
+[Method: GET, Route: ledger/accountLedgerExport]
+in APPPATH\Controllers\LedgerController.php on line 127.
+ 1 APPPATH\Controllers\LedgerController.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "name"', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\LedgerController.php', 127)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LedgerController->accountLedgerExport()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LedgerController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

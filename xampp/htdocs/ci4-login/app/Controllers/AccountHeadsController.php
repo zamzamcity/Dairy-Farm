@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\AccountHeadModel;
 use CodeIgniter\Controller;
+use App\Models\TenantsModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
@@ -10,8 +11,39 @@ class AccountHeadsController extends BaseController
 {
     public function accountHeadsList()
     {
-        $model = new AccountHeadModel();
-        $data['account_heads'] = $model->findAll();
+        $accountHeadModel = new AccountHeadModel();
+        $tenantModel      = new TenantsModel();
+
+        if (isSuperAdmin()) {
+            $data['tenants'] = $tenantModel->findAll();
+            $selectedTenantId = $this->request->getGet('tenant_id');
+
+            if ($selectedTenantId) {
+                $data['account_heads'] = $accountHeadModel
+                ->select('account_heads.*, tenants.name as tenant_name')
+                ->join('tenants', 'tenants.id = account_heads.tenant_id', 'left')
+                ->where('account_heads.tenant_id', $selectedTenantId)
+                ->orderBy('account_heads.name')
+                ->findAll();
+            } else {
+                $data['account_heads'] = $accountHeadModel
+                ->select('account_heads.*, tenants.name as tenant_name')
+                ->join('tenants', 'tenants.id = account_heads.tenant_id', 'left')
+                ->orderBy('account_heads.name')
+                ->findAll();
+            }
+
+            $data['selectedTenantId'] = $selectedTenantId;
+        } else {
+            $tid = currentTenantId();
+
+            $data['account_heads'] = $accountHeadModel
+            ->select('account_heads.*, tenants.name as tenant_name')
+            ->join('tenants', 'tenants.id = account_heads.tenant_id', 'left')
+            ->where('account_heads.tenant_id', $tid)
+            ->orderBy('account_heads.name')
+            ->findAll();
+        }
 
         return view('chart-of-accounts/accountHeads', $data);
     }
@@ -26,6 +58,13 @@ class AccountHeadsController extends BaseController
             'type'             => $this->request->getPost('type'),
             'opening_balance'  => $this->request->getPost('opening_balance'),
             'description'      => $this->request->getPost('description'),
+            'tenant_id'        => isSuperAdmin()
+            ? ($this->request->getPost('tenant_id') !== '' ? $this->request->getPost('tenant_id') : null)
+            : currentTenantId(),
+            'created_by'       => session()->get('user_id'),
+            'updated_by'       => session()->get('user_id'),
+            'created_at'       => date('Y-m-d H:i:s'),
+            'updated_at'       => date('Y-m-d H:i:s'),
         ];
 
         if ($model->insert($data)) {
@@ -39,24 +78,46 @@ class AccountHeadsController extends BaseController
     {
         $model = new AccountHeadModel();
 
+        if (!isSuperAdmin()) {
+            $exists = $model->where('id', $id)
+            ->where('tenant_id', currentTenantId())
+            ->first();
+            if (!$exists) {
+                return redirect()->back()->with('error', 'Unauthorized.');
+            }
+        }
+
         $data = [
-            'account_code'     => $this->request->getPost('account_code'),
-            'name'             => $this->request->getPost('name'),
-            'type'             => $this->request->getPost('type'),
-            'opening_balance'  => $this->request->getPost('opening_balance'),
-            'description'      => $this->request->getPost('description'),
+            'account_code'    => $this->request->getPost('account_code'),
+            'name'            => $this->request->getPost('name'),
+            'type'            => $this->request->getPost('type'),
+            'opening_balance' => $this->request->getPost('opening_balance'),
+            'description'     => $this->request->getPost('description'),
+            'updated_by'      => session()->get('user_id'),
+            'updated_at'      => date('Y-m-d H:i:s'),
         ];
 
-        if ($model->update($id, $data)) {
-            return redirect()->back()->with('success', 'Account Head updated successfully.');
-        } else {
-            return redirect()->back()->with('error', 'Failed to update Account Head.');
+        if (isSuperAdmin() && $this->request->getPost('tenant_id')) {
+            $data['tenant_id'] = (int) $this->request->getPost('tenant_id');
         }
+
+        $model->update($id, $data);
+
+        return redirect()->back()->with('success', 'Account Head updated successfully.');
     }
 
     public function deleteAccountHeads($id)
     {
         $model = new AccountHeadModel();
+
+        if (!isSuperAdmin()) {
+            $exists = $model->where('id', $id)
+            ->where('tenant_id', currentTenantId())
+            ->first();
+            if (!$exists) {
+                return redirect()->back()->with('error', 'Unauthorized.');
+            }
+        }
 
         if ($model->delete($id)) {
             return redirect()->back()->with('success', 'Account Head deleted successfully.');
@@ -68,28 +129,38 @@ class AccountHeadsController extends BaseController
     public function exportAccountHeads()
     {
         $model = new AccountHeadModel();
-        $accountHeads = $model->orderBy('id', 'DESC')->findAll();
+        $tenantId = $this->request->getGet('tenant_id');
+
+        if (isSuperAdmin()) {
+            if (!empty($tenantId)) {
+                $accountHeads = $model->where('tenant_id', $tenantId)->orderBy('id', 'DESC')->findAll();
+            } else {
+                $accountHeads = $model->orderBy('id', 'DESC')->findAll();
+            }
+        } else {
+            $accountHeads = $model->where('tenant_id', currentTenantId())->orderBy('id', 'DESC')->findAll();
+        }
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-    // Headers
-        $sheet->setCellValue('A1', 'ID');
-        $sheet->setCellValue('B1', 'Account Code');
-        $sheet->setCellValue('C1', 'Name');
-        $sheet->setCellValue('D1', 'Type');
-        $sheet->setCellValue('E1', 'Opening Balance');
-        $sheet->setCellValue('F1', 'Description');
+        $sheet->setCellValue('A1', 'ID')
+        ->setCellValue('B1', 'Account Code')
+        ->setCellValue('C1', 'Name')
+        ->setCellValue('D1', 'Type')
+        ->setCellValue('E1', 'Opening Balance')
+        ->setCellValue('F1', 'Description')
+        ->setCellValue('G1', 'Tenant ID');
 
-    // Data
         $row = 2;
         foreach ($accountHeads as $head) {
-            $sheet->setCellValue('A' . $row, $head['id']);
-            $sheet->setCellValue('B' . $row, $head['account_code']);
-            $sheet->setCellValue('C' . $row, $head['name']);
-            $sheet->setCellValue('D' . $row, $head['type']);
-            $sheet->setCellValue('E' . $row, $head['opening_balance']);
-            $sheet->setCellValue('F' . $row, $head['description']);
+            $sheet->setCellValue('A' . $row, $head['id'])
+            ->setCellValue('B' . $row, $head['account_code'])
+            ->setCellValue('C' . $row, $head['name'])
+            ->setCellValue('D' . $row, $head['type'])
+            ->setCellValue('E' . $row, $head['opening_balance'])
+            ->setCellValue('F' . $row, $head['description'])
+            ->setCellValue('G' . $row, $head['tenant_id']);
             $row++;
         }
 
@@ -98,8 +169,7 @@ class AccountHeadsController extends BaseController
 
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header("Content-Disposition: attachment; filename=\"$filename\"");
-        header('Cache-Control: max-age=0');
         $writer->save('php://output');
-        exit();
+        exit;
     }
 }

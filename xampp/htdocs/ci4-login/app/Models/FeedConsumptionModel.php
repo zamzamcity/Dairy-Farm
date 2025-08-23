@@ -8,11 +8,20 @@ class FeedConsumptionModel extends Model
 {
     protected $table            = 'feed_consumption';
     protected $primaryKey       = 'id';
-    protected $allowedFields    = ['product_id', 'quantity', 'date'];
-    protected $useTimestamps    = true; // If you added created_at, updated_at columns
 
-    // Optional validation rules
-    protected $validationRules = [
+    protected $allowedFields    = [
+        'tenant_id',
+        'product_id',
+        'quantity',
+        'date',
+        'created_by',
+        'updated_by',
+    ];
+
+    protected $useTimestamps    = true;
+
+    protected $validationRules  = [
+        'tenant_id'  => 'required|integer',
         'product_id' => 'required|integer',
         'quantity'   => 'required|decimal',
         'date'       => 'required|valid_date',

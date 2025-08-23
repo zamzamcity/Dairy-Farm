@@ -80,10 +80,10 @@
                 </div>
 
                 <div class="modal-body">
-                 Are you sure you want to delete <strong><?= esc($record['head_name']) ?></strong>?
-             </div>
+                   Are you sure you want to delete <strong><?= esc($record['head_name']) ?></strong>?
+               </div>
 
-             <div class="modal-footer">
+               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-danger">Yes, Delete</button>
             </div>
@@ -119,10 +119,11 @@
         <h1 class="h3 mb-0 text-gray-800">Milk Consumption</h1>
     </div>
 
-    <?php if (isSuperAdmin()): ?>
-        <form method="get" class="form-inline mb-4">
+    
+    <form method="get" class="form-inline mb-4">
 
-            <!-- Tenant Filter -->
+        <!-- Tenant Filter -->
+        <?php if (isSuperAdmin()): ?>
             <label class="mr-2">Tenant:</label>
             <select name="tenant_id" class="form-control mr-3">
                 <option value="">-- All Tenants --</option>
@@ -133,16 +134,15 @@
                     </option>
                 <?php endforeach; ?>
             </select>
+        <?php endif; ?>
+        <!-- Date Filter -->
+        <label for="date" class="mr-2">Date:</label>
+        <input type="date" id="date" name="date" value="<?= esc($selected_date) ?>" class="form-control mr-3" required>
 
-            <!-- Date Filter -->
-            <label for="date" class="mr-2">Date:</label>
-            <input type="date" id="date" name="date" value="<?= esc($selected_date) ?>" class="form-control mr-3" required>
-
-            <!-- Buttons -->
-            <button type="submit" class="btn btn-primary">Filter</button>
-            <a href="<?= base_url('milk-consumption/milkConsumption') ?>" class="btn btn-secondary ml-2">Reset</a>
-        </form>
-    <?php endif; ?>
+        <!-- Buttons -->
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+    
 
     <div class="mb-3 text-right">
         <a href="<?= base_url('milk-consumption/milkConsumption/export')
@@ -205,14 +205,14 @@
                 </tr>
             <?php endforeach; ?>
             <tfoot>
-            <tr style="font-weight: bold; background-color: #f1f1f1;">
-                <td colspan="3" class="text-center">Grand Total (Litres):</td>
-                <td><?= number_format($total_milk, 2) ?></td>
-                <td></td>
-                <?php if (hasPermission('CanUpdateMilkConsumption') || hasPermission('CanDeleteMilkConsumption')): ?>
-                <td></td>
-            <?php endif; ?>
-        </tr>
+                <tr style="font-weight: bold; background-color: #f1f1f1;">
+                    <td colspan="3" class="text-center">Grand Total (Litres):</td>
+                    <td><?= number_format($total_milk, 2) ?></td>
+                    <td></td>
+                    <?php if (hasPermission('CanUpdateMilkConsumption') || hasPermission('CanDeleteMilkConsumption')): ?>
+                    <td></td>
+                <?php endif; ?>
+            </tr>
         </tfoot>
     <?php endif; ?>
 </tbody>

@@ -14,21 +14,34 @@ class VoucherModel extends Model
         'date',
         'reference_no',
         'description',
+        'tenant_id',
+        'created_by',
+        'updated_by',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
+    protected $useTimestamps = true;
 
-    public function getAllPaymentVouchers()
+    public function getAllPaymentVouchers($tenantId = null)
     {
-        return $this->where('voucher_type', 'payment')->orderBy('date', 'DESC')->findAll();
+        $builder = $this->where('voucher_type', 'payment')->orderBy('date', 'DESC');
+        if ($tenantId) {
+            $builder->where('tenant_id', $tenantId);
+        }
+        return $builder->findAll();
     }
 
-    public function getVoucherWithEntries($id)
+    public function getVoucherWithEntries($id, $tenantId = null)
     {
-        return $this->select('vouchers.*, voucher_entries.*, account_heads.name as account_head_name')
+        $builder = $this->select('vouchers.*, voucher_entries.*, account_heads.name as account_head_name')
             ->join('voucher_entries', 'voucher_entries.voucher_id = vouchers.id')
             ->join('account_heads', 'account_heads.id = voucher_entries.account_head_id')
-            ->where('vouchers.id', $id)
-            ->findAll();
+            ->where('vouchers.id', $id);
+
+        if ($tenantId) {
+            $builder->where('vouchers.tenant_id', $tenantId);
+        }
+
+        return $builder->findAll();
     }
 }

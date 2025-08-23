@@ -10,6 +10,7 @@ class EmployeePayrollModel extends Model
     protected $primaryKey = 'id';
 
     protected $allowedFields = [
+        'tenant_id',
         'user_id',
         'salary_month',
         'salary_type',
@@ -17,6 +18,8 @@ class EmployeePayrollModel extends Model
         'salary_amount',
         'voucher_id',
         'status',
+        'created_by',
+        'updated_by',
         'created_at',
         'updated_at'
     ];

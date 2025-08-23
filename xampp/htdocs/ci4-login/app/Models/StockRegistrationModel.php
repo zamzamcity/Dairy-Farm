@@ -6,10 +6,11 @@ use CodeIgniter\Model;
 
 class StockRegistrationModel extends Model
 {
-    protected $table = 'stock_registration';
-    protected $primaryKey = 'id';
+    protected $table            = 'stock_registration';
+    protected $primaryKey       = 'id';
 
-    protected $allowedFields = [
+    protected $allowedFields    = [
+        'tenant_id',
         'product_name',
         'head_id',
         'unit_id',
@@ -17,9 +18,11 @@ class StockRegistrationModel extends Model
         'opening_stock_qty',
         'opening_stock_rate_per_unit',
         'rate_per_unit',
+        'created_by',
+        'updated_by',
     ];
 
-    protected $useTimestamps = true;
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
+    protected $useTimestamps    = true;
+    protected $createdField     = 'created_at';
+    protected $updatedField     = 'updated_at';
 }

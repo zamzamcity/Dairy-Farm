@@ -5,6 +5,7 @@ use App\Controllers\BaseController;
 use App\Models\VoucherModel;
 use App\Models\VoucherEntryModel;
 use App\Models\AccountHeadModel;
+use App\Models\TenantsModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
@@ -23,23 +24,67 @@ class JournalVoucherController extends BaseController
 
     public function journalVoucher()
     {
-        $vouchers = $this->voucherModel
-        ->where('voucher_type', 'journal')
-        ->orderBy('date', 'DESC')
-        ->findAll();
+        $tenantModel = new TenantsModel();
+
+        if (isSuperAdmin()) {
+            $data['tenants'] = $tenantModel->findAll();
+
+            $selectedTenantId = $this->request->getGet('tenant_id');
+
+            if ($selectedTenantId) {
+                $vouchers = $this->voucherModel
+                ->select('vouchers.*, tenants.name as tenant_name')
+                ->join('tenants', 'tenants.id = vouchers.tenant_id', 'left')
+                ->where('vouchers.voucher_type', 'journal')
+                ->where('vouchers.tenant_id', $selectedTenantId)
+                ->orderBy('vouchers.date', 'DESC')
+                ->findAll();
+
+                $data['account_heads'] = $this->accountHeadModel
+                ->where('tenant_id', $selectedTenantId)
+                ->orderBy('name')
+                ->findAll();
+            } else {
+                $vouchers = $this->voucherModel
+                ->select('vouchers.*, tenants.name as tenant_name')
+                ->join('tenants', 'tenants.id = vouchers.tenant_id', 'left')
+                ->where('vouchers.voucher_type', 'journal')
+                ->orderBy('vouchers.date', 'DESC')
+                ->findAll();
+
+                $data['account_heads'] = $this->accountHeadModel
+                ->orderBy('name')
+                ->findAll();
+            }
+
+            $data['selectedTenantId'] = $selectedTenantId;
+        } else {
+            $tid = currentTenantId();
+
+            $vouchers = $this->voucherModel
+            ->select('vouchers.*, tenants.name as tenant_name')
+            ->join('tenants', 'tenants.id = vouchers.tenant_id', 'left')
+            ->where('vouchers.voucher_type', 'journal')
+            ->where('vouchers.tenant_id', $tid)
+            ->orderBy('vouchers.date', 'DESC')
+            ->findAll();
+
+            $data['account_heads'] = $this->accountHeadModel
+            ->where('tenant_id', $tid)
+            ->orderBy('name')
+            ->findAll();
+        }
 
         foreach ($vouchers as &$voucher) {
             $voucher['entries'] = $this->voucherEntryModel
             ->where('voucher_id', $voucher['id'])
+            ->orderBy('id', 'ASC')
             ->findAll();
         }
 
-        $account_heads = $this->accountHeadModel->orderBy('name')->findAll();
+        $data['vouchers'] = $vouchers;
 
-        return view('vouchers/journalVoucher', [
-            'vouchers' => $vouchers,
-            'account_heads' => $account_heads,
-        ]);
+        return view('vouchers/journalVoucher', $data);
     }
 
     public function addJournalVoucher()
@@ -56,10 +101,17 @@ class JournalVoucherController extends BaseController
 
         $voucherData = [
             'voucher_number' => $voucher_number,
-            'voucher_type' => 'journal',
-            'date'         => $data['date'],
-            'reference_no' => $data['reference_no'],
-            'description'  => $data['description']
+            'voucher_type'   => 'journal',
+            'date'           => $data['date'],
+            'reference_no'   => $data['reference_no'],
+            'description'    => $data['description'],
+            'tenant_id'      => isSuperAdmin()
+            ? ($this->request->getPost('tenant_id') !== '' ? $this->request->getPost('tenant_id') : null)
+            : currentTenantId(),
+            'created_by'     => session()->get('user_id'),
+            'updated_by'     => session()->get('user_id'),
+            'created_at'     => date('Y-m-d H:i:s'),
+            'updated_at'     => date('Y-m-d H:i:s'),
         ];
 
         $voucherId = $this->voucherModel->insert($voucherData);
@@ -71,7 +123,12 @@ class JournalVoucherController extends BaseController
                     'account_head_id' => $entry['account_head_id'],
                     'type'            => $entry['type'],
                     'amount'          => $entry['amount'],
-                    'narration'       => $entry['narration'] ?? null
+                    'narration'       => $entry['narration'] ?? null,
+                    'tenant_id'       => $voucherData['tenant_id'],
+                    'created_by'      => session()->get('user_id'),
+                    'updated_by'      => session()->get('user_id'),
+                    'created_at'      => date('Y-m-d H:i:s'),
+                    'updated_at'      => date('Y-m-d H:i:s'),
                 ]);
             }
             return redirect()->back()->with('success', 'Journal voucher added successfully.');
@@ -82,14 +139,29 @@ class JournalVoucherController extends BaseController
 
     public function editJournalVoucher($id)
     {
+        if (!isSuperAdmin()) {
+            $exists = $this->voucherModel->where('id', $id)
+            ->where('tenant_id', currentTenantId())
+            ->first();
+            if (!$exists) {
+                return redirect()->back()->with('error', 'Unauthorized.');
+            }
+        }
+
         $data = $this->request->getPost();
 
         $voucherData = [
             'voucher_type' => 'journal',
             'date'         => $data['date'],
             'reference_no' => $data['reference_no'],
-            'description'  => $data['description']
+            'description'  => $data['description'],
+            'updated_by'   => session()->get('user_id'),
+            'updated_at'   => date('Y-m-d H:i:s'),
         ];
+
+        if (isSuperAdmin() && $this->request->getPost('tenant_id')) {
+            $voucherData['tenant_id'] = (int) $this->request->getPost('tenant_id');
+        }
 
         $this->voucherModel->update($id, $voucherData);
 
@@ -101,7 +173,10 @@ class JournalVoucherController extends BaseController
                 'account_head_id' => $entry['account_head_id'],
                 'type'            => $entry['type'],
                 'amount'          => $entry['amount'],
-                'narration'       => $entry['narration'] ?? null
+                'narration'       => $entry['narration'] ?? null,
+                'tenant_id'       => $voucherData['tenant_id'] ?? currentTenantId(),
+                'created_by'      => session()->get('user_id'),
+                'created_at'      => date('Y-m-d H:i:s'),
             ]);
         }
 
@@ -110,27 +185,55 @@ class JournalVoucherController extends BaseController
 
     public function deleteJournalVoucher($id)
     {
+        if (!isSuperAdmin()) {
+            $exists = $this->voucherModel->where('id', $id)
+            ->where('tenant_id', currentTenantId())
+            ->first();
+            if (!$exists) {
+                return redirect()->back()->with('error', 'Unauthorized.');
+            }
+        }
+
         $this->voucherModel->delete($id);
         $this->voucherEntryModel->where('voucher_id', $id)->delete();
+
         return redirect()->back()->with('success', 'Journal voucher deleted successfully.');
     }
 
     public function exportJournalVoucher()
     {
-        $vouchers = $this->voucherModel
-        ->where('voucher_type', 'journal')
-        ->orderBy('date', 'DESC')
-        ->findAll();
+        $tenantId = $this->request->getGet('tenant_id');
+
+        if (isSuperAdmin()) {
+            if (!empty($tenantId)) {
+                $vouchers = $this->voucherModel
+                ->where('voucher_type', 'journal')
+                ->where('tenant_id', $tenantId)
+                ->orderBy('date', 'DESC')
+                ->findAll();
+            } else {
+                $vouchers = $this->voucherModel
+                ->where('voucher_type', 'journal')
+                ->orderBy('date', 'DESC')
+                ->findAll();
+            }
+        } else {
+            $vouchers = $this->voucherModel
+            ->where('voucher_type', 'journal')
+            ->where('tenant_id', currentTenantId())
+            ->orderBy('date', 'DESC')
+            ->findAll();
+        }
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-    // Headers
-        $sheet->setCellValue('A1', 'Voucher No');
-        $sheet->setCellValue('B1', 'Date');
-        $sheet->setCellValue('C1', 'Reference No');
-        $sheet->setCellValue('D1', 'Description');
-        $sheet->setCellValue('E1', 'Entries (Account Head - Type - Amount - Narration)');
+        $sheet->setCellValue('A1', 'Voucher No')
+        ->setCellValue('B1', 'Date')
+        ->setCellValue('C1', 'Reference No')
+        ->setCellValue('D1', 'Description')
+        ->setCellValue('E1', 'Entries (Account Head - Type - Amount - Narration)')
+        ->setCellValue('F1', 'Tenant ID');
 
         $row = 2;
         foreach ($vouchers as $voucher) {
@@ -141,14 +244,18 @@ class JournalVoucherController extends BaseController
             $entryText = "";
             foreach ($entries as $entry) {
                 $accountHead = $this->accountHeadModel->find($entry['account_head_id']);
-                $entryText .= $accountHead['name'] . " - " . ucfirst($entry['type']) . " - " . $entry['amount'] . " (" . $entry['narration'] . "); ";
+                $entryText .= $accountHead['name'] . " - " 
+                . ucfirst($entry['type']) . " - " 
+                . $entry['amount'] . " (" 
+                . ($entry['narration'] ?? '') . "); ";
             }
 
-            $sheet->setCellValue('A' . $row, $voucher['voucher_number']);
-            $sheet->setCellValue('B' . $row, $voucher['date']);
-            $sheet->setCellValue('C' . $row, $voucher['reference_no']);
-            $sheet->setCellValue('D' . $row, $voucher['description']);
-            $sheet->setCellValue('E' . $row, $entryText);
+            $sheet->setCellValue('A' . $row, $voucher['voucher_number'])
+            ->setCellValue('B' . $row, $voucher['date'])
+            ->setCellValue('C' . $row, $voucher['reference_no'])
+            ->setCellValue('D' . $row, $voucher['description'])
+            ->setCellValue('E' . $row, $entryText)
+            ->setCellValue('F' . $row, $voucher['tenant_id']);
             $row++;
         }
 
@@ -157,8 +264,7 @@ class JournalVoucherController extends BaseController
 
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header("Content-Disposition: attachment; filename=\"$filename\"");
-        header('Cache-Control: max-age=0');
         $writer->save('php://output');
-        exit();
+        exit;
     }
 }

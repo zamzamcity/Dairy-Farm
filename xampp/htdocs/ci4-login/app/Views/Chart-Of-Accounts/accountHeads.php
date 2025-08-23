@@ -45,6 +45,20 @@
             <input type="number" step="0.01" class="form-control" id="opening_balance<?= $account_head['id'] ?>" name="opening_balance" value="<?= esc($account_head['opening_balance']) ?>" required>
           </div>
 
+          <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+              <label for="tenant_id<?= $account_head['id'] ?>">Tenant</label>
+              <select name="tenant_id" id="tenant_id<?= $account_head['id'] ?>" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                  <option value="<?= $tenant['id'] ?>" <?= $account_head['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                    <?= esc($tenant['name']) ?>
+                  </option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+          <?php endif; ?>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -105,39 +119,58 @@
     <h1 class="h3 mb-0 text-gray-800">Chart of Accounts</h1>
   </div>
 
-  <div class="mb-3 text-right">
-    <a href="<?= base_url('chart-of-accounts/accountHeads/export') ?>" class="btn btn-success mb-3">
-      <i class="fas fa-file-excel"></i> Download Excel
-    </a>
-  </div>
-
-  <?php if (hasPermission('CanAddAccountHead')): ?>
-    <div class="mb-3 text-right">
-      <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addAccountHeadModal">+ Add Account Head</a>
-    </div>
+  <?php if (isSuperAdmin()): ?>
+    <form method="get" class="form-inline mb-4">
+      <label class="mr-2">Tenant:</label>
+      <select name="tenant_id" class="form-control mr-2">
+        <option value="">-- All Tenants --</option>
+        <?php foreach ($tenants as $tenant): ?>
+          <option value="<?= esc($tenant['id']) ?>" 
+            <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+            <?= esc($tenant['name']) ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
+      <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
   <?php endif; ?>
 
-  <div class="card shadow mb-4">
-    <div class="card-body">
-      <?php if (session()->getFlashdata('success')): ?>
-      <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-    <?php endif; ?>
+  <div class="mb-3 text-right">
+    <a href="<?= base_url('chart-of-accounts/accountHeads/export') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" 
+     class="btn btn-success mb-3">
+     <i class="fas fa-file-excel"></i> Download Excel
+   </a>
+ </div>
 
-    <div class="table-responsive">
-      <table class="table table-bordered" id="accountHeadsTable">
-        <thead class="thead-dark">
-          <tr>
-            <th>ID</th>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Balance</th>
-            <?php if (hasPermission('CanUpdateAccountHead') || hasPermission('CanDeleteAccountHead')): ?>
-            <th>Actions</th>
-          <?php endif; ?>
-        </tr>
-      </thead>
-      <tbody>
+ <?php if (hasPermission('CanAddAccountHead')): ?>
+  <div class="mb-3 text-right">
+    <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addAccountHeadModal">+ Add Account Head</a>
+  </div>
+<?php endif; ?>
+
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+  <?php endif; ?>
+
+  <div class="table-responsive">
+    <table class="table table-bordered" id="accountHeadsTable">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Balance</th>
+          <th>Tenant</th>
+          <?php if (hasPermission('CanUpdateAccountHead') || hasPermission('CanDeleteAccountHead')): ?>
+          <th>Actions</th>
+        <?php endif; ?>
+      </tr>
+    </thead>
+    <tbody>
+      <?php if (!empty($account_heads)): ?>
         <?php foreach ($account_heads as $head): ?>
           <tr>
             <td><?= esc($head['id']) ?></td>
@@ -145,6 +178,7 @@
             <td><?= esc($head['name']) ?></td>
             <td><?= esc($head['type']) ?></td>
             <td><?= esc($head['opening_balance']) ?></td>
+            <td><?= esc($head['tenant_name'] ?? 'N/A') ?></td>
             <?php if (hasPermission('CanUpdateAccountHead') || hasPermission('CanDeleteAccountHead')): ?>
             <td>
               <?php if (hasPermission('CanUpdateAccountHead')): ?>
@@ -157,14 +191,9 @@
           <?php endif; ?>
         </tr>
       <?php endforeach; ?>
-
-      <?php if (empty($account_heads)): ?>
-        <tr>
-          <td colspan="6" class="text-center">No account heads found.</td>
-        </tr>
-      <?php endif; ?>
-    </tbody>
-  </table>
+    <?php endif; ?>
+  </tbody>
+</table>
 </div>
 </div>
 </div>
@@ -219,6 +248,18 @@
             <label for="opening_balance">Opening Balance *</label>
             <input type="number" step="0.01" class="form-control" id="opening_balance" name="opening_balance" required>
           </div>
+
+          <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+              <label>Tenant</label>
+              <select name="tenant_id" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                  <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+          <?php endif; ?>
 
         </div>
         <div class="modal-footer">

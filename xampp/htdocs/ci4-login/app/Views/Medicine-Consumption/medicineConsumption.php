@@ -37,6 +37,20 @@
             <input type="number" step="0.01" name="quantity" class="form-control" value="<?= esc($med['quantity']) ?>" required>
           </div>
 
+          <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+              <label for="tenant_id<?= $med['id'] ?>">Tenant</label>
+              <select name="tenant_id" id="tenant_id<?= $med['id'] ?>" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                  <option value="<?= $tenant['id'] ?>" <?= $med['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                    <?= esc($tenant['name']) ?>
+                  </option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+          <?php endif; ?>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -97,14 +111,38 @@
     <h1 class="h3 mb-0 text-gray-800">Medicine Consumption</h1>
   </div>
 
-  <form method="get" class="form-inline mb-3">
+  
+  <form method="get" class="form-inline mb-4">
+
+    <!-- Tenant Filter -->
+    <?php if (isSuperAdmin()): ?>
+      <label class="mr-2">Tenant:</label>
+      <select name="tenant_id" class="form-control mr-3">
+        <option value="">-- All Tenants --</option>
+        <?php foreach ($tenants as $tenant): ?>
+          <option value="<?= esc($tenant['id']) ?>" 
+            <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+            <?= esc($tenant['name']) ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
+    <?php endif; ?>
+
+    <!-- Date Filter -->
     <label for="date" class="mr-2">Date:</label>
-    <input type="date" name="date" id="date" class="form-control mr-2" value="<?= esc($selected_date) ?>">
-    <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+    <input type="date" id="date" name="date" value="<?= esc($selected_date) ?>" class="form-control mr-3" required>
+
+    <!-- Buttons -->
+    <button type="submit" class="btn btn-primary">Filter</button>
   </form>
 
   <div class="mb-3 text-right">
-    <a href="<?= base_url('medicine-consumption/medicineConsumption/export') . '?' . $_SERVER['QUERY_STRING'] ?>" class="btn btn-success mb-3">
+    <a href="<?= base_url('medicine-consumption/medicineConsumption/export')
+    . (!empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '')
+    . (!empty($selectedTenantId) 
+      ? (empty($_SERVER['QUERY_STRING']) ? '?' : '&') . 'tenant_id=' . $selectedTenantId 
+      : '') ?>" 
+      class="btn btn-success mb-3">
       <i class="fas fa-file-excel"></i> Download Excel
     </a>
   </div>
@@ -129,6 +167,7 @@
             <th>Date</th>
             <th>Product</th>
             <th>Quantity</th>
+            <th>Tenant</th>
             <?php if (hasPermission('CanUpdateMedicineConsumption') || hasPermission('CanDeleteMedicineConsumption')): ?>
             <th>Actions</th>
           <?php endif; ?>
@@ -141,6 +180,7 @@
             <td><?= esc($consumption['date']) ?></td>
             <td><?= esc($consumption['product_name']) ?></td>
             <td><?= esc($consumption['quantity']) ?></td>
+            <td><?= esc($consumption['tenant_name'] ?? 'N/A') ?></td>
             <?php if (hasPermission('CanUpdateMedicineConsumption') || hasPermission('CanDeleteMedicineConsumption')): ?>
             <td>
               <?php if (hasPermission('CanUpdateMedicineConsumption')): ?>
@@ -156,7 +196,7 @@
 
       <?php if (empty($medicine_consumptions)): ?>
         <tr>
-          <td colspan="5" class="text-center">No medicine consumption records found.</td>
+          <td colspan="6" class="text-center">No medicine consumption records found.</td>
         </tr>
       <?php endif; ?>
       <?php if (!empty($medicine_consumptions)): ?>
@@ -207,6 +247,18 @@
             <label for="quantity">Quantity *</label>
             <input type="number" step="0.01" name="quantity" class="form-control" required>
           </div>
+
+          <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+              <label>Tenant</label>
+              <select name="tenant_id" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                  <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+          <?php endif; ?>
 
         </div>
         <div class="modal-footer">
