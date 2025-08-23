@@ -710,3 +710,108 @@
 7:23:01 PM  [main] 	Deinitializing Modules
 7:23:01 PM  [main] 	Deinitializing Control Panel
 
+9:17:34 AM  [main] 	Initializing Control Panel
+9:17:34 AM  [main] 	Windows Version:  Enterprise  64-bit
+9:17:34 AM  [main] 	XAMPP Version: 8.2.12
+9:17:34 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+9:17:34 AM  [main] 	You are not running with administrator rights! This will work for
+9:17:34 AM  [main] 	most application stuff but whenever you do something with services
+9:17:34 AM  [main] 	there will be a security dialogue or things will break! So think 
+9:17:34 AM  [main] 	about running this application with administrator rights!
+9:17:34 AM  [main] 	XAMPP Installation Directory: "c:\users\zamza\documents\github\dairy-farm\xampp\"
+9:17:34 AM  [main] 	Checking for prerequisites
+9:17:35 AM  [main] 	All prerequisites found
+9:17:35 AM  [main] 	Initializing Modules
+9:17:35 AM  [main] 	Starting Check-Timer
+9:17:35 AM  [main] 	Control Panel Ready
+9:17:37 AM  [Apache] 	Attempting to start Apache app...
+9:17:37 AM  [Apache] 	Status change detected: running
+9:17:37 AM  [mysql] 	Attempting to start MySQL app...
+9:17:38 AM  [mysql] 	Status change detected: running
+10:54:16 AM  [Apache] 	Attempting to stop Apache (PID: 1376)
+10:54:16 AM  [Apache] 	Attempting to stop Apache (PID: 4572)
+10:54:16 AM  [Apache] 	Status change detected: stopped
+10:54:16 AM  [mysql] 	Attempting to stop MySQL app...
+10:54:17 AM  [mysql] 	Status change detected: stopped
+10:54:42 AM  [Apache] 	Attempting to start Apache app...
+10:54:43 AM  [Apache] 	Status change detected: running
+10:54:43 AM  [mysql] 	Attempting to start MySQL app...
+10:54:44 AM  [mysql] 	Status change detected: running
+10:56:50 AM  [Apache] 	Attempting to stop Apache (PID: 15828)
+10:56:50 AM  [Apache] 	Attempting to stop Apache (PID: 11656)
+10:56:50 AM  [Apache] 	Status change detected: stopped
+10:56:51 AM  [mysql] 	Attempting to stop MySQL app...
+10:56:51 AM  [mysql] 	Status change detected: stopped
+11:01:45 AM  [Apache] 	Attempting to start Apache app...
+11:01:45 AM  [Apache] 	Status change detected: running
+11:01:46 AM  [mysql] 	Attempting to start MySQL app...
+11:01:46 AM  [mysql] 	Status change detected: running
+6:23:47 PM  [Apache] 	Attempting to stop Apache (PID: 13768)
+6:23:47 PM  [Apache] 	Attempting to stop Apache (PID: 6824)
+6:23:47 PM  [Apache] 	Status change detected: stopped
+6:23:48 PM  [mysql] 	Attempting to stop MySQL app...
+6:23:48 PM  [mysql] 	Status change detected: stopped
+6:24:26 PM  [Apache] 	Attempting to start Apache app...
+6:24:26 PM  [Apache] 	Status change detected: running
+6:24:26 PM  [mysql] 	Attempting to start MySQL app...
+6:24:27 PM  [mysql] 	Status change detected: running
+6:49:54 PM  [Apache] 	Attempting to stop Apache (PID: 704)
+6:49:54 PM  [Apache] 	Attempting to stop Apache (PID: 13204)
+6:49:54 PM  [Apache] 	Status change detected: stopped
+6:49:54 PM  [mysql] 	Attempting to stop MySQL app...
+6:49:55 PM  [mysql] 	Status change detected: stopped
+6:50:23 PM  [main] 	Deinitializing Modules
+6:50:23 PM  [main] 	Deinitializing Control Panel
+
+9:19:01 AM  [main] 	Initializing Control Panel
+9:19:01 AM  [main] 	Windows Version:  Enterprise  64-bit
+9:19:01 AM  [main] 	XAMPP Version: 8.2.12
+9:19:01 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+9:19:01 AM  [main] 	You are not running with administrator rights! This will work for
+9:19:01 AM  [main] 	most application stuff but whenever you do something with services
+9:19:01 AM  [main] 	there will be a security dialogue or things will break! So think 
+9:19:01 AM  [main] 	about running this application with administrator rights!
+9:19:01 AM  [main] 	XAMPP Installation Directory: "c:\users\zamza\documents\github\dairy-farm\xampp\"
+9:19:01 AM  [main] 	Checking for prerequisites
+9:19:03 AM  [main] 	All prerequisites found
+9:19:03 AM  [main] 	Initializing Modules
+9:19:03 AM  [main] 	Starting Check-Timer
+9:19:03 AM  [main] 	Control Panel Ready
+9:19:06 AM  [Apache] 	Attempting to start Apache app...
+9:19:06 AM  [Apache] 	Status change detected: running
+9:19:07 AM  [mysql] 	Attempting to start MySQL app...
+9:19:07 AM  [mysql] 	Status change detected: running
+7:47:21 PM  [Apache] 	Attempting to stop Apache (PID: 5832)
+7:47:21 PM  [Apache] 	Attempting to stop Apache (PID: 7712)
+7:47:21 PM  [Apache] 	Status change detected: stopped
+7:47:22 PM  [mysql] 	Attempting to stop MySQL app...
+7:47:22 PM  [mysql] 	Status change detected: stopped
+7:47:56 PM  [main] 	Deinitializing Modules
+7:47:56 PM  [main] 	Deinitializing Control Panel
+
+10:11:09 AM  [main] 	Initializing Control Panel
+10:11:09 AM  [main] 	Windows Version:  Enterprise  64-bit
+10:11:09 AM  [main] 	XAMPP Version: 8.2.12
+10:11:09 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+10:11:09 AM  [main] 	You are not running with administrator rights! This will work for
+10:11:09 AM  [main] 	most application stuff but whenever you do something with services
+10:11:09 AM  [main] 	there will be a security dialogue or things will break! So think 
+10:11:09 AM  [main] 	about running this application with administrator rights!
+10:11:09 AM  [main] 	XAMPP Installation Directory: "c:\users\zamza\documents\github\dairy-farm\xampp\"
+10:11:09 AM  [main] 	Checking for prerequisites
+10:11:11 AM  [main] 	All prerequisites found
+10:11:11 AM  [main] 	Initializing Modules
+10:11:11 AM  [main] 	Starting Check-Timer
+10:11:11 AM  [main] 	Control Panel Ready
+10:11:12 AM  [Apache] 	Attempting to start Apache app...
+10:11:12 AM  [Apache] 	Status change detected: running
+10:11:14 AM  [mysql] 	Attempting to start MySQL app...
+10:11:14 AM  [mysql] 	Status change detected: running
+6:41:23 PM  [Apache] 	Attempting to stop Apache (PID: 17436)
+6:41:23 PM  [Apache] 	Attempting to stop Apache (PID: 4872)
+6:41:23 PM  [Apache] 	Status change detected: stopped
+6:41:23 PM  [mysql] 	Attempting to stop MySQL app...
+6:41:23 PM  [mysql] 	Status change detected: stopped
+6:41:34 PM  [main] 	Deinitializing Modules
+6:41:34 PM  [main] 	Deinitializing Control Panel
+

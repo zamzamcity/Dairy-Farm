@@ -127,6 +127,19 @@
     <label>Price *</label>
     <input type="number" name="price" class="form-control" step="0.01" value="<?= esc($animal['price']) ?>" required>
 </div>
+<?php if (isSuperAdmin()): ?>
+    <div class="form-group col-md-6">
+        <label for="tenant_id<?= $animal['id'] ?>">Tenant</label>
+        <select name="tenant_id" id="tenant_id<?= $animal['id'] ?>" class="form-control">
+            <option value="">Select Tenant</option>
+            <?php foreach ($tenants as $tenant): ?>
+                <option value="<?= $tenant['id'] ?>" <?= $animal['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                    <?= esc($tenant['name']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+<?php endif; ?>
 
 <div class="form-group col-md-6">
     <label>Pedigree Info</label><br>
@@ -207,44 +220,63 @@
         <h1 class="h3 mb-0 text-gray-800">Animals List</h1>
     </div>
 
-    <div class="mb-3 text-right">
-        <a href="<?= base_url('animals/animalsList/export') ?>" class="btn btn-success mb-3">
-            <i class="fas fa-file-excel"></i> Download Excel
-        </a>
-    </div>
-
-    <!-- Add Animal Button -->
-    <?php if (hasPermission('CanAddAnimal')): ?>
-        <div class="mb-3 text-right">
-            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addAnimalModal">+ Add Animal</a>
-        </div>
+    <?php if (isSuperAdmin()): ?>
+        <form method="get" class="form-inline mb-4">
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-2">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
     <?php endif; ?>
 
-    <!-- Animal Table -->
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-        <?php endif; ?>
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('animals/animalsList/export') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" 
+         class="btn btn-success mb-3">
+         <i class="fas fa-file-excel"></i> Download Excel
+     </a>
+ </div>
 
-        <div class="table-responsive">
-            <table class="table table-bordered" id="animalTable">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Picture</th>
-                        <th>Name</th>
-                        <th>Tag ID</th>
-                        <th>Sex</th>
-                        <th>Animal Type</th>
-                        <th>Breed</th>
-                        <th>Birth Date</th>
-                        <?php if (hasPermission('CanUpdateAnimal') || hasPermission('CanDeleteAnimal')): ?>
-                        <th>Actions</th>
-                    <?php endif; ?>
-                </tr>
-            </thead>
-            <tbody>
+ <!-- Add Animal Button -->
+ <?php if (hasPermission('CanAddAnimal')): ?>
+    <div class="mb-3 text-right">
+        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addAnimalModal">+ Add Animal</a>
+    </div>
+<?php endif; ?>
+
+<!-- Animal Table -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+    <?php endif; ?>
+
+    <div class="table-responsive">
+        <table class="table table-bordered" id="animalTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Picture</th>
+                    <th>Name</th>
+                    <th>Tag ID</th>
+                    <th>Sex</th>
+                    <th>Animal Type</th>
+                    <th>Breed</th>
+                    <th>Birth Date</th>
+                    <th>Tenant</th>
+                    <?php if (hasPermission('CanUpdateAnimal') || hasPermission('CanDeleteAnimal')): ?>
+                    <th>Actions</th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($animals)) : ?>
                 <?php foreach ($animals as $animal): ?>
                     <tr>
                         <td><?= $animal['id'] ?></td>
@@ -261,6 +293,7 @@
                         <td><?= esc($animal['animal_type']) ?></td>
                         <td><?= esc($animal['breed']) ?></td>
                         <td><?= esc($animal['birth_date']) ?></td>
+                        <td><?= esc($animal['tenant_name'] ?? 'N/A') ?></td>
                         <?php if (hasPermission('CanUpdateAnimal') || hasPermission('CanDeleteAnimal')): ?>
                         <td>
                             <?php if (hasPermission('CanUpdateAnimal')): ?>
@@ -273,12 +306,9 @@
                     <?php endif; ?>
                 </tr>
             <?php endforeach; ?>
-
-            <?php if (empty($animals)): ?>
-                <tr><td colspan="8" class="text-center">No animals found.</td></tr>
-            <?php endif ?>
-        </tbody>
-    </table>
+        <?php endif ?>
+    </tbody>
+</table>
 </div>
 </div>
 </div>
@@ -375,13 +405,17 @@
 
 <!-- Status -->
 <div class="form-group col-md-6">
-    <label>Status *</label>
-    <select name="status" class="form-control" required>
+    <label>Status</label>
+    <select name="status" class="form-control">
       <option value="">Select Status</option>
       <option value="Non-Pregnant Heifer">Non-Pregnant Heifer</option>
       <option value="Pregnant Heifer">Pregnant Heifer</option>
       <option value="Cow">Cow</option>
       <option value="Pregnant Cow">Pregnant Cow</option>
+      <option value="Buckling">Buckling</option>
+      <option value="Buck">Buck</option>
+      <option value="Pregnant Doe">Pregnant Doe</option>
+      <option value="Non-Pregnant Doe">Non-Pregnant Doe</option>
   </select>
 </div>
 
@@ -402,6 +436,18 @@
     <label>Price *</label>
     <input type="number" name="price" class="form-control" step="0.01" required>
 </div>
+
+<?php if (isSuperAdmin()): ?>
+    <div class="form-group col-md-6">
+      <label>Tenant</label>
+      <select name="tenant_id" class="form-control">
+        <option value="">Select Tenant</option>
+        <?php foreach ($tenants as $tenant): ?>
+          <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+      <?php endforeach; ?>
+  </select>
+</div>
+<?php endif; ?>
 
 <!-- Pedigree Info -->
 <div class="form-group col-md-6">

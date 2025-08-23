@@ -37,7 +37,21 @@
       </select>
   </div>
 
-  <div class="form-group">
+  <?php if (isSuperAdmin()): ?>
+    <div class="form-group">
+        <label for="tenant_id<?= $entry['id'] ?>">Tenant</label>
+        <select name="tenant_id" id="tenant_id<?= $entry['id'] ?>" class="form-control">
+            <option value="">Select Tenant</option>
+            <?php foreach ($tenants as $tenant): ?>
+                <option value="<?= $tenant['id'] ?>" <?= $entry['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                    <?= esc($tenant['name']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+<?php endif; ?>
+
+<div class="form-group">
     <label>Type</label><br>
     <label class="mr-3">
       <input type="radio" name="type" value="Conventional" <?= $entry['type'] == 'Conventional' ? 'checked' : '' ?>> Conventional
@@ -113,41 +127,60 @@
         <h1 class="h3 mb-0 text-gray-800">Semen List</h1>
     </div>
 
-    <div class="mb-3 text-right">
-        <a href="<?= base_url('pen-semen-tech/semen/export') ?>" class="btn btn-success mb-3">
-            <i class="fas fa-file-excel"></i> Download Excel
-        </a>
-    </div>
-
-    <!-- Add Pen Button -->
-    <?php if (hasPermission('CanAddSemen')): ?>
-        <div class="mb-3 text-right">
-            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addSemenModal">+ Add Semen</a>
-        </div>
+    <?php if (isSuperAdmin()): ?>
+        <form method="get" class="form-inline mb-4">
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-2">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
     <?php endif; ?>
 
-    <!-- Semen Table -->
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-        <?php endif; ?>
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('pen-semen-tech/semen/export') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" 
+         class="btn btn-success mb-3">
+         <i class="fas fa-file-excel"></i> Download Excel
+     </a>
+ </div>
 
-        <div class="table-responsive">
-            <table class="table table-bordered" id="semenTable">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Company</th>
-                        <th>Type</th>
-                        <th>Rate per Semen</th>
-                        <?php if (hasPermission('CanUpdateSemen') || hasPermission('CanDeleteSemen')): ?>
-                        <th>Actions</th>
-                    <?php endif; ?>
-                </tr>
-            </thead>
-            <tbody>
+ <!-- Add Pen Button -->
+ <?php if (hasPermission('CanAddSemen')): ?>
+    <div class="mb-3 text-right">
+        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addSemenModal">+ Add Semen</a>
+    </div>
+<?php endif; ?>
+
+<!-- Semen Table -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+    <?php endif; ?>
+
+    <div class="table-responsive">
+        <table class="table table-bordered" id="semenTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Type</th>
+                    <th>Rate per Semen</th>
+                    <th>Tenant</th>
+                    <?php if (hasPermission('CanUpdateSemen') || hasPermission('CanDeleteSemen')): ?>
+                    <th>Actions</th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($semen)) : ?>
                 <?php foreach ($semen as $semen): ?>
                     <tr>
                         <td><?= esc($semen['id']) ?></td>
@@ -155,6 +188,7 @@
                         <td><?= esc($semen['company_name']) ?></td>
                         <td><?= esc($semen['type']) ?></td>
                         <td><?= number_format($semen['rate_per_semen'], 2) ?></td>
+                        <td><?= esc($semen['tenant_name'] ?? 'N/A') ?></td>
                         <?php if (hasPermission('CanUpdateSemen') || hasPermission('CanDeleteSemen')): ?>
                         <td>
                             <?php if (hasPermission('CanUpdateSemen')): ?>
@@ -167,12 +201,9 @@
                     <?php endif; ?>
                 </tr>
             <?php endforeach; ?>
-
-            <?php if (empty($semen)): ?>
-                <tr><td colspan="6" class="text-center">No semen records found.</td></tr>
-            <?php endif ?>
-        </tbody>
-    </table>
+        <?php endif ?>
+    </tbody>
+</table>
 </div>
 </div>
 </div>
@@ -208,16 +239,27 @@
             <?php endforeach; ?>
         </select>
     </div>
-
-    <div class="form-group">
-        <label>Type</label><br>
-        <label class="mr-3">
-          <input type="radio" name="type" value="Conventional" required> Conventional
-      </label>
-      <label>
-          <input type="radio" name="type" value="Sexed" required> Sexed
-      </label>
+    <?php if (isSuperAdmin()): ?>
+        <div class="form-group">
+          <label>Tenant</label>
+          <select name="tenant_id" class="form-control">
+            <option value="">Select Tenant</option>
+            <?php foreach ($tenants as $tenant): ?>
+              <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+          <?php endforeach; ?>
+      </select>
   </div>
+<?php endif; ?>
+
+<div class="form-group">
+    <label>Type</label><br>
+    <label class="mr-3">
+      <input type="radio" name="type" value="Conventional" required> Conventional
+  </label>
+  <label>
+      <input type="radio" name="type" value="Sexed" required> Sexed
+  </label>
+</div>
 </div>
 
 <div class="modal-footer">

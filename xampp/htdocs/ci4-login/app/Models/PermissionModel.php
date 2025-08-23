@@ -6,7 +6,16 @@ use CodeIgniter\Model;
 
 class PermissionModel extends Model
 {
-    protected $table = 'permissions';
-    protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'slug', 'created_at', 'updated_at'];
+    protected $table            = 'permissions';
+    protected $primaryKey       = 'id';
+    
+    protected $allowedFields    = [
+        'name',
+        'slug',
+        'tenant_id',
+        'created_by',
+        'updated_by',
+        'created_at',
+        'updated_at'
+    ];
 }

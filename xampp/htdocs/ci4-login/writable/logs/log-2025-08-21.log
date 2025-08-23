@@ -1,0 +1,951 @@
+CRITICAL - 2025-08-21 05:11:53 --> Error: Class "App\Controllers\TenantsModel" not found
+[Method: GET, Route: pen-semen-tech/pen]
+in APPPATH\Controllers\PenController.php on line 16.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PenController->penList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PenController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 05:12:31 --> Error: Class "App\Controllers\TenantsModel" not found
+[Method: GET, Route: pen-semen-tech/pen]
+in APPPATH\Controllers\PenController.php on line 16.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PenController->penList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PenController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 05:12:33 --> Error: Class "App\Controllers\TenantsModel" not found
+[Method: GET, Route: pen-semen-tech/pen]
+in APPPATH\Controllers\PenController.php on line 16.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PenController->penList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PenController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:22:49 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:23:47 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:23:53 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:29:21 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:29:26 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:29:31 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:29:34 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:29:37 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:29:55 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:29:57 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:33:45 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:33:47 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:33:48 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:33:48 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:33:48 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:33:49 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:33:49 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:34:08 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:34:09 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:34:09 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:34:09 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:34:09 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:34:10 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:34:10 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:34:10 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:34:10 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:34:11 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:34:11 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:41:13 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:41:15 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:41:15 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:41:15 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:41:16 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:41:16 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:41:16 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:41:16 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:41:25 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:42:14 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:42:28 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:42:52 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:43:32 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:43:46 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:44:07 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:44:54 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:44:55 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:44:55 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:44:55 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:44:56 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:44:56 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:44:56 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:44:56 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:45:51 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:45:57 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:20 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:21 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:33 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:34 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:34 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:35 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:35 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:35 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:35 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:35 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:36 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(13): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:42 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(14): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:43 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(14): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:43 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(14): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:43 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(14): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:44 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(14): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:46:44 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(14): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:47:41 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:48:48 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:48:50 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 06:48:55 --> ParseError: Unclosed '{' on line 8
+[Method: GET, Route: schedule-events/vaccinationSchedule]
+in APPPATH\Models\VaccinationScheduleModel.php on line 24.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(295): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Models\\VaccinationScheduleModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(271): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\VaccinationScheduleModel')
+ 3 APPPATH\Controllers\VaccinationScheduleController.php(15): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\VaccinationScheduleModel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VaccinationScheduleController->vaccinationScheduleList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VaccinationScheduleController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 10:26:35 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: milk-consumption/milkConsumption]
+in APPPATH\Views\milk-consumption\milkConsumption.php on line 310.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('milk-consumption/milkConsumption', [], true)
+ 3 APPPATH\Controllers\MilkConsumptionController.php(73): view('milk-consumption/milkConsumption', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MilkConsumptionController->milkConsumptionList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MilkConsumptionController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 10:29:51 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: milk-consumption/milkConsumption]
+in APPPATH\Views\milk-consumption\milkConsumption.php on line 309.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('milk-consumption/milkConsumption', [], true)
+ 3 APPPATH\Controllers\MilkConsumptionController.php(73): view('milk-consumption/milkConsumption', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MilkConsumptionController->milkConsumptionList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MilkConsumptionController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-21 11:26:55 --> ParseError: syntax error, unexpected token "endif", expecting end of file
+[Method: GET, Route: milk-consumption/milkConsumption]
+in APPPATH\Views\milk-consumption\milkConsumption.php on line 215.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('milk-consumption/milkConsumption', [], true)
+ 3 APPPATH\Controllers\MilkConsumptionController.php(73): view('milk-consumption/milkConsumption', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MilkConsumptionController->milkConsumptionList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MilkConsumptionController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

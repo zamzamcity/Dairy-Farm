@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\DailyMilkingModel;
+use App\Models\TenantsModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
@@ -10,24 +11,73 @@ class DailyMilkingController extends BaseController
 {
     public function dailyMilkingList()
     {
-        $model = new DailyMilkingModel();
+        $model       = new DailyMilkingModel();
+        $tenantModel = new TenantsModel();
 
         $start_date = $this->request->getGet('start_date');
         $end_date   = $this->request->getGet('end_date');
 
-        $query = $model->orderBy('date', 'DESC');
+        if (isSuperAdmin()) {
+            $data['tenants'] = $tenantModel->findAll();
 
-        if ($start_date && $end_date) {
-            $query->where('date >=', $start_date)->where('date <=', $end_date);
-        } elseif ($start_date) {
-            $query->where('date >=', $start_date);
-        } elseif ($end_date) {
-            $query->where('date <=', $end_date);
+            $selectedTenantId = $this->request->getGet('tenant_id'); 
+
+            if ($selectedTenantId) {
+                $data['daily_milking'] = $model
+                ->select('daily_milking.*, tenants.name as tenant_name')
+                ->join('tenants', 'tenants.id = daily_milking.tenant_id', 'left')
+                ->where('daily_milking.tenant_id', $selectedTenantId)
+                ->orderBy('date', 'DESC');
+
+                if ($start_date && $end_date) {
+                    $data['daily_milking']->where('date >=', $start_date)->where('date <=', $end_date);
+                } elseif ($start_date) {
+                    $data['daily_milking']->where('date >=', $start_date);
+                } elseif ($end_date) {
+                    $data['daily_milking']->where('date <=', $end_date);
+                }
+
+                $data['daily_milking'] = $data['daily_milking']->findAll();
+            } else {
+                $data['daily_milking'] = $model
+                ->select('daily_milking.*, tenants.name as tenant_name')
+                ->join('tenants', 'tenants.id = daily_milking.tenant_id', 'left')
+                ->orderBy('date', 'DESC');
+
+                if ($start_date && $end_date) {
+                    $data['daily_milking']->where('date >=', $start_date)->where('date <=', $end_date);
+                } elseif ($start_date) {
+                    $data['daily_milking']->where('date >=', $start_date);
+                } elseif ($end_date) {
+                    $data['daily_milking']->where('date <=', $end_date);
+                }
+
+                $data['daily_milking'] = $data['daily_milking']->findAll();
+            }
+
+            $data['selectedTenantId'] = $selectedTenantId;
+        } else {
+            $tid = currentTenantId();
+
+            $query = $model
+            ->select('daily_milking.*, tenants.name as tenant_name')
+            ->join('tenants', 'tenants.id = daily_milking.tenant_id', 'left')
+            ->where('daily_milking.tenant_id', $tid)
+            ->orderBy('date', 'DESC');
+
+            if ($start_date && $end_date) {
+                $query->where('date >=', $start_date)->where('date <=', $end_date);
+            } elseif ($start_date) {
+                $query->where('date >=', $start_date);
+            } elseif ($end_date) {
+                $query->where('date <=', $end_date);
+            }
+
+            $data['daily_milking'] = $query->findAll();
         }
 
-        $data['daily_milking'] = $query->findAll();
         $data['start_date'] = $start_date;
-        $data['end_date'] = $end_date;
+        $data['end_date']   = $end_date;
 
         return view('dailyMilk', $data);
     }
@@ -42,16 +92,34 @@ class DailyMilkingController extends BaseController
             'milk_1'       => $this->request->getPost('milk_1'),
             'milk_2'       => $this->request->getPost('milk_2'),
             'milk_3'       => $this->request->getPost('milk_3'),
+            'tenant_id'    => isSuperAdmin()
+            ? ($this->request->getPost('tenant_id') !== '' ? $this->request->getPost('tenant_id') : null)
+            : currentTenantId(),
+            'created_by'   => session()->get('user_id'),
+            'updated_by'   => session()->get('user_id'),
+            'created_at'   => date('Y-m-d H:i:s'),
+            'updated_at'   => date('Y-m-d H:i:s'),
         ];
 
-        $model->insert($data);
-
-        return redirect()->to('/dailyMilk')->with('success', 'Daily milking record added successfully.');
+        if ($model->insert($data)) {
+            return redirect()->to('/dailyMilk')->with('success', 'Daily milking record added successfully.');
+        } else {
+            return redirect()->back()->with('error', 'Failed to add daily milking record.');
+        }
     }
 
     public function editDailyMilking($id)
     {
         $model = new DailyMilkingModel();
+
+        if (!isSuperAdmin()) {
+            $exists = $model->where('id', $id)
+            ->where('tenant_id', currentTenantId())
+            ->first();
+            if (!$exists) {
+                return redirect()->back()->with('error', 'Unauthorized.');
+            }
+        }
 
         $data = [
             'date'         => $this->request->getPost('date'),
@@ -59,7 +127,13 @@ class DailyMilkingController extends BaseController
             'milk_1'       => $this->request->getPost('milk_1'),
             'milk_2'       => $this->request->getPost('milk_2'),
             'milk_3'       => $this->request->getPost('milk_3'),
+            'updated_by'   => session()->get('user_id'),
+            'updated_at'   => date('Y-m-d H:i:s'),
         ];
+
+        if (isSuperAdmin() && $this->request->getPost('tenant_id')) {
+            $data['tenant_id'] = (int) $this->request->getPost('tenant_id');
+        }
 
         $model->update($id, $data);
 
@@ -69,19 +143,40 @@ class DailyMilkingController extends BaseController
     public function deleteDailyMilking($id)
     {
         $model = new DailyMilkingModel();
-        $model->delete($id);
 
-        return redirect()->to('/dailyMilk')->with('success', 'Daily milking record deleted successfully.');
+        if (!isSuperAdmin()) {
+            $exists = $model->where('id', $id)
+            ->where('tenant_id', currentTenantId())
+            ->first();
+            if (!$exists) {
+                return redirect()->back()->with('error', 'Unauthorized.');
+            }
+        }
+
+        if ($model->delete($id)) {
+            return redirect()->to('/dailyMilk')->with('success', 'Daily milking record deleted successfully.');
+        } else {
+            return redirect()->to('/dailyMilk')->with('error', 'Failed to delete daily milking record.');
+        }
     }
 
     public function exportDailyMilk()
     {
         $model = new DailyMilkingModel();
 
+        $tenantId   = $this->request->getGet('tenant_id');
         $start_date = $this->request->getGet('start_date');
         $end_date   = $this->request->getGet('end_date');
 
-        $query = $model->orderBy('date', 'DESC');
+        if (isSuperAdmin()) {
+            if (!empty($tenantId)) {
+                $query = $model->where('tenant_id', $tenantId);
+            } else {
+                $query = $model;
+            }
+        } else {
+            $query = $model->where('tenant_id', currentTenantId());
+        }
 
         if ($start_date && $end_date) {
             $query->where('date >=', $start_date)->where('date <=', $end_date);
@@ -91,43 +186,40 @@ class DailyMilkingController extends BaseController
             $query->where('date <=', $end_date);
         }
 
-        $records = $query->findAll();
+        $records = $query->orderBy('date', 'DESC')->findAll();
 
-    // create spreadsheet
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-    // header row
-        $sheet->setCellValue('A1', 'ID');
-        $sheet->setCellValue('B1', 'Date');
-        $sheet->setCellValue('C1', 'Milk Product');
-        $sheet->setCellValue('D1', 'Milk 1 (L)');
-        $sheet->setCellValue('E1', 'Milk 2 (L)');
-        $sheet->setCellValue('F1', 'Milk 3 (L)');
-        $sheet->setCellValue('G1', 'Total Milk (L)');
+    // Header Row
+        $sheet->setCellValue('A1', 'ID')
+        ->setCellValue('B1', 'Date')
+        ->setCellValue('C1', 'Milk Product')
+        ->setCellValue('D1', 'Milk 1 (L)')
+        ->setCellValue('E1', 'Milk 2 (L)')
+        ->setCellValue('F1', 'Milk 3 (L)')
+        ->setCellValue('G1', 'Total Milk (L)')
+        ->setCellValue('H1', 'Tenant ID');
 
-    // fill rows
+    // Fill Rows
         $row = 2;
         foreach ($records as $rec) {
-            $sheet->setCellValue('A' . $row, $rec['id']);
-            $sheet->setCellValue('B' . $row, $rec['date']);
-            $sheet->setCellValue('C' . $row, $rec['milk_product']);
-            $sheet->setCellValue('D' . $row, $rec['milk_1']);
-            $sheet->setCellValue('E' . $row, $rec['milk_2']);
-            $sheet->setCellValue('F' . $row, $rec['milk_3']);
-            $sheet->setCellValue('G' . $row, $rec['total_milk']);
+            $sheet->setCellValue('A'.$row, $rec['id'])
+            ->setCellValue('B'.$row, $rec['date'])
+            ->setCellValue('C'.$row, $rec['milk_product'])
+            ->setCellValue('D'.$row, $rec['milk_1'])
+            ->setCellValue('E'.$row, $rec['milk_2'])
+            ->setCellValue('F'.$row, $rec['milk_3'])
+            ->setCellValue('G'.$row, $rec['total_milk'])
+            ->setCellValue('H'.$row, $rec['tenant_id']);
             $row++;
         }
 
-    // output as excel
-        $filename = 'Daily_Milk_' . date('Y-m-d_H-i-s') . '.xlsx';
         $writer = new Xlsx($spreadsheet);
+        $filename = 'daily_milk_'.date('Y-m-d_H-i-s').'.xlsx';
 
-    // headers
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header("Content-Disposition: attachment; filename=\"$filename\"");
-        header('Cache-Control: max-age=0');
-
         $writer->save('php://output');
         exit;
     }

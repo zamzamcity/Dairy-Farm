@@ -1,0 +1,453 @@
+CRITICAL - 2025-08-20 07:20:10 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 260.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:20:26 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 260.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:20:28 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 260.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:20:40 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 260.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:20:41 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 260.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:20:43 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 260.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:20:44 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 260.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:20:44 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 260.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:20:45 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 260.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:20:47 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 260.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:26:59 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 252.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:30:56 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 256.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:30:58 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 256.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 07:31:02 --> ParseError: syntax error, unexpected end of file, expecting "elseif" or "else" or "endif"
+[Method: GET, Route: manage/permissions]
+in APPPATH\Views\manage\permissions.php on line 256.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/permissions', [], true)
+ 3 APPPATH\Controllers\Manage.php(258): view('manage/permissions', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->permissions()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 09:11:25 --> ParseError: syntax error, unexpected token "endif", expecting end of file
+[Method: GET, Route: manage/employees]
+in APPPATH\Views\manage\employees.php on line 263.
+ 1 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('manage/employees', [], true)
+ 3 APPPATH\Controllers\Manage.php(57): view('manage/employees', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Manage->employees()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Manage))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 11:07:17 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/permission_groups]
+in APPPATH\Controllers\Manage.php on line 456.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:07:22 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/permissions]
+in APPPATH\Controllers\Manage.php on line 456.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:07:24 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/employees]
+in APPPATH\Controllers\Manage.php on line 456.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:07:25 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/employees]
+in APPPATH\Controllers\Manage.php on line 456.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:07:27 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/employees]
+in APPPATH\Controllers\Manage.php on line 456.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:07:49 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/employees]
+in APPPATH\Controllers\Manage.php on line 456.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:08:06 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/employees]
+in APPPATH\Controllers\Manage.php on line 456.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:08:10 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/permissions]
+in APPPATH\Controllers\Manage.php on line 456.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:08:11 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/permission_groups]
+in APPPATH\Controllers\Manage.php on line 456.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:08:35 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/employees]
+in APPPATH\Controllers\Manage.php on line 454.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:08:52 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/employees]
+in APPPATH\Controllers\Manage.php on line 454.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:08:55 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/employees]
+in APPPATH\Controllers\Manage.php on line 454.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:08:56 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/permissions]
+in APPPATH\Controllers\Manage.php on line 454.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:08:57 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/permission_groups]
+in APPPATH\Controllers\Manage.php on line 454.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:09:08 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/permissions]
+in APPPATH\Controllers\Manage.php on line 454.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:09:10 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/permissions]
+in APPPATH\Controllers\Manage.php on line 454.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:09:28 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/permissions]
+in APPPATH\Controllers\Manage.php on line 454.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:09:56 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/employees]
+in APPPATH\Controllers\Manage.php on line 454.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:10:11 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/employees]
+in APPPATH\Controllers\Manage.php on line 454.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:10:39 --> ErrorException: Cannot redeclare App\Controllers\Manage::addPermissionGroup()
+[Method: GET, Route: manage/permission_groups]
+in APPPATH\Controllers\Manage.php on line 454.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:34:18 --> ErrorException: Cannot redeclare App\Controllers\Manage::editPermissionGroup()
+[Method: GET, Route: manage/permissions]
+in APPPATH\Controllers\Manage.php on line 490.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-08-20 11:56:14 --> ErrorException: Undefined variable $tenants
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Views\animals\animalsList.php on line 215.
+ 1 APPPATH\Views\animals\animalsList.php(215): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $tenants', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\animals\\animalsList.php', 215)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Views\\animals\\animalsList.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('animals/animalsList', [], true)
+ 5 APPPATH\Controllers\AnimalsController.php(53): view('animals/animalsList', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 13:03:04 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::findAll()
+[Method: GET, Route: animals/animalsList/export]
+in APPPATH\Controllers\AnimalsController.php on line 228.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->exportAnimals()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 13:03:13 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::findAll()
+[Method: GET, Route: animals/animalsList/export]
+in APPPATH\Controllers\AnimalsController.php on line 228.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->exportAnimals()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 13:06:34 --> ErrorException: Undefined variable $builder
+[Method: GET, Route: animals/animalsList/export]
+in APPPATH\Controllers\AnimalsController.php on line 228.
+ 1 APPPATH\Controllers\AnimalsController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $builder', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\AnimalsController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->exportAnimals()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 13:06:51 --> ErrorException: Undefined variable $builder
+[Method: GET, Route: animals/animalsList/export]
+in APPPATH\Controllers\AnimalsController.php on line 228.
+ 1 APPPATH\Controllers\AnimalsController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $builder', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\AnimalsController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->exportAnimals()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 13:07:42 --> ErrorException: Undefined variable $builder
+[Method: GET, Route: animals/animalsList/export]
+in APPPATH\Controllers\AnimalsController.php on line 239.
+ 1 APPPATH\Controllers\AnimalsController.php(239): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $builder', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\AnimalsController.php', 239)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->exportAnimals()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 13:07:49 --> ErrorException: Undefined variable $builder
+[Method: GET, Route: animals/animalsList/export]
+in APPPATH\Controllers\AnimalsController.php on line 245.
+ 1 APPPATH\Controllers\AnimalsController.php(245): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $builder', 'C:\\Users\\zamza\\Documents\\GitHub\\Dairy-Farm\\xampp\\htdocs\\ci4-login\\app\\Controllers\\AnimalsController.php', 245)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->exportAnimals()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:07:37 --> Error: Call to undefined function App\Controllers\where()
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:09:52 --> Error: Undefined constant "App\Controllers\isSuperAdmin"
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:09:53 --> Error: Undefined constant "App\Controllers\isSuperAdmin"
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:09:54 --> Error: Undefined constant "App\Controllers\isSuperAdmin"
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:09:55 --> Error: Undefined constant "App\Controllers\isSuperAdmin"
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:09:56 --> Error: Undefined constant "App\Controllers\isSuperAdmin"
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:09:56 --> Error: Undefined constant "App\Controllers\isSuperAdmin"
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:09:56 --> Error: Undefined constant "App\Controllers\isSuperAdmin"
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:09:58 --> Error: Undefined constant "App\Controllers\isSuperAdmin"
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:10:09 --> Error: Undefined constant "App\Controllers\isSuperAdmin"
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:10:09 --> Error: Undefined constant "App\Controllers\isSuperAdmin"
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:10:10 --> Error: Undefined constant "App\Controllers\isSuperAdmin"
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-20 14:10:14 --> Error: Undefined constant "App\Controllers\isSuperAdmin"
+[Method: GET, Route: animals/animalsList]
+in APPPATH\Controllers\AnimalsController.php on line 84.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AnimalsController->animalsList()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnimalsController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

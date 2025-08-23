@@ -6,48 +6,78 @@
 <!-- Edit Modal -->
 <?php foreach ($groups as $group): ?>
     <div class="modal fade" id="editGroupModal<?= $group['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="editGroupModalLabel<?= $group['id'] ?>" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <form action="<?= base_url('manage/permission_groups/edit/' . $group['id']) ?>" method="post">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="editGroupModalLabel<?= $group['id'] ?>">Edit Permission Group</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
-          </div>
-          <div class="modal-body">
-              <div class="form-group">
-                <label>Group Name *</label>
-                <input type="text" name="name" class="form-control" value="<?= $group['name'] ?>" required>
-            </div>
+        <div class="modal-dialog" role="document">
+            <form action="<?= base_url('manage/permission_groups/edit/' . $group['id']) ?>" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editGroupModalLabel<?= $group['id'] ?>">Edit Permission Group</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    </div>
 
-            <div class="form-group">
-              <label for="permissions">Select Permissions *</label>
-              <div class="border rounded p-2" style="max-height: 200px; overflow-y: auto;">
-                <?php foreach ($permissions as $perm): ?>
-                    <div class="form-check">
-                      <input class="form-check-input"
-                      type="checkbox"
-                      name="permissions[]"
-                      value="<?= $perm['id'] ?>"
-                      id="permEdit<?= $group['id'] ?>_<?= $perm['id'] ?>"
-                      <?= in_array($perm['id'], $group['assigned_permissions']) ? 'checked' : '' ?>>
-                      <label class="form-check-label" for="permEdit<?= $group['id'] ?>_<?= $perm['id'] ?>">
-                        <?= esc($perm['name']) ?>
-                    </label>
+                    <div class="modal-body">
+                        <!-- Group Name -->
+                        <div class="form-group">
+                            <label for="group_name<?= $group['id'] ?>">Group Name *</label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="group_name<?= $group['id'] ?>" 
+                                name="name" 
+                                value="<?= esc($group['name']) ?>" 
+                                required
+                            >
+                        </div>
+
+                        <!-- ✅ Tenant Dropdown (Super Admin Only) -->
+                        <?php if (isSuperAdmin()): ?>
+                            <div class="form-group">
+                                <label for="tenant_id<?= $group['id'] ?>">Tenant</label>
+                                <select name="tenant_id" id="tenant_id<?= $group['id'] ?>" class="form-control">
+                                    <option value="">Select Tenant</option>
+                                    <?php foreach ($tenants as $tenant): ?>
+                                        <option value="<?= $tenant['id'] ?>" <?= isset($group['tenant_id']) && $group['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                                            <?= esc($tenant['name']) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        <?php endif; ?>
+
+                        <!-- Permissions -->
+                        <div class="form-group">
+                            <label for="permissions<?= $group['id'] ?>">Select Permissions *</label>
+                            <div class="border rounded p-2" style="max-height: 200px; overflow-y: auto;">
+                                <?php foreach ($permissions as $perm): ?>
+                                    <div class="form-check">
+                                        <input 
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            name="permissions[]"
+                                            value="<?= $perm['id'] ?>"
+                                            id="permEdit<?= $group['id'] ?>_<?= $perm['id'] ?>"
+                                            <?= in_array($perm['id'], $group['assigned_permissions']) ? 'checked' : '' ?>
+                                        >
+                                        <label class="form-check-label" for="permEdit<?= $group['id'] ?>_<?= $perm['id'] ?>">
+                                            <?= esc($perm['name']) ?> (<?= esc($perm['slug']) ?>)
+                                        </label>
+                                    </div>
+                                <?php endforeach; ?>
+
+                                <?php if (empty($permissions)): ?>
+                                    <p class="text-muted">No permissions available.</p>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
                 </div>
-            <?php endforeach; ?>
+            </form>
         </div>
     </div>
-
-</div>
-
-<div class="modal-footer">
-  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-  <button class="btn btn-primary" type="submit">Update</button>
-</div>
-</div>
-</form>
-</div>
-</div>
 <?php endforeach; ?>
 
 <?php foreach ($groups as $group): ?>
@@ -100,11 +130,29 @@
         <h1 class="h3 mb-0 text-gray-800">Permission Groups</h1>
     </div>
 
+    <?php if (isSuperAdmin()): ?>
+        <form method="get" class="form-inline mb-4">
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-2">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    <?php endif; ?>
+
+    <!-- Export Button -->
     <div class="mb-3 text-right">
-        <a href="<?= base_url('manage/permission_groups/export') ?>" class="btn btn-success mb-3">
-            <i class="fas fa-file-excel"></i> Download Excel
-        </a>
-    </div>
+        <a href="<?= base_url('manage/permission_groups/export') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" 
+           class="btn btn-success mb-3">
+           <i class="fas fa-file-excel"></i> Download Excel
+       </a>
+   </div>
 
     <!-- Add Group Button -->
     <div class="mb-3 text-right">
@@ -115,44 +163,45 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-        <?php endif; ?>
+                <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+            <?php endif; ?>
 
-        <div class="table-responsive">
-            <table class="table table-bordered" id="permissionGroupTable">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Group Name</th>
-                        <th>Created At</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($groups as $group): ?>
+            <div class="table-responsive">
+                <table class="table table-bordered datatable" id="permissionGroupTable">
+                    <thead class="thead-dark">
                         <tr>
-                            <td><?= $group['id'] ?></td>
-                            <td><?= esc($group['name']) ?></td>
-                            <td><?= $group['created_at'] ?></td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editGroupModal<?= $group['id'] ?>">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteGroupModal<?= $group['id'] ?>">Delete</a>
-                            </td>
+                            <th>ID</th>
+                            <th>Group Name</th>
+                            <th>Tenant</th>
+                            <th>Created At</th>
+                            <th>Actions</th>
                         </tr>
-                    <?php endforeach ?>
-                    <?php if (empty($groups)): ?>
-                        <tr><td colspan="4" class="text-center">No permission groups found.</td></tr>
-                    <?php endif ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($groups)) : ?>
+                            <?php foreach ($groups as $group): ?>
+                                <tr>
+                                    <td><?= $group['id'] ?></td>
+                                    <td><?= esc($group['name']) ?></td>
+                                    <td><?= esc($group['tenant_name'] ?? 'N/A') ?></td>
+                                    <td><?= $group['created_at'] ?></td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editGroupModal<?= $group['id'] ?>">Edit</a>
+                                        <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteGroupModal<?= $group['id'] ?>">Delete</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        <?php endif ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
 </div>
 <!-- /.container-fluid -->
 
-<!-- Add Group Modal -->
+<!-- Add Permission Group Modal -->
 <div class="modal fade" id="addGroupModal" tabindex="-1" role="dialog" aria-labelledby="addGroupModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <form action="<?= base_url('manage/permission_groups/add') ?>" method="post">
@@ -160,42 +209,56 @@
         <div class="modal-header">
           <h5 class="modal-title">Add Permission Group</h5>
           <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-      </div>
-      <div class="modal-body">
+        </div>
 
-        <!-- Group Name -->
-        <div class="form-group">
-            <label for="group_name">Group Name *</label>
+        <div class="modal-body">
+          <!-- Group Name -->
+          <div class="form-group">
+            <label>Group Name *</label>
             <input type="text" name="name" class="form-control" required>
-        </div>
+          </div>
 
-        <!-- Permissions -->
-        <div class="form-group">
-            <label for="permissions">Select Permissions *</label>
-            <div class="border rounded p-2" style="max-height: 200px; overflow-y: auto;">
-                <?php foreach ($permissions as $permission): ?>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="permissions[]" value="<?= $permission['id'] ?>" id="perm<?= $permission['id'] ?>">
-                        <label class="form-check-label" for="perm<?= $permission['id'] ?>">
-                            <?= esc($permission['name']) ?> (<?= esc($permission['slug']) ?>)
-                        </label>
-                    </div>
+          <!-- Tenant Selection (Only for Super Admin) -->
+          <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+              <label>Tenant</label>
+              <select name="tenant_id" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                  <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
                 <?php endforeach; ?>
-                <?php if (empty($permissions)): ?>
-                    <p class="text-muted">No permissions available.</p>
-                <?php endif; ?>
+              </select>
             </div>
+          <?php endif; ?>
+
+          <!-- Permissions -->
+          <div class="form-group">
+            <label>Select Permissions *</label>
+            <div class="border rounded p-2" style="max-height: 200px; overflow-y: auto;">
+              <?php foreach ($permissions as $permission): ?>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="permissions[]" value="<?= $permission['id'] ?>" id="perm<?= $permission['id'] ?>">
+                  <label class="form-check-label" for="perm<?= $permission['id'] ?>">
+                    <?= esc($permission['name']) ?> (<?= esc($permission['slug']) ?>)
+                  </label>
+                </div>
+              <?php endforeach; ?>
+              <?php if (empty($permissions)): ?>
+                <p class="text-muted">No permissions available.</p>
+              <?php endif; ?>
+            </div>
+          </div>
         </div>
 
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-      <button type="submit" class="btn btn-primary">Add</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
-</form>
-</div>
-</div>
+
 <!-- /.container-fluid -->
 
 </div>

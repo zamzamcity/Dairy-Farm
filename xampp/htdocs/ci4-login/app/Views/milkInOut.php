@@ -27,13 +27,35 @@
     <h1 class="h3 mb-4 text-gray-800">Milk In / Out</h1>
 
     <form method="get" class="form-inline mb-4">
+        <?php if (isSuperAdmin()): ?>
+            <!-- Tenant Filter -->
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-3">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        <?php endif; ?>
+
         <label class="mr-2">Date:</label>
-        <input type="date" name="date" value="<?= esc($selected_date) ?>" class="form-control mr-2">
-        <button type="submit" class="btn btn-primary btn-sm">Filter</button>
+        <input type="date" name="date" 
+        value="<?= esc($_GET['date'] ?? date('Y-m-d')) ?>" 
+        class="form-control mr-3">
+
+        <button type="submit" class="btn btn-primary">Filter</button>
     </form>
 
     <div class="mb-3 text-right">
-        <a href="<?= base_url('milkInOut/export?date=' . $selected_date) ?>" class="btn btn-success mb-3">
+        <a href="<?= base_url('milkInOut/export')
+        . (!empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '')
+        . (!empty($selectedTenantId) 
+            ? (empty($_SERVER['QUERY_STRING']) ? '?' : '&') . 'tenant_id=' . $selectedTenantId 
+            : '') ?>" 
+            class="btn btn-success mb-3">
             <i class="fas fa-file-excel"></i> Download Excel
         </a>
     </div>
@@ -44,6 +66,7 @@
             <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
+                        <th>Tenant</th>
                         <th>Product</th>
                         <th>Milk 1 (L)</th>
                         <th>Milk 2 (L)</th>
@@ -54,6 +77,7 @@
                 <tbody>
                     <?php foreach ($daily_milking as $m): ?>
                         <tr>
+                            <td><?= esc($m['tenant_name'] ?? 'N/A') ?></td>
                             <td><?= esc($m['milk_product']) ?></td>
                             <td><?= esc($m['milk_1']) ?></td>
                             <td><?= esc($m['milk_2']) ?></td>
@@ -64,6 +88,7 @@
                     <tr style="font-weight: bold;  background-color: #f1f1f1;">
                         <td colspan="4" class="text-center">Total Milking</td>
                         <td><?= number_format($total_milking, 2) ?></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
@@ -74,6 +99,7 @@
             <table class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
+                        <th>Tenant</th>
                         <th>Head</th>
                         <th>Milk (L)</th>
                     </tr>
@@ -81,6 +107,7 @@
                 <tbody>
                     <?php foreach ($milk_consumption as $c): ?>
                         <tr>
+                            <td><?= esc($c['tenant_name'] ?? 'N/A') ?></td>
                             <td><?= esc($c['head_name']) ?></td>
                             <td><?= esc($c['milk_litres']) ?></td>
                         </tr>
@@ -88,6 +115,7 @@
                     <tr style="font-weight: bold;  background-color: #f1f1f1;">
                         <td class="text-center">Total Consumption</td>
                         <td><?= number_format($total_consumption, 2) ?></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>

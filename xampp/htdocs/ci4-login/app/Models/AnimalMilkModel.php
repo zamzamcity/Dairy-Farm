@@ -8,6 +8,7 @@ class AnimalMilkModel extends Model
 {
     protected $table            = 'animal_milk';
     protected $primaryKey       = 'id';
+
     protected $allowedFields    = [
         'date',
         'animal_id',
@@ -15,8 +16,11 @@ class AnimalMilkModel extends Model
         'last_calving_date',
         'milk_1',
         'milk_2',
-        'milk_3'
+        'milk_3',
+        'tenant_id',
+        'created_by',
+        'updated_by'
     ];
 
-    protected $useTimestamps = true; 
+    protected $useTimestamps = true;
 }

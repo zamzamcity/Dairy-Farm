@@ -49,6 +49,20 @@
 </select>
 </div>
 
+<?php if (isSuperAdmin()): ?>
+    <div class="form-group">
+        <label for="tenant_id<?= $entry['id'] ?>">Tenant</label>
+        <select name="tenant_id" id="tenant_id<?= $entry['id'] ?>" class="form-control">
+            <option value="">Select Tenant</option>
+            <?php foreach ($tenants as $tenant): ?>
+                <option value="<?= $tenant['id'] ?>" <?= $entry['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                    <?= esc($tenant['name']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+<?php endif; ?>
+
 <div class="form-group">
     <label for="comments<?= $entry['id'] ?>">Comments</label>
     <textarea name="comments" class="form-control" rows="3"><?= esc($entry['comments']) ?></textarea>
@@ -122,42 +136,61 @@
         <h1 class="h3 mb-0 text-gray-800">Schedule List</h1>
     </div>
 
-    <div class="mb-3 text-right">
-        <a href="<?= base_url('schedule-events/schedule/export') ?>" class="btn btn-success mb-3">
-            <i class="fas fa-file-excel"></i> Download Excel
-        </a>
-    </div>
-
-    <!-- Add New Schedule Button -->
-    <?php if (hasPermission('CanAddSchedule')): ?>
-        <div class="mb-3 text-right">
-            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addScheduleModal">+ Add New Schedule</a>
-        </div>
+    <?php if (isSuperAdmin()): ?>
+        <form method="get" class="form-inline mb-4">
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-2">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
     <?php endif; ?>
 
-    <!-- Schedule Table -->
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-        <?php endif; ?>
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('schedule-events/schedule/export') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" 
+         class="btn btn-success mb-3">
+         <i class="fas fa-file-excel"></i> Download Excel
+     </a>
+ </div>
 
-        <div class="table-responsive">
-            <table class="table table-bordered" id="scheduleTable">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Tag ID</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Event</th>
-                        <th>Comments</th>
-                        <?php if (hasPermission('CanUpdateSchedule') || hasPermission('CanDeleteSchedule')): ?>
-                        <th>Actions</th>
-                    <?php endif; ?>
-                </tr>
-            </thead>
-            <tbody>
+ <!-- Add New Schedule Button -->
+ <?php if (hasPermission('CanAddSchedule')): ?>
+    <div class="mb-3 text-right">
+        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addScheduleModal">+ Add New Schedule</a>
+    </div>
+<?php endif; ?>
+
+<!-- Schedule Table -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+    <?php endif; ?>
+
+    <div class="table-responsive">
+        <table class="table table-bordered" id="scheduleTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tag ID</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Event</th>
+                    <th>Comments</th>
+                    <th>Tenant</th>
+                    <?php if (hasPermission('CanUpdateSchedule') || hasPermission('CanDeleteSchedule')): ?>
+                    <th>Actions</th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($schedules)) : ?>
                 <?php foreach ($schedules as $schedule): ?>
                     <tr>
                         <td><?= esc($schedule['id']) ?></td>
@@ -166,6 +199,7 @@
                         <td><?= esc($schedule['time']) ?></td>
                         <td><?= esc($schedule['event_name']) ?></td>
                         <td><?= esc($schedule['comments']) ?></td>
+                        <td><?= esc($schedule['tenant_name'] ?? 'N/A') ?></td>
                         <?php if (hasPermission('CanUpdateSchedule') || hasPermission('CanDeleteSchedule')): ?>
                         <td>
                             <?php if (hasPermission('CanUpdateSchedule')): ?>
@@ -178,12 +212,9 @@
                     <?php endif; ?>
                 </tr>
             <?php endforeach; ?>
-
-            <?php if (empty($schedules)): ?>
-                <tr><td colspan="7" class="text-center">No schedule records found.</td></tr>
-            <?php endif ?>
-        </tbody>
-    </table>
+        <?php endif ?>
+    </tbody>
+</table>
 </div>
 </div>
 </div>
@@ -229,6 +260,18 @@
         <?php endforeach; ?>
     </select>
 </div>
+
+<?php if (isSuperAdmin()): ?>
+    <div class="form-group">
+      <label>Tenant</label>
+      <select name="tenant_id" class="form-control">
+        <option value="">Select Tenant</option>
+        <?php foreach ($tenants as $tenant): ?>
+          <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+      <?php endforeach; ?>
+  </select>
+</div>
+<?php endif; ?>
 
 <div class="form-group">
     <label for="comments">Comments</label>

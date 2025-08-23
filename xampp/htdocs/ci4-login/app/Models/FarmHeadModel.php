@@ -8,6 +8,13 @@ class FarmHeadModel extends Model
 {
     protected $table = 'farm_head';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['head_name', 'created_at', 'updated_at'];
+
+    protected $allowedFields = [
+        'head_name',
+        'tenant_id',
+        'created_by',
+        'updated_by'
+    ];
+
     protected $useTimestamps = true;
 }

@@ -15,35 +15,48 @@ class Manage extends BaseController
 {
     public function employees()
     {
-        $model = new UserModel();
+        $userModel   = new UserModel();
         $tenantModel = new TenantsModel();
-        $groupModel = new PermissionGroupModel();
+        $groupModel  = new PermissionGroupModel();
 
         if (isSuperAdmin()) {
-
             $data['tenants'] = $tenantModel->findAll();
 
             $selectedTenantId = $this->request->getGet('tenant_id'); 
 
             if ($selectedTenantId) {
-                $data['employees'] = $model->where('tenant_id', $selectedTenantId)->findAll();
+                $data['employees'] = $userModel
+                ->select('users.*, tenants.name as tenant_name')
+                ->join('tenants', 'tenants.id = users.tenant_id', 'left')
+                ->where('users.tenant_id', $selectedTenantId)
+                ->findAll();
+
                 $data['permissionGroups'] = $groupModel->where('tenant_id', $selectedTenantId)->findAll();
             } else {
+                $data['employees'] = $userModel
+                ->select('users.*, tenants.name as tenant_name')
+                ->join('tenants', 'tenants.id = users.tenant_id', 'left')
+                ->findAll();
 
-                $data['employees'] = $model->findAll();
                 $data['permissionGroups'] = $groupModel->findAll();
             }
 
             $data['selectedTenantId'] = $selectedTenantId;
-
         } else {
             $tid = currentTenantId();
-            $data['employees'] = $model->where('tenant_id', $tid)->findAll();
+
+            $data['employees'] = $userModel
+            ->select('users.*, tenants.name as tenant_name')
+            ->join('tenants', 'tenants.id = users.tenant_id', 'left')
+            ->where('users.tenant_id', $tid)
+            ->findAll();
+
             $data['permissionGroups'] = $groupModel->where('tenant_id', $tid)->findAll();
         }
 
         return view('manage/employees', $data);
     }
+
     public function addEmployee()
     {
         $userModel = new UserModel();
@@ -104,7 +117,6 @@ class Manage extends BaseController
         return redirect()->to('/manage/employees')->with('success', 'Employee and Account created successfully.');
     }
 
-
     public function editEmployee($id)
     {
         $model = new UserModel();
@@ -163,9 +175,18 @@ class Manage extends BaseController
         $model = new UserModel();
         $employees = $model->findAll();
 
-        $employees = isSuperAdmin()
-        ? $model->findAll()
-        : $model->where('tenant_id', currentTenantId())->findAll();
+        $tenantId = $this->request->getGet('tenant_id');
+
+        if (isSuperAdmin()) {
+            if(!empty($tenantId)){
+                $employees = $model->where('tenant_id', $tenantId)->findAll();
+            }
+            else{
+                $employees = $model->findAll();
+            }
+        } else {
+            $employees = $model->where('tenant_id', currentTenantId())->findAll();
+        }
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
@@ -180,7 +201,8 @@ class Manage extends BaseController
         ->setCellValue('G1', 'Salary Type')
         ->setCellValue('H1', 'Salary Amount')
         ->setCellValue('I1', 'Joining Date')
-        ->setCellValue('J1', 'Active');
+        ->setCellValue('J1', 'Active')
+        ->setCellValue('K1', 'Tenant ID');
 
         // Data
         $row = 2;
@@ -194,7 +216,8 @@ class Manage extends BaseController
             ->setCellValue('G'.$row, $emp['salary_type'])
             ->setCellValue('H'.$row, $emp['salary_amount'])
             ->setCellValue('I'.$row, $emp['joining_date'])
-            ->setCellValue('J'.$row, $emp['is_active'] ? 'Yes' : 'No');
+            ->setCellValue('J'.$row, $emp['is_active'] ? 'Yes' : 'No')
+            ->setCellValue('K'.$row, $emp['tenant_id']);
             $row++;
         }
 
@@ -210,46 +233,106 @@ class Manage extends BaseController
 
     public function permissions()
     {
-        $model = new PermissionModel();
-        $data['permissions'] = $model->findAll();
+        $permissionModel = new PermissionModel();
+        $tenantModel     = new TenantsModel();
+
+        if (isSuperAdmin()) {
+            $data['tenants'] = $tenantModel->findAll();
+
+            $selectedTenantId = $this->request->getGet('tenant_id'); 
+
+            if ($selectedTenantId) {
+                $data['permissions'] = $permissionModel
+                ->select('permissions.*, tenants.name as tenant_name')
+                ->join('tenants', 'tenants.id = permissions.tenant_id', 'left')
+                ->where('permissions.tenant_id', $selectedTenantId)
+                ->findAll();
+            } else {
+                $data['permissions'] = $permissionModel
+                ->select('permissions.*, tenants.name as tenant_name')
+                ->join('tenants', 'tenants.id = permissions.tenant_id', 'left')
+                ->findAll();
+            }
+
+            $data['selectedTenantId'] = $selectedTenantId;
+        } else {
+            $tid = currentTenantId();
+
+            $data['permissions'] = $permissionModel
+            ->select('permissions.*, tenants.name as tenant_name')
+            ->join('tenants', 'tenants.id = permissions.tenant_id', 'left')
+            ->where('permissions.tenant_id', $tid)
+            ->findAll();
+        }
 
         return view('manage/permissions', $data);
     }
 
     public function addPermission()
     {
-        $model = new PermissionModel();
+        $permissionModel = new PermissionModel();
 
         $data = [
-            'name' => $this->request->getPost('name'),
-            'slug' => $this->request->getPost('slug'),
+            'name'       => $this->request->getPost('name'),
+            'slug'       => $this->request->getPost('slug'),
+            'tenant_id'  => isSuperAdmin()
+            ? ($this->request->getPost('tenant_id') !== '' ? $this->request->getPost('tenant_id') : null)
+            : currentTenantId(),
+            'created_by' => session()->get('user_id'),
+            'updated_by' => session()->get('user_id'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ];
 
-        if ($model->insert($data)) {
+        if ($permissionModel->insert($data)) {
             return redirect()->to('/manage/permissions')->with('success', 'Permission added successfully.');
         } else {
             return redirect()->back()->with('error', 'Failed to add permission. Slug might already exist.');
         }
     }
+
     public function updatePermission($id)
     {
         $model = new PermissionModel();
 
+        if (!isSuperAdmin()) {
+            $exists = $model->where('id', $id)
+            ->where('tenant_id', currentTenantId())
+            ->first();
+            if (!$exists) {
+                return redirect()->back()->with('error', 'Unauthorized.');
+            }
+        }
+
         $data = [
-            'name' => $this->request->getPost('name'),
-            'slug' => $this->request->getPost('slug'),
+            'name'       => $this->request->getPost('name'),
+            'slug'       => $this->request->getPost('slug'),
+            'updated_by' => session()->get('user_id'),
             'updated_at' => date('Y-m-d H:i:s'),
         ];
+
+        if (isSuperAdmin() && $this->request->getPost('tenant_id')) {
+            $data['tenant_id'] = (int) $this->request->getPost('tenant_id');
+        }
 
         $model->update($id, $data);
 
         return redirect()->to('/manage/permissions')->with('success', 'Permission updated successfully.');
     }
+
     public function deletePermission($id)
     {
         $model = new PermissionModel();
+
+        if (!isSuperAdmin()) {
+            $exists = $model->where('id', $id)
+            ->where('tenant_id', currentTenantId())
+            ->first();
+            if (!$exists) {
+                return redirect()->back()->with('error', 'Unauthorized.');
+            }
+        }
+
         if ($model->delete($id)) {
             return redirect()->to('/manage/permissions')->with('success', 'Permission deleted successfully.');
         } else {
@@ -260,29 +343,43 @@ class Manage extends BaseController
     public function downloadPermissions()
     {
         $model = new PermissionModel();
-        $permissions = $model->findAll();
+
+        $tenantId = $this->request->getGet('tenant_id');
+
+        if (isSuperAdmin()) {
+            if(!empty($tenantId)){
+                $permissions = $model->where('tenant_id', $tenantId)->findAll();
+            }
+            else{
+                $permissions = $model->findAll();
+            }
+        } else {
+            $permissions = $model->where('tenant_id', currentTenantId())->findAll();
+        }
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
-        // Header
+    // Header
         $sheet->setCellValue('A1', 'ID')
         ->setCellValue('B1', 'Name')
-        ->setCellValue('C1', 'Slug');
+        ->setCellValue('C1', 'Slug')
+        ->setCellValue('D1', 'Tenant ID');
 
-        // Data
+    // Data
         $row = 2;
         foreach ($permissions as $perm) {
             $sheet->setCellValue('A'.$row, $perm['id'])
             ->setCellValue('B'.$row, $perm['name'])
-            ->setCellValue('C'.$row, $perm['slug']);
+            ->setCellValue('C'.$row, $perm['slug'])
+            ->setCellValue('D'.$row, $perm['tenant_id']);
             $row++;
         }
 
         $writer = new Xlsx($spreadsheet);
         $filename = 'permissions.xlsx';
 
-        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header("Content-Disposition: attachment; filename=\"$filename\"");
         $writer->save('php://output');
         exit;
@@ -291,10 +388,46 @@ class Manage extends BaseController
     public function permissionGroups()
     {
         $groupModel = new PermissionGroupModel();
-        $permModel = new PermissionModel();
-        $linkModel = new PermissionGroupPermissionModel();
+        $permModel  = new PermissionModel();
+        $linkModel  = new PermissionGroupPermissionModel();
+        $tenantModel = new TenantsModel();
 
-        $groups = $groupModel->findAll();
+        if (isSuperAdmin()) {
+            $data['tenants'] = $tenantModel->findAll();
+
+            $selectedTenantId = $this->request->getGet('tenant_id');
+
+            if ($selectedTenantId) {
+                $groups = $groupModel
+                ->select('permission_groups.*, tenants.name as tenant_name')
+                ->join('tenants', 'tenants.id = permission_groups.tenant_id', 'left')
+                ->where('permission_groups.tenant_id', $selectedTenantId)
+                ->findAll();
+
+                $data['permissions'] = $permModel
+                ->where('tenant_id', $selectedTenantId)
+                ->findAll();
+            } else {
+                $groups = $groupModel
+                ->select('permission_groups.*, tenants.name as tenant_name')
+                ->join('tenants', 'tenants.id = permission_groups.tenant_id', 'left')
+                ->findAll();
+
+                $data['permissions'] = $permModel->findAll();
+            }
+
+            $data['selectedTenantId'] = $selectedTenantId;
+        } else {
+            $tid = currentTenantId();
+
+            $groups = $groupModel
+            ->select('permission_groups.*, tenants.name as tenant_name')
+            ->join('tenants', 'tenants.id = permission_groups.tenant_id', 'left')
+            ->where('permission_groups.tenant_id', $tid)
+            ->findAll();
+
+            $data['permissions'] = $permModel->where('tenant_id', $tid)->findAll();
+        }
 
         foreach ($groups as &$group) {
             $assigned = $linkModel->where('permission_group_id', $group['id'])->findAll();
@@ -302,17 +435,21 @@ class Manage extends BaseController
         }
 
         $data['groups'] = $groups;
-        $data['permissions'] = $permModel->findAll();
 
         return view('manage/permission_groups', $data);
     }
     public function addPermissionGroup()
     {
-        $groupModel = new PermissionGroupModel();
+        $groupModel     = new PermissionGroupModel();
         $groupPermModel = new PermissionGroupPermissionModel();
 
         $groupData = [
-            'name' => $this->request->getPost('name'),
+            'name'       => $this->request->getPost('name'),
+            'tenant_id'  => isSuperAdmin()
+            ? ($this->request->getPost('tenant_id') !== '' ? $this->request->getPost('tenant_id') : null)
+            : currentTenantId(),
+            'created_by' => session()->get('user_id'),
+            'updated_by' => session()->get('user_id'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ];
@@ -324,7 +461,12 @@ class Manage extends BaseController
             foreach ($selectedPermissions as $permId) {
                 $groupPermModel->insert([
                     'permission_group_id' => $groupId,
-                    'permission_id' => $permId
+                    'permission_id'       => $permId,
+                    'tenant_id'           => $groupData['tenant_id'],
+                    'created_by'          => session()->get('user_id'),
+                    'updated_by'          => session()->get('user_id'),
+                    'created_at'          => date('Y-m-d H:i:s'),
+                    'updated_at'          => date('Y-m-d H:i:s'),
                 ]);
             }
 
@@ -333,40 +475,63 @@ class Manage extends BaseController
 
         return redirect()->back()->with('error', 'Failed to add group.');
     }
+
     public function editPermissionGroup($id)
     {
         $groupModel = new PermissionGroupModel();
-        $linkModel = new PermissionGroupPermissionModel();
+        $linkModel  = new PermissionGroupPermissionModel();
 
-        // Update name
-        $groupModel->update($id, [
-            'name' => $this->request->getPost('name'),
+        if (!isSuperAdmin()) {
+            $exists = $groupModel->where('id', $id)
+            ->where('tenant_id', currentTenantId())
+            ->first();
+
+            if (!$exists) {
+                return redirect()->back()->with('error', 'Unauthorized.');
+            }
+        }
+
+        $data = [
+            'name'       => $this->request->getPost('name'),
+            'updated_by' => session()->get('user_id'),
             'updated_at' => date('Y-m-d H:i:s'),
-        ]);
+        ];
 
-        // Update assigned permissions
+        if (isSuperAdmin() && $this->request->getPost('tenant_id')) {
+            $data['tenant_id'] = (int) $this->request->getPost('tenant_id');
+        }
+
+        $groupModel->update($id, $data);
+
         $linkModel->where('permission_group_id', $id)->delete();
 
         $permissions = $this->request->getPost('permissions') ?? [];
-
         foreach ($permissions as $permId) {
             $linkModel->insert([
                 'permission_group_id' => $id,
-                'permission_id' => $permId,
+                'permission_id'       => $permId,
             ]);
         }
 
-        return redirect()->to('/manage/permission_groups')->with('success', 'Permission group updated.');
+        return redirect()->to('/manage/permission_groups')->with('success', 'Permission group updated successfully.');
     }
+
     public function deletePermissionGroup($id)
     {
         $groupModel = new \App\Models\PermissionGroupModel();
         $pivotModel = new \App\Models\PermissionGroupPermissionModel();
 
-        // First delete from pivot table
+        if (!isSuperAdmin()) {
+            $exists = $model->where('id', $id)
+            ->where('tenant_id', currentTenantId())
+            ->first();
+            if (!$exists) {
+                return redirect()->back()->with('error', 'Unauthorized.');
+            }
+        }
+
         $pivotModel->where('permission_group_id', $id)->delete();
 
-        // Then delete the permission group itself
         $groupModel->delete($id);
 
         return redirect()->to('/manage/permission_groups')->with('success', 'Permission group deleted successfully.');
@@ -378,7 +543,19 @@ class Manage extends BaseController
         $permModel = new PermissionModel();
         $linkModel = new PermissionGroupPermissionModel();
 
-        $groups = $groupModel->findAll();
+        $tenantId = $this->request->getGet('tenant_id');
+
+        if (isSuperAdmin()) {
+            if(!empty($tenantId)){
+                $groups = $groupModel->where('tenant_id', $tenantId)->findAll();
+            }
+            else{
+                $groups = $groupModel->findAll();
+            }
+        } else {
+            $groups = $groupModel->where('tenant_id', currentTenantId())->findAll();
+        }
+
         foreach ($groups as &$group) {
             $assigned = $linkModel->where('permission_group_id', $group['id'])->findAll();
             $permNames = [];
@@ -395,14 +572,16 @@ class Manage extends BaseController
         // Header
         $sheet->setCellValue('A1', 'ID')
         ->setCellValue('B1', 'Group Name')
-        ->setCellValue('C1', 'Permissions');
+        ->setCellValue('C1', 'Permissions')
+        ->setCellValue('D1', 'Tenant ID');
 
         // Data
         $row = 2;
         foreach ($groups as $grp) {
             $sheet->setCellValue('A'.$row, $grp['id'])
             ->setCellValue('B'.$row, $grp['name'])
-            ->setCellValue('C'.$row, $grp['permissions']);
+            ->setCellValue('C'.$row, $grp['permissions'])
+            ->setCellValue('D'.$row, $grp['tenant_id']);
             $row++;
         }
 

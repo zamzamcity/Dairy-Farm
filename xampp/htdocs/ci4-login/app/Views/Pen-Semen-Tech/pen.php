@@ -60,6 +60,19 @@
             <label for="name<?= $pen['id'] ?>">Pen Name *</label>
             <input type="text" class="form-control" name="name" value="<?= esc($pen['name']) ?>" required>
         </div>
+        <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+                <label for="tenant_id<?= $pen['id'] ?>">Tenant</label>
+                <select name="tenant_id" id="tenant_id<?= $pen['id'] ?>" class="form-control">
+                    <option value="">Select Tenant</option>
+                    <?php foreach ($tenants as $tenant): ?>
+                        <option value="<?= $tenant['id'] ?>" <?= $pen['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                            <?= esc($tenant['name']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        <?php endif; ?>
     </div>
 
     <div class="modal-footer">
@@ -126,39 +139,58 @@
         <h1 class="h3 mb-0 text-gray-800">Pen List</h1>
     </div>
 
-    <div class="mb-3 text-right">
-        <a href="<?= base_url('pen-semen-tech/pen/export') ?>" class="btn btn-success mb-3">
-            <i class="fas fa-file-excel"></i> Download Excel
-        </a>
-    </div>
-
-    <!-- Add Pen Button -->
-    <?php if (hasPermission('CanAddPen')): ?>
-        <div class="mb-3 text-right">
-            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addPenModal">+ Add Pen</a>
-        </div>
+    <?php if (isSuperAdmin()): ?>
+        <form method="get" class="form-inline mb-4">
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-2">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
     <?php endif; ?>
 
-    <!-- Pen Table -->
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-        <?php endif; ?>
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('pen-semen-tech/pen/export') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" 
+           class="btn btn-success mb-3">
+           <i class="fas fa-file-excel"></i> Download Excel
+       </a>
+   </div>
 
-        <div class="table-responsive">
-            <table class="table table-bordered" id="penTable">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Pen Name</th>
-                        <th>Animals</th>
-                        <?php if (hasPermission('CanUpdatePen') || hasPermission('CanDeletePen')): ?>
-                        <th>Actions</th>
-                    <?php endif; ?>
-                </tr>
-            </thead>
-            <tbody>
+   <!-- Add Pen Button -->
+   <?php if (hasPermission('CanAddPen')): ?>
+    <div class="mb-3 text-right">
+        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addPenModal">+ Add Pen</a>
+    </div>
+<?php endif; ?>
+
+<!-- Pen Table -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+    <?php endif; ?>
+
+    <div class="table-responsive">
+        <table class="table table-bordered" id="penTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Pen Name</th>
+                    <th>Animals</th>
+                    <th>Tenant</th>
+                    <?php if (hasPermission('CanUpdatePen') || hasPermission('CanDeletePen')): ?>
+                    <th>Actions</th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($pens)) : ?>
                 <?php foreach ($pens as $pen): ?>
                     <tr>
                         <td><?= $pen['id'] ?></td>
@@ -173,6 +205,7 @@
                                 <button class="btn btn-sm btn-info ml-2" data-toggle="modal" data-target="#animalModal<?= $pen['id'] ?>">View More</button>
                             <?php endif; ?>
                         </td>
+                        <td><?= esc($pen['tenant_name'] ?? 'N/A') ?></td>
                         <?php if (hasPermission('CanUpdatePen') || hasPermission('CanDeletePen')): ?>
                         <td>
                             <?php if (hasPermission('CanUpdatePen')): ?>
@@ -185,12 +218,9 @@
                     <?php endif; ?>
                 </tr>
             <?php endforeach; ?>
-
-            <?php if (empty($pens)): ?>
-                <tr><td colspan="8" class="text-center">No pen records found.</td></tr>
-            <?php endif ?>
-        </tbody>
-    </table>
+        <?php endif ?>
+    </tbody>
+</table>
 </div>
 </div>
 </div>
@@ -211,12 +241,23 @@
             <label for="penName">Pen Name *</label>
             <input type="text" class="form-control" name="name" id="penName" required>
         </div>
-    </div>
+        <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+              <label>Tenant</label>
+              <select name="tenant_id" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                  <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+              <?php endforeach; ?>
+          </select>
+      </div>
+  <?php endif; ?>
+</div>
 
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-      <button type="submit" class="btn btn-primary">Add</button>
-  </div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  <button type="submit" class="btn btn-primary">Add</button>
+</div>
 </div>
 </form>
 </div>

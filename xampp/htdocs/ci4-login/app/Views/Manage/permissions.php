@@ -9,21 +9,32 @@
     <form action="<?= base_url('manage/permissions/add') ?>" method="post">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addPermissionModalLabel">Add Permission</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    
-    <div class="modal-body">
-      <div class="form-group">
-        <label for="name">Name *</label>
-        <input type="text" class="form-control" name="name" required>
-    </div>
-    <div class="form-group">
-        <label for="slug">Description *</label>
-        <input type="text" class="form-control" name="slug" required>
-    </div>
+          <h5 class="modal-title">Add Permission</h5>
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+      </div>
+
+      <div class="modal-body">
+          <div class="form-group">
+            <label>Name *</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label>Slug *</label>
+            <input type="text" name="slug" class="form-control" required>
+        </div>
+
+        <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+              <label>Tenant</label>
+              <select name="tenant_id" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                  <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+              <?php endforeach; ?>
+          </select>
+      </div>
+  <?php endif; ?>
 </div>
 
 <div class="modal-footer">
@@ -35,38 +46,66 @@
 </div>
 </div>
 
-<?php foreach ($permissions as $permission): ?>
 <!-- Edit Permission Modal -->
-<div class="modal fade" id="editPermissionModal<?= $permission['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="editPermissionModalLabel<?= $permission['id'] ?>" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <form action="<?= base_url('manage/permissions/update/' . $permission['id']) ?>" method="post">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editPermissionModalLabel<?= $permission['id'] ?>">Edit Permission</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    
-    <div class="modal-body">
-      <div class="form-group">
-        <label for="name<?= $permission['id'] ?>">Name *</label>
-        <input type="text" class="form-control" name="name" value="<?= esc($permission['name']) ?>" required>
-    </div>
-    <div class="form-group">
-        <label for="slug<?= $permission['id'] ?>">Description *</label>
-        <input type="text" class="form-control" name="slug" value="<?= esc($permission['slug']) ?>" required>
-    </div>
-</div>
+<?php foreach ($permissions as $permission): ?>
+    <div class="modal fade" id="editPermissionModal<?= $permission['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="editPermissionModalLabel<?= $permission['id'] ?>" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form action="<?= base_url('manage/permissions/update/' . $permission['id']) ?>" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editPermissionModalLabel<?= $permission['id'] ?>">Edit Permission</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    </div>
 
-<div class="modal-footer">
-  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-  <button type="submit" class="btn btn-primary">Update</button>
-</div>
-</div>
-</form>
-</div>
-</div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name<?= $permission['id'] ?>">Name *</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            id="name<?= $permission['id'] ?>" 
+                            name="name" 
+                            value="<?= esc($permission['name']) ?>" 
+                            required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="slug<?= $permission['id'] ?>">Description *</label>
+                            <input 
+                            type="text" 
+                            class="form-control" 
+                            id="slug<?= $permission['id'] ?>" 
+                            name="slug" 
+                            value="<?= esc($permission['slug']) ?>" 
+                            required
+                            >
+                        </div>
+
+                        <?php if (isSuperAdmin()): ?>
+                            <div class="form-group">
+                                <label for="tenant_id<?= $permission['id'] ?>">Tenant</label>
+                                <select name="tenant_id" id="tenant_id<?= $permission['id'] ?>" class="form-control">
+                                    <option value="">Select Tenant</option>
+                                    <?php foreach ($tenants as $tenant): ?>
+                                        <option value="<?= $tenant['id'] ?>" <?= $permission['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                                            <?= esc($tenant['name']) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        <?php endif; ?>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 <?php endforeach; ?>
 
 <?php foreach ($permissions as $permission): ?>
@@ -118,21 +157,39 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-<!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Permissions List</h1>
-</div>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Permissions List</h1>
+    </div>
 
-<div class="mb-3 text-right">
-    <a href="<?= base_url('manage/permissions/export') ?>" class="btn btn-success mb-3">
-        <i class="fas fa-file-excel"></i> Download Excel
-    </a>
-</div>
+    <?php if (isSuperAdmin()): ?>
+        <form method="get" class="form-inline mb-4">
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-2">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    <?php endif; ?>
 
-<!-- Add Group Button -->
-<div class="mb-3 text-right">
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('manage/permissions/export') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" 
+           class="btn btn-success mb-3">
+           <i class="fas fa-file-excel"></i> Download Excel
+       </a>
+   </div>
+
+   <!-- Add Permission Button -->
+   <div class="mb-3 text-right">
     <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addPermissionModal">+ Add Permission</a>
 </div>
+
 <div class="card shadow mb-4">
     <div class="card-body">
         <?php if (session()->getFlashdata('success')): ?>
@@ -141,11 +198,12 @@
 
     <div class="table-responsive">
         <table class="table table-bordered" width="100%" cellspacing="0" id="permissionTable">
-            <thead  class="thead-dark">
+            <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
                     <th>Permission Name</th>
                     <th>Description</th>
+                    <th>Tenant</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -156,30 +214,18 @@
                             <td><?= $permission['id'] ?></td>
                             <td><?= esc($permission['name']) ?></td>
                             <td><?= esc($permission['slug']) ?></td>
+                            <td><?= esc($permission['tenant_name'] ?? 'N/A') ?></td>
                             <td>
                                 <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editPermissionModal<?= $permission['id'] ?>">Edit</a>
                                 <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deletePermissionModal<?= $permission['id'] ?>">Delete</a>
-                            </td> 
+                            </td>
                         </tr>
                     <?php endforeach; ?>
-                <?php else: ?>
-                  <tr><td colspan="4" class="text-center">No permissions found</td></tr>
-              <?php endif; ?>
-          </tbody>
-      </table>
-  </div>
-</div>
-</div>
-
-
-<div class="row">
-
-    <div class="col-lg-6">
-
-
-
+                <?php endif; ?>
+            </tbody>
+        </table>
     </div>
-
+</div>
 </div>
 
 </div>

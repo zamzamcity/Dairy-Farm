@@ -47,6 +47,20 @@
             </select>
           </div>
 
+          <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+              <label for="tenant_id<?= $entry['id'] ?>">Tenant</label>
+              <select name="tenant_id" id="tenant_id<?= $entry['id'] ?>" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                  <option value="<?= $tenant['id'] ?>" <?= $entry['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                    <?= esc($tenant['name']) ?>
+                  </option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+          <?php endif; ?>
+
           <div class="form-group">
             <label for="comments<?= $entry['id'] ?>">Comments</label>
             <textarea name="comments" class="form-control" rows="3"><?= esc($entry['comments']) ?></textarea>
@@ -121,41 +135,60 @@
     <h1 class="h3 mb-0 text-gray-800">Vaccination Schedule List</h1>
   </div>
 
-  <div class="mb-3 text-right">
-    <a href="<?= base_url('schedule-events/vaccinationSchedule/export') ?>" class="btn btn-success mb-3">
-      <i class="fas fa-file-excel"></i> Download Excel
-    </a>
-  </div>
-
-  <!-- Add Vaccination Schedule Button -->
-  <?php if (hasPermission('CanAddVaccinationSchedule')): ?>
-    <div class="mb-3 text-right">
-      <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addScheduleModal">+ Add Vaccination Schedule</a>
-    </div>
+  <?php if (isSuperAdmin()): ?>
+    <form method="get" class="form-inline mb-4">
+      <label class="mr-2">Tenant:</label>
+      <select name="tenant_id" class="form-control mr-2">
+        <option value="">-- All Tenants --</option>
+        <?php foreach ($tenants as $tenant): ?>
+          <option value="<?= esc($tenant['id']) ?>" 
+            <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+            <?= esc($tenant['name']) ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
+      <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
   <?php endif; ?>
 
-  <!-- Vaccination Schedule Table -->
-  <div class="card shadow mb-4">
-    <div class="card-body">
-      <?php if (session()->getFlashdata('success')): ?>
-      <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-    <?php endif; ?>
+  <div class="mb-3 text-right">
+    <a href="<?= base_url('schedule-events/vaccinationSchedule/export') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" 
+     class="btn btn-success mb-3">
+     <i class="fas fa-file-excel"></i> Download Excel
+   </a>
+ </div>
 
-    <div class="table-responsive">
-      <table class="table table-bordered" id="vaccinationTable">
-        <thead class="thead-dark">
-          <tr>
-            <th>ID</th>
-            <th>Month</th>
-            <th>Date</th>
-            <th>Vaccination</th>
-            <th>Comments</th>
-            <?php if (hasPermission('CanUpdateVaccinationSchedule') || hasPermission('CanDeleteVaccinationSchedule')): ?>
-            <th>Actions</th>
-          <?php endif; ?>
-        </tr>
-      </thead>
-      <tbody>
+ <!-- Add Vaccination Schedule Button -->
+ <?php if (hasPermission('CanAddVaccinationSchedule')): ?>
+  <div class="mb-3 text-right">
+    <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addScheduleModal">+ Add Vaccination Schedule</a>
+  </div>
+<?php endif; ?>
+
+<!-- Vaccination Schedule Table -->
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+  <?php endif; ?>
+
+  <div class="table-responsive">
+    <table class="table table-bordered" id="vaccinationTable">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Month</th>
+          <th>Date</th>
+          <th>Vaccination</th>
+          <th>Comments</th>
+          <th>Tenant</th>
+          <?php if (hasPermission('CanUpdateVaccinationSchedule') || hasPermission('CanDeleteVaccinationSchedule')): ?>
+          <th>Actions</th>
+        <?php endif; ?>
+      </tr>
+    </thead>
+    <tbody>
+      <?php if (!empty($vaccination_schedules)) : ?>
         <?php foreach ($vaccination_schedules as $schedule): ?>
           <tr>
             <td><?= esc($schedule['id']) ?></td>
@@ -163,6 +196,7 @@
             <td><?= esc($schedule['date']) ?></td>
             <td><?= esc($schedule['vaccination_name']) ?></td>
             <td><?= esc($schedule['comments']) ?></td>
+            <td><?= esc($schedule['tenant_name'] ?? 'N/A') ?></td>
             <?php if (hasPermission('CanUpdateVaccinationSchedule') || hasPermission('CanDeleteVaccinationSchedule')): ?>
             <td>
               <?php if (hasPermission('CanUpdateVaccinationSchedule')): ?>
@@ -175,12 +209,9 @@
           <?php endif; ?>
         </tr>
       <?php endforeach; ?>
-
-      <?php if (empty($vaccination_schedules)): ?>
-        <tr><td colspan="6" class="text-center">No vaccination schedule records found.</td></tr>
-      <?php endif ?>
-    </tbody>
-  </table>
+    <?php endif ?>
+  </tbody>
+</table>
 </div>
 </div>
 </div>
@@ -227,6 +258,18 @@
               <?php endforeach; ?>
             </select>
           </div>
+
+          <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+              <label>Tenant</label>
+              <select name="tenant_id" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                  <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+          <?php endif; ?>
 
           <div class="form-group">
             <label for="comments">Comments</label>

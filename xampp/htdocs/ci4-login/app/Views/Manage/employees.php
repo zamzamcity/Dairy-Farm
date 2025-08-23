@@ -43,17 +43,17 @@
 
                         <!-- ✅ Tenant Dropdown (Super Admin Only) -->
                         <?php if (isSuperAdmin()): ?>
-                        <div class="form-group tenantSelectWrapper" id="tenantSelectWrapper<?= $employee['id'] ?>">
-                            <label for="tenant_id<?= $employee['id'] ?>">Tenant *</label>
-                            <select name="tenant_id" id="tenant_id<?= $employee['id'] ?>" class="form-control">
-                                <option value="">Select Tenant</option>
-                                <?php foreach ($tenants as $tenant): ?>
-                                    <option value="<?= $tenant['id'] ?>" <?= $employee['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
-                                        <?= esc($tenant['name']) ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
+                            <div class="form-group tenantSelectWrapper" id="tenantSelectWrapper<?= $employee['id'] ?>">
+                                <label for="tenant_id<?= $employee['id'] ?>">Tenant *</label>
+                                <select name="tenant_id" id="tenant_id<?= $employee['id'] ?>" class="form-control">
+                                    <option value="">Select Tenant</option>
+                                    <?php foreach ($tenants as $tenant): ?>
+                                        <option value="<?= $tenant['id'] ?>" <?= $employee['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                                            <?= esc($tenant['name']) ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
                         <?php endif; ?>
 
                         <div class="form-group">
@@ -114,24 +114,24 @@
 
 <!-- ✅ JS for hiding tenant dropdown when role=superadmin -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll(".roleSelect").forEach(function(select) {
-        select.addEventListener("change", function() {
-            const employeeId = this.id.replace("role", "");
-            const tenantWrapper = document.getElementById("tenantSelectWrapper" + employeeId);
-            if (tenantWrapper) {
-                if (this.value === "superadmin") {
-                    tenantWrapper.style.display = "none";
-                } else {
-                    tenantWrapper.style.display = "block";
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".roleSelect").forEach(function(select) {
+            select.addEventListener("change", function() {
+                const employeeId = this.id.replace("role", "");
+                const tenantWrapper = document.getElementById("tenantSelectWrapper" + employeeId);
+                if (tenantWrapper) {
+                    if (this.value === "superadmin") {
+                        tenantWrapper.style.display = "none";
+                    } else {
+                        tenantWrapper.style.display = "block";
+                    }
                 }
-            }
-        });
+            });
 
         // Run on page load to set correct visibility
-        select.dispatchEvent(new Event("change"));
+            select.dispatchEvent(new Event("change"));
+        });
     });
-});
 </script>
 
 <!-- Delete Modal -->
@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <?php endif; ?>
 
     <div class="mb-3 text-right">
-        <a href="<?= base_url('manage/employees/export') ?>" class="btn btn-success mb-3">
+        <a href="<?= base_url('manage/employees/export') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" class="btn btn-success mb-3">
             <i class="fas fa-file-excel"></i> Download Excel
         </a>
     </div>
@@ -228,39 +228,39 @@ document.addEventListener("DOMContentLoaded", function() {
                         <th>Designation</th>
                         <th>Salary Type</th>
                         <th>Salary Amount</th>
+                        <th>Role</th>
+                        <th>Tenant</th>
                         <th>Joining Date</th>
                         <th>Status</th>
-                        <th>Role</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($employees as $emp): ?>
-                        <tr>
-                            <td><?= $emp['id'] ?></td>
-                            <td><?= esc($emp['firstname']) . ' ' . esc($emp['lastname']) ?></td>
-                            <td><?= esc($emp['email']) ?></td>
-                            <td><?= esc($emp['designation']) ?></td>
-                            <td><?= esc(ucfirst($emp['salary_type'])) ?></td>
-                            <td><?= number_format($emp['salary_amount']) ?></td>
-                            <td><?= esc($emp['joining_date']) ?></td>
-                            <td>
-                                <?php if ($emp['is_active']): ?>
-                                    <span class="badge badge-success">Active</span>
-                                <?php else: ?>
-                                    <span class="badge badge-danger">Inactive</span>
-                                <?php endif; ?>
-                            </td>
-                            <td><?= esc(ucfirst($emp['role'])) ?></td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editEmployeeModal<?= $emp['id'] ?>">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteEmployeeModal<?= $emp['id'] ?>">Delete</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-
-                    <?php if (empty($employees)): ?>
-                        <tr><td colspan="11" class="text-center">No employees found.</td></tr>
+                    <?php if (!empty($employees)) : ?>
+                        <?php foreach ($employees as $emp): ?>
+                            <tr>
+                                <td><?= $emp['id'] ?></td>
+                                <td><?= esc($emp['firstname']) . ' ' . esc($emp['lastname']) ?></td>
+                                <td><?= esc($emp['email']) ?></td>
+                                <td><?= esc($emp['designation']) ?></td>
+                                <td><?= esc(ucfirst($emp['salary_type'])) ?></td>
+                                <td><?= number_format($emp['salary_amount']) ?></td>
+                                <td><?= esc(ucfirst($emp['role'])) ?></td>
+                                <td><?= esc($emp['tenant_name'] ?? 'N/A') ?></td>
+                                <td><?= esc($emp['joining_date']) ?></td>
+                                <td>
+                                    <?php if ($emp['is_active']): ?>
+                                        <span class="badge badge-success">Active</span>
+                                    <?php else: ?>
+                                        <span class="badge badge-danger">Inactive</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editEmployeeModal<?= $emp['id'] ?>">Edit</a>
+                                    <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteEmployeeModal<?= $emp['id'] ?>">Delete</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     <?php endif ?>
                 </tbody>
             </table>
@@ -280,102 +280,102 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="modal-header">
           <h5 class="modal-title">Add Employee</h5>
           <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-        </div>
+      </div>
 
-        <div class="modal-body">
+      <div class="modal-body">
           <div class="form-group">
             <label>First Name *</label>
             <input type="text" name="firstname" class="form-control" required>
-          </div>
+        </div>
 
-          <div class="form-group">
+        <div class="form-group">
             <label>Last Name</label>
             <input type="text" name="lastname" class="form-control">
-          </div>
+        </div>
 
-          <div class="form-group">
+        <div class="form-group">
             <label>Email *</label>
             <input type="email" name="email" class="form-control" required>
-          </div>
+        </div>
 
-          <div class="form-group">
+        <div class="form-group">
             <label>Password *</label>
             <input type="password" name="password" class="form-control" required>
-          </div>
+        </div>
 
-          <div class="form-group">
+        <div class="form-group">
             <label>Role *</label>
             <select name="role" id="roleSelect" class="form-control" required>
               <option value="user">User</option>
               <option value="admin">Admin</option>
               <?php if (hasPermission('CanViewTenants')): ?>
                 <option value="superadmin">Super Admin</option>
-              <?php endif; ?>
-            </select>
-          </div>
+            <?php endif; ?>
+        </select>
+    </div>
 
-          <!-- Tenant Dropdown: only visible for super admins -->
-          <?php if (isSuperAdmin()): ?>
-          <div class="form-group" id="tenantSelectWrapper">
-            <label>Tenant *</label>
-            <select name="tenant_id" class="form-control">
-              <option value="">Select Tenant</option>
-              <?php foreach ($tenants as $tenant): ?>
-                <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
-              <?php endforeach; ?>
-            </select>
-          </div>
-          <?php endif; ?>
+    <!-- Tenant Dropdown: only visible for super admins -->
+    <?php if (isSuperAdmin()): ?>
+      <div class="form-group" id="tenantSelectWrapper">
+        <label>Tenant *</label>
+        <select name="tenant_id" class="form-control">
+          <option value="">Select Tenant</option>
+          <?php foreach ($tenants as $tenant): ?>
+            <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+        <?php endforeach; ?>
+    </select>
+</div>
+<?php endif; ?>
 
-          <div class="form-group">
-            <label>Designation *</label>
-            <input type="text" name="designation" class="form-control" required>
-          </div>
+<div class="form-group">
+    <label>Designation *</label>
+    <input type="text" name="designation" class="form-control" required>
+</div>
 
-          <div class="form-group">
-            <label>Salary Type *</label>
-            <select name="salary_type" class="form-control" required>
-              <option value="monthly">Monthly</option>
-              <option value="daily">Daily</option>
-            </select>
-          </div>
+<div class="form-group">
+    <label>Salary Type *</label>
+    <select name="salary_type" class="form-control" required>
+      <option value="monthly">Monthly</option>
+      <option value="daily">Daily</option>
+  </select>
+</div>
 
-          <div class="form-group">
-            <label>Salary Amount *</label>
-            <input type="number" name="salary_amount" class="form-control" required>
-          </div>
+<div class="form-group">
+    <label>Salary Amount *</label>
+    <input type="number" name="salary_amount" class="form-control" required>
+</div>
 
-          <div class="form-group">
-            <label>Joining Date *</label>
-            <input type="date" name="joining_date" class="form-control" required>
-          </div>
+<div class="form-group">
+    <label>Joining Date *</label>
+    <input type="date" name="joining_date" class="form-control" required>
+</div>
 
-          <div class="form-group">
-            <label>Permission Group</label>
-            <select name="permission_group_id" class="form-control">
-              <option value="">Select Group</option>
-              <?php foreach ($permissionGroups as $group): ?>
-                <option value="<?= $group['id'] ?>"><?= esc($group['name']) ?></option>
-              <?php endforeach; ?>
-            </select>
-          </div>
+<div class="form-group">
+    <label>Permission Group</label>
+    <select name="permission_group_id" class="form-control">
+      <option value="">Select Group</option>
+      <?php foreach ($permissionGroups as $group): ?>
+        <option value="<?= $group['id'] ?>"><?= esc($group['name']) ?></option>
+    <?php endforeach; ?>
+</select>
+</div>
 
-          <div class="form-group">
-            <label>Status *</label>
-            <select name="is_active" class="form-control" required>
-              <option value="1">Active</option>
-              <option value="0">Inactive</option>
-            </select>
-          </div>
-        </div>
+<div class="form-group">
+    <label>Status *</label>
+    <select name="is_active" class="form-control" required>
+      <option value="1">Active</option>
+      <option value="0">Inactive</option>
+  </select>
+</div>
+</div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary">Add</button>
-        </div>
-      </div>
-    </form>
-  </div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  <button type="submit" class="btn btn-primary">Add</button>
+</div>
+</div>
+</form>
+</div>
 </div>
 
 <!-- JS: Hide Tenant Dropdown if role = Super Admin -->
@@ -388,14 +388,14 @@ document.addEventListener("DOMContentLoaded", function() {
       function toggleTenantDropdown() {
         if (roleSelect.value === "superadmin") {
           tenantWrapper.style.display = "none";
-        } else {
+      } else {
           tenantWrapper.style.display = "block";
-        }
       }
+  }
       toggleTenantDropdown(); // run on load
       roleSelect.addEventListener("change", toggleTenantDropdown);
-    }
-  });
+  }
+});
 </script>
 
 <!-- /.container-fluid -->

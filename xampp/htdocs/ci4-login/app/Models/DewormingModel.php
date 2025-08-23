@@ -6,12 +6,17 @@ use CodeIgniter\Model;
 
 class DewormingModel extends Model
 {
-    protected $table            = 'deworming';
-    protected $primaryKey       = 'id';
+    protected $table = 'deworming';
+    protected $primaryKey = 'id';
 
-    protected $allowedFields    = ['name'];
+    protected $allowedFields = [
+        'name',
+        'tenant_id',
+        'created_by',
+        'updated_by',
+        'created_at',
+        'updated_at'
+    ];
 
-    protected $useTimestamps    = true;
-    protected $createdField     = 'created_at';
-    protected $updatedField     = 'updated_at';
+    protected $useTimestamps = true;
 }

@@ -47,6 +47,20 @@
   </select>
 </div>
 
+<?php if (isSuperAdmin()): ?>
+    <div class="form-group">
+        <label for="tenant_id<?= $entry['id'] ?>">Tenant</label>
+        <select name="tenant_id" id="tenant_id<?= $entry['id'] ?>" class="form-control">
+            <option value="">Select Tenant</option>
+            <?php foreach ($tenants as $tenant): ?>
+                <option value="<?= $tenant['id'] ?>" <?= $entry['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                    <?= esc($tenant['name']) ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+<?php endif; ?>
+
 </div>
 
 <div class="modal-footer">
@@ -117,14 +131,31 @@
         <h1 class="h3 mb-0 text-gray-800">Deworming Schedule List</h1>
     </div>
 
-    <div class="mb-3 text-right">
-        <a href="<?= base_url('schedule-events/dewormingSchedule/export') ?>" class="btn btn-success mb-3">
-          <i class="fas fa-file-excel"></i> Download Excel
-      </a>
-  </div>
+    <?php if (isSuperAdmin()): ?>
+        <form method="get" class="form-inline mb-4">
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-2">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    <?php endif; ?>
 
-  <!-- Add Deworming Schedule Button -->
-  <?php if (hasPermission('CanAddDewormingSchedule')): ?>
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('schedule-events/dewormingSchedule/export') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" 
+         class="btn btn-success mb-3">
+         <i class="fas fa-file-excel"></i> Download Excel
+     </a>
+ </div>
+
+ <!-- Add Deworming Schedule Button -->
+ <?php if (hasPermission('CanAddDewormingSchedule')): ?>
     <div class="mb-3 text-right">
         <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addDewormingModal">+ Add Deworming Schedule</a>
     </div>
@@ -145,33 +176,33 @@
                     <th>Month</th>
                     <th>Date</th>
                     <th>Deworming</th>
+                    <th>Tenant</th>
                     <?php if (hasPermission('CanUpdateDewormingSchedule') || hasPermission('CanDeleteDewormingSchedule')): ?>
                     <th>Actions</th>
                 <?php endif; ?>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($deworming_schedules as $schedule): ?>
-                <tr>
-                    <td><?= esc($schedule['id']) ?></td>
-                    <td><?= esc($schedule['month']) ?></td>
-                    <td><?= esc($schedule['date']) ?></td>
-                    <td><?= esc($schedule['deworming_name']) ?></td>
-                    <?php if (hasPermission('CanUpdateDewormingSchedule') || hasPermission('CanDeleteDewormingSchedule')): ?>
-                    <td>
-                        <?php if (hasPermission('CanUpdateDewormingSchedule')): ?>
-                            <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editDewormingModal<?= $schedule['id'] ?>">Edit</a>
-                        <?php endif; ?>
-                        <?php if (hasPermission('CanDeleteDewormingSchedule')): ?>
-                            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDewormingModal<?= $schedule['id'] ?>">Delete</a>
-                        <?php endif; ?>
-                    </td>
-                <?php endif; ?>
-            </tr>
-        <?php endforeach; ?>
-
-        <?php if (empty($deworming_schedules)): ?>
-            <tr><td colspan="6" class="text-center">No deworming schedule records found.</td></tr>
+            <?php if (!empty($deworming_schedules)) : ?>
+                <?php foreach ($deworming_schedules as $schedule): ?>
+                    <tr>
+                        <td><?= esc($schedule['id']) ?></td>
+                        <td><?= esc($schedule['month']) ?></td>
+                        <td><?= esc($schedule['date']) ?></td>
+                        <td><?= esc($schedule['deworming_name']) ?></td>
+                        <td><?= esc($schedule['tenant_name'] ?? 'N/A') ?></td>
+                        <?php if (hasPermission('CanUpdateDewormingSchedule') || hasPermission('CanDeleteDewormingSchedule')): ?>
+                        <td>
+                            <?php if (hasPermission('CanUpdateDewormingSchedule')): ?>
+                                <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editDewormingModal<?= $schedule['id'] ?>">Edit</a>
+                            <?php endif; ?>
+                            <?php if (hasPermission('CanDeleteDewormingSchedule')): ?>
+                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDewormingModal<?= $schedule['id'] ?>">Delete</a>
+                            <?php endif; ?>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
         <?php endif ?>
     </tbody>
 </table>
@@ -221,6 +252,18 @@
           <?php endforeach; ?>
       </select>
   </div>
+
+  <?php if (isSuperAdmin()): ?>
+    <div class="form-group">
+      <label>Tenant</label>
+      <select name="tenant_id" class="form-control">
+        <option value="">Select Tenant</option>
+        <?php foreach ($tenants as $tenant): ?>
+          <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+      <?php endforeach; ?>
+  </select>
+</div>
+<?php endif; ?>
 
 </div>
 

@@ -20,6 +20,20 @@
             <input type="text" class="form-control" name="name" value="<?= esc($entry['name']) ?>" required>
         </div>
 
+        <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+                <label for="tenant_id<?= $entry['id'] ?>">Tenant</label>
+                <select name="tenant_id" id="tenant_id<?= $entry['id'] ?>" class="form-control">
+                    <option value="">Select Tenant</option>
+                    <?php foreach ($tenants as $tenant): ?>
+                        <option value="<?= $tenant['id'] ?>" <?= $entry['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                            <?= esc($tenant['name']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        <?php endif; ?>
+
         <div class="form-group">
             <label for="status<?= $entry['id'] ?>">Status *</label>
             <select name="status" class="form-control" required>
@@ -94,44 +108,64 @@
         <h1 class="h3 mb-0 text-gray-800">Technician List</h1>
     </div>
 
-    <div class="mb-3 text-right">
-        <a href="<?= base_url('pen-semen-tech/technician/export') ?>" class="btn btn-success mb-3">
-            <i class="fas fa-file-excel"></i> Download Excel
-        </a>
-    </div>
-
-    <!-- Add Technician Button -->
-    <?php if (hasPermission('CanAddTechnician')): ?>
-        <div class="mb-3 text-right">
-            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addTechnicianModal">+ Add Technician</a>
-        </div>
+    <?php if (isSuperAdmin()): ?>
+        <form method="get" class="form-inline mb-4">
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-2">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
     <?php endif; ?>
 
-    <!-- Technician Table -->
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <?php if (session()->getFlashdata('success')): ?>
-            <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-        <?php endif; ?>
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('pen-semen-tech/technician/export') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" 
+         class="btn btn-success mb-3">
+         <i class="fas fa-file-excel"></i> Download Excel
+     </a>
+ </div>
 
-        <div class="table-responsive">
-            <table class="table table-bordered" id="technicianTable">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Technician Name</th>
-                        <th>Status</th>
-                        <?php if (hasPermission('CanUpdateTechnician') || hasPermission('CanDeleteTechnician')): ?>
-                        <th>Actions</th>
-                    <?php endif; ?>
-                </tr>
-            </thead>
-            <tbody>
+ <!-- Add Technician Button -->
+ <?php if (hasPermission('CanAddTechnician')): ?>
+    <div class="mb-3 text-right">
+        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addTechnicianModal">+ Add Technician</a>
+    </div>
+<?php endif; ?>
+
+<!-- Technician Table -->
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+    <?php endif; ?>
+
+    <div class="table-responsive">
+        <table class="table table-bordered" id="technicianTable">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Technician Name</th>
+                    <th>Status</th>
+                    <th>Tenant</th>
+                    <?php if (hasPermission('CanUpdateTechnician') || hasPermission('CanDeleteTechnician')): ?>
+                    <th>Actions</th>
+                <?php endif; ?>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($technicians)) : ?>
                 <?php foreach ($technicians as $technician): ?>
                     <tr>
                         <td><?= esc($technician['id']) ?></td>
                         <td><?= esc($technician['name']) ?></td>
                         <td><?= esc($technician['status']) ?></td>
+                        <td><?= esc($technician['tenant_name'] ?? 'N/A') ?></td>
                         <?php if (hasPermission('CanUpdateTechnician') || hasPermission('CanDeleteTechnician')): ?>
                         <td>
                             <?php if (hasPermission('CanUpdateTechnician')): ?>
@@ -144,12 +178,9 @@
                     <?php endif; ?>
                 </tr>
             <?php endforeach; ?>
-
-            <?php if (empty($technicians)): ?>
-                <tr><td colspan="4" class="text-center">No technician records found.</td></tr>
-            <?php endif ?>
-        </tbody>
-    </table>
+        <?php endif ?>
+    </tbody>
+</table>
 </div>
 </div>
 </div>
@@ -172,20 +203,32 @@
             <input type="text" class="form-control" name="name" id="technicianName" required>
         </div>
 
-        <div class="form-group">
-            <label for="status">Status *</label>
-            <select name="status" id="status" class="form-control" required>
-              <option value="">-- Select Status --</option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+        <?php if (isSuperAdmin()): ?>
+            <div class="form-group">
+              <label>Tenant</label>
+              <select name="tenant_id" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                  <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+              <?php endforeach; ?>
           </select>
       </div>
-  </div>
+  <?php endif; ?>
 
-  <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-      <button type="submit" class="btn btn-primary">Add</button>
-  </div>
+  <div class="form-group">
+    <label for="status">Status *</label>
+    <select name="status" id="status" class="form-control" required>
+      <option value="">-- Select Status --</option>
+      <option value="Active">Active</option>
+      <option value="Inactive">Inactive</option>
+  </select>
+</div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  <button type="submit" class="btn btn-primary">Add</button>
+</div>
 </div>
 </form>
 </div>

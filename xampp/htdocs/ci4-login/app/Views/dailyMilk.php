@@ -43,6 +43,19 @@
         <label for="milk_3<?= $entry['id'] ?>">Milk 3 (Litres)</label>
         <input type="number" step="0.01" class="form-control" name="milk_3" value="<?= esc($entry['milk_3']) ?>">
     </div>
+    <?php if (isSuperAdmin()): ?>
+        <div class="form-group">
+            <label for="tenant_id<?= $entry['id'] ?>">Tenant</label>
+            <select name="tenant_id" id="tenant_id<?= $entry['id'] ?>" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= $tenant['id'] ?>" <?= $entry['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    <?php endif; ?>
 </div>
 
 <div class="modal-footer">
@@ -109,6 +122,33 @@
         <h1 class="h3 mb-0 text-gray-800">Daily Milk List</h1>
     </div>
 
+    <form method="get" action="<?= base_url('dailyMilk') ?>" class="form-inline mb-3">
+        <?php if (isSuperAdmin()): ?>
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-3">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        <?php endif; ?>
+
+        <label for="start_date" class="mr-2">Start Date:</label>
+        <input type="date" name="start_date" class="form-control mr-3" 
+        value="<?= esc($start_date ?? '') ?>">
+
+        <label for="end_date" class="mr-2">End Date:</label>
+        <input type="date" name="end_date" class="form-control mr-3" 
+        value="<?= esc($end_date ?? '') ?>">
+
+        <button type="submit" class="btn btn-primary">Filter</button>
+        <a href="<?= base_url('dailyMilk') ?>" class="btn btn-secondary ml-2">Reset</a>
+    </form>
+
+
     <?php
     $grandTotal = 0;
     foreach ($daily_milking as $record) {
@@ -116,19 +156,13 @@
     }
     ?>
 
-    <form method="get" action="<?= base_url('dailyMilk') ?>" class="form-inline mb-3">
-        <label for="start_date" class="mr-2">Start Date:</label>
-        <input type="date" name="start_date" class="form-control mr-3" value="<?= esc($start_date ?? '') ?>">
-
-        <label for="end_date" class="mr-2">End Date:</label>
-        <input type="date" name="end_date" class="form-control mr-3" value="<?= esc($end_date ?? '') ?>">
-
-        <button type="submit" class="btn btn-primary">Filter</button>
-        <a href="<?= base_url('dailyMilk') ?>" class="btn btn-secondary ml-2">Reset</a>
-    </form>
-
     <div class="mb-3 text-right">
-        <a href="<?= base_url('dailyMilk/export') . '?' . $_SERVER['QUERY_STRING'] ?>" class="btn btn-success mb-3">
+        <a href="<?= base_url('dailyMilk/export')
+        . (!empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '')
+        . (!empty($selectedTenantId) 
+            ? (empty($_SERVER['QUERY_STRING']) ? '?' : '&') . 'tenant_id=' . $selectedTenantId 
+            : '') ?>" 
+            class="btn btn-success mb-3">
             <i class="fas fa-file-excel"></i> Download Excel
         </a>
     </div>
@@ -149,7 +183,7 @@
 
     <div class="table-responsive">
 
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="dailyMilkTable">
             <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
@@ -159,47 +193,46 @@
                     <th>Milk 2 (L)</th>
                     <th>Milk 3 (L)</th>
                     <th>Total Milk (L)</th>
+                    <th>Tenant</th>
                     <?php if (hasPermission('CanUpdateDailyMilking') || hasPermission('CanDeleteDailyMilking')): ?>
                     <th>Actions</th>
                 <?php endif; ?>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($daily_milking as $record): ?>
-                <tr>
-                    <td><?= esc($record['id']) ?></td>
-                    <td><?= esc($record['date']) ?></td>
-                    <td><?= esc($record['milk_product']) ?></td>
-                    <td><?= esc($record['milk_1']) ?></td>
-                    <td><?= esc($record['milk_2']) ?></td>
-                    <td><?= esc($record['milk_3']) ?></td>
-                    <td><?= esc($record['total_milk']) ?></td>
-                    <?php if (hasPermission('CanUpdateDailyMilking') || hasPermission('CanDeleteDailyMilking')): ?>
-                    <td>
-                        <?php if (hasPermission('CanUpdateDailyMilking')): ?>
-                            <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editDailyMilkingModal<?= $record['id'] ?>">Edit</a>
-                        <?php endif; ?>
-                        <?php if (hasPermission('CanDeleteDailyMilking')): ?>
-                            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDailyMilkingModal<?= $record['id'] ?>">Delete</a>
-                        <?php endif; ?>
-                    </td>
-                <?php endif; ?>
-            </tr>
-        <?php endforeach; ?>
-
-        <?php if (empty($daily_milking)): ?>
-            <tr>
-                <td colspan="8" class="text-center">No daily milking records found.</td>
-            </tr>
-        <?php else: ?>
-            <!-- Total Row -->
+            <?php if (!empty($daily_milking)): ?>
+                <?php foreach ($daily_milking as $record): ?>
+                    <tr>
+                        <td><?= esc($record['id']) ?></td>
+                        <td><?= esc($record['date']) ?></td>
+                        <td><?= esc($record['milk_product']) ?></td>
+                        <td><?= esc($record['milk_1']) ?></td>
+                        <td><?= esc($record['milk_2']) ?></td>
+                        <td><?= esc($record['milk_3']) ?></td>
+                        <td><?= esc($record['total_milk']) ?></td>
+                        <td><?= esc($record['tenant_name'] ?? 'N/A') ?></td>
+                        <?php if (hasPermission('CanUpdateDailyMilking') || hasPermission('CanDeleteDailyMilking')): ?>
+                        <td>
+                            <?php if (hasPermission('CanUpdateDailyMilking')): ?>
+                                <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editDailyMilkingModal<?= $record['id'] ?>">Edit</a>
+                            <?php endif; ?>
+                            <?php if (hasPermission('CanDeleteDailyMilking')): ?>
+                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteDailyMilkingModal<?= $record['id'] ?>">Delete</a>
+                            <?php endif; ?>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
+            <tfoot>
             <tr style="font-weight: bold; background-color: #f1f1f1;">
                 <td colspan="6" class="text-center">Grand Total (Litres):</td>
                 <td><?= number_format($grandTotal, 2) ?></td>
+                <td></td>
                 <?php if (hasPermission('CanUpdateDailyMilking') || hasPermission('CanDeleteDailyMilking')): ?>
                 <td></td>
             <?php endif; ?>
         </tr>
+        </tfoot>
     <?php endif; ?>
 </tbody>
 </table>
@@ -250,6 +283,18 @@
     <label for="milk_3">Milk 3 (Litres)</label>
     <input type="number" step="0.01" class="form-control" name="milk_3" id="milk_3">
 </div>
+
+<?php if (isSuperAdmin()): ?>
+    <div class="form-group">
+      <label>Tenant</label>
+      <select name="tenant_id" class="form-control">
+        <option value="">Select Tenant</option>
+        <?php foreach ($tenants as $tenant): ?>
+          <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+      <?php endforeach; ?>
+  </select>
+</div>
+<?php endif; ?>
 
 <p class="text-muted"><small>Total Milk will be calculated automatically.</small></p>
 </div>
@@ -312,6 +357,14 @@ aria-hidden="true">
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/sb-admin-2/js/sb-admin-2.min.js') ?>"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dailyMilkTable').DataTable();
+    });
+</script>
 
 </body>
 

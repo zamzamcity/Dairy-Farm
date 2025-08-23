@@ -20,6 +20,19 @@
         <label>Head Name *</label>
         <input type="text" name="head_name" class="form-control" value="<?= esc($head['head_name']) ?>" required>
     </div>
+    <?php if (isSuperAdmin()): ?>
+        <div class="form-group">
+            <label for="tenant_id<?= $head['id'] ?>">Tenant</label>
+            <select name="tenant_id" id="tenant_id<?= $head['id'] ?>" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= $tenant['id'] ?>" <?= $head['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    <?php endif; ?>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -80,18 +93,35 @@
         <h1 class="h3 mb-0 text-gray-800">Farm Milk Head List</h1>
     </div>
 
-    <div class="mb-3 text-right">
-        <a href="<?= base_url('milk-consumption/farmHead/farmHeadExport') ?>" class="btn btn-success mb-3">
-            <i class="fas fa-file-excel"></i> Download Excel
-        </a>
-    </div>
-
-    <!-- Add Farm Head Button -->
-    <?php if (hasPermission('CanAddFarmHead')): ?>
-        <div class="mb-3 text-right">
-            <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addFarmHeadModal">+ Add Head</a>
-        </div>
+    <?php if (isSuperAdmin()): ?>
+        <form method="get" class="form-inline mb-4">
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-2">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
     <?php endif; ?>
+
+    <div class="mb-3 text-right">
+        <a href="<?= base_url('milk-consumption/farmHead/farmHeadExport') . (!empty($selectedTenantId) ? '?tenant_id='.$selectedTenantId : '') ?>" 
+           class="btn btn-success mb-3">
+           <i class="fas fa-file-excel"></i> Download Excel
+       </a>
+   </div>
+
+   <!-- Add Farm Head Button -->
+   <?php if (hasPermission('CanAddFarmHead')): ?>
+    <div class="mb-3 text-right">
+        <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addFarmHeadModal">+ Add Head</a>
+    </div>
+<?php endif; ?>
 
 <!-- Farm Head Table -->
 <div class="card shadow mb-4">
@@ -106,33 +136,31 @@
                 <tr>
                     <th>ID</th>
                     <th>Head Name</th>
+                    <th>Tenant</th>
                     <?php if (hasPermission('CanUpdateFarmHead') || hasPermission('CanDeleteFarmHead')): ?>
                     <th>Actions</th>
                 <?php endif; ?>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($farm_head as $head): ?>
-                <tr>
-                    <td><?= esc($head['id']) ?></td>
-                    <td><?= esc($head['head_name']) ?></td>
-                    <?php if (hasPermission('CanUpdateFarmHead') || hasPermission('CanDeleteFarmHead')): ?>
-                    <td>
-                        <?php if (hasPermission('CanUpdateFarmHead')): ?>
-                            <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editFarmHeadModal<?= $head['id'] ?>">Edit</a>
-                        <?php endif; ?>
-                        <?php if (hasPermission('CanDeleteFarmHead')): ?>
-                            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteFarmHeadModal<?= $head['id'] ?>">Delete</a>
-                        <?php endif; ?>
-                    </td>
-                <?php endif; ?>
-            </tr>
-        <?php endforeach; ?>
-
-        <?php if (empty($farm_head)): ?>
-            <tr>
-                <td colspan="4" class="text-center">No farm head records found.</td>
-            </tr>
+            <?php if (!empty($farm_head)) : ?>
+                <?php foreach ($farm_head as $head): ?>
+                    <tr>
+                        <td><?= esc($head['id']) ?></td>
+                        <td><?= esc($head['head_name']) ?></td>
+                        <td><?= esc($head['tenant_name'] ?? 'N/A') ?></td>
+                        <?php if (hasPermission('CanUpdateFarmHead') || hasPermission('CanDeleteFarmHead')): ?>
+                        <td>
+                            <?php if (hasPermission('CanUpdateFarmHead')): ?>
+                                <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editFarmHeadModal<?= $head['id'] ?>">Edit</a>
+                            <?php endif; ?>
+                            <?php if (hasPermission('CanDeleteFarmHead')): ?>
+                                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteFarmHeadModal<?= $head['id'] ?>">Delete</a>
+                            <?php endif; ?>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
         <?php endif; ?>
     </tbody>
 </table>
@@ -157,6 +185,17 @@
         <label>Head Name *</label>
         <input type="text" name="head_name" class="form-control" required>
     </div>
+    <?php if (isSuperAdmin()): ?>
+        <div class="form-group">
+          <label>Tenant</label>
+          <select name="tenant_id" class="form-control">
+            <option value="">Select Tenant</option>
+            <?php foreach ($tenants as $tenant): ?>
+              <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+          <?php endforeach; ?>
+      </select>
+  </div>
+<?php endif; ?>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

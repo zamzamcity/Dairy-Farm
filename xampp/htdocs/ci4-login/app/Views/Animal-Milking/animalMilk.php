@@ -58,6 +58,20 @@
         <input type="number" step="0.01" class="form-control" name="milk_3" value="<?= esc($entry['milk_3']) ?>">
     </div>
 
+    <?php if (isSuperAdmin()): ?>
+        <div class="form-group">
+            <label for="tenant_id<?= $entry['id'] ?>">Tenant</label>
+            <select name="tenant_id" id="tenant_id<?= $entry['id'] ?>" class="form-control">
+                <option value="">Select Tenant</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= $tenant['id'] ?>" <?= $entry['tenant_id'] == $tenant['id'] ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+    <?php endif; ?>
+
 </div>
 
 <div class="modal-footer">
@@ -126,23 +140,41 @@
         <h1 class="h3 mb-0 text-gray-800">Animal Milk List</h1>
     </div>
 
-    <form method="get" action="<?= base_url('animal-milking/animalMilk') ?>" class="form-inline mb-3">
-        <label class="mr-2 font-weight-bold">Date:</label>
+    <?php if (isSuperAdmin()): ?>
+        <form method="get" class="form-inline mb-4">
+            <!-- Tenant Filter -->
+            <label class="mr-2">Tenant:</label>
+            <select name="tenant_id" class="form-control mr-3">
+                <option value="">-- All Tenants --</option>
+                <?php foreach ($tenants as $tenant): ?>
+                    <option value="<?= esc($tenant['id']) ?>" 
+                        <?= ($selectedTenantId == $tenant['id']) ? 'selected' : '' ?>>
+                        <?= esc($tenant['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        <?php endif; ?>
+
+        <label class="mr-2">Date:</label>
         <input type="date" name="date" class="form-control mr-3"
         value="<?= esc($_GET['date'] ?? date('Y-m-d')) ?>">
 
-        <button type="submit" class="btn btn-sm btn-primary mr-2">Filter</button>
-    </form>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>    
 
     <div class="mb-3 text-right">
-        <a href="<?= base_url('animal-milking/animalMilk/animalMilkExport') . '?' . $_SERVER['QUERY_STRING'] ?>" 
-         class="btn btn-success mb-3">
-         <i class="fas fa-file-excel"></i> Download Excel
-     </a>
- </div>
+        <a href="<?= base_url('animal-milking/animalMilk/animalMilkExport')
+        . (!empty($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '')
+        . (!empty($selectedTenantId) 
+            ? (empty($_SERVER['QUERY_STRING']) ? '?' : '&') . 'tenant_id=' . $selectedTenantId 
+            : '') ?>" 
+            class="btn btn-success mb-3">
+            <i class="fas fa-file-excel"></i> Download Excel
+        </a>
+    </div>
 
- <!-- Add Animal Milk Button -->
- <?php if (hasPermission('CanAddAnimalMilk')): ?>
+<!-- Add Animal Milk Button -->
+<?php if (hasPermission('CanAddAnimalMilk')): ?>
     <div class="mb-3 text-right">
         <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addAnimalMilkModal">+ Add Animal Milk</a>
     </div>
@@ -163,7 +195,7 @@
         $totalMilk3 = 0;
         ?>
 
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="animalMilkTable">
           <thead class="thead-dark">
             <tr>
               <th>ID</th>
@@ -174,73 +206,76 @@
               <th>Milk 1 (L)</th>
               <th>Milk 2 (L)</th>
               <th>Milk 3 (L)</th>
+              <th>Tenant</th>
               <?php if (hasPermission('CanUpdateAnimalMilk') || hasPermission('CanDeleteAnimalMilk')): ?>
               <th>Actions</th>
           <?php endif; ?>
       </tr>
   </thead>
   <tbody>
-    <?php foreach ($animal_milk as $index => $record): ?>
-        <?php
-        $currentDate = $record['date'];
+    <?php if (!empty($animal_milk)): ?>
+        <?php foreach ($animal_milk as $index => $record): ?>
+            <?php
+            $currentDate = $record['date'];
 
-        if ($previousDate !== null && $currentDate !== $previousDate):
-            ?>
-            <tr style="font-weight: bold; background-color: #f1f1f1;">
-              <td colspan="5" class="text-center">Total Milk:</td>
-              <td><?= number_format($totalMilk1, 2) ?> L</td>
-              <td><?= number_format($totalMilk2, 2) ?> L</td>
-              <td><?= number_format($totalMilk3, 2) ?> L</td>
-              <td></td>
-          </tr>
-          <?php
-                  // Reset totals for the new date
-          $totalMilk1 = 0;
-          $totalMilk2 = 0;
-          $totalMilk3 = 0;
-          ?>
-      <?php endif; ?>
+            if ($previousDate !== null && $currentDate !== $previousDate):
+                ?>
+                <tr style="font-weight: bold; background-color: #f1f1f1;">
+                  <td colspan="5" class="text-center">Total Milk:</td>
+                  <td><?= number_format($totalMilk1, 2) ?> L</td>
+                  <td><?= number_format($totalMilk2, 2) ?> L</td>
+                  <td><?= number_format($totalMilk3, 2) ?> L</td>
+                  <td></td>
+              </tr>
+              <?php
+              $totalMilk1 = 0;
+              $totalMilk2 = 0;
+              $totalMilk3 = 0;
+              ?>
+          <?php endif; ?>
 
-      <tr>
-        <td><?= esc($record['id']) ?></td>
-        <td><?= esc($record['date']) ?></td>
-        <td><?= esc($record['tag_id']) ?></td>
-        <td><?= esc($record['first_calving_date']) ?></td>
-        <td><?= esc($record['last_calving_date']) ?></td>
-        <td><?= esc($record['milk_1']) ?></td>
-        <td><?= esc($record['milk_2']) ?></td>
-        <td><?= esc($record['milk_3']) ?></td>
-        <?php if (hasPermission('CanUpdateAnimalMilk') || hasPermission('CanDeleteAnimalMilk')): ?>
-        <td>
-            <?php if (hasPermission('CanUpdateAnimalMilk')): ?>
-                <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editAnimalMilkModal<?= $record['id'] ?>">Edit</a>
-            <?php endif; ?>
-            <?php if (hasPermission('CanDeleteAnimalMilk')): ?>
-                <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteAnimalMilkModal<?= $record['id'] ?>">Delete</a>
-            <?php endif; ?>
-        </td>
-    <?php endif; ?>
-</tr>
-
-<?php
-$totalMilk1 += (float)$record['milk_1'];
-$totalMilk2 += (float)$record['milk_2'];
-$totalMilk3 += (float)$record['milk_3'];
-
-$previousDate = $currentDate;
-?>
-<?php endforeach; ?>
-
-<?php if (!empty($animal_milk)): ?>
-    <tr style="font-weight: bold; background-color: #f1f1f1;">
-        <td colspan="5" class="text-center">Total Milk:</td>
-        <td><?= number_format($totalMilk1, 2) ?> L</td>
-        <td><?= number_format($totalMilk2, 2) ?> L</td>
-        <td><?= number_format($totalMilk3, 2) ?> L</td>
-        <td></td>
+          <tr>
+            <td><?= esc($record['id']) ?></td>
+            <td><?= esc($record['date']) ?></td>
+            <td><?= esc($record['tag_id']) ?></td>
+            <td><?= esc($record['first_calving_date']) ?></td>
+            <td><?= esc($record['last_calving_date']) ?></td>
+            <td><?= esc($record['milk_1']) ?></td>
+            <td><?= esc($record['milk_2']) ?></td>
+            <td><?= esc($record['milk_3']) ?></td>
+            <td><?= esc($record['tenant_name'] ?? 'N/A') ?></td>
+            <?php if (hasPermission('CanUpdateAnimalMilk') || hasPermission('CanDeleteAnimalMilk')): ?>
+            <td>
+                <?php if (hasPermission('CanUpdateAnimalMilk')): ?>
+                    <a href="#" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editAnimalMilkModal<?= $record['id'] ?>">Edit</a>
+                <?php endif; ?>
+                <?php if (hasPermission('CanDeleteAnimalMilk')): ?>
+                    <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteAnimalMilkModal<?= $record['id'] ?>">Delete</a>
+                <?php endif; ?>
+            </td>
+        <?php endif; ?>
     </tr>
-<?php else: ?>
-    <tr><td colspan="9" class="text-center">No animal milk records found.</td></tr>
+
+    <?php
+    $totalMilk1 += (float)$record['milk_1'];
+    $totalMilk2 += (float)$record['milk_2'];
+    $totalMilk3 += (float)$record['milk_3'];
+
+    $previousDate = $currentDate;
+    ?>
+<?php endforeach; ?>
+<tfoot>
+<tr style="font-weight: bold; background-color: #f1f1f1;">
+    <td colspan="5" class="text-center">Total Milk:</td>
+    <td><?= number_format($totalMilk1, 2) ?> L</td>
+    <td><?= number_format($totalMilk2, 2) ?> L</td>
+    <td><?= number_format($totalMilk3, 2) ?> L</td>
+    <td></td>
+    <?php if (hasPermission('CanUpdateAnimalMilk') || hasPermission('CanDeleteAnimalMilk')): ?>
+    <td></td>
+<?php endif; ?>
+</tr>
+</tfoot>
 <?php endif; ?>
 </tbody>
 </table>
@@ -299,6 +334,18 @@ $previousDate = $currentDate;
         <label for="milk_3">Milk 3 (Litres)</label>
         <input type="number" step="0.01" class="form-control" name="milk_3" id="milk_3">
     </div>
+
+    <?php if (isSuperAdmin()): ?>
+        <div class="form-group">
+          <label>Tenant</label>
+          <select name="tenant_id" class="form-control">
+            <option value="">Select Tenant</option>
+            <?php foreach ($tenants as $tenant): ?>
+              <option value="<?= $tenant['id'] ?>"><?= esc($tenant['name']) ?></option>
+          <?php endforeach; ?>
+      </select>
+  </div>
+<?php endif; ?>
 </div>
 
 <div class="modal-footer">
@@ -360,6 +407,14 @@ aria-hidden="true">
 
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('assets/sb-admin-2/js/sb-admin-2.min.js') ?>"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#animalMilkTable').DataTable();
+    });
+</script>
 
 </body>
 

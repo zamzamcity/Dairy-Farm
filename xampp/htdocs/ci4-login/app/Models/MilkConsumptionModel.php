@@ -7,5 +7,16 @@ use CodeIgniter\Model;
 class MilkConsumptionModel extends Model
 {
     protected $table = 'milk_consumption';
-    protected $allowedFields = ['date', 'farm_head_id', 'milk_litres'];
+    protected $primaryKey = 'id';
+
+    protected $allowedFields = [
+        'date',
+        'farm_head_id',
+        'milk_litres',
+        'tenant_id',
+        'created_by',
+        'updated_by'
+    ];
+
+    protected $useTimestamps = true;
 }
