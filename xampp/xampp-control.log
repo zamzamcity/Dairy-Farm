@@ -815,3 +815,38 @@
 6:41:34 PM  [main] 	Deinitializing Modules
 6:41:34 PM  [main] 	Deinitializing Control Panel
 
+9:17:11 AM  [main] 	Initializing Control Panel
+9:17:11 AM  [main] 	Windows Version:  Enterprise  64-bit
+9:17:11 AM  [main] 	XAMPP Version: 8.2.12
+9:17:11 AM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+9:17:11 AM  [main] 	You are not running with administrator rights! This will work for
+9:17:11 AM  [main] 	most application stuff but whenever you do something with services
+9:17:11 AM  [main] 	there will be a security dialogue or things will break! So think 
+9:17:11 AM  [main] 	about running this application with administrator rights!
+9:17:11 AM  [main] 	XAMPP Installation Directory: "c:\users\zamza\documents\github\dairy-farm\xampp\"
+9:17:11 AM  [main] 	Checking for prerequisites
+9:17:12 AM  [main] 	All prerequisites found
+9:17:12 AM  [main] 	Initializing Modules
+9:17:12 AM  [main] 	Starting Check-Timer
+9:17:12 AM  [main] 	Control Panel Ready
+9:18:11 AM  [Apache] 	Attempting to start Apache app...
+9:18:12 AM  [Apache] 	Status change detected: running
+9:18:12 AM  [mysql] 	Attempting to start MySQL app...
+9:18:13 AM  [mysql] 	Status change detected: running
+6:51:17 PM  [Apache] 	Attempting to stop Apache (PID: 3192)
+6:51:17 PM  [Apache] 	Attempting to stop Apache (PID: 11728)
+6:51:17 PM  [Apache] 	Status change detected: stopped
+6:51:18 PM  [mysql] 	Attempting to stop MySQL app...
+6:51:18 PM  [mysql] 	Status change detected: stopped
+6:53:39 PM  [Apache] 	Attempting to start Apache app...
+6:53:39 PM  [Apache] 	Status change detected: running
+6:53:40 PM  [mysql] 	Attempting to start MySQL app...
+6:53:40 PM  [mysql] 	Status change detected: running
+7:01:57 PM  [Apache] 	Attempting to stop Apache (PID: 7040)
+7:01:57 PM  [Apache] 	Attempting to stop Apache (PID: 11308)
+7:01:57 PM  [Apache] 	Status change detected: stopped
+7:01:58 PM  [mysql] 	Attempting to stop MySQL app...
+7:01:58 PM  [mysql] 	Status change detected: stopped
+7:03:15 PM  [main] 	Deinitializing Modules
+7:03:15 PM  [main] 	Deinitializing Control Panel
+

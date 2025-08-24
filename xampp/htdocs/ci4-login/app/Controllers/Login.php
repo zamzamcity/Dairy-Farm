@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\TenantsModel;
 
 class Login extends BaseController
 {
@@ -103,29 +104,49 @@ class Login extends BaseController
             return redirect()->to('/login');
         }
 
-        $userModel = new \App\Models\UserModel();
-        $totalEmployees = $userModel->where('is_active', 1)->countAllResults();
-
+        $userModel   = new \App\Models\UserModel();
         $animalModel = new \App\Models\AnimalModel();
-        $totalAnimals = $animalModel->countAllResults();
+        $db          = \Config\Database::connect();
 
-        $db = \Config\Database::connect();
+        $isSuperAdmin = isSuperAdmin();
+        $tenantId     = session()->get('tenant_id');
 
-        $milkResult = $db->table('daily_milking')
-        ->selectSum('total_milk')
-        ->get()
-        ->getRow();
+        if ($isSuperAdmin) {
+            $totalEmployees = $userModel->where('is_active', 1)->countAllResults();
+        } else {
+            $totalEmployees = $userModel
+            ->where('is_active', 1)
+            ->where('tenant_id', $tenantId)
+            ->countAllResults();
+        }
 
-        $totalMilk = $milkResult->total_milk ?? 0;
+        if ($isSuperAdmin) {
+            $totalAnimals = $animalModel->countAllResults();
+        } else {
+            $totalAnimals = $animalModel
+            ->where('tenant_id', $tenantId)
+            ->countAllResults();
+        }
 
-        $totalProducts = $db->table('stock_registration')->countAll();
+        $milkBuilder = $db->table('daily_milking')->selectSum('total_milk');
+        if (!$isSuperAdmin) {
+            $milkBuilder->where('tenant_id', $tenantId);
+        }
+        $milkResult = $milkBuilder->get()->getRow();
+        $totalMilk  = $milkResult->total_milk ?? 0;
+
+        $productBuilder = $db->table('stock_registration');
+        if (!$isSuperAdmin) {
+            $productBuilder->where('tenant_id', $tenantId);
+        }
+        $totalProducts = $productBuilder->countAllResults();
 
         return view('dashboard', [
             'totalEmployees' => $totalEmployees,
-            'totalAnimals' => $totalAnimals,
-            'totalMilk' => $totalMilk,
-            'totalProducts' => $totalProducts,
-            'title' => 'Zam Zam DairyCare - Dashboard'
+            'totalAnimals'   => $totalAnimals,
+            'totalMilk'      => $totalMilk,
+            'totalProducts'  => $totalProducts,
+            'title'          => 'Zam Zam DairyCare - Dashboard'
         ]);
     }
 
